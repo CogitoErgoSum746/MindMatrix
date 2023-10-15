@@ -5,6 +5,7 @@ import Ellipse1 from "../images/Ellipse1.png";
 import Ellipse2 from "../images/Ellipse2.png";
 import Ellipse3 from "../images/Ellipse3.png";
 import Navbar from "../components/Navbar";
+import { API_BASE_URL } from "../config";
 
 function Test() {
   const [tests] = useState([
@@ -56,7 +57,7 @@ function Test() {
         const authtoken = localStorage.getItem("authtoken"); // Use 'authtoken' as the key to retrieve the token from local storage
         console.log(authtoken);
 
-        const response = await fetch("http://localhost:8001/user/totalTests", {
+        const response = await fetch(`${API_BASE_URL}/user/totalTests`, {
           method: "GET",
           headers: {
             authtoken: authtoken, // Include the token in the Authorization header
@@ -86,7 +87,7 @@ function Test() {
 
     try {
       const authtoken = localStorage.getItem("authtoken");
-      const response = await fetch("http://localhost:8001/user/makepdf", {
+      const response = await fetch(`${API_BASE_URL}/user/makepdf`, {
         method: "GET",
         headers: {
           authtoken: authtoken,

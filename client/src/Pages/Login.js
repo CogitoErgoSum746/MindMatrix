@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import registerImg from '../images/register.png';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../AuthContext';
+import { API_BASE_URL } from '../config';
 
 function Login({ setLoggedIn }) {
   // const navigate = useNavigate();
@@ -28,7 +29,8 @@ function Login({ setLoggedIn }) {
 
 
     try {
-      const response = await fetch('http://localhost:8001/auth/login', {
+      console.log({ username, password})
+      const response = await fetch(`http://localhost:8001/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

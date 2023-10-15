@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import registerImg from '../images/register.png';
 import Navbar from '../components/Navbar';
+import { API_BASE_URL } from '../config';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ const Register = () => {
     });
 
     try {
-      const response = await fetch('http://localhost:8001/auth/createuser', {
+      const response = await fetch(`${API_BASE_URL}/auth/createuser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import OrganizationCard from '../components/OrganizationCard';
+import { API_BASE_URL } from '../config';
+
 
 function AdminPanel({ loggedIn }) {
   const [organizations, setOrganizations] = useState([]);
@@ -15,7 +17,7 @@ function AdminPanel({ loggedIn }) {
   const handleSendCodeToEmail = async (org_name, org_email) => {
     try {
       const authtoken = localStorage.getItem('authtoken');
-      const response = await fetch('http://localhost:8001/admin/sendcodetoemail', {
+      const response = await fetch(`${API_BASE_URL}/admin/sendcodetoemail`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +41,7 @@ function AdminPanel({ loggedIn }) {
   const handleRegister = async () => {
     try {
       const authtoken = localStorage.getItem('authtoken');
-      const response = await fetch('http://localhost:8001/admin/createorg', {
+      const response = await fetch(`${API_BASE_URL}/admin/createorg`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +66,7 @@ function AdminPanel({ loggedIn }) {
   const getAllOrganization = async () => {
     try {
       const authtoken = localStorage.getItem('authtoken');
-      const response = await fetch('http://localhost:8001/admin/getallorgs', {
+      const response = await fetch(`${API_BASE_URL}/admin/getallorgs`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
