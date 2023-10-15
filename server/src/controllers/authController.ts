@@ -96,7 +96,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
         path: `src/tp/Psychometric Test Instructions.pdf`,
       }];
 
-      sendEmail(userCreated.email, subject, text, attachments);
+      await sendEmail(userCreated.email, subject, text, attachments);
     }
 
     // Token authentication using JWT
@@ -122,7 +122,6 @@ export async function login(req: Request, res: Response): Promise<any> {
     return;
   }
   try {
-    console.log(`loggin in ${req.body.username}`)
     const { username, password } = req.body;
 
     const AdminEmail = process.env.ADMIN_EMAIL;
@@ -147,7 +146,6 @@ export async function login(req: Request, res: Response): Promise<any> {
     if (!passwordCompare) {
       return res.status(400).json({ success, error: 'Please try to login with correct password' });
     }
-    console.log('correct password!')
     // Token authentication using JWT
     const authtoken = signToken(user.username, user.email, user.org_code);
 
@@ -181,7 +179,7 @@ export async function forgotPassword(req: Request, res: Response): Promise<any> 
     const subject = 'Password Reset';
     const text = `This link is active only for an hour.\nClick the following link to reset your password: ${resetLink}`;
 
-    sendEmail(email, subject, text);
+    await sendEmail(email, subject, text);
 
     await User.findOneAndUpdate({ email }, { resetToken: token, resetTokenExpiry: expiration });
 

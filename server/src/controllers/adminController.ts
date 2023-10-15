@@ -248,7 +248,6 @@ export const adminDashboard = (req: Request, res: Response): void => {
 };
 
 export async function sendCodetoEmail(req: Request, res: Response): Promise<void> {
-  console.log(`Sending email...`)
   try {
     const org = await Organization.findOne({
       org_name: req.body.org_name,
@@ -268,9 +267,8 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
       filename: 'Psychometric Test Instructions.pdf',
       path: `src/tp/Psychometric Test Instructions.pdf`,
     }];
-    console.log(org);
 
-    sendEmail(email, subject, text, attachments);
+    await sendEmail(email, subject, text, attachments);
 
     res.status(200).json({success: true});
 
