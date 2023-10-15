@@ -51,6 +51,7 @@ async function sendEmail(
 const saltRounds = 10;
 
 export const createUser = async (req: Request, res: Response): Promise<any> => {
+  
   let success = false;
 
   // If there are validation errors return bad request and the errors
@@ -111,6 +112,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 };
 
 export async function login(req: Request, res: Response): Promise<any> {
+
   let success = false;
 
   // If there are validation errors, return bad request and the errors
@@ -119,8 +121,8 @@ export async function login(req: Request, res: Response): Promise<any> {
     res.status(400).json({ success, errors: errors.array() });
     return;
   }
-
   try {
+    console.log(`loggin in ${req.body.username}`)
     const { username, password } = req.body;
 
     const AdminEmail = process.env.ADMIN_EMAIL;
@@ -145,7 +147,7 @@ export async function login(req: Request, res: Response): Promise<any> {
     if (!passwordCompare) {
       return res.status(400).json({ success, error: 'Please try to login with correct password' });
     }
-
+    console.log('correct password!')
     // Token authentication using JWT
     const authtoken = signToken(user.username, user.email, user.org_code);
 

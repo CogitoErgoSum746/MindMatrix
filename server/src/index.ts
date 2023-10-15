@@ -25,9 +25,9 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/auth", authRoute);
-app.use("/admin", verifyAdmin, adminRoute);
-app.use("/user", verifyUser, userRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/admin", verifyAdmin, adminRoute);
+app.use("/api/user", verifyUser, userRoute);
 
 // app.get('/home', (req: Request, res: Response, next) => {
 //     res.status(200).json('indexxx');

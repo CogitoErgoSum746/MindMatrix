@@ -26,6 +26,7 @@ import abst17 from "../../images/abst/abst17.png";
 import abst18 from "../../images/abst/abst18.png";
 import abst19 from "../../images/abst/abst19.png";
 import abst20 from "../../images/abst/abst20.png";
+import { API_BASE_URL } from "../../config";
 
 function TestQuestionsPattern12() {
   const { subtestId } = useParams();
@@ -1215,7 +1216,7 @@ function TestQuestionsPattern12() {
       try {      
             const authtoken = localStorage.getItem("authtoken");  
             console.log(authtoken)
-            const response = await fetch("http://localhost:8001/user/checkscore", {
+            const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -1258,7 +1259,7 @@ function TestQuestionsPattern12() {
     try {
       const authtoken = localStorage.getItem("authtoken");
       const response = await fetch(
-        "http://localhost:8001/user/testResultToAPI",
+        `${API_BASE_URL}/user/testResultToAPI`,
         {
           method: "POST",
           headers: {

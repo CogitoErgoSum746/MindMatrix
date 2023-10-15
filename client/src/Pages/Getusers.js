@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 function Getusers() {
   const { org_name, org_email, org_code } = useParams();
@@ -10,7 +11,7 @@ function Getusers() {
   useEffect(() => {
     const authtoken = localStorage.getItem('authtoken');
     
-    fetch('http://localhost:8001/admin/getusersorg', {
+    fetch(`${API_BASE_URL}/admin/getusersorg`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

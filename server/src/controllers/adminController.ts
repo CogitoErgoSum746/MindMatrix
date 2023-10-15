@@ -248,11 +248,12 @@ export const adminDashboard = (req: Request, res: Response): void => {
 };
 
 export async function sendCodetoEmail(req: Request, res: Response): Promise<void> {
+  console.log(`Sending email...`)
   try {
     const org = await Organization.findOne({
       org_name: req.body.org_name,
       org_email: req.body.org_email
-    }).select('-_id org_code');
+    }).select('-_id');
 
     if (!org) {
       res.status(404).json({ message: 'organization not found' });
@@ -267,8 +268,11 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
       filename: 'Psychometric Test Instructions.pdf',
       path: `src/tp/Psychometric Test Instructions.pdf`,
     }];
+    console.log(org);
 
     sendEmail(email, subject, text, attachments);
+
+    res.status(200).json({success: true});
 
   } catch (error) {
     res.status(500).json({ success: false, error: error });

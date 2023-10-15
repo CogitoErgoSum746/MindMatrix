@@ -3,7 +3,7 @@ import { useParams,Link } from "react-router-dom";
 import Ellipse1 from "../../images/Ellipse1.png"; 
 import Ellipse2 from '../../images/Ellipse2.png';
 import Ellipse3 from "../../images/Ellipse3.png";
-
+import { API_BASE_URL } from "../../config";
 
 function TestQuestionsPattern10() {
   const { subtestId } = useParams();
@@ -230,7 +230,7 @@ function TestQuestionsPattern10() {
       try {      
             const authtoken = localStorage.getItem("authtoken");  
             console.log(authtoken)
-            const response = await fetch("http://localhost:8001/user/checkscore", {
+            const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -274,7 +274,7 @@ function TestQuestionsPattern10() {
     try {
       const authtoken = localStorage.getItem("authtoken");
       const response = await fetch(
-        "http://localhost:8001/user/testResultToAPI",
+        `${API_BASE_URL}/user/testResultToAPI`,
         {
           method: "POST",
           headers: {
