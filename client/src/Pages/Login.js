@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import { useAuth } from '../AuthContext';
 import { API_BASE_URL } from '../config';
 
-function Login({ setLoggedIn }) {
+function Login() {
   // const navigate = useNavigate();
   const { login } = useAuth(); 
   const [formData, setFormData] = useState({
@@ -29,8 +29,7 @@ function Login({ setLoggedIn }) {
 
 
     try {
-      console.log({ username, password})
-      const response = await fetch(`http://localhost:8001/api/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,6 +117,9 @@ function Login({ setLoggedIn }) {
               className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
               required
             />
+            <Link to='/sendmail'>
+            <p className='text-blue-400 text-right'>Forgot Password ?</p>
+            </Link>
           </div>
           <div className="text-center">
             <button

@@ -4,13 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import OrganizationCard from '../components/OrganizationCard';
 import { API_BASE_URL } from '../config';
 
-
-function AdminPanel({ loggedIn }) {
+function AdminPanel() {
   const [organizations, setOrganizations] = useState([]);
   const [orgi_name, setName] = useState('');
   const [orgi_email, setEmail] = useState('');
-  const [orgi_code, setCode] = useState('');
+  // const [orgi_code, setCode] = useState('');
   const navigate = useNavigate();
+
+
+  const authtoken = localStorage.getItem("authtoken");
+
+
+  const Logout = () => {
+    localStorage.clear();
+    navigate('/login');
+    // window.location.reload();
+  };
+  
 
   // Function to send an email with the organization details
 
@@ -141,7 +151,7 @@ function AdminPanel({ loggedIn }) {
       </div>
       <div className="mt-4">
         <Link to="/login" className="text-blue-500">
-          Logout
+          <button onClick={Logout} className='py-1 px-2 bg-blue-400 text-white'>Logout</button>
         </Link>
       </div>
     </div>

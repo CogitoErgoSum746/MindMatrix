@@ -1,15 +1,26 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+
 // import { useAuth } from '../AuthContext';
 function Home1() {
   
   // const { loggedIn } = useAuth();
 const navigate=useNavigate();
+
+const authtoken = localStorage.getItem("authtoken");
+
+
+const [isLoggedin, setIsLoggedin] = useState(false);
+useEffect(() => {
+  if (authtoken) {
+    setIsLoggedin(true);
+  }
+}, []);
 // console.log(loggedIn)
 
 // const handleGetStarted = () =>{
-//   if(loggedIn)
+//   if(isLoggedin)
 //   {
 //     navigate('/test');
 //   }
@@ -17,6 +28,11 @@ const navigate=useNavigate();
 //     alert('Please Login First')
 //   }
 // }
+
+
+
+
+
   return (
     <>
     <Navbar />
@@ -32,24 +48,28 @@ const navigate=useNavigate();
             India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[21] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[22][23] and from the time of its independence in 1947, the world's most populous democracy.[24][25][26] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.
 
             </p>
-            <Link to='/test'>
+            {/* <Link to='/test'>
             <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
               Get Started
             </button>
-            </Link>
-             {/* {loggedIn ? (
+            </Link> */}
+             {isLoggedin ? (
+              <Link to='/test'>
             <button
               className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
-              onClick={handleGetStarted}
+              // onClick={handleGetStarted}
             >
               Get Started
             </button>
+            </Link>
           ) : (
             // Render a login link or message for users who are not logged in
-            <p>
-              Please <Link to="/login">log in</Link> to get started.
+            <Link to="/login">
+            <p className='w-full p-2 rounded-md bg-gray-400'>
+              Please log in to get started.
             </p>
-          )} */}
+            </Link> 
+          )}
           </div>
 
 
@@ -58,7 +78,7 @@ const navigate=useNavigate();
             <p className="text-lg text-gray-800 mb-4 text-justify">
             India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[21] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[22][23] and from the time of its independence in 1947, the world's most populous democracy.[24][25][26] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.
             </p>
-            <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+            <button className="w-full p-2 rounded-md bg-gray-400">
             Get Started
             </button>
           </div>
@@ -69,7 +89,7 @@ const navigate=useNavigate();
             <p className="text-lg text-gray-800 mb-4 text-justify">
             India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[21] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[22][23] and from the time of its independence in 1947, the world's most populous democracy.[24][25][26] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.
             </p>
-            <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+            <button className="w-full p-2 rounded-md bg-gray-400">
             Get Started
             </button>
           </div>
