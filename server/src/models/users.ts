@@ -35,7 +35,8 @@ const UserSchema = new Schema({
         required: true,
     },
     carreerOptions: {
-        type: Array,
+        type: Map,
+        of: String
     },
     testResults: [testResultSchema], //array of test results
     resetToken: {

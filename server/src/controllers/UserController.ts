@@ -168,6 +168,22 @@ export async function checkSubscores(req: Request, res: Response): Promise<void>
         const subcategories = testResult.subcategories;
 
         if (subcategories) {
+          const customSort = (arr: any) => {
+            return arr.reduce((sorted: any, item: any) => {
+              const index = sorted.findIndex((el: any) => item.score > el.score);
+              if (index === -1) {
+                sorted.push(item);
+              } else {
+                sorted.splice(index, 0, item);
+              }
+              return sorted;
+            }, []);
+          };
+
+          const sortedSubcategories = customSort(subcategories);
+          const sortedNames = sortedSubcategories.map((subcategory: any) => subcategory.name);
+
+          console.log(sortedNames);
           res.status(200).json({ subcategories: subcategories });
           return;
         } else {
@@ -344,8 +360,8 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     // Check if the 'feedback.pdf' already exists in the custom folder
     const destiPdfPath = path.join(customFolderPath, 'feedback.pdf');
     if (fs.existsSync(destiPdfPath)) {
-      await sendPdfToEmail(req,res);
-      res.status(200).json({ success: true});
+      await sendPdfToEmail(req, res);
+      res.status(200).json({ success: true });
       return;
     }
     // Copy the PDF file to the custom folder
@@ -364,7 +380,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
 
     await sendFeedback(req, res);
 
-    await sendPdfToEmail(req,res);
+    await sendPdfToEmail(req, res);
 
     res.status(200).json({ success: true });
   } catch (error) {
@@ -399,4 +415,61 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
     res.status(500).json({ error: 'Internal server error' });
   }
 
+}
+
+export async function multipleIRank(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    const testType = "Multiple Intelligence";
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    if (existingUser) {
+      // Find the test result with the matching testType
+      const testResult = existingUser.testResults.find((result) => result.testType === testType);
+
+      if (testResult) {
+        // Find the subcategory with the matching name and get the score
+        const subcategories = testResult.subcategories;
+
+        if (subcategories) {
+          const customSort = (arr: any) => {
+            return arr.reduce((sorted: any, item: any) => {
+              const index = sorted.findIndex((el: any) => item.score > el.score);
+              if (index === -1) {
+                sorted.push(item);
+              } else {
+                sorted.splice(index, 0, item);
+              }
+              return sorted;
+            }, []);
+          };
+
+          const sortedSubcategories = customSort(subcategories);
+          const sortedNames = sortedSubcategories.map((subcategory: any) => subcategory.name);
+
+          res.status(200).json({ sortedNames });
+          return;
+        } else {
+          res.status(404).json({ message: 'No subcategories found' });
+          return;
+        }
+      } else {
+        res.status(404).json({ message: 'TestType not found' });
+        return;
+      }
+    } else {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+  } catch (error) {
+    console.error('Error updating document:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
 }

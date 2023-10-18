@@ -655,7 +655,7 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     // Check if a document with the same testType exists
     const existingUser = await User.findOne(filter);
 
-    const carreerOptions = existingUser?.carreerOptions;
+    const carreerOptions: Map<string, string> = existingUser?.carreerOptions as Map<string, string>;
 
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
@@ -676,8 +676,8 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     let xd = Xd;
     let yd = Yd;
 
-    for (const line of carreerOptions as Array<string>) {
-        page.drawText(line, {
+    for (const [key, value] of carreerOptions.entries()) {
+        page.drawText(`${value}`, {
             x: xd,
             y: yd,
         });
