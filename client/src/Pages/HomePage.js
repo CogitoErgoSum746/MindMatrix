@@ -195,7 +195,7 @@ function HomePage() {
       </div>
 
       <div id="aboutus">
-        <p className="text-xl font-bold text-center">Image Gallery</p>
+        <p className="text-black text-3xl font-semibold font-['Inter'] leading-10">Image Gallery</p>
         <div>
           <Carousel
             responsive={responsive}
@@ -219,10 +219,16 @@ function HomePage() {
           </Carousel>
         </div>
       </div>
-      <div>
+  
+
+  <div>
+    <div className="text-black text-4xl font-semibold font-['Inter'] leading-10 mt-20 text-left ml-20">Satisfied Clients</div>
+    <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 text-left ml-20 mb-20">Read what our coustmers have to say about us</p>
+
+  </div>
 
 
-      </div>
+      
     </>
   );
 }
