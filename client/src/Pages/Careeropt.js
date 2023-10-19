@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { API_BASE_URL } from '../config';
 
 function Careeropt() {
   const [careerOption, setCareerOption] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [priorityMap, setPriorityMap] = useState({});
-  const [availablePriorities, setAvailablePriorities] = useState([1, 2, 3, 4, 5]);
+  const [availablePriorities, setAvailablePriorities] = useState([1, 2, 3, 4, 5,6,7,8,9,10]);
+
+  const authtoken = localStorage.getItem("authtoken");
 
   useEffect(() => {
     const usedPriorities = new Set(Object.values(priorityMap));
@@ -18,7 +21,9 @@ function Careeropt() {
     setCareerOption(e.target.value);
   };
 
-  const handleAddCareerOption = () => {
+  const handleAddCareerOption = async(e) => {
+    e.preventDefault();
+
     if (careerOption.trim() === '') {
       alert('Please enter a career option.');
       return;
@@ -34,10 +39,32 @@ function Careeropt() {
     }
 
     const priority = availablePriorities[0];
-    setSelectedOptions([...selectedOptions, careerOption]);
-    setPriorityMap({ ...priorityMap, [careerOption]: priority });
-    setAvailablePriorities(availablePriorities.slice(1));
-    setCareerOption('');
+    try {
+      const response = await fetch(`${API_BASE_URL}/user/carreerOptions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'authtoken':authtoken,
+        },
+        body: JSON.stringify({
+          careerOption: careerOption,
+          priority: priority,
+        }),
+      });
+
+      if (response.ok) {
+        setSelectedOptions([...selectedOptions, careerOption]);
+        setPriorityMap({ ...priorityMap, [careerOption]: priority });
+        setAvailablePriorities(availablePriorities.slice(1));
+        setCareerOption('');
+      } else {
+        console.error('Failed to add career option:', response);
+        alert('Failed to add career option. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error during fetch:', error);
+      alert('Failed to add career option. Please try again later.');
+    }
   };
 
   const handlePriorityChange = (option, newPriority) => {
