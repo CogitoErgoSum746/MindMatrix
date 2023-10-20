@@ -655,7 +655,22 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     // Check if a document with the same testType exists
     const existingUser = await User.findOne(filter);
 
-    const carreerOptions: Map<string, string> = existingUser?.carreerOptions as Map<string, string>;
+    const carreerOptions = existingUser?.carreerOptions;
+
+    const customSort = (arr: any) => {
+        return arr.reduce((sorted: any, item: any) => {
+            const index = sorted.findIndex((el: any) => item.priority > el.priority);
+            if (index === -1) {
+                sorted.push(item);
+            } else {
+                sorted.splice(index, 0, item);
+            }
+            return sorted;
+        }, []);
+    };
+
+    const sortedcarOpts = customSort(carreerOptions);
+    const sortedNames = sortedcarOpts.map((carreer: any) => carreer.name);
 
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
@@ -676,13 +691,13 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     let xd = Xd;
     let yd = Yd;
 
-    for (const [key, value] of carreerOptions.entries()) {
-        page.drawText(`${value}`, {
+    for (const line of sortedNames) {
+        page.drawText(line, {
             x: xd,
             y: yd,
         });
 
-        // Move to the next line (1.2 times the font size)
+        // Move to the next line (2 times the font size)
         yd -= fontSize * 2;
     }
 
