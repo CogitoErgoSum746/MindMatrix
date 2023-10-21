@@ -219,7 +219,7 @@ function CareerOptions() {
       "Holistic Self-Care Blogger",
       "Mindful Reflection App Developer",
     ],
-    Liguistic: [
+    Linguistic: [
       "Writer",
       "Journalist",
       "Editor",

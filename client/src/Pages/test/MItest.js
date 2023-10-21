@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Mltest({ id }) {
   const subtests = [
-    { id: 1, name: 'Liguistic' },
+    { id: 1, name: 'Linguistic' },
     { id: 2, name: 'Logical' },
     { id: 3, name: 'Spatial' },
     { id: 4, name: 'Interpersonal' },
