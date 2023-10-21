@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 function Mltest({ id }) {
   const subtests = [
     { id: 1, name: 'Liguistic' },
-    { id: 2, name: 'Logical/Mathematical' },
-    { id: 3, name: 'Visual/Spatial' },
+    { id: 2, name: 'Logical' },
+    { id: 3, name: 'Spatial' },
     { id: 4, name: 'Interpersonal' },
     { id: 5, name: 'Musical' },
     { id: 6, name: 'Naturalistic' },
     { id: 7, name: 'Intrapersonal' },
-    { id: 8, name: 'Body/Kinaesthetic' },
+    { id: 8, name: 'Kinaesthetic' },
   ];
 
   return (

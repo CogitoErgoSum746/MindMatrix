@@ -68,7 +68,7 @@ function TestQuestionsPattern2() {
       ],
     },
     2: {
-      title: "Logical/Mathematical",
+      title: "Logical",
       questions: [
         {
           questionText:
@@ -116,7 +116,7 @@ function TestQuestionsPattern2() {
       ],
     },
     3: {
-      title: "Visual/Spatial",
+      title: "Spatial",
       questions: [
         {
           questionText:
@@ -356,7 +356,7 @@ function TestQuestionsPattern2() {
       ],
     },
     8: {
-      title: "Body/Kinesthetic",
+      title: "Kinesthetic",
       questions: [
         {
           questionText:

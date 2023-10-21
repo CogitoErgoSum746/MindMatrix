@@ -1,166 +1,980 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { API_BASE_URL } from '../config';
+import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config";
 
-function Careeropt() {
-  const [careerOption, setCareerOption] = useState('');
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [priorityMap, setPriorityMap] = useState({});
-  const [availablePriorities, setAvailablePriorities] = useState([1, 2, 3, 4, 5,6,7,8,9,10]);
-
+function CareerOptions() {
+  const [sortedNames, setSortedNames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [careerOptions, setCareerOptions] = useState([]);
+  const [selectedPriorities, setSelectedPriorities] = useState([]);
+  const [selectedPriority, setSelectedPriority] = useState("");
+  const [availablePriorities, setAvailablePriorities] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  ]);
   const authtoken = localStorage.getItem("authtoken");
 
-  useEffect(() => {
-    const usedPriorities = new Set(Object.values(priorityMap));
-    const available = availablePriorities.filter((priority) => !usedPriorities.has(priority));
-    setAvailablePriorities(available);
-  }, [priorityMap]);
-
-  const handleCareerOptionChange = (e) => {
-    setCareerOption(e.target.value);
+  const simulatedCareerOptions = {
+    Naturalistic: [
+      "Botanist",
+      "Ecologist",
+      "Environmental Scientist",
+      "Zoologist",
+      "Wildlife Biologist",
+      "Marine Biologist",
+      "Geologist",
+      "Meteorologist",
+      "Environmental Educator",
+      "Conservation Scientist",
+      "Park Ranger",
+      "Geographic Information Systems (GIS) Analyst",
+      "Forester",
+      "Natural Resource Manager",
+      "Geographic Cartographer",
+      "Geomorphologist",
+      "Paleontologist",
+      "Environmental Planner",
+      "Climate Change Analyst",
+      "Entomologist",
+      "Herpetologist",
+      "Ornithologist",
+      "Environmental Consultant",
+      "Horticulturist",
+      "Landscape Architect",
+      "Arborist",
+      "Soil Scientist",
+      "Wildlife Rehabilitator",
+      "Aquatic Biologist",
+      "Ethnobotanist",
+      "Environmental Policy Analyst",
+      "Oceanographer",
+      "Permaculturist",
+      "Animal Behaviorist",
+      "Nature Photographer",
+      "Land Conservation Specialist",
+      "Wetland Scientist",
+      "Environmental Economist",
+      "Hydrologist",
+      "Environmental Health Specialist",
+      "Wildlife Photographer",
+      "Archeologist",
+      "Volcanologist",
+      "Geographic Information Systems (GIS) Manager",
+      "Naturalist Guide",
+      "Remote Sensing Specialist",
+      "Nature Interpreter",
+      "Forest Firefighter",
+      "Soil Conservationist",
+      "Glaciologist",
+      "Environmental Journalist",
+      "Marine Conservationist",
+      "Pollution Control Technician",
+      "Environmental Impact Assessment Specialist",
+      "Park Naturalist",
+      "Plant Geneticist",
+      "Landscape Ecologist",
+      "Green Building Architect",
+      "Biological Illustrator",
+      "Seed Bank Manager",
+      "Environmental Lawyer",
+      "Ocean Engineer",
+      "Natural Resource Economist",
+      "Climate Scientist",
+      "Environmental Educator",
+      "Fisheries Biologist",
+      "Mountain Guide",
+      "Wildlife Filmmaker",
+      "Environmental Compliance Officer",
+      "Arctic/Antarctic Researcher",
+      "Land Use Planner",
+      "Bioremediation Specialist",
+      "Eco-Tour Guide",
+      "Park Manager",
+      "Environmental Chemist",
+      "Forest Ecologist",
+      "Sustainable Agriculture Specialist",
+      "Green Energy Engineer",
+      "Mycologist",
+      "Urban Planner",
+      "Natural Resource Planner",
+      "Environmental Artist",
+      "Aquatic Ecologist",
+      "Restoration Ecologist",
+      "Geomancer",
+      "Earth Scientist",
+      "Biodynamic Farmer",
+      "Natural Resource Economist",
+      "Biomimicry Designer",
+      "Watershed Scientist",
+      "Environmental Sociologist",
+      "Eco-Fashion Designer",
+      "Green Building Consultant",
+      "Environmental Philosopher",
+      "Wetland Biologist",
+      "Ecotherapy Practitioner",
+      "Bioinformatics Specialist",
+      "Water Quality Analyst",
+      "Environmental Compliance Auditor",
+      "Permaculture Designer",
+    ],
+    Intrapersonal: [
+      "Psychologist",
+      "Therapist/Counselor",
+      "Life Coach",
+      "Philosopher",
+      "Spiritual Leader",
+      "Self-Help Author",
+      "Meditation Instructor",
+      "Motivational Speaker",
+      "Personal Development Trainer",
+      "Career Counselor",
+      "Executive Coach",
+      "Health and Wellness Coach",
+      "Emotional Intelligence Trainer",
+      "Mindfulness Coach",
+      "Self-Care Advocate",
+      "Personal Branding Consultant",
+      "Personal Finance Coach",
+      "Art Therapist",
+      "Holistic Healer",
+      "Grief Counselor",
+      "Astrologer",
+      "Life Planner",
+      "Positive Psychology Coach",
+      "Motivational Writer",
+      "Yoga Instructor",
+      "Artistic Therapist",
+      "Empowerment Coach",
+      "Hypnotherapist",
+      "Intuitive Counselor",
+      "Narrative Therapist",
+      "Wellness Blogger/Vlogger",
+      "Dream Analyst",
+      "Personal Stylist",
+      "Confidence Coach",
+      "Mind-Body Wellness Practitioner",
+      "Energy Healer",
+      "Mindful Eating Coach",
+      "Personality Assessor",
+      "Journaling Instructor",
+      "Inner Child Therapist",
+      "Transformational Coach",
+      "Personal Reflection Workshop Facilitator",
+      "Assertiveness Trainer",
+      "Personal Image Consultant",
+      "Values-Based Coach",
+      "Ethics Consultant",
+      "Self-Care Blogger",
+      "Inner Peace Advocate",
+      "Personal Growth Blogger",
+      "Mindful Parenting Coach",
+      "Emotional Wellness Speaker",
+      "Journal Therapy Practitioner",
+      "Dream Coach",
+      "Mindful Leadership Trainer",
+      "Personal Empowerment Workshop Leader",
+      "Resilience Coach",
+      "Narrative Coach",
+      "Personal Vision Facilitator",
+      "Crisis Intervention Counselor",
+      "Self-Discovery Workshop Facilitator",
+      "Mindful Communication Trainer",
+      "Personal Achievement Coach",
+      "Empathy Educator",
+      "Mindful Aging Consultant",
+      "Self-Compassion Coach",
+      "Introspective Writing Instructor",
+      "Body Image Coach",
+      "Holistic Life Planner",
+      "Personal Renewal Facilitator",
+      "Inner Alignment Guide",
+      "Emotion Regulation Coach",
+      "Mindful Technology Consultant",
+      "Self-Compassion Workshop Leader",
+      "Mindful Productivity Coach",
+      "Reflective Writing Coach",
+      "Values Exploration Facilitator",
+      "Personal Transformation Blogger",
+      "Resilience Workshop Facilitator",
+      "Self-Discovery Retreat Leader",
+      "Empowerment Workshop Facilitator",
+      "Mindful Art Therapy Practitioner",
+      "Inner Wisdom Mentor",
+      "Reflective Journaling Facilitator",
+      "Mindful Well-Being Speaker",
+      "Personal Reflection Journal Designer",
+      "Self-Discovery Podcast Host",
+      "Mindful Self-Care Workshop Leader",
+      "Personal Values Coach",
+      "Mindful Living Advocate",
+      "Emotion Management Workshop Facilitator",
+      "Mindful Self-Compassion Trainer",
+      "Mindful Reflection Retreat Organizer",
+      "Inner Transformation Speaker",
+      "Mindful Self-Exploration Guide",
+      "Values-Based Leadership Coach",
+      "Mindful Healing Practitioner",
+      "Self-Awareness Workshop Facilitator",
+      "Mindful Career Coach",
+      "Holistic Self-Care Blogger",
+      "Mindful Reflection App Developer",
+    ],
+    Liguistic: [
+      "Writer",
+      "Journalist",
+      "Editor",
+      "Blogger",
+      "Copywriter",
+      "Technical Writer",
+      "Content Creator",
+      "Speechwriter",
+      "Novelist",
+      "Poet",
+      "Literary Critic",
+      "Screenwriter",
+      "Public Relations Specialist",
+      "Public Speaker",
+      "Translator/Interpreter",
+      "Foreign Correspondent",
+      "Script Supervisor (Film/TV)",
+      "Grant Writer",
+      "Book Reviewer",
+      "Travel Writer",
+      "Curriculum Developer",
+      "Storyteller",
+      "Playwright",
+      "Radio Host/Podcaster",
+      "Video Scriptwriter",
+      "Librarian",
+      "Language Teacher",
+      "ESL Teacher",
+      "Linguist",
+      "Crossword Puzzle Writer",
+      "Technical Documentation Writer",
+      "Magazine Editor",
+      "Grant Proposal Writer",
+      "Proofreader",
+      "Subtitle Translator",
+      "Literary Agent",
+      "Speech Therapist",
+      "Online Course Creator",
+      "Media Critic",
+      "Communications Specialist",
+      "Editorial Assistant",
+      "Ghostwriter",
+      "Creative Writing Instructor",
+      "Content Strategist",
+      "Copy Editor",
+      "Legal Writer",
+      "Researcher",
+      "Biographer",
+      "Columnist",
+      "Song Lyricist",
+      "Play-by-Play Announcer",
+      "Interactive Fiction Writer",
+      "Marketing Copywriter",
+      "Press Release Writer",
+      "Blogger Outreach Coordinator",
+      "Magazine Journalist",
+      "Social Media Manager",
+      "Podcast Producer",
+      "Video Game Writer",
+      "Historical Document Analyst",
+      "Academic Researcher",
+      "Educational Content Developer",
+      "Ethnographer",
+      "Magazine Columnist",
+      "Literature Professor",
+      "Literary Magazine Editor",
+      "Speech Pathologist",
+      "Language Coach",
+      "Braille Translator",
+      "Content Marketing Manager",
+      "Media Relations Specialist",
+      "Copywriting Trainer",
+      "Communications Manager",
+      "Narrator (Audiobooks, Voiceovers)",
+      "Caption Writer",
+      "Ghost Blogger",
+      "Content Editor",
+      "Screenplay Analyst",
+      "Online Magazine Editor",
+      "SEO Content Writer",
+      "Poetry Slam Performer",
+      "Technical Communicator",
+      "News Anchor",
+      "Epistolary Novelist (Letter-Based)",
+      "Language Tester/Assessor",
+      "Ad Copywriter",
+      "Educational Game Designer",
+      "Word Puzzle Designer",
+      "Magazine Copy Editor",
+      "Speech and Debate Coach",
+      "Copy Chief",
+      "Literary Translator",
+      "Radio Play Writer",
+      "Legal Proofreader",
+      "News Editor",
+      "Lexicographer (Dictionary Compiler)",
+      "Social Media Copywriter",
+      "Storyboard Writer",
+      "Literary Event Organizer",
+      "Communications Consultant",
+    ],
+    Logical: [
+      "Mathematician",
+      "Statistician",
+      "Computer Scientist",
+      "Data Scientist",
+      "Actuary",
+      "Financial Analyst",
+      "Economist",
+      "Research Scientist",
+      "Operations Research Analyst",
+      "Quantitative Analyst (Quant)",
+      "Astronomer",
+      "Physicist",
+      "Chemist",
+      "Biostatistician",
+      "Cryptographer",
+      "Math Educator",
+      "Software Developer",
+      "Engineer (Various Fields)",
+      "Mechanical Engineer",
+      "Civil Engineer",
+      "Electrical Engineer",
+      "Software Engineer",
+      "Chemical Engineer",
+      "Industrial Engineer",
+      "Systems Analyst",
+      "Quality Control Analyst",
+      "Market Research Analyst",
+      "Logistician",
+      "Environmental Scientist",
+      "Doctor",
+      "Pharmaceutical Research Scientist",
+      "Forensic Scientist",
+      "Meteorologist",
+      "Geologist",
+      "Urban Planner",
+      "Geophysicist",
+      "Physiologist",
+      "Research Biologist",
+      "Healthcare Analyst",
+      "Robotics Engineer",
+      "Mathematical Modeler",
+      "Healthcare Data Scientist",
+      "Business Analyst",
+      "Supply Chain Analyst",
+      "Quantitative Researcher",
+      "Network Engineer",
+      "Mathematical Illustrator",
+      "Software Tester",
+      "Risk Analyst",
+      "Math Curriculum Developer",
+      "Game Developer",
+      "Physics Educator",
+      "Chemistry Educator",
+      "Engineering Manager",
+      "Mathematical Consultant",
+      "Physics Researcher",
+      "Computer Hardware Engineer",
+      "Mathematical Biologist",
+      "Operations Manager",
+      "Pharmaceutical Statistician",
+      "Mechanical Design Engineer",
+      "Mathematical Physicist",
+      "Quantitative Psychologist",
+      "Nuclear Engineer",
+      "Mathematical Economist",
+      "Software Architect",
+      "Healthcare Systems Analyst",
+      "Research Analyst (Various Fields)",
+      "Cryptocurrency Analyst",
+      "Bioinformatics Scientist",
+      "Data Engineer",
+      "Environmental Engineer",
+      "Process Engineer",
+      "Algorithm Developer",
+      "Cryptocurrency Developer",
+      "Materials Scientist",
+      "Healthcare Informatics Analyst",
+      "Digital Analyst",
+      "Logistics Analyst",
+      "Research Data Analyst",
+      "Mathematical Illustrator",
+      "Physics Educator",
+      "Chemistry Educator",
+      "Engineering Manager",
+      "Mathematical Consultant",
+      "Physics Researcher",
+      "Computer Hardware Engineer",
+      "Mathematical Biologist",
+      "Operations Manager",
+      "Pharmaceutical Statistician",
+      "Mechanical Design Engineer",
+      "Mathematical Physicist",
+    ],
+    Musical: [
+      "Musician",
+      "Composer",
+      "Music Producer",
+      "Singer/Vocalist",
+      "Conductor",
+      "Music Teacher/Instructor",
+      "Music Arranger",
+      "Sound Engineer",
+      "Music Therapist",
+      "Music Director",
+      "Musicologist",
+      "Music Librarian",
+      "Songwriter",
+      "Music Critic",
+      "Instrument Maker/Luthier",
+      "Sound Designer",
+      "Recording Engineer",
+      "Music Copyist",
+      "Music Retailer",
+      "Music Blogger/Reviewer",
+      "Music Attorney",
+      "Music Event Planner",
+      "Music Journalist",
+      "A&R (Artists and Repertoire) Representative",
+      "Music Publisher",
+      "Tour Manager",
+      "Music Educator",
+      "Choir Director",
+      "Music Blogger/Influencer",
+      "Music Software Developer",
+      "Music Retail Manager",
+      "Music Video Director",
+      "Music App Developer",
+      "Music Consultant",
+      "Music Venue Manager",
+      "Music Photographer",
+      "Music Archivist",
+      "Music Promoter",
+      "Music Analyst",
+      "Music Technology Specialist",
+      "Music Copyright Specialist",
+      "Music Business Manager",
+      "Music App Tester",
+      "Jingle Writer",
+      "Music Radio Host/DJ",
+      "Music Researcher",
+      "Music Retail Sales Associate",
+      "Music Web Developer",
+      "Music Cataloger",
+      "Music Retail Buyer",
+      "Music App Support Specialist",
+      "Music Blogger/YouTuber",
+      "Music Venue Sound Technician",
+      "Music Research Assistant",
+      "Music App User Interface (UI) Designer",
+      "Music Event Coordinator",
+      "Music Licensing Coordinator",
+      "Music Historian",
+      "Music Curriculum Developer",
+      "Music Librarian Assistant",
+      "Music Business Consultant",
+      "Music Copyright Researcher",
+      "Music Podcast Host/Producer",
+      "Music Tour Booking Agent",
+      "Music Venue Promoter",
+      "Music Streaming Platform Curator",
+      "Music Notation Software Support",
+      "Music Educator Trainer",
+      "Music Festival Coordinator",
+      "Music App User Experience (UX) Designer",
+      "Music Research Project Manager",
+      "Music Studio Manager",
+      "Music Retail Marketing Specialist",
+      "Music Education Administrator",
+      "Music Venue Operations Manager",
+      "Music Streaming Platform Analyst",
+      "Music App Marketing Manager",
+      "Music Therapy Clinic Director",
+      "Music Festival Production Manager",
+      "Music Branding Specialist",
+      "Music Technology Educator",
+      "Music Data Analyst",
+      "Music Venue Marketing Coordinator",
+      "Music Copyright Enforcement Agent",
+      "Music Streaming Platform Customer Support",
+      "Music Education Researcher",
+      "Music Festival Sponsorship Coordinator",
+      "Music App Product Manager",
+      "Music Clinic Coordinator",
+      "Music Festival Talent Booker",
+      "Music App Quality Assurance (QA) Tester",
+      "Music Education Curriculum Specialist",
+      "Music Venue Event Planner",
+      "Music Licensing Administrator",
+      "Music Festival Volunteer Coordinator",
+      "Music App User Support Specialist",
+      "Music Education Technology Specialist",
+      "Music Venue Hospitality Manager",
+      "Music Festival Sustainability Coordinator",
+      "Music App Community Manager",
+    ],
+    Interpersonal: [
+      "Counselor/Psychologist",
+      "Social Worker",
+      "Human Resources Specialist/Manager",
+      "Teacher/Educator",
+      "Life Coach",
+      "Therapist",
+      "Mediator",
+      "Salesperson",
+      "Customer Service Representative",
+      "Public Relations Specialist",
+      "Event Planner",
+      "Social Entrepreneur",
+      "Politician/Political Campaign Manager",
+      "Healthcare Professional",
+      "Religious Leader/Spiritual Counselor",
+      "Community Organizer",
+      "Leadership Coach",
+      "Conflict Resolution Specialist",
+      "Family Therapist",
+      "Negotiation Consultant",
+      "HR Consultant",
+      "Social Services Manager",
+      "Relationship Coach",
+      "Speech Pathologist",
+      "Marriage Counselor",
+      "Team Building Facilitator",
+      "Child and Family Social Worker",
+      "Rehabilitation Counselor",
+      "Career Counselor",
+      "Community Outreach Coordinator",
+      "Public Speaking Coach",
+      "Volunteer Coordinator",
+      "Nonprofit Director",
+      "Victim Advocate",
+      "Humanitarian Aid Worker",
+      "Geriatric Social Worker",
+      "Youth Mentor",
+      "Child Life Specialist",
+      "Veterans Support Counselor",
+      "Speech Coach",
+      "Diversity and Inclusion Specialist",
+      "Elder Care Coordinator",
+      "Patient Advocate",
+      "Social Media Community Manager",
+      "School Counselor",
+      "Victim Services Coordinator",
+      "Addiction Counselor",
+      "Mental Health Advocate",
+      "Case Manager",
+      "Behavioral Therapist",
+      "Chaplain",
+      "Adoption Counselor",
+      "Cross-Cultural Trainer",
+      "Community Health Worker",
+      "Victim Support Specialist",
+      "Career Development Specialist",
+      "Conflict Mediator",
+      "Social Policy Analyst",
+      "Recreation Therapist",
+      "Support Group Facilitator",
+      "Community Development Coordinator",
+      "Patient Navigator",
+      "Family Support Worker",
+      "Clinical Supervisor",
+      "College Advisor",
+      "Art Therapist",
+      "Residential Counselor",
+      "Parent Educator",
+      "Career Transition Coach",
+      "Conflict Analyst",
+      "Family Mediator",
+      "Community Liaison Officer",
+      "Organizational Development Consultant",
+      "Community Health Educator",
+      "Charity Fundraiser",
+      "Patient Experience Coordinator",
+      "Community Outreach Specialist",
+      "Aged Care Worker",
+      "Behavioral Interventionist",
+      "Health Educator",
+      "Domestic Violence Advocate",
+      "Child Advocate",
+      "Group Therapist",
+      "Parent Coordinator",
+      "Veterans Outreach Coordinator",
+      "International Aid Worker",
+      "School Psychologist",
+      "Reentry Coordinator",
+      "Community Mediator",
+      "Health Advocate",
+      "Disability Services Coordinator",
+      "Clinical Social Worker",
+      "Patient Liaison",
+      "Community Relations Specialist",
+      "Youth Program Coordinator",
+      "Homeless Shelter Worker",
+      "Inclusion Coordinator",
+      "Elder Abuse Advocate",
+      "Family Services Manager",
+      "Advocacy Campaign Manager",
+    ],
+    Spatial: [
+      "Graphic Designer",
+      "Architect",
+      "Interior Designer",
+      "Animator",
+      "Photographer",
+      "Industrial Designer",
+      "Fashion Designer",
+      "Game Designer",
+      "Illustrator",
+      "Art Director",
+      "Film Director",
+      "Cinematographer",
+      "Visual Effects (VFX) Artist",
+      "Cartographer",
+      "Web Designer",
+      "Storyboard Artist",
+      "Set Designer",
+      "Model Maker",
+      "Museum Exhibit Designer",
+      "Sculptor",
+      "Visual Merchandiser",
+      "Video Game Artist",
+      "Medical Illustrator",
+      "Urban Planner",
+      "Landscape Architect",
+      "Virtual Reality (VR) Designer",
+      "Augmented Reality (AR) Designer",
+      "Scientific Illustrator",
+      "Technical Illustrator",
+      "Storyboard Illustrator",
+      "Product Photographer",
+      "Package Designer",
+      "3D Modeler",
+      "Visual Journalist",
+      "Fine Artist",
+      "Graphic Novel Artist",
+      "Exhibition Designer",
+      "Fashion Illustrator",
+      "Medical Animator",
+      "User Experience (UX) Designer",
+      "User Interface (UI) Designer",
+      "Textile Designer",
+      "Concept Artist",
+      "Comics Artist",
+      "Storyboard Supervisor",
+      "Garden Designer",
+      "Car Designer",
+      "Retail Space Designer",
+      "Visual Storyteller",
+      "Street Artist",
+      "Forensic Artist",
+      "Visual Anthropologist",
+      "Children's Book Illustrator",
+      "Exterior Designer (Architecture)",
+      "Floral Designer",
+      "Jewelry Designer",
+      "Theatrical Makeup Artist",
+      "Pattern Designer",
+      "Display Artist",
+      "Character Designer",
+      "Experiential Designer",
+      "Visual Arts Educator",
+      "Illustration Agent",
+      "Nature Photographer",
+      "Scientific Visualization Specialist",
+      "Furniture Designer",
+      "Dressmaker",
+      "Cosmetic Makeup Artist",
+      "Visual Educator",
+      "Stage Designer",
+      "Visual Effects Supervisor",
+      "Exhibition Curator",
+      "Medical Imaging Specialist",
+      "Digital Painter",
+      "Storyboard Coordinator",
+      "Portrait Artist",
+      "Laser Light Show Designer",
+      "Visual Restoration Specialist",
+      "Art Conservator",
+      "Exhibition Preparator",
+      "Visualization Engineer",
+      "Cinematic Artist",
+      "Theme Park Designer",
+      "Visual Anthropologist",
+      "Forensic Artist",
+      "Visual Arts Therapist",
+      "Visual Merchandising Coordinator",
+      "Mural Artist",
+      "Art Auctioneer",
+      "Visual Ethnographer",
+      "Marine Photographer",
+      "Gallery Director",
+      "Nature Illustrator",
+      "Architectural Renderer",
+      "Scientific Photographer",
+      "Museum Photographer",
+      "Visual Stylist",
+      "Visual Branding Consultant",
+    ],
+    Kinesthetic: [
+      "Athlete",
+      "Dancer",
+      "Actor/Actress",
+      "Surgeon",
+      "Physical Therapist",
+      "Carpenter",
+      "Chef",
+      "Fashion Designer",
+      "Mechanic",
+      "Circus Performer",
+      "Yoga Instructor",
+      "Choreographer",
+      "Professional Athlete Coach",
+      "Physical Education Teacher",
+      "Sculptor",
+      "Massage Therapist",
+      "Stunt Performer",
+      "Fitness Trainer",
+      "Professional Diver",
+      "Cirque du Soleil Performer",
+      "Physical Education Curriculum Developer",
+      "Sports Coach",
+      "Recreational Therapist",
+      "Martial Arts Instructor",
+      "Ski Instructor",
+      "Professional Ballet Dancer",
+      "Orthopedic Surgeon",
+      "Personal Trainer",
+      "Climbing Instructor",
+      "Physical Education Coordinator",
+      "Casting Director",
+      "Industrial Designer",
+      "Chiropractor",
+      "Dance Therapist",
+      "Gymnastics Coach",
+      "Architect",
+      "Parkour Instructor",
+      "Fitness Class Instructor",
+      "Physical Education Curriculum Consultant",
+      "Stunt Coordinator",
+      "Professional Surfer",
+      "Casting Agent",
+      "Rehabilitation Specialist",
+      "Trampoline Park Attendant",
+      "Athletic Trainer",
+      "Furniture Maker",
+      "Dance Studio Owner",
+      "Physical Education Researcher",
+      "Climbing Gym Manager",
+      "Art Restoration Specialist",
+      "Gymnastics Choreographer",
+      "Physical Therapy Assistant",
+      "Dance Company Director",
+      "Motorcycle Mechanic",
+      "Sports Event Coordinator",
+      "Bodywork Therapist",
+      "Golf Instructor",
+      "Artisan Baker",
+      "Fitness Equipment Designer",
+      "Athletic Director",
+      "Ergonomics Consultant",
+      "Marine Biologist",
+      "Stage Combat Choreographer",
+      "Circus Arts Instructor",
+      "Kinesiologist",
+      "Sports Photographer",
+      "Acrobatics Coach",
+      "Dance Movement Therapist",
+      "Physiotherapist",
+      "Park Ranger",
+      "Sports Nutritionist",
+      "Artistic Gymnastics Judge",
+      "Personal Fitness Chef",
+      "Circus Rigging Specialist",
+      "Strength and Conditioning Coach",
+      "Zoologist",
+      "Ski Resort Manager",
+      "Physical Education Program Evaluator",
+      "Theater Fight Director",
+      "Ski Patrol Member",
+      "Ergonomic Furniture Designer",
+      "Bodywork Practitioner",
+      "Stunt Performer Trainer",
+      "Skateboarding Instructor",
+      "Ergonomics Specialist",
+      "Recreational Sports Coordinator",
+      "Physical Education Technology Developer",
+      "Outdoor Adventure Guide",
+      "Martial Arts School Owner",
+      "Ski Equipment Technician",
+      "Ergonomics Trainer",
+      "Dance Costume Designer",
+      "Physical Education Curriculum Writer",
+      "Casting Coordinator",
+      "Professional Diver Instructor",
+      "Architectural Model Maker",
+      "Yoga Studio Owner",
+      "Motion Capture Artist",
+      "Ergonomics Consultant",
+      "Recreational Therapy Director",
+    ],
   };
 
-  const handleAddCareerOption = async(e) => {
-    e.preventDefault();
+  const handleCategoryChange = (e) => {
+    const category = e.target.value;
+    setSelectedCategory(category);
+    setSelectedOption("");
+    setCareerOptions(simulatedCareerOptions[category]);
+  };
 
-    if (careerOption.trim() === '') {
-      alert('Please enter a career option.');
-      return;
-    }
-    if (selectedOptions.length >= 10) {
-      alert('You can only select up to 10 career options.');
-      return;
-    }
+  const handleOptionChange = () => {
+    if (selectedCategory && selectedOption && selectedPriority) {
+      if (selectedPriorities.length < 10) {
+        const priorityValue = parseInt(selectedPriority, 10);
 
-    if (selectedOptions.includes(careerOption)) {
-      alert('This career option is already selected.');
-      return;
-    }
+        const updatedPriorities = [...selectedPriorities];
+        updatedPriorities.push({
+          option: selectedOption,
+          priority: priorityValue,
+        });
+        setSelectedPriorities(updatedPriorities);
 
-    const priority = availablePriorities[0];
-    try {
-      const response = await fetch(`${API_BASE_URL}/user/carreerOptions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'authtoken':authtoken,
-        },
-        body: JSON.stringify({
-          careerOption: careerOption,
-          priority: priority,
-        }),
-      });
+        // Remove the selected priority from available priorities
+        const updatedAvailablePriorities = availablePriorities.filter(
+          (value) => value !== priorityValue
+        );
+        setAvailablePriorities(updatedAvailablePriorities);
 
-      if (response.ok) {
-        setSelectedOptions([...selectedOptions, careerOption]);
-        setPriorityMap({ ...priorityMap, [careerOption]: priority });
-        setAvailablePriorities(availablePriorities.slice(1));
-        setCareerOption('');
+        setSelectedOption("");
+        setSelectedPriority(""); // Reset the selected priority
       } else {
-        console.error('Failed to add career option:', response);
-        alert('Failed to add career option. Please try again later.');
+        alert("You can only select up to 5 career options.");
       }
-    } catch (error) {
-      console.error('Error during fetch:', error);
-      alert('Failed to add career option. Please try again later.');
     }
   };
 
-  const handlePriorityChange = (option, newPriority) => {
-    const currentPriority = priorityMap[option];
-    if (currentPriority === newPriority) {
-      return; // No change needed
-    }
+  const sendCareerOptionsToBackend = () => {
+    const careerOptions = selectedPriorities;
+    console.log(careerOptions);
 
-    const updatedPriorityMap = { ...priorityMap };
-    updatedPriorityMap[option] = newPriority;
-
-    setPriorityMap(updatedPriorityMap);
+    fetch(`${API_BASE_URL}/user//carreerOptions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authtoken: authtoken,
+      },
+      body: JSON.stringify({ careerOptions}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Career options sent to the backend successfully");
+        } else {
+          alert("Failed to send career options to the backend");
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending career options:", error);
+      });
   };
 
-  const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
-
-    const newOptions = [...selectedOptions];
-    newOptions.splice(result.destination.index, 0, newOptions.splice(result.source.index, 1)[0]);
-
-    setSelectedOptions(newOptions);
-  };
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/user/multilpleIRank`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authtoken: authtoken,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.sortedNames) {
+          setSortedNames(data.sortedNames);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
   return (
-    <div className='flex flex-col bg-gray-800 min-h-screen p-10 text-white'>
-      <div className="p-4 max-w-md">
-        <a href="https://shorturl.at/epzUX" target="_blank" rel="noopener noreferrer" className='bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 rounded-lg mt-4 text-white'>View Career Options</a>
+    <div className="bg-white p-4 rounded-lg shadow-md justify-center items-center w-700 h-600">
+  {loading ? (
+    <p>Loading...</p>
+  ) : sortedNames.length === 0 ? (
+    <p>No data available</p>
+  ) : (
+    <div>
+      <h2 className="text-2xl font-bold">Sorted Subcategories</h2>
+      <select
+        className="w-48 p-2 border border-gray-300 rounded-md my-2"
+        value={selectedCategory}
+        onChange={handleCategoryChange}
+      >
+        <option value="">Select a category</option>
+        {sortedNames.map((name, index) => (
+          <option key={index} value={name}>
+            {name}
+          </option>
+        ))}
+      </select>
 
-        <div className="mb-4">
-          <input
-            type="text"
-            value={careerOption}
-            onChange={handleCareerOptionChange}
-            placeholder="Enter a career option"
-            className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded mt-10"
-          />
-          <button onClick={handleAddCareerOption} className='bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 rounded-lg mt-2 text-white'>Add</button>
+      {selectedCategory && (
+        <div>
+          <h2 className="text-2xl font-bold">
+            Selected Category: {selectedCategory}
+          </h2>
+          <select
+            className="w-48 p-2 border border-gray-300 rounded-md my-2"
+            value={selectedOption}
+            onChange={(e) => setSelectedOption(e.target.value)}
+          >
+            <option value="">Select a career option</option>
+            {careerOptions.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select
+            className="w-48 p-2 border border-gray-300 rounded-md my-2"
+            value={selectedPriority}
+            onChange={(e) => setSelectedPriority(e.target.value)}
+          >
+            <option value="">Select a priority</option>
+            {availablePriorities.map((value, index) => (
+              <option key={index} value={value.toString()}>
+                {value}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={handleOptionChange}
+            className="bg-blue-500 text-white p-2 rounded-md mt-2"
+          >
+            Add Career Option
+          </button>
+
+          {selectedPriorities.length === 10 && (
+            <button
+              onClick={sendCareerOptionsToBackend}
+              className="bg-blue-500 text-white p-2 rounded-md mt-2"
+            >
+              Send Career Options to Backend
+            </button>
+          )}
         </div>
-
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided) => (
-              <ul
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {selectedOptions.map((option, index) => (
-                  <Draggable key={option} draggableId={option} index={index}>
-                    {(provided) => (
-                      <li
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className="flex items-center mb-2"
-                      >
-                        <span>{option}</span>
-                        <select
-                          value={priorityMap[option] || 1}
-                          onChange={(e) => handlePriorityChange(option, e.target.value)}
-                          className="w-16 px-2 py-1 ml-2 bg-gray-700 border border-gray-600 rounded"
-                        >
-                          {availablePriorities.map((priority) => (
-                            <option key={priority} value={priority}>
-                              {priority}
-                            </option>
-                          ))}
-                        </select>
-                      </li>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </ul>
-            )}
-          </Droppable>
-        </DragDropContext>
-
-        <h2 className="text-xl font-bold mt-4">Selected Career Options (Sorted by Priority):</h2>
-        <ul>
-          {selectedOptions.map((option) => (
-            <li key={option} className="mb-2">
-              {option} (Priority: {priorityMap[option]})
-            </li>
-          ))}
-        </ul>
-
-        {selectedOptions.length >= 5 && selectedOptions.length <= 10 && (
-          <Link to="/test/2/careeropt">
-            <button className='bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 rounded-lg mt-4 text-white'>Next</button>
-          </Link>
-        )}
-      </div>
+      )}
     </div>
+  )}
+</div>
+
   );
 }
 
-export default Careeropt;
+export default CareerOptions;
