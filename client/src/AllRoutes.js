@@ -14,6 +14,7 @@ import Getusers from './Pages/Getusers';
 import Careeropt from './Pages/Careeropt';
 import Sendmail from './components/Sendmail';
 import ResetPass from './ResetPass';
+import About from './Pages/About';
 function AllRoutes() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
@@ -32,6 +33,7 @@ function AllRoutes() {
         <Route path="/test/2/careeropt" element={<Careeropt />} />
         <Route path='/sendmail' element={<Sendmail/>} />
         <Route path="/reset-password/:token" element={<ResetPass />} />
+        <Route path="/about" element={<About />} />
         {/* <Route path="/test/:id/:testAlias" element={<TestPage />} /> */}
     </Routes>
   )

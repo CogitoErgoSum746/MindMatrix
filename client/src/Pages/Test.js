@@ -95,8 +95,6 @@ function Test() {
       });
 
       if (response.ok) {
-        // PDF generated and sent successfully
-        // You can add additional logic here, e.g., show a success message to the user
         console.log("PDF generated and sent");
       } else {
         // Handle error, e.g., show an error message
@@ -111,7 +109,7 @@ function Test() {
 
   // Check if there are any remaining tests
   const areTestsRemaining = Object.values(remainingTests || {}).some(
-    (count) => count > 0
+    (count) => count >= 0
   );
 
   return (
