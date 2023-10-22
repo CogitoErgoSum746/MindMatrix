@@ -396,8 +396,8 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
       email: req.user.email,
     };
 
-    const paths = req.body.carreerOptions;
-
+    const paths = req.body.careerOptions;
+    
     const result = await User.findOneAndUpdate(filter, { carreerOptions: paths }, { new: true });
 
     if (result) {
