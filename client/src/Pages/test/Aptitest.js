@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Aptitest({id}) {
     const subtests = [
-        { id: 1, name: 'Liguistic' },
+        { id: 1, name: 'Linguistic' },
         { id: 2, name: 'Numerical' },
         { id: 3, name: 'Mechanical' },
         { id: 4, name: 'Abstract' },
