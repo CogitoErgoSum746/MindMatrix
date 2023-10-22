@@ -60,8 +60,7 @@ app.use("/api/user", verifyUser, userRoute);
 app.use(handle404); //error handler
 app.use(handle500);
 
-const mongs = process.env.MONGO_URL;
-
+const mongs = process.env.MONGO_URL
 mongoose.connect(mongs!).then(() => {
     console.log(`listening on port ${PORT}`);
     app.listen(PORT);

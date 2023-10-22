@@ -114,7 +114,6 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 export async function login(req: Request, res: Response): Promise<any> {
 
   let success = false;
-
   // If there are validation errors, return bad request and the errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
