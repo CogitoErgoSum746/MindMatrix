@@ -20,6 +20,11 @@ function Mltest({ id }) {
         <Link to="/test/2/careeropt">
           <button className='bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-lg mb-4'>Next</button>
         </Link>
+        <div className='flex justify-start ml-5 mb-10'>
+      <Link to="/test">
+      <button className='bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-left font-semibold'>{"<"}Go Back</button>
+      </Link>
+      </div>
       <div className="grid gap-4">
         {subtests.map((subtest) => (
           <Link key={subtest.id} to={`/test/${id}/${subtest.id}`}>

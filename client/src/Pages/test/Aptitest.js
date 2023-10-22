@@ -13,6 +13,11 @@ function Aptitest({id}) {
   return (
     <div className="bg-white min-h-screen p-10">
       <h1 className="text-2xl font-bold text-black mb-8">Aptitude</h1>
+      <div className='flex justify-start ml-5 mb-10'>
+      <Link to="/test">
+      <button className='bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-left font-semibold'>{"<"}Go Back</button>
+      </Link>
+      </div>
       <div className="grid gap-4">
         {subtests.map((subtest) => (
           <Link key={subtest.id} to={`/test/${id}/${subtest.id}`}>
