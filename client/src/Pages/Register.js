@@ -29,7 +29,7 @@ const Register = () => {
       [name]: value,
     });
 
-    // Clear the validation error message when the input is changed
+
     setValidationErrors({
       ...validationErrors,
       [name]: '',
