@@ -92,7 +92,7 @@ function TestQuestionsPattern12() {
             ]
           },
           {
-            questionText: "He tried hard. He did not succeed.",
+            questionText: "He tried hard. He did not succeed.\n(Choose the most suitable passive voice)",
             options: [
               { text: "A) Trying hard, he did not succeed.", isCorrect: false },
               { text: "B) He tried hard and did not succeed.", isCorrect: false },
@@ -110,7 +110,7 @@ function TestQuestionsPattern12() {
             ]
           },
           {
-            questionText: "Find the missing letter in the sequence: C, F, I, L, _?",
+            questionText: "Find the missing letter in the sequence: C, F, I, L, __ ?",
             options: [
               { text: "A) O", isCorrect: true },
               { text: "B) P", isCorrect: false },
@@ -155,7 +155,7 @@ function TestQuestionsPattern12() {
             ]
           },
           {
-            questionText: "I said to her, 'I am writing an essay now.'",
+            questionText: 'I said to her, "I am writing an essay now."\n(Choose the most suitable indirect speech)',
             options: [
               { text: "A) I told her that I was writing an essay then.", isCorrect: true },
               { text: "B) I told her that I am writing an essay then.", isCorrect: false },
@@ -164,7 +164,7 @@ function TestQuestionsPattern12() {
             ]
           },
           {
-            questionText: "Rearrange the letters: ‘T A L E",
+            questionText: "Rearrange the letters: 'T A L E R' to form a meaningful word that means vigilant.",
             options: [
               { text: "A) TALER", isCorrect: false },
               { text: "B) RATLE", isCorrect: false },
@@ -173,7 +173,7 @@ function TestQuestionsPattern12() {
             ]
           },
           {
-            questionText: "Hello, I'd like to change some dollars into Indian rupees.",
+            questionText: "Hello, I'd like to change some dollars into Indian rupees.\n(Choose the appropriate option)",
             options: [
               { text: "A) Getting money out.", isCorrect: false },
               { text: "B) Asking a friend for money.", isCorrect: false },
@@ -209,7 +209,7 @@ function TestQuestionsPattern12() {
             ]
           },
           {
-            questionText: "confuse | it | with | often effect green | house | people",
+            questionText: "confuse | it | with | often effect green | house | people\n(Choose the rearranged sentence)",
             options: [
               { text: "A) Greenhouse effect often people confuse with it.", isCorrect: false },
               { text: "B) People often confuse it with greenhouse effect.", isCorrect: true },
@@ -253,7 +253,7 @@ function TestQuestionsPattern12() {
       ]
     },
     {
-      questionText: "The product of two consecutive positive integers is divisible by 2'.",
+      questionText: "The product of two consecutive positive integers is divisible by 2.",
       options: [
         { "text": "A) True", "isCorrect": true },
         { "text": "B) False", "isCorrect": false },
@@ -1132,7 +1132,7 @@ function TestQuestionsPattern12() {
       ]
     },
     {
-      questionText: "16. Arrange the following words in a meaningful sequence - A)	Frog.  B) Grass. C) Grasshopper. D) Eagle.  E) Snake",
+      questionText: "16. Arrange the following words in a meaningful sequence -\n A)	Frog.  B) Grass. C) Grasshopper. D) Eagle.  E) Snake",
       options: [
         { text: "A)	2, 3, 1, 5, 4", isCorrect: true },
         { text: "B)	3, 2, 1, 4, 5", isCorrect: false },
