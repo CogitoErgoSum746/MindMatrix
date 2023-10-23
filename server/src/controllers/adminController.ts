@@ -170,6 +170,25 @@ export async function getUserInfo(req: Request, res: Response): Promise<any> {
   }
 }
 
+export async function deleteUser(req: Request, res: Response): Promise<any> {
+  try {
+    const { username, email } = req.body;
+
+    const user = await User.findOneAndDelete({
+      username: username,
+      email: email
+    });
+
+    if(!user){
+      res.status(400).json({ success: false, msg: 'User not found' });
+    }
+
+    res.status(200).json({ success: true, msg: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 export async function downloadPdf(req: Request, res: Response): Promise<any> {
   try {
     const { username, email } = req.body;
