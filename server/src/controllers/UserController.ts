@@ -397,7 +397,7 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
     };
 
     const paths = req.body.careerOptions;
-    
+
     const result = await User.findOneAndUpdate(filter, { carreerOptions: paths }, { new: true });
 
     if (result) {
