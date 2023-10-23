@@ -38,14 +38,14 @@ useEffect(() => {
     <Navbar />
     <div className="bg-white min-h-screen py-20">
       <div className="container mx-auto p-5">
-        <h1 className='text-black text-center text-lg mb-2 font-bold'>PSYCHOMETRIC TESTS</h1>
+        <h1 className="text-black text-center text-lg mb-2 font-bold font-['Inter']">PSYCHOMETRIC TESTS</h1>
         <p className='text-black text-center text-md mb-1 italic'>Every person possess a distinctive gift waiting to shine.</p>
-        <p className='text-black text-center text-md mb-3 italic'>Discovering one's genuine passion is essential for every individual.</p>
+        <p className='text-black text-center text-md mb-5 italic'>Discovering one's genuine passion is essential for every individual.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-4 bg-white rounded shadow-md">
-            <h1 className='text-center text-lg font-bold mb-2'>High School Students</h1>
-            <p className="text-lg text-gray-800 mb-4 text-justify">
-            India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[21] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[22][23] and from the time of its independence in 1947, the world's most populous democracy.[24][25][26] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.
+            <h1 className="text-center text-lg font-bold mb-2 font-['Inter']">High School Students</h1>
+            <p className="text-lg text-gray-800 mb-10 text-justify">
+            Welcome to our psychometric tests platform tailored for high school students. We understand that this is a crucial time in your life, where you're making important decisions about your future. Our psychometric tests are here to assist you in discovering your strengths and interests, providing guidance for your educational journey. Whether you're considering college majors, career paths, or simply want to better understand yourself, our tests are your trusted companions. Start exploring  and pave the way to a successful future.
 
             </p>
             {/* <Link to='/test'>
@@ -74,9 +74,10 @@ useEffect(() => {
 
 
           <div className="p-4 bg-white rounded shadow-md">
-          <h1 className='text-center text-lg font-bold mb-2'>College Students</h1>
+          <h1 className="text-center text-lg font-bold mb-2  font-['Inter'] ">College Students</h1>
             <p className="text-lg text-gray-800 mb-4 text-justify">
-            India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[21] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[22][23] and from the time of its independence in 1947, the world's most populous democracy.[24][25][26] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.
+As a college student, you're at the crossroads of academic and career decisions. Our psychometric tests are designed to empower you on this exciting journey. Discover your unique abilities, interests, and potential career matches. Whether you're choosing a major, planning internships, or preparing for graduation, our tests provide valuable insights to make informed choices. Take charge of your future and let our assessments be your guide. Beyond the academic decisions, our psychometric tests also help you to take a right decision. 
+
             </p>
             <button className="w-full p-2 rounded-md bg-gray-400">
             Get Started
@@ -85,9 +86,9 @@ useEffect(() => {
 
 
           <div className="p-4 bg-white rounded shadow-md">
-          <h1 className='text-center text-lg font-bold mb-2'>Professionals</h1>
-            <p className="text-lg text-gray-800 mb-4 text-justify">
-            India, officially the Republic of India (ISO: Bhārat Gaṇarājya),[21] is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023;[22][23] and from the time of its independence in 1947, the world's most populous democracy.[24][25][26] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[j] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.
+          <h1 className="text-center text-lg font-bold mb-2 font-['Inter'] ">Professionals</h1>
+            <p className="text-lg text-gray-800 mb-10 text-justify">
+            In the professional world, continuous growth and advancement are key. Our psychometric tests offer experienced professionals the tools to enhance their careers. Identify your leadership potential, fine-tune your communication skills, and explore new avenues for personal development. Whether you're aiming for a promotion, a career change, or simply seeking to improve your job performance, our tests provide data-driven insights to help you thrive in your chosen field. Elevate your career.
             </p>
             <button className="w-full p-2 rounded-md bg-gray-400">
             Get Started

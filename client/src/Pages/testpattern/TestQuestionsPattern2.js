@@ -407,6 +407,7 @@ function TestQuestionsPattern2() {
   
   const subtestIdInt = parseInt(subtestId);
   const subtest = tests[subtestIdInt];
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [scores, setScores] = useState(Array(subtest.questions.length).fill(0));
@@ -414,6 +415,7 @@ function TestQuestionsPattern2() {
   const [isTestCompleted, setIsTestCompleted] = useState(false); 
 
   const handleOptionChange = (optionWeightage, optionIndex) => {
+    setSelectedOption(optionIndex);
     const newScores = [...scores];
     newScores[questionIndex] = optionWeightage[optionIndex];
     setScores(newScores);
@@ -422,8 +424,8 @@ function TestQuestionsPattern2() {
   const handleNextQuestion = () => {
     if (questionIndex < subtest.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
+      setSelectedOption(null); 
     } else {
-      // Display total score
       setShowScore(true);
     }
   };
@@ -527,16 +529,19 @@ function TestQuestionsPattern2() {
       Please evaluate each statement according to how often it applies to your situation. Use the following scale:
     </p>
     <p className="text-left font-semibold">
-      <strong>Never: </strong>Assign a rating of 1 if the statement rarely applies to you.
+      <strong>NO, the statement is not at all like me :</strong>Assign a rating of 1 if it is applies to you.
     </p>
     <p className="text-left font-semibold">
-      <strong>Sometimes:</strong> Assign a rating of 2 if the statement applies occasionally.
+      <strong>The statement is a little like me :</strong> Assign a rating of 2 if it is applies to you.
     </p>
     <p className="text-left font-semibold">
-      <strong>Usually:</strong> Assign a rating of 3 if the statement applies frequently.
+      <strong>The statement is somewhat like me :</strong> Assign a rating of 3 if is is applies to you.
     </p>
     <p className="text-left mb-5 font-semibold">
-      <strong>Always: </strong> Assign a rating of 4 if the statement consistently applies to you.
+      <strong>The statement is a lot like me : </strong> Assign a rating of 4 if it is applies to you.
+    </p>
+    <p className="text-left mb-5 font-semibold">
+      <strong>YES, the statement is me : </strong> Assign a rating of 5 if it is applies to you.
     </p>
     </div>
     </>
@@ -569,6 +574,7 @@ function TestQuestionsPattern2() {
                       className="form-radio h-5 w-5"
                       name={`question-${questionIndex}`}
                       value={optionIndex}
+                      checked={selectedOption === optionIndex}
                       onChange={() =>
                         handleOptionChange(
                           subtest.questions[questionIndex].optionWeightage,
@@ -584,7 +590,8 @@ function TestQuestionsPattern2() {
               ))}
             </div>
             <div className="mt-4">
-              {questionIndex === subtest.questions.length - 1 ? (
+            {selectedOption !== null ? (
+              questionIndex === subtest.questions.length - 1 ? (
                 <Link to={`/test/${id}`}>
                   <button onClick={sendTestDataToServer} className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl">
                     Submit Test Data
@@ -597,7 +604,13 @@ function TestQuestionsPattern2() {
                 >
                   Next Question {'>'}
                 </button>
-              )}
+              )
+              ):(
+                <button disabled className="bg-gray-300 p-2 rounded-full font-semibold text-xl">
+                Next Question {'>'}
+              </button>
+              )
+              }
             </div>
           </div>
         )}

@@ -7,6 +7,9 @@ import flutter from "../images/flutter.svg";
 import django from "../images/django.svg";
 import html from "../images/html.svg";
 import css from "../images/css.svg";
+import homebg from "../images/homebg.png";
+import img3 from "../images/image 3.png";
+import img4 from "../images/image 4.png";
 import { Link as ScrollLink, Element } from "react-scroll";
 import FloatingIcon from "../components/FloatingIcon";
 
@@ -77,7 +80,7 @@ function HomePage() {
     <>
       <Navbar />
       <Element name="discover">
-        <div
+        {/* <div
           className="py-20 bg-neutral-500 w-full"
           id="discover"
           style={{ height: "700px" }}
@@ -108,17 +111,19 @@ function HomePage() {
               Learn More
             </button>
           </div>
-        </div>
+        </div> */}
+        <img src={homebg} className="w-full"></img>
 
         <div className="flex flex-row">
           <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
+            <div className="mt-5">
             <div className="left-0 top-0 absolute text-neutral-700 text-lg font-normal font-['Source Sans Pro'] leading-9">
               Unveiling the Fusion of
             </div>
-            <div className="w-120 left-0 top-[26px] absolute text-black text-3xl font-medium font-['Inter'] leading-10">
+            <div className="w-120 left-0 top-[26px] absolute text-black text-4xl font-medium font-['Inter'] leading-10 mt-3">
               Neurocognitive Emotional Behavior (NCEB)
             </div>
-            <div className="left-0 top-[76px] absolute text-black text-lg font-normal font-['Inter'] leading-7">
+            <div className="left-0 top-[76px] absolute text-black text-xl font-semibold font-['Inter'] leading-7 mt-3">
               Neuro-cognitive-emotional Intelligence Behaviour Competency <br />
               Mapping.
               <br />
@@ -154,29 +159,30 @@ function HomePage() {
                 </div>
               </div>
             </div>
+            </div>
             <div
-              className="w-96 h-96 bg-zinc-100 border-2 border-zinc-400 justify-center items-center inline-flex"
-              style={{ marginLeft: 900, marginTop: 15 }}
+              className="w-98 h-98 justify-center items-center inline-flex mr-20"
+              style={{ marginLeft: 900, marginTop: 20 }}
             >
-              <img src="#"></img>
+              <img src={img3}></img>
             </div>
           </div>
         </div>
       
 
       <div className="flex flex-row justify-between p-20">
-        <div className="w-96 h-96 bg-zinc-100 border-2 border-zinc-400 justify-center items-center inline-flex ">
-          <img src="#"></img>
+        <div className="w-96 h-96 justify-center items-center inline-flex ">
+          <img src={img4}></img>
         </div>
         <div
           className="w-120 h-64 relative text-justify"
           style={{ marginRight: 150 }}
         >
-          <div className="text-black text-2xl font-medium font-['Inter'] leading-7 text-justify mr-5 mb-2 mt-10">
+          <div className="text-black text-2xl font-semibold font-['Inter'] leading-7 text-justify mr-5 mb-2 mt-10">
             Get Rid Of
           </div>
-          <div className="w-200 h-64 relative">
-            <ul className="flex flex-row list-disc space-x-7 text-gray-500 text-lg mb-2">
+          <div className="w-200 h-64 relative font-normal">
+            <ul className="flex flex-row list-disc space-x-7 text-lg mb-2">
               <li>Stress</li>
               <li>Anxiety</li>
               <li>Panic Attacks</li>
@@ -184,7 +190,7 @@ function HomePage() {
               <li>Fear</li>
               <li>Depression</li>
             </ul>
-            <ul className="flex flex-row list-disc space-x-7 text-gray-500 text-lg mb-2">
+            <ul className="flex flex-row list-disc space-x-7 text-lg mb-2">
               <li>Low mood</li>
               <li>Phobias</li>
               <li>Shame</li>
@@ -193,7 +199,7 @@ function HomePage() {
               <li>Addiction</li>
               <li>OCD</li>
             </ul>
-            <ul className="flex flex-row list-disc space-x-7 text-gray-500 text-lg mb-10">
+            <ul className="flex flex-row list-disc space-x-7 text-lg mb-10">
               <li>PTSD</li>
               <li>Relationship Issues</li>
               <li>ADHD & Tennage Issues</li>
@@ -205,7 +211,7 @@ function HomePage() {
             <div className=" text-neutral-700 text-lg font-normal font-['Source Sans Pro'] leading-9 mb-5">
               100% Safe and Secure Platform
             </div>
-            <button className="px-3 py-2 bg-transparent border border-black">
+            <button className="px-3 py-2 bg-transparent border border-black font-medium">
               Get In Touch
             </button>
           </div>
