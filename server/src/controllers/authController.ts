@@ -173,9 +173,9 @@ export async function forgotPassword(req: Request, res: Response): Promise<any> 
     const expiration = new Date();
     expiration.setHours(expiration.getHours() + 1);
 
-    const resetLink = `http://localhost:3000/reset-password/${token}`;
-    // const resetLink = `https://mindmatrix.successteps.in/api/reset-password/${token}`;
-    
+    // const resetLink = `http://localhost:3000/reset-password/${token}`;
+    const resetLink = `https://mindmatrix.successteps.in/api/reset-password/${token}`;
+
     const subject = 'Password Reset';
     const text = `This link is active only for an hour.\nClick the following link to reset your password: ${resetLink}`;
 

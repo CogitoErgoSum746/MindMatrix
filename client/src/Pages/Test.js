@@ -107,7 +107,6 @@ function Test() {
     }
   };
 
-  // Check if there are any remaining tests
   const areTestsRemaining = Object.values(remainingTests || {}).some(
     (count) => count >= 0
   );
@@ -145,6 +144,11 @@ function Test() {
         </h1>
 
         <div className="flex flex-col bg-white mt-10 p-10 ">
+        <div className='flex justify-start ml-5 mb-10'>
+      <Link to="/">
+      <button className='bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-left font-semibold'>{"<"}Go Back</button>
+      </Link>
+      </div>
           {tests.map((test) => (
             <div className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex justify-between items-center">
               <h1 className="text-lg font-semibold">{test.name}</h1>
