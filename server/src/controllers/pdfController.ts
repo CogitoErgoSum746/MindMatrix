@@ -1137,10 +1137,10 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
 export async function sendUserInfo(req: Request, res: Response): Promise<void> {
     try {
         //user info
-        await userInfoPdf1(req, res, 2, 18, 300, 600);
-        await userInfoPdf3(req, res, 2, 18, 300, 545);
-        await userInfoPdf2(req, res, 2, 18, 300, 340);
-        await userInfoPdf4(req, res, 2, 18, 300, 290);
+        await userInfoPdf1(req, res, 2, 18, 260, 600);
+        await userInfoPdf3(req, res, 2, 18, 200, 545);
+        await userInfoPdf2(req, res, 2, 18, 400, 340);
+        await userInfoPdf4(req, res, 2, 18, 250, 290);
 
     } catch (error) {
         console.log(error);

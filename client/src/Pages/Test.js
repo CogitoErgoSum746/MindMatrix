@@ -47,12 +47,12 @@ function Test() {
 
   const [remainingTests, setRemainingTests] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [pdfSent, setPdfSent] = useState(false); // Add state for PDF sent
 
   useEffect(() => {
     async function fetchTotalTests() {
       try {
         const authtoken = localStorage.getItem("authtoken");
-        console.log(authtoken);
 
         const response = await fetch(`${API_BASE_URL}/user/totalTests`, {
           method: "GET",
@@ -60,8 +60,6 @@ function Test() {
             authtoken: authtoken,
           },
         });
-
-        console.log(response);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -92,6 +90,7 @@ function Test() {
 
       if (response.ok) {
         console.log("PDF generated and sent");
+        setPdfSent(true); // Update state when PDF is sent
       } else {
         console.error("Error generating PDF");
       }
@@ -102,8 +101,8 @@ function Test() {
     }
   };
 
-  const areTestsRemaining = Object.values(remainingTests || {}).some(
-    (count) => count >= 0
+  const areTestsRemaining = Object.values(remainingTests || {}).every(
+    (count) => count === 0
   );
 
   return (
@@ -141,7 +140,7 @@ function Test() {
         <div className="flex flex-col bg-white mt-10 p-10">
           <div className="flex justify-start ml-5 mb-10">
             <Link to="/">
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-left font-semibold font-['Inter'] uppercase leading-10">
+              <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover-bg-yellow-500 transition duration-300 text-left font-semibold font-['Inter'] uppercase leading-10">
                 {"<"}Go Back
               </button>
             </Link>
@@ -176,13 +175,17 @@ function Test() {
               onClick={handleGeneratePDF}
               className={`px-4 py-2 rounded-full text-black font-['Inter'] ${
                 areTestsRemaining
-                  ? "bg-gray-300"
-                  : "bg-gradient-to-r from-orange-500 to-yellow-500"
+                  ? "bg-gradient-to-r from-orange-500 to-yellow-500"
+                  : "bg-gray-300"
               }`}
-              disabled={areTestsRemaining}
+              disabled={!areTestsRemaining}
               style={{ width: "250px" }}
             >
-              {loading ? "Generating..." : "Send PDF to Mail"}
+              {loading
+                ? "Generating..."
+                : pdfSent
+                ? "Report Sent to Mail"
+                : "Send Final Report to Mail"}
             </button>
           </div>
         </div>
