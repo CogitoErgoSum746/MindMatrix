@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Ellipse1 from "../../images/Ellipse1.png";
-import Ellipse2 from '../../images/Ellipse2.png';
+import Ellipse2 from "../../images/Ellipse2.png";
 import Ellipse3 from "../../images/Ellipse3.png";
 import { API_BASE_URL } from "../../config";
 
@@ -19,11 +19,13 @@ function TestQuestionsPattern11() {
     { id: 7, name: "Goal Orientation" },
     { id: 8, name: "Confidence" },
     { id: 9, name: "Responsible" },
-    { id: 10, name: "Hobbies & Extracurriculars" }
+    { id: 10, name: "Hobbies & Extracurriculars" },
   ];
 
   const subtestIdInt = parseInt(subtestId);
-  const selectedSubtest = subtests.find(subtest => subtest.id === subtestIdInt);
+  const selectedSubtest = subtests.find(
+    (subtest) => subtest.id === subtestIdInt
+  );
 
   const [categoryScore, setCategoryScore] = useState(0);
   const [isTestCompleted, setIsTestCompleted] = useState(false);
@@ -95,24 +97,47 @@ function TestQuestionsPattern11() {
     <div className="container bg-white min-h-screen">
       {!isTestCompleted && (
         <>
-          <img src={Ellipse1} alt="business" className="absolute top-0 left-6 mb-20" height="100px" />
-          <img src={Ellipse2} alt="business" width="700px" height="400px" className="absolute top-0 left-80" style={{ marginBottom: 40 }} />
-          <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          <div className="hidden md:flex">
+            <img
+              src={Ellipse1}
+              alt="business"
+              className="absolute top-0 left-6 mb-20"
+              height="100px"
+            />
+            <img
+              src={Ellipse2}
+              alt="business"
+              width="700px"
+              height="400px"
+              className="absolute top-0 left-80"
+              style={{ marginBottom: 40 }}
+            />
+            <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          </div>
         </>
       )}
       <div className="p-10">
-        <h2 className="text-left mt-70 font-bold text-2xl mb-10">Assessment Rating Criteria: </h2>
+        <h2 className="text-left mt-70 font-bold text-2xl mb-10">
+          Assessment Rating Criteria:{" "}
+        </h2>
         <p className="text-left font-semibold mb-5">
-          Please evaluate "{selectedSubtest.name}" according to how often it applies to your situation. Use the following scale:
+          Please evaluate "{selectedSubtest.name}" according to how often it
+          applies to your situation. Use the following scale:
         </p>
         <p className="text-left font-semibold">
-          Rate it from 0 to 10, where 0 means it rarely applies to you, and 10 means it consistently applies to you.
+          Rate it from 0 to 10, where 0 means it rarely applies to you, and 10
+          means it consistently applies to you.
         </p>
       </div>
       <div className="w-full h-full flex items-center justify-center">
         {isTestCompleted && (
-          <div className="bg-white shadow-md p-4 rounded-lg mt-20" style={{ width: 400, height: 300 }}>
-            <p className="text-2xl font-semibold text-green-600 mb-5 text-center">Category score submitted!</p>
+          <div
+            className="bg-white shadow-md p-4 rounded-lg mt-20"
+            style={{ width: 400, height: 300 }}
+          >
+            <p className="text-2xl font-semibold text-green-600 mb-5 text-center">
+              Category score submitted!
+            </p>
           </div>
         )}
       </div>
@@ -134,7 +159,10 @@ function TestQuestionsPattern11() {
             </div>
             <div className="mt-4">
               <Link to={`/test/${id}`}>
-                <button onClick={sendCategoryScoreToServer} className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl">
+                <button
+                  onClick={sendCategoryScoreToServer}
+                  className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl"
+                >
                   Submit
                 </button>
               </Link>

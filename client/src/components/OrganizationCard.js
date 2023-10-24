@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function OrganizationCard({ org, handleSendCodeToEmail }) {
+function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}) {
 
 
   return (
@@ -10,11 +10,19 @@ function OrganizationCard({ org, handleSendCodeToEmail }) {
       <h3 className="text-xl font-semibold">{org.org_name}</h3>
       <p>Email: {org.org_email}</p>
       <p>Code: {org.org_code}</p>
+      </Link>
+      <Link to="/admin">
       <button
         onClick={() => handleSendCodeToEmail(org.org_name, org.org_email)}
         className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 mt-2"
       >
         Send Mail
+      </button>
+      <button
+        onClick={() => handleDeleteOrganization(org.org_name, org.org_email,org.org_code)}
+        className="bg-red-400 text-white py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gred-500 focus:ring-opacity-50 mt-2"
+      >
+        Delete
       </button>
       </Link>
     </div>
