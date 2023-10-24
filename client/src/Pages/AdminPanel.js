@@ -10,7 +10,7 @@ function AdminPanel() {
   const [orgi_email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [email, setUserEmail] = useState("");
-  const [showDownloadButton, setShowDownloadButton] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -142,19 +142,28 @@ function AdminPanel() {
       },
       body: JSON.stringify({ username, email }),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
-          console.log("okay");
-          setShowDownloadButton(true);
+          // Start the download process
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'feedback.pdf';
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          alert('Downloaded Successfully');
         } else {
-          setShowDownloadButton(false);
-          alert("User is not valid.");
+          alert('User is not valid.');
         }
       })
       .catch((error) => {
-        console.log("Please enter correct username and pass:", error);
+        console.error('Error:', error);
+        alert('An error occurred while downloading the file.');
       });
   };
+  
 
   useEffect(() => {
     getAllOrganization();
@@ -211,12 +220,7 @@ function AdminPanel() {
 
             <button
               onClick={downloadPdf}
-              className={`bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
-                showDownloadButton
-                  ? ""
-                  : "bg-gray-400 text-black cursor-not-allowed"
-              }`}
-              disabled={!showDownloadButton}
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Download Pdf
             </button>
