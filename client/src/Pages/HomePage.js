@@ -10,6 +10,7 @@ import css from "../images/css.svg";
 import homebg from "../images/homebg.png";
 import img3 from "../images/image 3.png";
 import img4 from "../images/image 4.png";
+import img5 from "../images/image 5.png";
 import { Link as ScrollLink, Element } from "react-scroll";
 import FloatingIcon from "../components/FloatingIcon";
 
@@ -219,9 +220,44 @@ function HomePage() {
       </div>
       </Element>
 
+      <Element name="psychometrictest">
+      <div className="flex flex-row justify-between items-center">
+          <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
+            <div className="mt-3">
+            <div className="w-120 left-0 top-[26px] absolute text-black text-4xl font-medium font-['Inter'] leading-10 mt-10">
+            Psychometric Tests And Career Guidance
+            </div>
+            <div className="left-0 top-[76px] absolute text-black text-xl font-normal font-['Inter'] leading-7 mt-10">
+            Neuro-cognitive-emotional Intelligence Behaviour Competency Mapping
+              <br />
+              Find Your Stream of Learning- Carer Pathway by the most scientific way
+              <div className="text-black text-3xl font-bold font-['Inter'] mt-10">
+            Your Dynamic Path to Total Success
+            </div>
+            <div className="flex flex-row items-start">
+            <Link to="/getstarted">
+              <button className="px-6 py-3 bg-transparent text-center font-normal font-['Inter'] inline-flex mt-10 border  border-gray-500 hover:bg-black hover:text-white">
+                Get Started
+              </button>
+            </Link>
+            </div>
+            </div>
+           
+          
+            </div>
+            <div
+              className="w-98 h-98 justify-center items-center inline-flex mr-20"
+              style={{ marginLeft: 900, marginTop: 10 }}
+            >
+              <img src={img5}></img>
+            </div>
+          </div>
+        </div>
+      </Element>
+
       <Element name="services">
       <div>
-        <p className="text-black text-3xl font-semibold font-['Inter'] leading-10">
+        <p className="text-black text-3xl font-semibold font-['Inter'] leading-10 mt-20">
           Image Gallery
         </p>
         <div>
