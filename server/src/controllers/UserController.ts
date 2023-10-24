@@ -379,7 +379,7 @@ export async function sendPdfToEmail(req: Request, res: Response): Promise<void>
     const subject = "Psychometric Test Report";
     const text = `Dear ${username}!\n\nSharing with you the psychometric test report.  Attached is a comprehensive report that explores multiple facets of your personality, offers career recommendations, identifies your strengths, and points out areas for potential growth.\n\nWe highly encourage you to set aside some dedicated time for a thorough review of the report, allowing yourself the opportunity to reflect deeply on the valuable insights it offers. This information can be a valuable tool on your journey of self-discovery and personal development.\n\nIf you have any queries or require any assistance in understanding your results or setting goals based on them, please do not hesitate to reach out to us. Our team is here to support you in making the most of this valuable resource.\n\nThank you for choosing us as your trusted partner in self-discovery. We look forward to accompanying you on your path to personal growth and self-awareness.\n\nWarm regards,\n\nDr. Antony Augusthy`;
     const attachments = [{
-      filename: 'feedback.pdf',
+      filename:   `${username}.pdf`,
       path: filePath,
     }];
 
@@ -407,8 +407,9 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
       fs.mkdirSync(customFolderPath, { recursive: true });
     }
 
-    // Check if the 'feedback.pdf' already exists in the custom folder
-    const destiPdfPath = path.join(customFolderPath, 'feedback.pdf');
+    const pdfFileName = 'feedback.pdf'; // Change this to your PDF file name
+    // Check if the feedback.pdf already exists in the custom folder
+    const destiPdfPath = path.join(customFolderPath, pdfFileName);
     if (fs.existsSync(destiPdfPath)) {
       await sendPdfToEmail(req, res);
       res.status(200).json({ success: true });
@@ -418,7 +419,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
     const sourcePdfPath = path.join(sourceFolderPath, 'yay.pdf');
 
-    const pdfFileName = 'feedback.pdf'; // Change this to your PDF file name
+    
     const destinationPdfPath = path.join(customFolderPath, pdfFileName);
     fs.copyFileSync(sourcePdfPath, destinationPdfPath);
 
