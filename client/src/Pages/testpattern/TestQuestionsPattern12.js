@@ -494,7 +494,7 @@ function TestQuestionsPattern12() {
         },
       ],
     },
-
+    
     3: {
       title: "Mechanical",
       questions: [
@@ -1347,6 +1347,7 @@ function TestQuestionsPattern12() {
         },
       ],
     },
+
   };
 
   const subtestIdInt = parseInt(subtestId);
@@ -1355,11 +1356,16 @@ function TestQuestionsPattern12() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showScore, setShowScore] = useState(false);
+  const [scoresArray, setScoresArray] = useState(Array(subtest.questions.length).fill(0));
 
   const handleOptionChange = (optionIndex) => {
+    const newScoresArray = [...scoresArray];
+    newScoresArray[questionIndex] = subtest.questions[questionIndex].options[optionIndex].isCorrect ? 1 : 0;
+    setScoresArray(newScoresArray);
     setSelectedOption(optionIndex);
   };
 
+  
   const handleNextQuestion = () => {
     if (questionIndex < subtest.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
@@ -1370,16 +1376,30 @@ function TestQuestionsPattern12() {
     }
   };
 
-  const totalScore = subtest.questions.reduce((acc, question, index) => {
-    const isCorrect =
-      selectedOption ===
-      question.options.findIndex((option) => option.isCorrect);
-    return isCorrect ? acc + 1 : acc;
-  }, 0);
+
+  // let totalScore = 0;
+
+  // for (let i = 0; i < subtest.questions.length; i++) {
+  //   const question = subtest.questions[i];
+  //   const isCorrect = selectedOption === question.options.findIndex((option) => option.isCorrect);
+  //   if (isCorrect) {
+  //     totalScore += 1;
+  //   }
+  // }
+
+  let totalScore = 0;
+
+  for (let i = 0; i < scoresArray.length; i++) {
+    totalScore += scoresArray[i];
+  }
+console.log(totalScore)
+
 
   const subCategory = tests[subtestId] ? tests[subtestId].title : "Unknown";
   const testType = "Aptitude";
   const score = totalScore;
+
+
 
   useEffect(() => {
     const fetchTestScores = async () => {
