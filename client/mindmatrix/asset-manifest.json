@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.11b882aa.css",
-    "main.js": "/static/js/main.767c4516.js",
+    "main.css": "/static/css/main.78b32c34.css",
+    "main.js": "/static/js/main.895b8e0b.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/homebg.png": "/static/media/homebg.57dd8a36f464a042ac8e.png",
     "static/media/image 5.png": "/static/media/image 5.2c7b10a554f4f3ceda27.png",
@@ -45,12 +45,12 @@
     "static/media/flutter.svg": "/static/media/flutter.dac68bbcd808c4a0fe5cab80d8aca642.svg",
     "index.html": "/index.html",
     "static/media/html.svg": "/static/media/html.3e248b35da4b2be32fcdb9e90b3762d9.svg",
-    "main.11b882aa.css.map": "/static/css/main.11b882aa.css.map",
-    "main.767c4516.js.map": "/static/js/main.767c4516.js.map",
+    "main.78b32c34.css.map": "/static/css/main.78b32c34.css.map",
+    "main.895b8e0b.js.map": "/static/js/main.895b8e0b.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.11b882aa.css",
-    "static/js/main.767c4516.js"
+    "static/css/main.78b32c34.css",
+    "static/js/main.895b8e0b.js"
   ]
 }
