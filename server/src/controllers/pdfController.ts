@@ -1151,16 +1151,16 @@ export async function sendUserInfo(req: Request, res: Response): Promise<void> {
 export async function sendCharts(req: Request, res: Response): Promise<void> {
     try {
         //Charts
-        // await makeBarChartPdf(req, res, "Study Skills Profile Assessment", 20);
-        // await makeBarChartPdf(req, res, "Aptitude", 6);
-        // await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
-        // await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
-        // await makeBarChartPdf(req, res, "Personality", 28);
-        // await makeBarChartPdf(req, res, "Learning Style", 35);
-        // await makeBarChartPdf(req, res, "Leadership Style", 38);
-        // await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
-        // await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
-        // await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
+        await makeBarChartPdf(req, res, "Study Skills Profile Assessment", 20);
+        await makeBarChartPdf(req, res, "Aptitude", 6);
+        await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
+        await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
+        await makeBarChartPdf(req, res, "Personality", 28);
+        await makeBarChartPdf(req, res, "Learning Style", 35);
+        await makeBarChartPdf(req, res, "Leadership Style", 38);
+        await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
+        await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
+        await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
     } catch (error) {
         console.log(error);
         res.status(500);
