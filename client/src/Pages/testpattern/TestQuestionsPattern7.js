@@ -139,8 +139,10 @@ function TestQuestionsPattern7() {
   const [scores, setScores] = useState(Array(subtest.questions.length).fill(0));
   const [showScore, setShowScore] = useState(false);
   const [isTestCompleted, setIsTestCompleted] = useState(false); 
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionChange = (optionWeightage, optionIndex) => {
+    setSelectedOption(optionIndex);
     const newScores = [...scores];
     newScores[questionIndex] = optionWeightage[optionIndex];
     setScores(newScores);
@@ -149,6 +151,7 @@ function TestQuestionsPattern7() {
   const handleNextQuestion = () => {
     if (questionIndex < subtest.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
+      setSelectedOption(null); 
     } else {
       // Display total score
       setShowScore(true);
@@ -256,16 +259,19 @@ function TestQuestionsPattern7() {
     Please evaluate each statement according to how often it applies to your situation. Use the following scale:
   </p>
   <p className="text-left font-semibold">
-    <strong>Never: </strong>Assign a rating of 1 if the statement rarely applies to you.
+    <strong>Strongly Disagree: </strong>Assign a rating of 1.
   </p>
   <p className="text-left font-semibold">
-    <strong>Sometimes:</strong> Assign a rating of 2 if the statement applies occasionally.
+    <strong>Somewhat Disagree: </strong> Assign a rating of 2.
   </p>
   <p className="text-left font-semibold">
-    <strong>Usually:</strong> Assign a rating of 3 if the statement applies frequently.
+    <strong>Neither Agree nor Disagree: </strong> Assign a rating of 3.
+  </p>
+  <p className="text-left font-semibold">
+    <strong>Somewhat Agree: </strong> Assign a rating of 4.
   </p>
   <p className="text-left mb-5 font-semibold">
-    <strong>Always: </strong> Assign a rating of 4 if the statement consistently applies to you.
+    <strong>Strongly Agree: </strong> Assign a rating of 5.
   </p>
   </div>
   </>
@@ -298,6 +304,7 @@ function TestQuestionsPattern7() {
                     className="form-radio h-5 w-5"
                     name={`question-${questionIndex}`}
                     value={optionIndex}
+                    checked={selectedOption === optionIndex}
                     onChange={() =>
                       handleOptionChange(
                         subtest.questions[questionIndex].optionWeightage,
@@ -313,7 +320,8 @@ function TestQuestionsPattern7() {
             ))}
           </div>
           <div className="mt-4">
-            {questionIndex === subtest.questions.length - 1 ? (
+          {selectedOption !== null ? (
+            questionIndex === subtest.questions.length - 1 ? (
               <Link to={`/test/${id}`}>
                 <button onClick={sendTestDataToServer} className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl">
                   Submit Test Data
@@ -326,6 +334,10 @@ function TestQuestionsPattern7() {
               >
                 Next Question {'>'}
               </button>
+            )):(
+              <button disabled className="bg-gray-300 p-2 rounded-full font-semibold text-xl">
+              Next Question {'>'}
+            </button>
             )}
           </div>
         </div>

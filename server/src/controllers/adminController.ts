@@ -6,6 +6,7 @@ import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
 import fs from 'fs';
 import path from 'path';
+import OrganizationModel from '../models/organizations';
 
 async function sendEmail(
   to: string,
@@ -125,6 +126,34 @@ export async function getUsersOrg(req: Request, res: Response): Promise<any> {
   }
 }
 
+export async function deleteOrgAlongWithUsers(req: Request, res: Response): Promise<any> {
+  try {
+    const { org_name, org_email, org_code } = req.body;
+
+    const usersPerOrg = await User.find({ org_code: org_code });
+
+    if (usersPerOrg.length > 0) {
+      usersPerOrg.forEach(async user => {
+        await User.findOneAndDelete({
+          username: user.username,
+          email: user.email
+        });
+      });
+    }
+
+    await OrganizationModel.findOneAndDelete({ 
+      org_name: org_name,
+      org_email: org_email,
+      org_code: org_code
+    });
+    
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Error finding users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 export async function getTotalPdfs(req: Request, res: Response): Promise<any> {
   try {
     const runningPdfsFolderPath = path.join(__dirname, '..', 'runningPdfs');
@@ -179,7 +208,7 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
       email: email
     });
 
-    if(!user){
+    if (!user) {
       res.status(400).json({ success: false, msg: 'User not found' });
     }
 
@@ -289,7 +318,7 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
 
     await sendEmail(email, subject, text, attachments);
 
-    res.status(200).json({success: true});
+    res.status(200).json({ success: true });
 
   } catch (error) {
     res.status(500).json({ success: false, error: error });

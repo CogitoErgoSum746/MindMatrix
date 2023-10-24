@@ -416,15 +416,13 @@ function TestQuestionsPattern1() {
   const subtestIdInt = parseInt(subtestId);
   const subtest = tests[subtestIdInt];
 
-  // const subCategoryName=subtest.title;
-  // console.log(subCategoryName)
-
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [scores, setScores] = useState(Array(subtest.questions.length).fill(0));
   // const [scores, setScores] = useState(subtest.questions.map(() => 0));
   const [showScore, setShowScore] = useState(false);
   const [isTestCompleted, setIsTestCompleted] = useState(false); 
+  const [selectedOption, setSelectedOption] = useState(null);
 
 
 
@@ -432,6 +430,7 @@ function TestQuestionsPattern1() {
 
 
   const handleOptionChange = (optionWeightage, optionIndex) => {
+    setSelectedOption(optionIndex);
     const newScores = [...scores];
     newScores[questionIndex] = optionWeightage[optionIndex];
     setScores(newScores);
@@ -440,6 +439,8 @@ function TestQuestionsPattern1() {
   const handleNextQuestion = () => {
     if (questionIndex < subtest.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
+      setSelectedOption(null); 
+     
     } else {
       // Display total score
       setShowScore(true);
@@ -595,6 +596,7 @@ for (let i = 0; i < scores.length; i++) {
                       className="form-radio h-5 w-5"
                       name={`question-${questionIndex}`}
                       value={optionIndex}
+                      checked={selectedOption === optionIndex}
                       onChange={() =>
                         handleOptionChange(
                           subtest.questions[questionIndex].optionWeightage,
@@ -610,20 +612,26 @@ for (let i = 0; i < scores.length; i++) {
               ))}
             </div>
             <div className="mt-4">
-              {questionIndex === subtest.questions.length - 1 ? (
-                <Link to={`/test/${id}`}>
-                  <button onClick={sendTestDataToServer} className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl">
-                    Submit Test Data
-                  </button>
-                </Link>
-              ) : (
-                <button
-                  className="bg-gradient-to-r from-orange-500 to-yellow-500 px-12 py-2 rounded-full font-semibold text-xl"
-                  onClick={handleNextQuestion}
-                >
-                  Next Question {'>'}
+            {selectedOption !== null ? (
+            questionIndex === subtest.questions.length - 1 ? (
+              <Link to={`/test/${id}`}>
+                <button onClick={sendTestDataToServer} className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl">
+                  Submit Test Data
                 </button>
-              )}
+              </Link>
+            ) : (
+              <button
+                className="bg-gradient-to-r from-orange-500 to-yellow-500 px-12 py-2 rounded-full font-semibold text-xl"
+                onClick={handleNextQuestion}
+              >
+                Next Question {'>'}
+              </button>
+            )
+          ) : (
+            <button disabled className="bg-gray-300 p-2 rounded-full font-semibold text-xl">
+              Next Question {'>'}
+            </button>
+          )}
             </div>
           </div>
         )}
