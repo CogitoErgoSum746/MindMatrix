@@ -146,6 +146,57 @@ export async function getTestResults(req: Request, res: Response): Promise<void>
   }
 };
 
+export async function deleteTestResult(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    const testType = req.body.testType;
+    const subCategory = req.body.subCategory;
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    if (existingUser) {
+      // Document with the same testType exists, find it
+      const testResultToUpdate = existingUser.testResults.find(
+        (result) => result.testType === testType
+      );
+
+      if (testResultToUpdate) {
+        // Find the subcategory by name and remove it
+        const subcategoryIndex = testResultToUpdate.subcategories.findIndex(
+          (subcategory) => subcategory.name === subCategory
+        );
+
+        if (subcategoryIndex !== -1) {
+          testResultToUpdate.subcategories.splice(subcategoryIndex, 1);
+
+          // Save the updated document
+          await existingUser.save();
+
+          res.status(200).json({ success: true });
+          return;
+        }
+      }
+
+      // If the subcategory was not found, handle accordingly
+      console.log("Subcategory not found");
+      res.status(404).json({ success: false, error: "Subcategory not found" });
+    } else {
+      // If the user document doesn't exist, handle accordingly
+      console.log("User not found");
+      res.status(404).json({ success: false, error: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+
 export async function checkSubscores(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
