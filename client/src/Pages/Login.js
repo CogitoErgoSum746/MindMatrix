@@ -48,7 +48,7 @@ function Login() {
           const authtoken = data.authtoken;
           localStorage.setItem('authtoken', authtoken);
           login();
-          window.location.href = '/';
+          window.location.href = '/getstarted';
         }
         if (data.userType === "admin") {
           window.location.href = '/admin';
