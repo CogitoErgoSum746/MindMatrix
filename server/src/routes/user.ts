@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import { body, check } from 'express-validator';
-import { getUser, userDashboard, getTestResults, sendPdfToEmail, tektest, makeFinalPdf, checkScore, carreerOptions, checkSubscores, totalTests, multipleIRank } from '../controllers/UserController';
+import { getUser, userDashboard, getTestResults, sendPdfToEmail, tektest, makeFinalPdf, checkScore, carreerOptions, checkSubscores, totalTests, multipleIRank, deleteTestResult } from '../controllers/UserController';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -27,6 +27,8 @@ router.post('/testResultToAPI', fetchUser, getTestResults); // One single route 
 //   "subCategory": "",
 //   "score": "25"
 // } for req.body
+
+router.post('/deletetest', fetchUser, deleteTestResult);
 
 router.get('/makepdf', fetchUser, makeFinalPdf);
 
