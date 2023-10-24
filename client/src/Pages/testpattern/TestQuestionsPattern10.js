@@ -224,7 +224,7 @@ function TestQuestionsPattern10() {
   }
 
   const subCategory = tests[subtestId] ? tests[subtestId].title : "Unknown";
-  const testType = "Leadership Style";
+  const testType = "Competitive State Anxiety Inventory";
   const score = totalScore;
 
   useEffect(() => {
@@ -297,6 +297,7 @@ function TestQuestionsPattern10() {
     <div className="container bg-white min-h-screen">
       {!isTestCompleted && (
         <>
+          <div className="hidden md:flex">
           <img
             src={Ellipse1}
             alt="business"
@@ -312,6 +313,7 @@ function TestQuestionsPattern10() {
             style={{ marginBottom: 40 }}
           />
           <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          </div>
         </>
       )}
       {!isTestCompleted && (

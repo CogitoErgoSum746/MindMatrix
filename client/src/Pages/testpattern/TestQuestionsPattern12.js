@@ -1452,25 +1452,27 @@ function TestQuestionsPattern12() {
     <div className="container bg-white min-h-screen ">
       {!isTestCompleted && (
         <>
-          <img
-            src={Ellipse1}
-            alt="business"
-            className="absolute top-0 left-6 mb-20"
-            height="100px"
-          ></img>
-          <img
-            src={Ellipse2}
-            alt="business"
-            width="700px"
-            height="400px"
-            className="absolute top-0 left-80"
-            style={{ marginBottom: 40 }}
-          ></img>
-          <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px"></img>
+          <div className="hidden md:flex">
+            <img
+              src={Ellipse1}
+              alt="business"
+              className="absolute top-0 left-6 mb-20"
+              height="100px"
+            ></img>
+            <img
+              src={Ellipse2}
+              alt="business"
+              width="700px"
+              height="400px"
+              className="absolute top-0 left-80"
+              style={{ marginBottom: 40 }}
+            ></img>
+            <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px"></img>
+          </div>
         </>
       )}
 
-{!isTestCompleted && (
+      {!isTestCompleted && (
         <>
           <div className="p-10">
             <h2 className="text-left mt-70 font-bold text-2xl mb-10">
@@ -1481,9 +1483,10 @@ function TestQuestionsPattern12() {
               to your situation. Use the following scale:
             </p>
             <p className="text-left font-semibold mb-5 font-['Spartan'] ">
-              <strong>If you answer correctly you will score 1 mark for each question.</strong>
+              <strong>
+                If you answer correctly you will score 1 mark for each question.
+              </strong>
             </p>
-            
           </div>
         </>
       )}
@@ -1513,38 +1516,38 @@ function TestQuestionsPattern12() {
                 {subtest.questions[questionIndex].questionText}
               </p>
               <div className="flex flex-row justify-between">
-              <div className="mt-2 text-left">
-                {subtest.questions[questionIndex].options.map(
-                  (option, optionIndex) => (
-                    <div key={optionIndex} className="mb-2">
-                      <label className="inline-flex justify-items-start">
-                        <input
-                          type="radio"
-                          className="form-radio h-5 w-5"
-                          name={`question-${questionIndex}`}
-                          value={optionIndex}
-                          checked={selectedOption === optionIndex}
-                          onChange={() => handleOptionChange(optionIndex)}
-                        />
-                        <span
-                          className="ml-3 bg-gray-300 p-3 block"
-                          style={{ width: "300px" }}
-                        >
-                          {option.text}
-                        </span>
-                      </label>
-                    </div>
-                  )
-                )}
-              </div>
-              <div className="flex text-right mr-20">
-                {subtest.questions[questionIndex].imageUrl && (
-                  <img
-                    src={subtest.questions[questionIndex].imageUrl}
-                    alt="Question Image"
-                  />
-                )}
-              </div>
+                <div className="mt-2 text-left">
+                  {subtest.questions[questionIndex].options.map(
+                    (option, optionIndex) => (
+                      <div key={optionIndex} className="mb-2">
+                        <label className="inline-flex justify-items-start">
+                          <input
+                            type="radio"
+                            className="form-radio h-5 w-5"
+                            name={`question-${questionIndex}`}
+                            value={optionIndex}
+                            checked={selectedOption === optionIndex}
+                            onChange={() => handleOptionChange(optionIndex)}
+                          />
+                          <span
+                            className="ml-3 bg-gray-300 p-3 block"
+                            style={{ width: "300px" }}
+                          >
+                            {option.text}
+                          </span>
+                        </label>
+                      </div>
+                    )
+                  )}
+                </div>
+                <div className="flex text-right mr-20">
+                  {subtest.questions[questionIndex].imageUrl && (
+                    <img
+                      src={subtest.questions[questionIndex].imageUrl}
+                      alt="Question Image"
+                    />
+                  )}
+                </div>
               </div>
               {showScore && (
                 <p className="text-white">

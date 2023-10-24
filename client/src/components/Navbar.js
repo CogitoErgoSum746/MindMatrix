@@ -7,6 +7,7 @@ function Navbar() {
   const authtoken = localStorage.getItem("authtoken");
 
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (authtoken) {
@@ -14,14 +15,24 @@ function Navbar() {
     }
   }, []);
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   const Logout = () => {
     localStorage.clear();
     window.location.reload();
     setIsLoggedin(false);
+    closeMobileMenu();
   };
 
   const scrollToTop = () => {
     scroll.scrollToTop();
+    closeMobileMenu();
   };
 
   return (
@@ -30,7 +41,7 @@ function Navbar() {
         <a href="/" onClick={scrollToTop}>
           <img src={logoImage} alt="Logo" width="150px" height="50px" />
         </a>
-        <div className="space-x-4">
+        <div className="space-x-4 hidden md:flex">
         <ScrollLink to="discover" smooth={true} duration={500} className="nav-link px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
             Discover More
           </ScrollLink>
@@ -60,7 +71,47 @@ function Navbar() {
             </a>
           )}
         </div>
-      </div>
+  
+      <div className="md:hidden">
+          <button className="text-2xl items-end" onClick={toggleMobileMenu}>
+            ☰
+          </button>
+        </div>
+        </div>
+        {isMobileMenuOpen && (
+  <div className="md:hidden p-2 bg-white space-y-2">
+    <ScrollLink to="discover" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
+      Discover More
+    </ScrollLink>
+    <Link to="/about" onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+      About Us
+    </Link>
+    <ScrollLink to="services" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+      Services
+    </ScrollLink>
+    <ScrollLink to="psychometrictest" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+      Psychometric Test
+    </ScrollLink>
+    <Link to={isLoggedin ? "/" : "/login"} onClick={closeMobileMenu}>
+      <button
+        className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
+        onClick={isLoggedin ? Logout : null}
+      >
+        {isLoggedin ? "Logout" : "Login"}
+      </button>
+    </Link>
+    {!isLoggedin && (
+      <a
+        href="/register"
+        onClick={closeMobileMenu}
+        className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
+      >
+        Sign up
+      </a>
+    )}
+  </div>
+)}
+
     </nav>
   );
 }

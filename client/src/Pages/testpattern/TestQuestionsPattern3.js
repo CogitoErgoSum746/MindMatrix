@@ -248,21 +248,23 @@ function TestQuestionsPattern3() {
     <div className="container bg-white min-h-screen">
       {!isTestCompleted && (
         <>
-          <img
-            src={Ellipse1}
-            alt="business"
-            className="absolute top-0 left-6 mb-20"
-            height="100px"
-          />
-          <img
-            src={Ellipse2}
-            alt="business"
-            width="700px"
-            height="400px"
-            className="absolute top-0 left-80"
-            style={{ marginBottom: 40 }}
-          />
-          <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          <div className="hidden md:flex">
+            <img
+              src={Ellipse1}
+              alt="business"
+              className="absolute top-0 left-6 mb-20"
+              height="100px"
+            />
+            <img
+              src={Ellipse2}
+              alt="business"
+              width="700px"
+              height="400px"
+              className="absolute top-0 left-80"
+              style={{ marginBottom: 40 }}
+            />
+            <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          </div>
         </>
       )}
       {!isTestCompleted && (
@@ -280,10 +282,9 @@ function TestQuestionsPattern3() {
               applies to you.
             </p>
             <p className="text-left font-semibold mb-5">
-              <strong>No:</strong> Assign a rating of 0 if the statement
-              applies to you.
+              <strong>No:</strong> Assign a rating of 0 if the statement applies
+              to you.
             </p>
-            
           </div>
         </>
       )}
