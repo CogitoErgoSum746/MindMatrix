@@ -412,6 +412,7 @@ function TestQuestionsPattern5() {
     <div className="container bg-white min-h-screen">
       {!isTestCompleted && (
         <>
+          <div className="hidden md:flex">
           <img
             src={Ellipse1}
             alt="business"
@@ -427,6 +428,7 @@ function TestQuestionsPattern5() {
             style={{ marginBottom: 40 }}
           />
           <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          </div>
         </>
       )}
       {!isTestCompleted && (

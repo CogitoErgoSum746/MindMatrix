@@ -196,7 +196,6 @@ export async function deleteTestResult(req: Request, res: Response): Promise<voi
   }
 }
 
-
 export async function checkSubscores(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
