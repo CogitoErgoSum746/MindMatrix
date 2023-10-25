@@ -62,7 +62,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
   try {
     const { username, email, studentType, age, password, organization_code } = req.body;
-    console.log(studentType);
+    // console.log(studentType);
     //check whether org_code exists
     const org = await OrganizationModel.findOne({ org_studentType: studentType, org_code: organization_code });
     if (!org) {
