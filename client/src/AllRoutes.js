@@ -25,7 +25,7 @@ function AllRoutes() {
         <Route path='/admin' element={<AdminPanel loggedIn={loggedIn}/>} />
         <Route path='/' element = {<HomePage/>} />
         <Route path='/getstarted' element = {<Home1 />} />
-        <Route path='/admin/getusers/:org_name/:org_email/:org_code' element={<Getusers/>} />
+        <Route path='/admin/getusers/:org_name/:org_email/:org_studentType/:org_code' element={<Getusers/>} />
         {/* <Route path="/test/:testAlias" element={<TestPage />} /> */}
         <Route path="/test" element={<Test />} />
         <Route path="/test/:id" element={<TestPageSelector />} />

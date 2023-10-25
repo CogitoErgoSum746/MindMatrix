@@ -254,7 +254,137 @@ export async function checkSubscores(req: Request, res: Response): Promise<void>
   }
 };
 
-export async function totalTests(req: Request, res: Response): Promise<void> {
+export async function schoolTotalTests(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    const testTypes = existingUser?.testResults.map(result => result.testType).filter(Boolean);
+
+    const general: Record<string, number> = {
+      "Multiple Intelligence": 8,
+      "Study Skills Profile Assessment": 8,
+      "Aptitude": 6,
+      "Emotional Intelligence": 5,
+      "Learning Style": 3,
+      "Leadership Style": 4,
+      "Competitive State Anxiety Inventory": 3,
+      "Students Wheel of Life": 10,
+      "Leadership skills": 1,
+      "Cyber Dependency": 1,
+      "Left-Right Brain Dominance": 2,
+      "Personality": 5
+    };
+
+    let testTypeCount: Record<string, number> = {};
+    let differenceList: Record<string, number> = {};
+
+    if (existingUser?.testResults) {
+      existingUser?.testResults.forEach(result => {
+        const { testType, subcategories } = result;
+        const subcategoryCount = subcategories ? subcategories.length : 0;
+
+        if (testType) {
+          if (testTypeCount[testType]) {
+            testTypeCount[testType] += subcategoryCount;
+          } else {
+            testTypeCount[testType] = subcategoryCount;
+          }
+        }
+      });
+
+      // Compare testTypeCount with the general list and calculate the difference
+      for (const testType in general) {
+        if (general.hasOwnProperty(testType)) {
+          const maxCount = general[testType];
+          const count = testTypeCount[testType] || 0;
+          const difference = maxCount - count;
+          differenceList[testType] = difference;
+        }
+      }
+
+      res.status(200).json({ success: true, differenceList: differenceList });
+    } else {
+      res.status(404).json({ success: false, error: "Not Found" });
+    }
+  } catch (error) {
+    console.error('Error updating document:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+};
+
+export async function collegeTotalTests(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    const testTypes = existingUser?.testResults.map(result => result.testType).filter(Boolean);
+
+    const general: Record<string, number> = {
+      "Multiple Intelligence": 8,
+      "Study Skills Profile Assessment": 8,
+      "Aptitude": 6,
+      "Emotional Intelligence": 5,
+      "Learning Style": 3,
+      "Leadership Style": 4,
+      "Competitive State Anxiety Inventory": 3,
+      "Students Wheel of Life": 10,
+      "Leadership skills": 1,
+      "Cyber Dependency": 1,
+      "Left-Right Brain Dominance": 2,
+      "Personality": 5
+    };
+
+    let testTypeCount: Record<string, number> = {};
+    let differenceList: Record<string, number> = {};
+
+    if (existingUser?.testResults) {
+      existingUser?.testResults.forEach(result => {
+        const { testType, subcategories } = result;
+        const subcategoryCount = subcategories ? subcategories.length : 0;
+
+        if (testType) {
+          if (testTypeCount[testType]) {
+            testTypeCount[testType] += subcategoryCount;
+          } else {
+            testTypeCount[testType] = subcategoryCount;
+          }
+        }
+      });
+
+      // Compare testTypeCount with the general list and calculate the difference
+      for (const testType in general) {
+        if (general.hasOwnProperty(testType)) {
+          const maxCount = general[testType];
+          const count = testTypeCount[testType] || 0;
+          const difference = maxCount - count;
+          differenceList[testType] = difference;
+        }
+      }
+
+      res.status(200).json({ success: true, differenceList: differenceList });
+    } else {
+      res.status(404).json({ success: false, error: "Not Found" });
+    }
+  } catch (error) {
+    console.error('Error updating document:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+};
+
+export async function professionalTotalTests(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
     const filter = {

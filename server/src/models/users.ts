@@ -27,6 +27,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    studentType: {
+        type: String,
+        required: true,
+    },
     age: {
         type: Number,
         required: true,

@@ -5,6 +5,7 @@ import User from '../models/users';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
 import fs from 'fs';
+import fsextra from 'fs-extra';
 import path from 'path';
 import OrganizationModel from '../models/organizations';
 
@@ -56,10 +57,10 @@ export async function createOrganization(req: Request, res: Response): Promise<a
   }
 
   try {
-    const { orgi_name, orgi_email } = req.body;
+    const { orgi_name, orgi_email, orgi_studentType } = req.body;
 
     //check if organization exists
-    let org = await Organization.findOne({ org_name: orgi_name, org_email: orgi_email });
+    let org = await Organization.findOne({ org_name: orgi_name, org_email: orgi_email, org_studentType: orgi_studentType });
     if (org) {
       return res.status(404).json({ success, error: "organization already exists" });
     }
@@ -77,6 +78,7 @@ export async function createOrganization(req: Request, res: Response): Promise<a
     const Org = new Organization({
       org_name: orgi_name,
       org_email: orgi_email,
+      org_studentType: orgi_studentType,
       org_code: orgi_code,
     });
     await Org.save();
@@ -107,9 +109,9 @@ export async function getAllOrg(req: Request, res: Response): Promise<any> {
 
 export async function getUsersOrg(req: Request, res: Response): Promise<any> {
   try {
-    const { org_name, org_email, org_code } = req.body;
+    const { org_name, org_email, org_studentType, org_code } = req.body;
 
-    const usersPerOrg = await User.find({ org_code: org_code });
+    const usersPerOrg = await User.find({ studentType: org_studentType, org_code: org_code });
     const Org = await Organization.findOne({ org_name: org_name, org_email: org_email });
 
     if (!usersPerOrg) {
@@ -128,9 +130,9 @@ export async function getUsersOrg(req: Request, res: Response): Promise<any> {
 
 export async function deleteOrgAlongWithUsers(req: Request, res: Response): Promise<any> {
   try {
-    const { org_name, org_email, org_code } = req.body;
+    const { org_name, org_email, org_studentType, org_code } = req.body;
 
-    const usersPerOrg = await User.find({ org_code: org_code });
+    const usersPerOrg = await User.find({ studentType: org_studentType, org_code: org_code });
 
     if (usersPerOrg.length > 0) {
       usersPerOrg.forEach(async user => {
@@ -138,15 +140,30 @@ export async function deleteOrgAlongWithUsers(req: Request, res: Response): Prom
           username: user.username,
           email: user.email
         });
+
+        const usernameFirst5 = user.username.slice(0, 5);
+        const emailFirst5 = user.email.slice(0, 5);
+
+        // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+        const customFolderName = `${usernameFirst5}${emailFirst5}`;
+        const folderPath = `src/runningPdfs/${customFolderName}`;
+
+        if (fs.existsSync(folderPath)) {
+          fsextra.remove(folderPath, (err) => {
+            if (err) {
+              console.error('Error deleting the folder:', err);
+            }
+          });
+        }
       });
     }
 
-    await OrganizationModel.findOneAndDelete({ 
+    await OrganizationModel.findOneAndDelete({
       org_name: org_name,
       org_email: org_email,
       org_code: org_code
     });
-    
+
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error finding users:', error);
@@ -203,26 +220,7 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
   try {
     const { username, email } = req.body;
 
-    const user = await User.findOneAndDelete({
-      username: username,
-      email: email
-    });
-
-    if (!user) {
-      res.status(400).json({ success: false, msg: 'User not found' });
-    }
-
-    res.status(200).json({ success: true, msg: 'User deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
-  }
-}
-
-export async function downloadPdf(req: Request, res: Response): Promise<any> {
-  try {
-    const { username, email } = req.body;
-
-    const existinguser = await User.find({
+    const existinguser = await User.findOneAndDelete({
       username: username,
       email: email
     })
@@ -259,6 +257,48 @@ export async function downloadPdf(req: Request, res: Response): Promise<any> {
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+// export async function downloadPdf(req: Request, res: Response): Promise<any> {
+//   try {
+//     const { username, email } = req.body;
+
+//     const existinguser = await User.find({
+//       username: username,
+//       email: email
+//     })
+
+//     if (existinguser) {
+//       // Extract the first 5 letters from 'username' and 'email'
+//       const usernameFirst5 = username.slice(0, 5);
+//       const emailFirst5 = email.slice(0, 5);
+
+//       // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+//       const customFolderName = `${usernameFirst5}${emailFirst5}`;
+//       const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
+
+//       // Check if the file exists
+//       if (!fs.existsSync(filePath)) {
+//         return res.status(404).send('File not found/created');
+//       }
+
+//       // Set the response headers to prompt a download
+//       res.setHeader('Content-disposition', `attachment; filename=feedback.pdf`);
+//       res.setHeader('Content-type', 'application/pdf');
+
+//       // Send the file as a download
+//       res.status(200).download(filePath, `feedback.pdf`, (err) => {
+//         if (err) {
+//           console.error('Error downloading file:', err);
+//           return res.status(500).send('Internal Server Error');
+//         }
+//       });
+//     } else {
+//       res.status(404).json({ success: false, message: 'User not found' });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// }
 
 export async function getOrganization(req: Request, res: Response): Promise<any> {
   let success = false;
@@ -299,7 +339,8 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
   try {
     const org = await Organization.findOne({
       org_name: req.body.org_name,
-      org_email: req.body.org_email
+      org_email: req.body.org_email,
+      org_studentType: req.body.org_studentType,
     }).select('-_id');
 
     if (!org) {
@@ -318,6 +359,7 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
 
     await sendEmail(email, subject, text, attachments);
 
+    res.status(200).json({ success: true });
     res.status(200).json({ success: true });
 
   } catch (error) {

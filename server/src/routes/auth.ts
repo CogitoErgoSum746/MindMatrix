@@ -13,10 +13,20 @@ const validate = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
+const allowedStudentTypes: string[] = ['High school', 'College', 'Professional'];
+
+const validateStudentType = (value: string) => {
+  if (!allowedStudentTypes.includes(value)) {
+    throw new Error('Invalid student type');
+  }
+  return true;
+};
+
 router.post('/createuser', [
   body('username', 'Username should contain at least 5 characters').isLength({ min: 5 }),
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password should contain at least 5 characters').isLength({ min: 5 }),
+  body('studentType').custom(validateStudentType),
   body('age', 'Age should be a number').isInt(),
   body('organization_code').isLength({ min: 4, max: 4 }).withMessage('Code should be 4 characters long'),
 ], validate, createUser);

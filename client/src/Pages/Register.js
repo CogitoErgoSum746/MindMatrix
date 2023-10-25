@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link ,useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for styling
 import registerImg from '../images/register.png';
@@ -10,15 +10,16 @@ const Register = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
+    studentType: '',
     age: '',
     password: '',
     organization_code: '', // Update the field name to match the backend
   });
 
   const [validationErrors, setValidationErrors] = useState({});
-  const [registrationError, setRegistrationError] = useState(''); 
+  const [registrationError, setRegistrationError] = useState('');
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +44,9 @@ const Register = () => {
     // Reset validation errors and registration error
     setValidationErrors({});
     setRegistrationError('');
+    // Reset validation errors and registration error
+    setValidationErrors({});
+    setRegistrationError('');
 
     try {
       const response = await fetch(`${API_BASE_URL}/auth/createuser`, {
@@ -61,6 +65,8 @@ const Register = () => {
         localStorage.setItem('token', token);
         navigate('/login');
 
+        navigate('/login');
+
 
       } else {
         const contentType = response.headers.get('content-type');
@@ -71,6 +77,7 @@ const Register = () => {
           // Handle validation errors here
           if (data.errors) {
             const errors = data.errors;
+
             const newValidationErrors = {};
 
             errors.forEach((error) => {
@@ -86,27 +93,37 @@ const Register = () => {
           if (data.error) {
             setRegistrationError(data.error);
             showRegistrationError(data.error);
-          }
-        } else {
-          console.error('Registration failed with non-JSON response');
-        }
-      }
-    } catch (error) {
-      console.error('Error during registration:', error);
-    }
-  };
+            newValidationErrors[path] = msg;
+            showRegistrationError(`${path}: ${msg}`); // Show validation errors in toast
+          };
 
-  return (
-    <>
-      <Navbar />
-      <div className="flex flex-row bg-black">
-        <div className="hidden md:block md:flex-1">
-          <img src={registerImg} alt="register" className="w-full h-auto" />
-        </div>
-        <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
-          <h2 className="text-3xl font-bold mb-10">Welcome</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+          setValidationErrors(newValidationErrors);
+        }
+
+        // Set the registration error message and display it using react-toastify
+        if (data.error) {
+          setRegistrationError(data.error);
+          showRegistrationError(data.error);
+        } else {
+        console.error('Registration failed with non-JSON response');
+      }
+    }
+    } catch (error) {
+    console.error('Error during registration:', error);
+  }
+};
+
+return (
+  <>
+    <Navbar />
+    <div className="flex flex-row bg-black">
+      <div className="hidden md:block md:flex-1">
+        <img src={registerImg} alt="register" className="w-full h-auto" />
+      </div>
+      <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
+        <h2 className="text-3xl font-bold mb-10">Welcome</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
               <label htmlFor="username" className="flex items-start text-gray-700 font-semibold mb-1">
                 Name *
               </label>
@@ -119,54 +136,73 @@ const Register = () => {
                 required
                 className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
               />
-            </div>
+          </div>
 
-            <div className="mb-4">
-              <label htmlFor="email" className="flex items-start text-gray-700 font-semibold mb-1">
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="flex items-start text-gray-700 font-semibold mb-1">
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+            />
+          </div>
 
-            <div className="mb-4">
-              <label htmlFor="age" className="flex items-start text-gray-700 font-semibold mb-1">
-                Age *
-              </label>
-              <input
-                type="number"
-                id="age"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-                required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="studentType" className="flex items-start text-gray-700 font-semibold mb-1">
+              Type *
+            </label>
+            <select
+              id="studentType"
+              name="studentType"
+              value={formData.studentType}
+              onChange={handleChange}
+              required
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+            >
+              <option value="">Select your type</option>
+              <option value="High school">High school</option>
+              <option value="College">College</option>
+              <option value="Professional">Professional</option>
+            </select>
+          </div>
 
-            <div className="mb-4">
-              <label htmlFor="password" className="flex items-start text-gray-700 font-semibold mb-1">
-                Password *
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="age" className="flex items-start text-gray-700 font-semibold mb-1">
+              Age *
+            </label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+              required
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+            />
+          </div>
 
-            <div className="mb-4">
+          <div className="mb-4">
+            <label htmlFor="password" className="flex items-start text-gray-700 font-semibold mb-1">
+              Password *
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+            />
+          </div>
+
+          <div className="mb-4">
               <label htmlFor="organization_code" className="flex items-start text-gray-700 font-semibold mb-1">
                 Organization Code
               </label>
@@ -178,25 +214,26 @@ const Register = () => {
                 onChange={handleChange}
                 className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
               />
-            </div>
+          </div>
 
-            <div className="mb-4">
-              <button
-                type="submit"
-                className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
-              >
-                Register
-              </button>
-              <Link to="/login" className="text-md text-gray-600">
-                Already a member? Login
-              </Link>
-            </div>
-          </form>
-        </div>
+          <div className="mb-4">
+            <button
+              type="submit"
+              className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
+            >
+              Register
+            </button>
+            <Link to="/login" className="text-md text-gray-600">
+              Already a member? Login
+            </Link>
+          </div>
+        </form>
       </div>
-      <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
-    </>
-  );
+    </div>
+    <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
+    <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
+  </>
+);
 };
 
 export default Register;

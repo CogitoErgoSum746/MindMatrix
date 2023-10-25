@@ -61,10 +61,10 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
   }
 
   try {
-    const { username, email, age, password, organization_code } = req.body;
-
+    const { username, email, studentType, age, password, organization_code } = req.body;
+    console.log(studentType);
     //check whether org_code exists
-    const org = await OrganizationModel.findOne({ org_code: organization_code });
+    const org = await OrganizationModel.findOne({ org_studentType: studentType, org_code: organization_code });
     if (!org) {
       return res.status(404).json({ success, error: "Organization code does not exist" });
     }
@@ -83,6 +83,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     const userCreated = await User.create({
       username: username,
       email: email,
+      studentType: studentType,
       age: age,
       password: secPass,
       org_code: organization_code,

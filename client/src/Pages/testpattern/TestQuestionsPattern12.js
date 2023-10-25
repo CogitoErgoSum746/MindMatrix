@@ -484,7 +484,7 @@ function TestQuestionsPattern12() {
         },
         {
           questionText:
-            "A reduction of 20% in the price of sugar enables a housewife to purchase 6 kg more for Rs. 240. What is the original price per kg of sugar.",
+            "20. A reduction of 20% in the price of sugar enables a housewife to purchase 6 kg more for Rs. 240. What is the original price per kg of sugar.",
           options: [
             { text: "A. Rs.10 per Kg", isCorrect: true },
             { text: "B. Rs.8 per Kg", isCorrect: false },

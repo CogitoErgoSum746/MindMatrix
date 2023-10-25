@@ -8,6 +8,7 @@ function AdminPanel() {
   const [organizations, setOrganizations] = useState([]);
   const [orgi_name, setName] = useState("");
   const [orgi_email, setEmail] = useState("");
+  const [orgi_studentType, setType] = useState("");
   const [username, setUsername] = useState("");
   const [email, setUserEmail] = useState("");
 
@@ -55,7 +56,7 @@ function AdminPanel() {
           "Content-Type": "application/json",
           authtoken: `${authtoken}`,
         },
-        body: JSON.stringify({ orgi_name, orgi_email }),
+        body: JSON.stringify({ orgi_name, orgi_email, orgi_studentType }),
       });
 
       if (response.ok) {
@@ -163,7 +164,7 @@ function AdminPanel() {
         alert('An error occurred while downloading the file.');
       });
   };
-  
+
 
   useEffect(() => {
     getAllOrganization();
@@ -189,6 +190,16 @@ function AdminPanel() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-1/3 p-2 border rounded mr-2"
           />
+          <select
+            value={orgi_studentType}
+            onChange={(e) => setType(e.target.value)}
+            className="w-1/3 p-2 border rounded mr-2"
+          >
+            <option value="">Select a student type</option>
+            <option value="High school">High school</option>
+            <option value="College">College</option>
+            <option value="Professional">Professional</option>
+          </select>
           {/* <input
             type="text"
             placeholder="Code"
@@ -202,7 +213,7 @@ function AdminPanel() {
           >
             Register
           </button>
-          <div>
+          {/* <div>
             <input
               type="text"
               placeholder="Enter Username"
@@ -224,7 +235,7 @@ function AdminPanel() {
             >
               Download Pdf
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div>

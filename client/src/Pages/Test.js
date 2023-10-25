@@ -54,7 +54,7 @@ function Test() {
       try {
         const authtoken = localStorage.getItem("authtoken");
 
-        const response = await fetch(`${API_BASE_URL}/user/totalTests`, {
+        const response = await fetch(`${API_BASE_URL}/user/schooltotaltests`, {
           method: "GET",
           headers: {
             authtoken: authtoken,
