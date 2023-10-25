@@ -110,11 +110,7 @@ function HomePage() {
     <>
       <Navbar />
       <Element name="discover">
-        <img
-          src={homebg}
-          className="w-full"
-          alt="Responsive Image"
-        />
+        <img src={homebg} className="w-full" alt="Responsive Image" />
 
         <div className="flex flex-row">
           <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
@@ -221,8 +217,6 @@ function HomePage() {
         </div>
       </Element>
 
-
-
       <Element name="psychometrictest">
         <div className="flex flex-row justify-between items-center">
           <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
@@ -269,7 +263,9 @@ function HomePage() {
               infinite={true}
               autoPlay={true}
               autoPlaySpeed={1200}
-              className="owl-carousel owl-theme skill-slider mt-10 flex justify-evenly"
+              // className="owl-carousel owl-theme skill-slider mt-10 flex justify-evenly"
+              className="skill-slider mt-10"
+              stopOnHover={true}
             >
               {images.map((image, index) => (
                 <div key={index} className="item">
