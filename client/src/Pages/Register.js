@@ -124,7 +124,6 @@ return (
         <h2 className="text-3xl font-bold mb-10">Welcome</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="username" className="flex items-start text-gray-700 font-semibold mb-1">
               <label htmlFor="username" className="flex items-start text-gray-700 font-semibold mb-1">
                 Name *
               </label>
@@ -204,7 +203,6 @@ return (
           </div>
 
           <div className="mb-4">
-            <label htmlFor="organization_code" className="flex items-start text-gray-700 font-semibold mb-1">
               <label htmlFor="organization_code" className="flex items-start text-gray-700 font-semibold mb-1">
                 Organization Code
               </label>
