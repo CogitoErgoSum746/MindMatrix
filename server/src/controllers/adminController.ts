@@ -8,7 +8,6 @@ import fs from 'fs';
 import fsextra from 'fs-extra';
 import path from 'path';
 import OrganizationModel from '../models/organizations';
-import OrganizationModel from '../models/organizations';
 
 async function sendEmail(
   to: string,
@@ -221,7 +220,7 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
   try {
     const { username, email } = req.body;
 
-    const user = await User.findOneAndDelete({
+    const existinguser = await User.findOneAndDelete({
       username: username,
       email: email
     })

@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Ellipse1 from "../../images/Ellipse1.png";
 import Ellipse2 from "../../images/Ellipse2.png";
-import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import Ellipse1 from "../../images/Ellipse1.png";
-import Ellipse2 from "../../images/Ellipse2.png";
 import Ellipse3 from "../../images/Ellipse3.png";
 import mechimg1 from "../../images/mechimg1.png";
 import mechimg2 from "../../images/mechimg2.png";
@@ -33,26 +29,18 @@ import abst20 from "../../images/abst/abst20.png";
 import mathfig from "../../images/mathfig.png";
 import spatial3 from "../../images/spatial3.png";
 import spatial11 from "../../images/spatial11.png";
-import mathfig from "../../images/mathfig.png";
-import spatial3 from "../../images/spatial3.png";
-import spatial11 from "../../images/spatial11.png";
 import { API_BASE_URL } from "../../config";
 
 function TestQuestionsPattern12() {
   const { subtestId } = useParams();
   const id = 12;
   const [isTestCompleted, setIsTestCompleted] = useState(false);
-  const id = 12;
-  const [isTestCompleted, setIsTestCompleted] = useState(false);
 
   const tests = {
     1: {
       title: "Linguistic",
-      title: "Linguistic",
       questions: [
         {
-          questionText:
-            "1. In the following analogy, which word completes the pair?\nFire: Hot: Ice: ______?",
           questionText:
             "1. In the following analogy, which word completes the pair?\nFire: Hot: Ice: ______?",
           options: [
@@ -72,232 +60,7 @@ function TestQuestionsPattern12() {
             { text: "D) rung", isCorrect: false },
           ],
         },
-          questionText:
-            "2. The telephone rang. The _________ of the telephone startled all of us",
-          options: [
-            { text: "A) ring", isCorrect: true },
-            { text: "B) rang", isCorrect: false },
-            { text: "C) ringing", isCorrect: false },
-            { text: "D) rung", isCorrect: false },
-          ],
-        },
 
-        {
-          questionText: `3. Choose the synonym for the word "Eager":`,
-          options: [
-            { text: "A) Angry", isCorrect: false },
-            { text: "B) Patient", isCorrect: false },
-            { text: "C) Enthusiastic", isCorrect: true },
-            { text: "D) Calm", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "4. He tried hard. He did not succeed.\n(Choose the most suitable passive voice)",
-          options: [
-            { text: "A) Trying hard, he did not succeed.", isCorrect: false },
-            { text: "B) He tried hard and did not succeed.", isCorrect: false },
-            {
-              text: "C) In spite of trying hard, he did not succeed.",
-              isCorrect: true,
-            },
-            {
-              text: "D) He tried hard in spite of he did not succeed.",
-              isCorrect: false,
-            },
-          ],
-        },
-        {
-          questionText:
-            "5. My house has a small kitchen garden _____ the back.",
-          options: [
-            { text: "A) On", isCorrect: false },
-            { text: "B) In", isCorrect: false },
-            { text: "C) By", isCorrect: false },
-            { text: "D) At", isCorrect: true },
-          ],
-        },
-        {
-          questionText: `6. Choose the correct antonym for the word "Brave":`,
-          options: [
-            { text: "A) Cowardly", isCorrect: true },
-            { text: "B) Strong", isCorrect: false },
-            { text: "C) Courageous", isCorrect: false },
-            { text: "D) Bold", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "7. Find the missing letter in the sequence: C, F, I, L, __ ?",
-          options: [
-            { text: "A) O", isCorrect: true },
-            { text: "B) P", isCorrect: false },
-            { text: "C) M", isCorrect: false },
-            { text: "D) N", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "8. You should not eat the uncovered food items.\n(Choose the most suitable passive voice)",
-          options: [
-            {
-              text: "A) Food items being uncovered should not be eaten by you.",
-              isCorrect: false,
-            },
-            {
-              text: "B) The uncovered food items not be eaten.",
-              isCorrect: false,
-            },
-            {
-              text: "C) The uncovered food items should not be eaten.",
-              isCorrect: true,
-            },
-            { text: "D) None of these", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "9. Find the missing word.\nParticular: Fussy ________ : Subservient",
-          options: [
-            { text: "A) Meek", isCorrect: true },
-            { text: "B) Above", isCorrect: false },
-            { text: "C) Cranky", isCorrect: false },
-            { text: "D) Upright", isCorrect: false },
-          ],
-        },
-        {
-          questionText: "10. He was excited _______ the upcoming trip.",
-          options: [
-            { text: "A) About", isCorrect: true },
-            { text: "B) With", isCorrect: false },
-            { text: "C) To", isCorrect: false },
-            { text: "D) For", isCorrect: false },
-          ],
-        },
-        {
-          questionText: "11. Pick the odd one out among the following:",
-          options: [
-            { text: "A) Tree", isCorrect: false },
-            { text: "B) Leaf", isCorrect: true },
-            { text: "C) Bush", isCorrect: false },
-            { text: "D) Herb", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            '12. I said to her, "I am writing an essay now."\n(Choose the most suitable indirect speech)',
-          options: [
-            {
-              text: "A) I told her that I was writing an essay then.",
-              isCorrect: true,
-            },
-            {
-              text: "B) I told her that I am writing an essay then.",
-              isCorrect: false,
-            },
-            {
-              text: "C) I told her that I was writing an essay now.",
-              isCorrect: false,
-            },
-            {
-              text: "D) I told to her that I was writing an essay then.",
-              isCorrect: false,
-            },
-          ],
-        },
-        {
-          questionText: '13. Choose the synonym for the word "Incredible":',
-          options: [
-            { text: "A) Ordinary", isCorrect: false },
-            { text: "B) Amazing", isCorrect: true },
-            { text: "C) Unimportant", isCorrect: false },
-            { text: "D) Ugly", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "14. Complete the sentence with the correct word:\nThe young child was _____ to eat ice cream.",
-          options: [
-            { text: "A) Agitated", isCorrect: false },
-            { text: "B) Anxious", isCorrect: false },
-            { text: "C) Afraid", isCorrect: false },
-            { text: "D) Eager", isCorrect: true },
-          ],
-        },
-        {
-          questionText:
-            "15. Rearrange the letters: 'T A L E R' to form a meaningful word that means vigilant.",
-          options: [
-            { text: "A) TALER", isCorrect: false },
-            { text: "B) RATLE", isCorrect: false },
-            { text: "C) ALERT", isCorrect: true },
-            { text: "D) LATER", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "16. Hello, I'd like to change some dollars into Indian rupees.\n(Choose the appropriate option)",
-          options: [
-            { text: "A) Getting money out.", isCorrect: false },
-            { text: "B) Asking a friend for money.", isCorrect: false },
-            { text: "C) Getting change.", isCorrect: false },
-            { text: "D) Changing currency.", isCorrect: true },
-          ],
-        },
-        {
-          questionText:
-            "17. __________yoga is a means of remaining calm even in disturbing situations.",
-          options: [
-            { text: "A) Practise", isCorrect: false },
-            { text: "B) To practice", isCorrect: false },
-            { text: "C) Practising", isCorrect: true },
-            { text: "D) Having practiced", isCorrect: false },
-          ],
-        },
-        {
-          questionText: "18. Which word does NOT belong in the group?",
-          options: [
-            { text: "A) Table", isCorrect: false },
-            { text: "B) Chair", isCorrect: false },
-            { text: "C) Refrigerator", isCorrect: true },
-            { text: "D) Sofa", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "19. Do you drive on_________ right or on _________left in the USA?",
-          options: [
-            { text: "A) the, a", isCorrect: false },
-            { text: "B) a, a", isCorrect: false },
-            {
-              text: "C) no article required, no article required",
-              isCorrect: false,
-            },
-            { text: "D) the, the", isCorrect: true },
-          ],
-        },
-        {
-          questionText:
-            "20. confuse | it | with | often effect green | house | people\n(Choose the rearranged sentence)",
-          options: [
-            {
-              text: "A) Greenhouse effect often people confuse with it.",
-              isCorrect: false,
-            },
-            {
-              text: "B) People often confuse it with greenhouse effect.",
-              isCorrect: true,
-            },
-            {
-              text: "C) Confuse it with greenhouse effect often people.",
-              isCorrect: false,
-            },
-            {
-              text: "D) Green house is often effect confuse with people.",
-              isCorrect: false,
-            },
-          ],
-        },
         {
           questionText: `3. Choose the synonym for the word "Eager":`,
           options: [
@@ -721,7 +484,7 @@ function TestQuestionsPattern12() {
         },
         {
           questionText:
-            "A reduction of 20% in the price of sugar enables a housewife to purchase 6 kg more for Rs. 240. What is the original price per kg of sugar.",
+            "20. A reduction of 20% in the price of sugar enables a housewife to purchase 6 kg more for Rs. 240. What is the original price per kg of sugar.",
           options: [
             { text: "A. Rs.10 per Kg", isCorrect: true },
             { text: "B. Rs.8 per Kg", isCorrect: false },
@@ -1384,217 +1147,6 @@ function TestQuestionsPattern12() {
         },
       ],
     },
-    5: {
-      title: "Spatial",
-      questions: [
-        {
-          questionText: "1. Which 2D shape has three sides and three angles?",
-          options: [
-            { text: "A) Square", isCorrect: false },
-            { text: "B) Circle", isCorrect: false },
-            { text: "C) Triangle", isCorrect: true },
-            { text: "D) Rectangle", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "2. Which 3D shape has all its sides equal in length and all its angles equal?",
-          options: [
-            { text: "A) Sphere", isCorrect: false },
-            { text: "B) Cone", isCorrect: false },
-            { text: "C) Cylinder", isCorrect: false },
-            { text: "D) Cube", isCorrect: true },
-          ],
-        },
-        {
-          questionText: "3. Which image depicting the same object shown",
-          options: [
-            { text: "A", isCorrect: false },
-            { text: "B", isCorrect: true },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
-          ],
-          imageUrl: spatial3,
-        },
-        {
-          questionText: "4. If you unfold a cube, which 2D shape will you get?",
-          options: [
-            { text: "A) Triangle", isCorrect: false },
-            { text: "B) Square", isCorrect: true },
-            { text: "C) Circle", isCorrect: false },
-            { text: "D) Rectangle", isCorrect: false },
-          ],
-        },
-        {
-          questionText: "5. Which 2D shape has no sides and no angles?",
-          options: [
-            { text: "A) Circle", isCorrect: true },
-            { text: "B) Triangle", isCorrect: false },
-            { text: "C) Rectangle", isCorrect: false },
-            { text: "D) Pentagon", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "6. If you rotate a shape 90° clockwise, which direction will it be facing?",
-          options: [
-            { text: "A) North", isCorrect: false },
-            { text: "B) South", isCorrect: false },
-            { text: "C) East", isCorrect: true },
-            { text: "D) West", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "7. Which 2D shape has four sides and four angles, where opposite sides are parallel and equal in length?",
-          options: [
-            { text: "A) Triangle", isCorrect: false },
-            { text: "B) Circle", isCorrect: false },
-            { text: "C) Square", isCorrect: true },
-            { text: "D) Pentagon", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "8. What do you call a line that divides a shape into two halves that are mirror images of each other??",
-          options: [
-            { text: "A) Perpendicular Line", isCorrect: false },
-            { text: "B) Parallel Line", isCorrect: false },
-            { text: "C) Bisecting Line", isCorrect: true },
-            { text: "D) Diagonal Line", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "9. If you look at a cube from the top, what shape will you see?",
-          options: [
-            { text: "A) Triangle", isCorrect: false },
-            { text: "B) Square", isCorrect: true },
-            { text: "C) Circle", isCorrect: false },
-            { text: "D) Hexagon", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "10. What is the term for the point where two rays meet to form an angle?",
-          options: [
-            { text: "A) Vertex", isCorrect: true },
-            { text: "B) Perpendicular", isCorrect: false },
-            { text: "C) Parallel", isCorrect: false },
-            { text: "D) Midpoint", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "11. In which of the four options is this cube shown from a different perspective?",
-          options: [
-            { text: "A", isCorrect: true },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
-          ],
-          imageUrl: spatial11,
-        },
-        {
-          questionText:
-            "12. If you rotate a shape by 180°, what will its orientation be?",
-          options: [
-            { text: "A) Same as the initial orientation", isCorrect: false },
-            {
-              text: "B) 90∘ clockwise from the initial orientation",
-              isCorrect: false,
-            },
-            {
-              text: "C) 90∘ counterclockwise from the initial orientation",
-              isCorrect: false,
-            },
-            {
-              text: "D) Upside down from the initial orientation",
-              isCorrect: true,
-            },
-          ],
-        },
-        {
-          questionText:
-            "13. What is the term for a line that crosses two parallel lines, creating equal angles on either side?",
-          options: [
-            { text: "A) Perpendicular Line", isCorrect: false },
-            { text: "B) Bisecting Line", isCorrect: false },
-            { text: "C) Diagonal Line", isCorrect: false },
-            { text: "D) Transversal Line", isCorrect: true },
-          ],
-        },
-        {
-          questionText: "14. Which 2D shape has five sides and five angles?",
-          options: [
-            { text: "A) Square", isCorrect: false },
-            { text: "B) Circle", isCorrect: false },
-            { text: "C) Triangle", isCorrect: false },
-            { text: "D) Pentagon", isCorrect: true },
-          ],
-        },
-        {
-          questionText:
-            "15. If you reflect a shape over a vertical line, what type of symmetry does it have?",
-          options: [
-            { text: "A) Rotational Symmetry", isCorrect: false },
-            { text: "B) Vertical Symmetry", isCorrect: false },
-            { text: "C) Diagonal Symmetry", isCorrect: false },
-            { text: "D) Reflectional Symmetry", isCorrect: true },
-          ],
-        },
-        {
-          questionText:
-            "16. Which 3D shape has a circular base and a curved surface that is not tapered to a point?",
-          options: [
-            { text: "A) Sphere", isCorrect: false },
-            { text: "B) Cone", isCorrect: false },
-            { text: "C) Cylinder", isCorrect: true },
-            { text: "D) Cube", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "17. What is the term for the distance around the outside of a shape or object?",
-          options: [
-            { text: "A) Area", isCorrect: false },
-            { text: "B) Perimeter", isCorrect: true },
-            { text: "C) Volume", isCorrect: false },
-            { text: "D) Diameter", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "18. Which term describes a 3D shape with all points equidistant from the centre?",
-          options: [
-            { text: "A) Sphere", isCorrect: true },
-            { text: "B) Cone", isCorrect: false },
-            { text: "C) Prism", isCorrect: false },
-            { text: "D) Pyramid", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "19. What is the term for a line that intersects two sides of a shape at right angles?",
-          options: [
-            { text: "A) Perpendicular Line", isCorrect: true },
-            { text: "B) Parallel Line", isCorrect: false },
-            { text: "C) Diagonal Line", isCorrect: false },
-            { text: "D) Transversal Line", isCorrect: false },
-          ],
-        },
-        {
-          questionText:
-            "20. What is the term for a straight path that goes on infinitely in both directions?",
-          options: [
-            { text: "A) Ray", isCorrect: false },
-            { text: "B) Line Segment", isCorrect: false },
-            { text: "C) Line", isCorrect: true },
-            { text: "D) Angle", isCorrect: false },
-          ],
-        },
-      ],
-    },
 
     6: {
       title: "Logical",
@@ -1805,13 +1357,9 @@ function TestQuestionsPattern12() {
   const [showScore, setShowScore] = useState(false);
 
   const handleOptionChange = (optionIndex) => {
-    const newScoresArray = [...scoresArray];
-    newScoresArray[questionIndex] = subtest.questions[questionIndex].options[optionIndex].isCorrect ? 1 : 0;
-    setScoresArray(newScoresArray);
     setSelectedOption(optionIndex);
   };
 
-  
   const handleNextQuestion = () => {
     if (questionIndex < subtest.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
@@ -1833,34 +1381,8 @@ function TestQuestionsPattern12() {
   const testType = "Aptitude";
   const score = totalScore;
 
-
-
   useEffect(() => {
     const fetchTestScores = async () => {
-      try {
-        const authtoken = localStorage.getItem("authtoken");
-        console.log(authtoken);
-        const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authtoken: authtoken,
-          },
-          body: JSON.stringify({
-            testType,
-            subCategory,
-          }),
-        });
-        console.log(response);
-        if (response.ok) {
-          console.log(response);
-          const score = await response.json();
-
-          // setScores(score);
-          console.log(score);
-          setShowScore(score);
-
-          if (score) {
       try {
         const authtoken = localStorage.getItem("authtoken");
         console.log(authtoken);
@@ -1890,16 +1412,10 @@ function TestQuestionsPattern12() {
         } else {
           console.error("Failed to fetch test scores");
         }
-          }
-        } else {
-          console.error("Failed to fetch test scores");
-        }
       } catch (error) {
         console.error("Error fetching test scores:", error);
       }
     };
-
-    if (subCategory && testType) {
 
     if (subCategory && testType) {
       fetchTestScores();
@@ -1909,18 +1425,6 @@ function TestQuestionsPattern12() {
   const sendTestDataToServer = async () => {
     try {
       const authtoken = localStorage.getItem("authtoken");
-      const response = await fetch(`${API_BASE_URL}/user/testResultToAPI`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authtoken: authtoken,
-        },
-        body: JSON.stringify({
-          testType,
-          subCategory,
-          score,
-        }),
-      });
       const response = await fetch(`${API_BASE_URL}/user/testResultToAPI`, {
         method: "POST",
         headers: {
@@ -1947,7 +1451,6 @@ function TestQuestionsPattern12() {
   return (
     <div className="container bg-white min-h-screen ">
       {!isTestCompleted && (
-      {!isTestCompleted && (
         <>
           <div className="hidden md:flex">
             <img
@@ -1967,58 +1470,7 @@ function TestQuestionsPattern12() {
             <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px"></img>
           </div>
         </>
-          <div className="hidden md:flex">
-            <img
-              src={Ellipse1}
-              alt="business"
-              className="absolute top-0 left-6 mb-20"
-              height="100px"
-            ></img>
-            <img
-              src={Ellipse2}
-              alt="business"
-              width="700px"
-              height="400px"
-              className="absolute top-0 left-80"
-              style={{ marginBottom: 40 }}
-            ></img>
-            <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px"></img>
-          </div>
-        </>
       )}
-
-      {!isTestCompleted && (
-        <>
-          <div className="p-10">
-            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-              Assessment Rating Criteria:{" "}
-            </h2>
-            <p className="text-left font-semibold mb-5">
-              Please evaluate each statement according to how often it applies
-              to your situation. Use the following scale:
-            </p>
-            <p className="text-left font-semibold mb-5 font-['Spartan'] ">
-              <strong>
-                If you answer correctly you will score 1 mark for each question.
-              </strong>
-            </p>
-          </div>
-        </>
-      )}
-
-      {/* <h1 className="text-2xl font-bold mb-4 text-white">{subtest.title}</h1> */}
-      <div className="w-full h-full flex items-center justify-center">
-        {isTestCompleted && (
-          <div
-            className="bg-white shadow-md p-4 rounded-lg mt-20 flex items-center justify-center"
-            style={{ width: 400, height: 300 }}
-          >
-            <p className="text-2xl font-semibold text-green-600 mb-5 text-center">
-              Test completed!
-            </p>
-          </div>
-        )}
-      </div>
 
       {!isTestCompleted && (
         <>
@@ -2138,93 +1590,7 @@ function TestQuestionsPattern12() {
             </div>
           )}
         </div>
-        <div className="p-10">
-          {showScore ? (
-            <div>
-              <p>Total Score: {totalScore}</p>
-            </div>
-          ) : (
-            <div className="mb-4">
-              <p className="text-lg mb-2 text-left ">
-                {subtest.questions[questionIndex].questionText}
-              </p>
-              <div className="flex flex-row justify-between">
-                <div className="mt-2 text-left">
-                  {subtest.questions[questionIndex].options.map(
-                    (option, optionIndex) => (
-                      <div key={optionIndex} className="mb-2">
-                        <label className="inline-flex justify-items-start">
-                          <input
-                            type="radio"
-                            className="form-radio h-5 w-5"
-                            name={`question-${questionIndex}`}
-                            value={optionIndex}
-                            checked={selectedOption === optionIndex}
-                            onChange={() => handleOptionChange(optionIndex)}
-                          />
-                          <span
-                            className="ml-3 bg-gray-300 p-3 block"
-                            style={{ width: "300px" }}
-                          >
-                            {option.text}
-                          </span>
-                        </label>
-                      </div>
-                    )
-                  )}
-                </div>
-                <div className="flex text-right mr-20">
-                  {subtest.questions[questionIndex].imageUrl && (
-                    <img
-                      src={subtest.questions[questionIndex].imageUrl}
-                      alt="Question Image"
-                    />
-                  )}
-                </div>
-              </div>
-              {showScore && (
-                <p className="text-white">
-                  {selectedOption ===
-                  subtest.questions[questionIndex].options.findIndex(
-                    (option) => option.isCorrect
-                  )
-                    ? "Correct! You earned 1 point."
-                    : "Incorrect. You earned 0 points."}
-                </p>
-              )}
-              <div className="mt-4">
-                {selectedOption !== null ? (
-                  questionIndex === subtest.questions.length - 1 ? (
-                    <Link to={`/test/${id}`}>
-                      <button
-                        onClick={sendTestDataToServer}
-                        className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl"
-                      >
-                        Submit Test Data
-                      </button>
-                    </Link>
-                  ) : (
-                    <button
-                      className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl"
-                      onClick={handleNextQuestion}
-                    >
-                      Next Question {">"}
-                    </button>
-                  )
-                ) : (
-                  <button
-                    disabled
-                    className="bg-gray-300 p-2 rounded-full font-semibold text-xl"
-                  >
-                    Next Question {">"}
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
       )}
-    </div>
     </div>
   );
 }

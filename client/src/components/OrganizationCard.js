@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}) {
-function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}) {
 
 
   return (
