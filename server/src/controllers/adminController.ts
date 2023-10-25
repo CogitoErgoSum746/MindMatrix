@@ -241,6 +241,8 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
           }
         });
       }
+
+      res.status(200).json({ success: true});
     } else {
       res.status(404).json({ success: false, message: 'User not found' });
     }
