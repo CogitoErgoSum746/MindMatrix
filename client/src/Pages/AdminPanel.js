@@ -73,7 +73,7 @@ function AdminPanel() {
     }
   };
 
-  const handleDeleteOrganization = async (org_name, org_email, org_code) => {
+  const handleDeleteOrganization = async (org_name, org_email,  org_studentType,org_code,) => {
     const confirmDelete = window.confirm(
       `Are you sure you want to delete the organization "${org_name}"? This will delete all associated users.`
     );
@@ -87,7 +87,7 @@ function AdminPanel() {
             "Content-Type": "application/json",
             authtoken: `${authtoken}`,
           },
-          body: JSON.stringify({ org_name, org_email, org_code }),
+          body: JSON.stringify({ org_name, org_email, org_code,org_studentType}),
         })
           .then((response) => {
             if (response.ok) {
