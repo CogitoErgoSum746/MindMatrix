@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for styling
-import registerImg from '../images/register.png';
-import Navbar from '../components/Navbar';
-import { API_BASE_URL } from '../config';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import registerImg from "../images/register.png";
+import Navbar from "../components/Navbar";
+import { API_BASE_URL } from "../config";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    studentType: '',
-    age: '',
-    password: '',
-    organization_code: '', // Update the field name to match the backend
+    username: "",
+    email: "",
+    studentType: "",
+    age: "",
+    password: "",
+    organization_code: "", // Make sure this matches the backend field name
   });
 
   const [validationErrors, setValidationErrors] = useState({});
-  const [registrationError, setRegistrationError] = useState('');
+  const [registrationError, setRegistrationError] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,9 +28,11 @@ const Register = () => {
       [name]: value,
     });
 
+  
+
     setValidationErrors({
       ...validationErrors,
-      [name]: '',
+      [name]: "",
     });
   };
 
@@ -43,36 +45,31 @@ const Register = () => {
 
     // Reset validation errors and registration error
     setValidationErrors({});
-    setRegistrationError('');
-    // Reset validation errors and registration error
-    setValidationErrors({});
-    setRegistrationError('');
+    setRegistrationError("");
 
     try {
       const response = await fetch(`${API_BASE_URL}/auth/createuser`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Registration successful:', data);
+        console.log("Registration successful:", data);
 
         const token = data.token;
-        localStorage.setItem('token', token);
-        navigate('/login');
-
-
+        localStorage.setItem("token", token);
+        navigate("/login");
       } else {
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
           const data = await response.json();
-          console.error('Registration failed:', data);
+          console.error("Registration failed:", data);
 
-          // Handle validation errors here
+  
           if (data.errors) {
             const errors = data.errors;
 
@@ -81,7 +78,7 @@ const Register = () => {
             errors.forEach((error) => {
               const { path, msg } = error;
               newValidationErrors[path] = msg;
-              showRegistrationError(`${path}: ${msg}`); // Show validation errors in toast
+              showRegistrationError(`${path}: ${msg}`);
             });
 
             setValidationErrors(newValidationErrors);
@@ -93,17 +90,13 @@ const Register = () => {
 
             setRegistrationError(data.error);
             showRegistrationError(data.error);
-            newValidationErrors[path] = msg;
-            showRegistrationError(`${path}: ${msg}`); // Show validation errors in toast
-
-            setValidationErrors(newValidationErrors);
-          };
+          }
         } else {
-          console.error('Registration failed with non-JSON response');
+          console.error("Registration failed with non-JSON response");
         }
       }
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error("Error during registration:", error);
     }
   };
 
@@ -118,7 +111,10 @@ const Register = () => {
           <h2 className="text-3xl font-bold mb-10">Welcome</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="username" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label
+                htmlFor="username"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
                 Name *
               </label>
               <input
@@ -133,7 +129,10 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="email" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label
+                htmlFor="email"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
                 Email *
               </label>
               <input
@@ -148,7 +147,10 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="studentType" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label
+                htmlFor="studentType"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
                 Type *
               </label>
               <select
@@ -167,7 +169,10 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="age" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label
+                htmlFor="age"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
                 Age *
               </label>
               <input
@@ -182,7 +187,10 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="password" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label
+                htmlFor="password"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
                 Password *
               </label>
               <input
@@ -197,7 +205,10 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="organization_code" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label
+                htmlFor="organization_code"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
                 Organization Code
               </label>
               <input
@@ -224,8 +235,7 @@ const Register = () => {
           </form>
         </div>
       </div>
-      <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
-      <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
+      <ToastContainer autoClose={3000} />
     </>
   );
 };
