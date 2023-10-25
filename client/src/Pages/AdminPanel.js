@@ -25,7 +25,8 @@ function AdminPanel() {
 
   // Function to send an email with the organization details
 
-  const handleSendCodeToEmail = async (org_name, org_email) => {
+  const handleSendCodeToEmail = async (org_name, org_email,org_studentType) => {
+   
     try {
       const authtoken = localStorage.getItem("authtoken");
       const response = await fetch(`${API_BASE_URL}/admin/sendcodetoemail`, {
@@ -34,10 +35,10 @@ function AdminPanel() {
           "Content-Type": "application/json",
           authtoken: `${authtoken}`,
         },
-        body: JSON.stringify({ org_name, org_email }),
+        body: JSON.stringify({ org_name, org_email,org_studentType }),
         // Make sure org_email is the recipient's email address
       });
-      console.log(org_email);
+      console.log(org_studentType)
       if (response.ok) {
         console.log("Email sent successfully");
       } else {
@@ -72,7 +73,7 @@ function AdminPanel() {
     }
   };
 
-  const handleDeleteOrganization = async (org_name, org_email, org_code) => {
+  const handleDeleteOrganization = async (org_name, org_email,  org_studentType,org_code,) => {
     const confirmDelete = window.confirm(
       `Are you sure you want to delete the organization "${org_name}"? This will delete all associated users.`
     );
@@ -86,7 +87,7 @@ function AdminPanel() {
             "Content-Type": "application/json",
             authtoken: `${authtoken}`,
           },
-          body: JSON.stringify({ org_name, org_email, org_code }),
+          body: JSON.stringify({ org_name, org_email, org_code,org_studentType}),
         })
           .then((response) => {
             if (response.ok) {

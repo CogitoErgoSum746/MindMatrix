@@ -47,7 +47,8 @@ function Test() {
 
   const [remainingTests, setRemainingTests] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [pdfSent, setPdfSent] = useState(false); // Add state for PDF sent
+  const [pdfSent, setPdfSent] = useState(false);
+  const [careerOptions, setCareerOptions] = useState(null); // Add state for PDF sent
 
   useEffect(() => {
     async function fetchTotalTests() {
@@ -74,6 +75,28 @@ function Test() {
     }
 
     fetchTotalTests();
+
+    async function checkCareeroptions() {
+      try {
+        const authtoken = localStorage.getItem("authtoken");
+        const response = await fetch(`${API_BASE_URL}/user/checkcarreerlist`, {
+          method: "GET",
+          headers: {
+            authtoken: authtoken,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setCareerOptions(data.status);
+        } else {
+          console.error("error checking career option");
+        }
+      } catch (error) {
+        console.error("Error checking career options:", error);
+      }
+    }
+
+    checkCareeroptions();
   }, []);
 
   const handleGeneratePDF = async () => {
@@ -148,7 +171,9 @@ function Test() {
 
           {tests.map((test) => (
             <div className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex justify-between items-center">
-              <h1 className="text-lg font-semibold font-['Inter']">{test.name}</h1>
+              <h1 className="text-lg font-semibold font-['Inter']">
+                {test.name}
+              </h1>
               {remainingTests && remainingTests[test.name] > 0 ? (
                 <div className="flex items-center">
                   <div className="p-2 bg-blue-100 rounded-lg ml-3">
@@ -162,9 +187,23 @@ function Test() {
                 </div>
               ) : (
                 <div>
-                  <button className="bg-green-500 px-4 py-2 rounded-full text-black font-['Inter']">
-                    Completed
-                  </button>
+                  {test.id === 2 ? (
+                    careerOptions ? (
+                      <button className="bg-green-500 px-4 py-2 rounded-full text-black font-['Inter']">
+                        Completed
+                      </button>
+                    ) : (
+                      <Link to={`/test/${test.id}`}>
+                      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black font-['Inter']">
+                        Start Test
+                      </button>
+                      </Link>
+                    )
+                  ) : (
+                    <button className="bg-green-500 px-4 py-2 rounded-full text-black font-['Inter']">
+                      Completed
+                    </button>
+                  )}
                 </div>
               )}
             </div>

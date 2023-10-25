@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
 
 function Mltest({ id }) {
   const subtests = [
@@ -13,30 +14,72 @@ function Mltest({ id }) {
     { id: 8, name: 'Kinaesthetic' },
   ];
 
+  const [allSubtestsCompleted, setAllSubtestsCompleted] = useState(false);
+
+
+  
+  useEffect(() => {
+    const checkAllSubtestsCompleted = async () => {
+      try {
+        const authtoken = localStorage.getItem("authtoken");
+        const response = await fetch(`${API_BASE_URL}/user/checksubscore`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authtoken: authtoken,
+          },
+          body: JSON.stringify({ testType: "Multiple Intelligence" }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.status) {
+            setAllSubtestsCompleted(true);
+          }
+        } else {
+          console.error("Checking subtest completion failed:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error during subtest completion check:", error);
+      }
+    };
+
+    checkAllSubtestsCompleted();
+
+  }, []);
+
   return (
     <div className="bg-white min-h-screen p-10">
       <h1 className="text-2xl font-bold text-black mb-8 font-['Inter']">Multiple Intelligence</h1>
-      <h1 className="text-black font-['Inter']">See Various career options</h1>
-        <Link to="/test/2/careeropt">
-          <button className=
-          "bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-lg mb-4 font-['Inter']">Next</button>
+      <div className="flex justify-start ml-5 mb-10">
+        <Link to="/test">
+          <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-left font-semibold font-['Inter']">{"<"}Go Back</button>
         </Link>
-        <div className='flex justify-start ml-5 mb-10'>
-      <Link to="/test">
-      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 text-left font-semibold font-['Inter']">{"<"}Go Back</button>
-      </Link>
       </div>
       <div className="grid gap-4">
         {subtests.map((subtest) => (
           <Link key={subtest.id} to={`/test/${id}/${subtest.id}`}>
             <div className="bg-white p-6 rounded-lg shadow-md flex items-center justify-between hover:bg-gray-100 transition duration-300">
               <h3 className="text-lg font-semibold text-gray-800 font-['Inter']">{subtest.name}</h3>
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white hover:text-white hover:bg-yellow-500 transition duration-300 font-['Inter']">
+              <button
+                className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-white hover:text-white hover:bg-yellow-500 transition duration-300 font-['Inter']"
+              >
                 Start Test
               </button>
             </div>
           </Link>
         ))}
+      </div>
+      <div>
+      <h1 className="text-black font-['Inter'] mt-10 text-xl">See Various career options</h1>
+      <Link to="/test/2/careeropt">
+        <button
+          className={`bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-lg mb-4 mt-4 font-['Inter'] ${allSubtestsCompleted ? '' : 'cursor-not-allowed opacity-50'}`}
+          disabled={!allSubtestsCompleted}
+        >
+          Career Options
+        </button>
+      </Link>
       </div>
     </div>
   );
