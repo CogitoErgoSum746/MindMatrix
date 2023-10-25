@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
+import { Link } from "react-router-dom";
 
 function CareerOptions() {
   const [sortedNames, setSortedNames] = useState([]);
@@ -961,12 +962,14 @@ function CareerOptions() {
           </button>
 
           {selectedPriorities.length === 10 && (
+            <Link to="/test">
             <button
               onClick={sendCareerOptionsToBackend}
               className="bg-blue-500 text-white p-2 rounded-md mt-2"
             >
               Send Career Options to Backend
             </button>
+            </Link>
           )}
         </div>
       )}

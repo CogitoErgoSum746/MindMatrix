@@ -308,6 +308,53 @@ function TestQuestionsPattern2() {
       title: "Intrapersonal",
       questions: [
         {
+          questionText: "1.	I know myself well.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText: "2.	I have a few close friends.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText: "3.	I have strong opinions about controversial issues.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText: "4.	I work best when the activity is self-paced.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText: "5.	I am not easily influenced by other people.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText:
+            "6.	I have a good understanding of my feelings and how I will react to situations.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText:
+            "7.	I often raise questions concerning values and beliefs.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
+          questionText: "8.	I enjoy working on my own.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ],
+    },
+    8: {
+      title: "Kinesthetic",
+      questions: [
+        {
           questionText: "1.	I like to move, tap or fidget when sitting.  ",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
@@ -348,53 +395,6 @@ function TestQuestionsPattern2() {
         {
           questionText:
             "8.	I like to think through problems while I walk or run.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-      ],
-    },
-    8: {
-      title: "Kinesthetic",
-      questions: [
-        {
-          questionText: "1.	I know myself well.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "2.	I have a few close friends.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "3.	I have strong opinions about controversial issues.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "4.	I work best when the activity is self-paced.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "5.	I am not easily influenced by other people.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText:
-            "6.	I have a good understanding of my feelings and how I will react to situations.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText:
-            "7.	I often raise questions concerning values and beliefs.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "8.	I enjoy working on my own.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
