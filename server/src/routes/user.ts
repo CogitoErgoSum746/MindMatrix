@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import { body, check } from 'express-validator';
-import { getUser, userDashboard, getTestResults, sendPdfToEmail, tektest, makeFinalPdf, checkScore, carreerOptions, checkSubscores, multipleIRank, deleteTestResult, schoolTotalTests, collegeTotalTests, professionalTotalTests } from '../controllers/UserController';
+import { getUser, userDashboard, getTestResults, sendPdfToEmail, tektest, makeFinalPdf, checkScore, carreerOptions, checkSubscores, multipleIRank, deleteTestResult, schoolTotalTests, collegeTotalTests, professionalTotalTests, doneCarreerList } from '../controllers/UserController';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -22,6 +22,8 @@ router.get('/professionaltotaltests', fetchUser, professionalTotalTests);
 router.get('/tektest', fetchUser, tektest);
 
 router.post('/carreerOptions', fetchUser, carreerOptions);
+
+router.get('/checkcarreerlist', fetchUser, doneCarreerList);
 
 router.post('/testResultToAPI', fetchUser, getTestResults); // One single route for every test result
 // just use: {

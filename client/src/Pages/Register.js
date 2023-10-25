@@ -86,6 +86,8 @@ const Register = () => {
 
           // Set the registration error message and display it using react-toastify
           if (data.error) {
+            const newValidationErrors = {};
+
             setRegistrationError(data.error);
             showRegistrationError(data.error);
           }

@@ -657,20 +657,20 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
 
     const carreerOptions = existingUser?.carreerOptions;
 
-    const customSort = (arr: any) => {
-        return arr.reduce((sorted: any, item: any) => {
-            const index = sorted.findIndex((el: any) => item.priority > el.priority);
-            if (index === -1) {
-                sorted.push(item);
-            } else {
-                sorted.splice(index, 0, item);
-            }
-            return sorted;
-        }, []);
-    };
+    // const customSort = (arr: any) => {
+    //     return arr.reduce((sorted: any, item: any) => {
+    //         const index = sorted.findIndex((el: any) => item.priority > el.priority);
+    //         if (index === -1) {
+    //             sorted.push(item);
+    //         } else {
+    //             sorted.splice(index, 0, item);
+    //         }
+    //         return sorted;
+    //     }, []);
+    // };
 
-    const sortedcarOpts = customSort(carreerOptions);
-    const sortedNames = sortedcarOpts.map((carreer: any) => carreer.name);
+    // const sortedcarOpts = customSort(carreerOptions);
+    // const sortedNames = sortedcarOpts.map((carreer: any) => carreer.name);
 
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
@@ -691,7 +691,7 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     let xd = Xd;
     let yd = Yd;
 
-    for (const line of sortedNames) {
+    for (const line of carreerOptions as Array<string>) {
         page.drawText(line, {
             x: xd,
             y: yd,
