@@ -218,24 +218,18 @@ export async function checkSubscores(req: Request, res: Response): Promise<void>
         const subcategories = testResult.subcategories;
 
         if (subcategories) {
-          const customSort = (arr: any) => {
-            return arr.reduce((sorted: any, item: any) => {
-              const index = sorted.findIndex((el: any) => item.score > el.score);
-              if (index === -1) {
-                sorted.push(item);
-              } else {
-                sorted.splice(index, 0, item);
-              }
-              return sorted;
-            }, []);
-          };
+          const general = 8;
+          const subcategoryCount = subcategories ? subcategories.length : 0;
 
-          const sortedSubcategories = customSort(subcategories);
-          const sortedNames = sortedSubcategories.map((subcategory: any) => subcategory.name);
+          let diffsubs = general - subcategoryCount;
 
-          console.log(sortedNames);
-          res.status(200).json({ subcategories: subcategories });
-          return;
+          if (diffsubs == 0) {
+            res.status(200).json({ status: true });
+            return;
+          } else {
+            res.status(200).json({ status: false });
+            return;
+          }
         } else {
           res.status(404).json({ message: 'No subcategories found' });
           return;
@@ -509,7 +503,7 @@ export async function sendPdfToEmail(req: Request, res: Response): Promise<void>
     const subject = "Psychometric Test Report";
     const text = `Dear ${username}!\n\nSharing with you the psychometric test report.  Attached is a comprehensive report that explores multiple facets of your personality, offers career recommendations, identifies your strengths, and points out areas for potential growth.\n\nWe highly encourage you to set aside some dedicated time for a thorough review of the report, allowing yourself the opportunity to reflect deeply on the valuable insights it offers. This information can be a valuable tool on your journey of self-discovery and personal development.\n\nIf you have any queries or require any assistance in understanding your results or setting goals based on them, please do not hesitate to reach out to us. Our team is here to support you in making the most of this valuable resource.\n\nThank you for choosing us as your trusted partner in self-discovery. We look forward to accompanying you on your path to personal growth and self-awareness.\n\nWarm regards,\n\nDr. Antony Augusthy`;
     const attachments = [{
-      filename:   `${username}.pdf`,
+      filename: `${username}.pdf`,
       path: filePath,
     }];
 
@@ -549,7 +543,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
     const sourcePdfPath = path.join(sourceFolderPath, 'yay.pdf');
 
-    
+
     const destinationPdfPath = path.join(customFolderPath, pdfFileName);
     fs.copyFileSync(sourcePdfPath, destinationPdfPath);
 
@@ -596,6 +590,33 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
     res.status(500).json({ error: 'Internal server error' });
   }
 
+}
+
+export async function doneCarreerList(req: Request, res: Response): Promise<void> {
+  try {
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    const carreerOptions = existingUser?.carreerOptions;
+
+    if (carreerOptions) {
+      if (carreerOptions.length > 0) {
+        res.status(200).json({ status: true });
+        return;
+      } else {
+        res.status(200).json({ status: false });
+        return;
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
 }
 
 export async function multipleIRank(req: Request, res: Response): Promise<void> {
