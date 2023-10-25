@@ -38,9 +38,16 @@ const Register = () => {
     toast.error(error, { position: toast.POSITION.TOP_CENTER });
   };
 
+  const showRegistrationError = (error) => {
+    toast.error(error, { position: toast.POSITION.TOP_CENTER });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Reset validation errors and registration error
+    setValidationErrors({});
+    setRegistrationError('');
     // Reset validation errors and registration error
     setValidationErrors({});
     setRegistrationError('');
@@ -62,6 +69,8 @@ const Register = () => {
         localStorage.setItem('token', token);
         navigate('/login');
 
+        navigate('/login');
+
 
       } else {
         const contentType = response.headers.get('content-type');
@@ -74,8 +83,21 @@ const Register = () => {
             const errors = data.errors;
             const newValidationErrors = {};
 
+            const newValidationErrors = {};
+
             errors.forEach((error) => {
               const { path, msg } = error;
+              newValidationErrors[path] = msg;
+              showRegistrationError(`${path}: ${msg}`); // Show validation errors in toast
+            });
+
+            setValidationErrors(newValidationErrors);
+          }
+
+          // Set the registration error message and display it using react-toastify
+          if (data.error) {
+            setRegistrationError(data.error);
+            showRegistrationError(data.error);
               newValidationErrors[path] = msg;
               showRegistrationError(`${path}: ${msg}`); // Show validation errors in toast
             });
@@ -108,6 +130,7 @@ const Register = () => {
           <h2 className="text-3xl font-bold mb-10">Welcome</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
+              <label htmlFor="username" className="flex items-start text-gray-700 font-semibold mb-1">
               <label htmlFor="username" className="flex items-start text-gray-700 font-semibold mb-1">
                 Name *
               </label>
@@ -188,6 +211,7 @@ const Register = () => {
 
             <div className="mb-4">
               <label htmlFor="organization_code" className="flex items-start text-gray-700 font-semibold mb-1">
+              <label htmlFor="organization_code" className="flex items-start text-gray-700 font-semibold mb-1">
                 Organization Code
               </label>
               <input
@@ -214,6 +238,7 @@ const Register = () => {
           </form>
         </div>
       </div>
+      <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
       <ToastContainer autoClose={3000} /> {/* Toast container for notifications */}
     </>
   );

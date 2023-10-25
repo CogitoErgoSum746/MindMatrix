@@ -8,6 +8,7 @@ import fs from 'fs';
 import fsextra from 'fs-extra';
 import path from 'path';
 import OrganizationModel from '../models/organizations';
+import OrganizationModel from '../models/organizations';
 
 async function sendEmail(
   to: string,
@@ -223,13 +224,36 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
     const user = await User.findOneAndDelete({
       username: username,
       email: email
-    });
+    })
 
-    if (!user) {
-      res.status(400).json({ success: false, msg: 'User not found' });
+    if (existinguser) {
+      // Extract the first 5 letters from 'username' and 'email'
+      const usernameFirst5 = username.slice(0, 5);
+      const emailFirst5 = email.slice(0, 5);
+
+      // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+      const customFolderName = `${usernameFirst5}${emailFirst5}`;
+      const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
+
+      // Check if the file exists
+      if (!fs.existsSync(filePath)) {
+        return res.status(404).send('File not found/created');
+      }
+
+      // Set the response headers to prompt a download
+      res.setHeader('Content-disposition', `attachment; filename=feedback.pdf`);
+      res.setHeader('Content-type', 'application/pdf');
+
+      // Send the file as a download
+      res.status(200).download(filePath, `feedback.pdf`, (err) => {
+        if (err) {
+          console.error('Error downloading file:', err);
+          return res.status(500).send('Internal Server Error');
+        }
+      });
+    } else {
+      res.status(404).json({ success: false, message: 'User not found' });
     }
-
-    res.status(200).json({ success: true, msg: 'User deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -336,6 +360,7 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
 
     await sendEmail(email, subject, text, attachments);
 
+    res.status(200).json({ success: true });
     res.status(200).json({ success: true });
 
   } catch (error) {

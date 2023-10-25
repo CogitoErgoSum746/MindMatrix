@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}) {
+function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}) {
 
 
   return (
@@ -11,6 +12,8 @@ function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}
       <p>Email: {org.org_email}</p>
       <p>Type: {org.org_studentType}</p>
       <p>Code: {org.org_code}</p>
+      </Link>
+      <Link to="/admin">
       </Link>
       <Link to="/admin">
       <button

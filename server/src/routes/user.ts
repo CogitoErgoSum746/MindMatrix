@@ -32,6 +32,8 @@ router.post('/testResultToAPI', fetchUser, getTestResults); // One single route 
 
 router.post('/deletetest', fetchUser, deleteTestResult);
 
+router.post('/deletetest', fetchUser, deleteTestResult);
+
 router.get('/makepdf', fetchUser, makeFinalPdf);
 
 export default router;
