@@ -218,22 +218,11 @@ export async function checkSubscores(req: Request, res: Response): Promise<void>
         const subcategories = testResult.subcategories;
 
         if (subcategories) {
-          const customSort = (arr: any) => {
-            return arr.reduce((sorted: any, item: any) => {
-              const index = sorted.findIndex((el: any) => item.score > el.score);
-              if (index === -1) {
-                sorted.push(item);
-              } else {
-                sorted.splice(index, 0, item);
-              }
-              return sorted;
-            }, []);
-          };
+          const general = 8;
+          const subcategoryCount = subcategories ? subcategories.length : 0;
 
-          const sortedSubcategories = customSort(subcategories);
-          const sortedNames = sortedSubcategories.map((subcategory: any) => subcategory.name);
+          let diffsubs = general - subcategoryCount;
 
-          console.log(sortedNames);
           res.status(200).json({ subcategories: subcategories });
           return;
         } else {
