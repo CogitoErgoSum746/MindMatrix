@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import business from '../images/business1.png'
 import { Link } from "react-router-dom";
 import Ellipse1 from "../images/Ellipse1.png";
 import Ellipse2 from "../images/Ellipse2.png";
 import Ellipse3 from "../images/Ellipse3.png";
-import Navbar from "../components/Navbar";
 import { API_BASE_URL } from "../config";
 
 function Test() {
@@ -49,22 +47,19 @@ function Test() {
 
   const [remainingTests, setRemainingTests] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [pdfSent, setPdfSent] = useState(false); // Add state for PDF sent
 
   useEffect(() => {
-    // Create a function to fetch data from the backend
     async function fetchTotalTests() {
       try {
-        const authtoken = localStorage.getItem("authtoken"); // Use 'authtoken' as the key to retrieve the token from local storage
-        console.log(authtoken);
+        const authtoken = localStorage.getItem("authtoken");
 
-        const response = await fetch(`${API_BASE_URL}/user/totalTests`, {
+        const response = await fetch(`${API_BASE_URL}/user/schooltotaltests`, {
           method: "GET",
           headers: {
-            authtoken: authtoken, // Include the token in the Authorization header
+            authtoken: authtoken,
           },
         });
-
-        console.log(response);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -78,7 +73,6 @@ function Test() {
       }
     }
 
-    // Call the function to fetch remaining test counts when the component mounts
     fetchTotalTests();
   }, []);
 
@@ -95,11 +89,9 @@ function Test() {
       });
 
       if (response.ok) {
-        // PDF generated and sent successfully
-        // You can add additional logic here, e.g., show a success message to the user
         console.log("PDF generated and sent");
+        setPdfSent(true); // Update state when PDF is sent
       } else {
-        // Handle error, e.g., show an error message
         console.error("Error generating PDF");
       }
     } catch (error) {
@@ -109,9 +101,8 @@ function Test() {
     }
   };
 
-  // Check if there are any remaining tests
-  const areTestsRemaining = Object.values(remainingTests || {}).some(
-    (count) => count > 0
+  const areTestsRemaining = Object.values(remainingTests || {}).every(
+    (count) => count === 0
   );
 
   return (
@@ -133,10 +124,10 @@ function Test() {
         />
         <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
 
-        <h1 className="text-4xl font-semibold text-white absolute top-1/3 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-justify mb-20">
+        <h1 className="text-4xl font-semibold text-white absolute top-1/3 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-justify mb-20 font-['Inter'] uppercase leading-10">
           GET ALL YOUR <br />
           <span
-            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 "
+            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10"
             style={{ lineHeight: "1" }}
           >
             PSYCHOMETRIC
@@ -146,36 +137,55 @@ function Test() {
           HERE
         </h1>
 
-        <div className="flex flex-col bg-white mt-10 p-10 ">
+        <div className="flex flex-col bg-white mt-10 p-10">
+          <div className="flex justify-start ml-5 mb-10">
+            <Link to="/">
+              <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover-bg-yellow-500 transition duration-300 text-left font-semibold font-['Inter'] uppercase leading-10">
+                {"<"}Go Back
+              </button>
+            </Link>
+          </div>
+
           {tests.map((test) => (
             <div className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex justify-between items-center">
-              <h1 className="text-lg font-semibold">{test.name}</h1>
-              {remainingTests && remainingTests[test.name] && (
+              <h1 className="text-lg font-semibold font-['Inter']">{test.name}</h1>
+              {remainingTests && remainingTests[test.name] > 0 ? (
                 <div className="flex items-center">
                   <div className="p-2 bg-blue-100 rounded-lg ml-3">
                     {remainingTests[test.name]} remaining
                   </div>
+                  <Link to={`/test/${test.id}`}>
+                    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black font-['Inter']">
+                      Start Test
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div>
+                  <button className="bg-green-500 px-4 py-2 rounded-full text-black font-['Inter']">
+                    Completed
+                  </button>
                 </div>
               )}
-              <Link to={`/test/${test.id}`}>
-                <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black">
-                  Start Test
-                </button>
-              </Link>
             </div>
           ))}
+
           <div className="flex justify-center items-center">
             <button
-            onClick={handleGeneratePDF}
-              className={`px-4 py-2 rounded-full text-black ${
+              onClick={handleGeneratePDF}
+              className={`px-4 py-2 rounded-full text-black font-['Inter'] ${
                 areTestsRemaining
-                  ? "bg-gray-300"
-                  : "bg-gradient-to-r from-orange-500 to-yellow-500"
+                  ? "bg-gradient-to-r from-orange-500 to-yellow-500"
+                  : "bg-gray-300"
               }`}
-              disabled={areTestsRemaining}
+              disabled={!areTestsRemaining}
               style={{ width: "250px" }}
             >
-              {loading ? "Generating..." : "Send PDF to Mail"}
+              {loading
+                ? "Generating..."
+                : pdfSent
+                ? "Report Sent to Mail"
+                : "Send Final Report to Mail"}
             </button>
           </div>
         </div>

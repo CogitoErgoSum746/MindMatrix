@@ -1,28 +1,20 @@
-import React, { useState ,useEffect} from "react";
-import { useParams,Link } from "react-router-dom";
-import Ellipse1 from "../../images/Ellipse1.png"; 
-import Ellipse2 from '../../images/Ellipse2.png';
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import Ellipse1 from "../../images/Ellipse1.png";
+import Ellipse2 from "../../images/Ellipse2.png";
 import Ellipse3 from "../../images/Ellipse3.png";
 import { API_BASE_URL } from "../../config";
 
 function TestQuestionsPattern5() {
   const { subtestId } = useParams();
-const id=5;
-  const commonoption = [
-    "Never",
-    "Rarely",
-    "Sometimes",
-    "Often",
-    "Always"
-  
-  ];
+  const id = 5;
+  const commonoption = ["Never", "Rarely", "Sometimes", "Often", "Always"];
   const tests = {
     1: {
       title: "Self-Awareness",
       questions: [
         {
-          questionText:
-            "1.	I realise immediately when I lose my temper.",
+          questionText: "1.	I realise immediately when I lose my temper.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -32,20 +24,17 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "3.	When I’m anxious, I usually know why.",
+          questionText: "3.	When I’m anxious, I usually know why.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "4.	I usually recognise when I am stressed.",
+          questionText: "4.	I usually recognise when I am stressed.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "5.	When I am being ‘emotional’ I am aware of this.",
+          questionText: "5.	When I am being ‘emotional’ I am aware of this.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -66,7 +55,8 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "9.	I can let anger ‘go’ quickly so that it no longer affects me.",
+          questionText:
+            "9.	I can let anger ‘go’ quickly so that it no longer affects me.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -81,20 +71,17 @@ const id=5;
       title: "Managing Emotions",
       questions: [
         {
-          questionText:
-            "1.	I can ‘reframe’ bad situations quickly.",
+          questionText: "1.	I can ‘reframe’ bad situations quickly.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "2.	I do not wear my ‘heart on my sleeve’.",
+          questionText: "2.	I do not wear my ‘heart on my sleeve’.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "3.	Others can rarely tell what kind of mood I am in.",
+          questionText: "3.	Others can rarely tell what kind of mood I am in.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -114,7 +101,8 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "7.	I do not let stressful situations or people affect me once I have left work.",
+          questionText:
+            "7.	I do not let stressful situations or people affect me once I have left work.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -129,7 +117,8 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "10. Others often do not know how I am feeling about things.",
+          questionText:
+            "10. Others often do not know how I am feeling about things.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -139,8 +128,7 @@ const id=5;
       title: "Motivating Oneself",
       questions: [
         {
-          questionText:
-            "1.	I can always motivate myself to do difficult tasks.",
+          questionText: "1.	I can always motivate myself to do difficult tasks.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -151,8 +139,7 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "3.	I always meet deadlines.",
+          questionText: "3.	I always meet deadlines.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -209,23 +196,25 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
+          questionText: "3.	I can tell if someone is not happy with me.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+        {
           questionText:
-            "3.	I can tell if someone is not happy with me.",
+            "4.	I can tell if a team of people are not getting along with each other.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "4.	I can tell if a team of people are not getting along with each other.",
+          questionText:
+            "5.	I can usually understand why people are being difficult towards me.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "5.	I can usually understand why people are being difficult towards me.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "6.	Other individuals are not ‘difficult’ just ‘different’.",
+          questionText:
+            "6.	Other individuals are not ‘difficult’ just ‘different’.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -235,12 +224,14 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "8.	I can understand why my actions sometimes offend others.",
+          questionText:
+            "8.	I can understand why my actions sometimes offend others.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "9.	I can sometimes see things from others’ points of view.",
+          questionText:
+            "9.	I can sometimes see things from others’ points of view.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -255,14 +246,12 @@ const id=5;
       title: "Social Skill",
       questions: [
         {
-          questionText:
-            "1.	I am an excellent listener.",
+          questionText: "1.	I am an excellent listener.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText:
-            "2.	I never interrupt other people’s conversations.",
+          questionText: "2.	I never interrupt other people’s conversations.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -273,37 +262,44 @@ const id=5;
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "4.	People are the most interesting thing in life for me.",
+          questionText:
+            "4.	People are the most interesting thing in life for me.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "5.	I enjoy meeting new individuals and learning what interests and motivates them.",
+          questionText:
+            "5.	I enjoy meeting new individuals and learning what interests and motivates them.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "6.	I need a variety of work colleagues to make my job interesting.",
+          questionText:
+            "6.	I need a variety of work colleagues to make my job interesting.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "7.	I like to ask questions to find out what is important to people.",
+          questionText:
+            "7.	I like to ask questions to find out what is important to people.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "8.	I view working with challenging individuals as an opportunity to gain their cooperation.",
+          questionText:
+            "8.	I view working with challenging individuals as an opportunity to gain their cooperation.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "9.	I am good at reconciling differences with other people.",
+          questionText:
+            "9.	I am good at reconciling differences with other people.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "10. I generally build solid relationships with those I work with.",
+          questionText:
+            "10. I generally build solid relationships with those I work with.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
@@ -316,9 +312,11 @@ const id=5;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [scores, setScores] = useState(Array(subtest.questions.length).fill(0));
   const [showScore, setShowScore] = useState(false);
-  const [isTestCompleted, setIsTestCompleted] = useState(false); 
+  const [isTestCompleted, setIsTestCompleted] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionChange = (optionWeightage, optionIndex) => {
+    setSelectedOption(optionIndex);
     const newScores = [...scores];
     newScores[questionIndex] = optionWeightage[optionIndex];
     setScores(newScores);
@@ -327,6 +325,7 @@ const id=5;
   const handleNextQuestion = () => {
     if (questionIndex < subtest.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
+      setSelectedOption(null);
     } else {
       // Display total score
       setShowScore(true);
@@ -345,54 +344,10 @@ const id=5;
 
   useEffect(() => {
     const fetchTestScores = async () => {
-      try {      
-            const authtoken = localStorage.getItem("authtoken");  
-            console.log(authtoken)
-            const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              authtoken: authtoken,
-            },
-            body: JSON.stringify({
-              testType,
-              subCategory,
-            }),
-          });
-          console.log(response)
-          if (response.ok) {
-            console.log(response)
-            const score = await response.json();
-  
-            setScores(score);
-            console.log(score);
-            
-  
-           if(score){
-            setIsTestCompleted(true);
-           }
-            
-
-          } 
-          else {
-            console.error("Failed to fetch test scores");
-          }
-      } catch (error) {
-        console.error("Error fetching test scores:", error);
-      }
-    };
-  
-    if (subCategory &&  testType) {
-      fetchTestScores();
-    }
-  }, [subCategory, testType]);
-
-  const sendTestDataToServer = async () => {
-    try {
-      const authtoken = localStorage.getItem("authtoken");
-      const response = await fetch(
-        `${API_BASE_URL}/user/testResultToAPI`,
-        {
+      try {
+        const authtoken = localStorage.getItem("authtoken");
+        console.log(authtoken);
+        const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -401,10 +356,47 @@ const id=5;
           body: JSON.stringify({
             testType,
             subCategory,
-            score,
           }),
+        });
+        console.log(response);
+        if (response.ok) {
+          console.log(response);
+          const score = await response.json();
+
+          setScores(score);
+          console.log(score);
+
+          if (score) {
+            setIsTestCompleted(true);
+          }
+        } else {
+          console.error("Failed to fetch test scores");
         }
-      );
+      } catch (error) {
+        console.error("Error fetching test scores:", error);
+      }
+    };
+
+    if (subCategory && testType) {
+      fetchTestScores();
+    }
+  }, [subCategory, testType]);
+
+  const sendTestDataToServer = async () => {
+    try {
+      const authtoken = localStorage.getItem("authtoken");
+      const response = await fetch(`${API_BASE_URL}/user/testResultToAPI`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authtoken: authtoken,
+        },
+        body: JSON.stringify({
+          testType,
+          subCategory,
+          score,
+        }),
+      });
 
       if (response.ok) {
         console.log("Test data sent to the server successfully");
@@ -418,98 +410,146 @@ const id=5;
 
   return (
     <div className="container bg-white min-h-screen">
-    {   !isTestCompleted && (
-      <>
-<img src={Ellipse1} alt="business" className="absolute top-0 left-6 mb-20" height="100px" />
-<img src={Ellipse2} alt="business" width="700px" height="400px" className="absolute top-0 left-80" style={{ marginBottom: 40 }} />
-<img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
-</>
-) }
-{ !isTestCompleted && (
-  <>
-<div className="p-10">
-  <h2 className="text-left mt-70 font-bold text-2xl mb-10">Assessment Rating Criteria: </h2>
-  <p className="text-left font-semibold mb-5">
-    Please evaluate each statement according to how often it applies to your situation. Use the following scale:
-  </p>
-  <p className="text-left font-semibold">
-    <strong>Never: </strong>Assign a rating of 1 if the statement rarely applies to you.
-  </p>
-  <p className="text-left font-semibold">
-    <strong>Sometimes:</strong> Assign a rating of 2 if the statement applies occasionally.
-  </p>
-  <p className="text-left font-semibold">
-    <strong>Usually:</strong> Assign a rating of 3 if the statement applies frequently.
-  </p>
-  <p className="text-left mb-5 font-semibold">
-    <strong>Always: </strong> Assign a rating of 4 if the statement consistently applies to you.
-  </p>
-  </div>
-  </>
-    )}
-  {/* Conditionally render the "Test completed" message */}
-  <div className="w-full h-full flex items-center justify-center">
-{isTestCompleted && (
-  <div className="bg-white shadow-md p-4 rounded-lg mt-20" style={{ width: 400, height: 300 }}>
-    <p className="text-2xl font-semibold text-green-600 mb-5 text-center">Test completed!</p>
-  </div>
-)}
-</div>
-  {!isTestCompleted && (
-    <div className="p-10">
-      {showScore ? (
-        <div>
-          <p>Total Score: {totalScore}</p>
-        </div>
-      ) : (
-        <div className="mb-4">
-          <p className="text-lg text-left font-semibold mb-5">
-            {subtest.questions[questionIndex].questionText}
-          </p>
-          <div className="mt-2 text-left">
-            {subtest.questions[questionIndex].options.map((option, optionIndex) => (
-              <div key={optionIndex} className="mb-2">
-                <label className="inline-flex justify-items-start">
-                  <input
-                    type="radio"
-                    className="form-radio h-5 w-5"
-                    name={`question-${questionIndex}`}
-                    value={optionIndex}
-                    onChange={() =>
-                      handleOptionChange(
-                        subtest.questions[questionIndex].optionWeightage,
-                        optionIndex
-                      )
-                    }
-                  />
-                  <span className="ml-3 bg-gray-300 p-3 block" style={{ width: "300px" }}>
-                    {option}
-                  </span>
-                </label>
+      {!isTestCompleted && (
+        <>
+          <div className="hidden md:flex">
+          <img
+            src={Ellipse1}
+            alt="business"
+            className="absolute top-0 left-6 mb-20"
+            height="100px"
+          />
+          <img
+            src={Ellipse2}
+            alt="business"
+            width="700px"
+            height="400px"
+            className="absolute top-0 left-80"
+            style={{ marginBottom: 40 }}
+          />
+          <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          </div>
+        </>
+      )}
+      {!isTestCompleted && (
+        <>
+          <div className="p-10">
+            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
+              Assessment Rating Criteria:{" "}
+            </h2>
+            <p className="text-left font-semibold mb-5">
+              Please evaluate each statement according to how often it applies
+              to your situation. Use the following scale:
+            </p>
+            <p className="text-left font-semibold">
+              <strong>Never: </strong>Assign a rating of 1 if the statement
+              never applies to you.
+            </p>
+            <p className="text-left font-semibold">
+              <strong>Rarely: </strong> Assign a rating of 2 if the statement
+              applies Rarely.
+            </p>
+            <p className="text-left font-semibold">
+              <strong>Sometime: </strong> Assign a rating of 3 if the statement
+              applies occasionally.
+            </p>
+            <p className="text-left font-semibold">
+              <strong>Often: </strong> Assign a rating of 4 if the statement
+               applies to you frequently.
+            </p>
+            <p className="text-left mb-5 font-semibold">
+              <strong>Always: </strong> Assign a rating of 5 if the statement
+              consistently applies to you.
+            </p>
+          </div>
+        </>
+      )}
+      {/* Conditionally render the "Test completed" message */}
+      <div className="w-full h-full flex items-center justify-center">
+        {isTestCompleted && (
+          <div
+            className="bg-white shadow-md p-4 rounded-lg mt-20"
+            style={{ width: 400, height: 300 }}
+          >
+            <p className="text-2xl font-semibold text-green-600 mb-5 text-center">
+              Test completed!
+            </p>
+          </div>
+        )}
+      </div>
+      {!isTestCompleted && (
+        <div className="p-10">
+          {showScore ? (
+            <div>
+              <p>Total Score: {totalScore}</p>
+            </div>
+          ) : (
+            <div className="mb-4">
+              <p className="text-lg text-left font-semibold mb-5">
+                {subtest.questions[questionIndex].questionText}
+              </p>
+              <div className="mt-2 text-left">
+                {subtest.questions[questionIndex].options.map(
+                  (option, optionIndex) => (
+                    <div key={optionIndex} className="mb-2">
+                      <label className="inline-flex justify-items-start">
+                        <input
+                          type="radio"
+                          className="form-radio h-5 w-5"
+                          name={`question-${questionIndex}`}
+                          value={optionIndex}
+                          checked={selectedOption === optionIndex}
+                          onChange={() =>
+                            handleOptionChange(
+                              subtest.questions[questionIndex].optionWeightage,
+                              optionIndex
+                            )
+                          }
+                        />
+                        <span
+                          className="ml-3 bg-gray-300 p-3 block"
+                          style={{ width: "300px" }}
+                        >
+                          {option}
+                        </span>
+                      </label>
+                    </div>
+                  )
+                )}
               </div>
-            ))}
-          </div>
-          <div className="mt-4">
-            {questionIndex === subtest.questions.length - 1 ? (
-              <Link to={`/test/${id}`}>
-                <button onClick={sendTestDataToServer} className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl">
-                  Submit Test Data
-                </button>
-              </Link>
-            ) : (
-              <button
-                className="bg-gradient-to-r from-orange-500 to-yellow-500 px-12 py-2 rounded-full font-semibold text-xl"
-                onClick={handleNextQuestion}
-              >
-                Next Question {'>'}
-              </button>
-            )}
-          </div>
+              <div className="mt-4">
+                {selectedOption !== null ? (
+                  questionIndex === subtest.questions.length - 1 ? (
+                    <Link to={`/test/${id}`}>
+                      <button
+                        onClick={sendTestDataToServer}
+                        className="bg-gradient-to-r from-orange-500 to-yellow-500 p-2 rounded-full font-semibold text-xl"
+                      >
+                        Submit Test Data
+                      </button>
+                    </Link>
+                  ) : (
+                    <button
+                      className="bg-gradient-to-r from-orange-500 to-yellow-500 px-12 py-2 rounded-full font-semibold text-xl"
+                      onClick={handleNextQuestion}
+                    >
+                      Next Question {">"}
+                    </button>
+                  )
+                ) : (
+                  <button
+                    disabled
+                    className="bg-gray-300 p-2 rounded-full font-semibold text-xl"
+                  >
+                    Next Question {">"}
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
-  )}
-</div>
   );
 }
 

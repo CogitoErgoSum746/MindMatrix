@@ -13,6 +13,10 @@ const OrganizationSchema = new Schema({
         required: true,
         unique: true,
     },
+    org_studentType: {
+        type: String,
+        required: true,
+    },
     org_code: {
         type: String,
         required: true,

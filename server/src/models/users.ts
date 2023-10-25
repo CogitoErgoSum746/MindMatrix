@@ -13,12 +13,21 @@ const testResultSchema = new mongoose.Schema({
     subcategories: [subcategorySchema],
 }, { _id: false });
 
+const carreerOptionSchema = new mongoose.Schema({
+    option: String,
+    priority: Number,
+}, { _id: false });
+
 const UserSchema = new Schema({
     username: {
         type: String,
         required: true,
     },
     email: {
+        type: String,
+        required: true,
+    },
+    studentType: {
         type: String,
         required: true,
     },
@@ -34,9 +43,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    carreerOptions: {
-        type: Array,
-    },
+    carreerOptions: [carreerOptionSchema],
     testResults: [testResultSchema], //array of test results
     resetToken: {
         type: String,

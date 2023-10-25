@@ -657,6 +657,21 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
 
     const carreerOptions = existingUser?.carreerOptions;
 
+    const customSort = (arr: any) => {
+        return arr.reduce((sorted: any, item: any) => {
+            const index = sorted.findIndex((el: any) => item.priority > el.priority);
+            if (index === -1) {
+                sorted.push(item);
+            } else {
+                sorted.splice(index, 0, item);
+            }
+            return sorted;
+        }, []);
+    };
+
+    const sortedcarOpts = customSort(carreerOptions);
+    const sortedNames = sortedcarOpts.map((carreer: any) => carreer.name);
+
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
     const pdfDoc = await PDFDocument.load(pdfBuffer);
@@ -676,13 +691,13 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     let xd = Xd;
     let yd = Yd;
 
-    for (const line of carreerOptions as Array<string>) {
+    for (const line of sortedNames) {
         page.drawText(line, {
             x: xd,
             y: yd,
         });
 
-        // Move to the next line (1.2 times the font size)
+        // Move to the next line (2 times the font size)
         yd -= fontSize * 2;
     }
 
@@ -1122,10 +1137,10 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
 export async function sendUserInfo(req: Request, res: Response): Promise<void> {
     try {
         //user info
-        await userInfoPdf1(req, res, 2, 18, 300, 600);
-        await userInfoPdf3(req, res, 2, 18, 300, 545);
-        await userInfoPdf2(req, res, 2, 18, 300, 340);
-        await userInfoPdf4(req, res, 2, 18, 300, 290);
+        await userInfoPdf1(req, res, 2, 18, 260, 600);
+        await userInfoPdf3(req, res, 2, 18, 330, 545);
+        await userInfoPdf2(req, res, 2, 18, 230, 340);
+        await userInfoPdf4(req, res, 2, 18, 250, 290);
 
     } catch (error) {
         console.log(error);
@@ -1136,16 +1151,16 @@ export async function sendUserInfo(req: Request, res: Response): Promise<void> {
 export async function sendCharts(req: Request, res: Response): Promise<void> {
     try {
         //Charts
-        // await makeBarChartPdf(req, res, "Study Skills Profile Assessment", 20);
-        // await makeBarChartPdf(req, res, "Aptitude", 6);
-        // await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
-        // await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
-        // await makeBarChartPdf(req, res, "Personality", 28);
-        // await makeBarChartPdf(req, res, "Learning Style", 35);
-        // await makeBarChartPdf(req, res, "Leadership Style", 38);
-        // await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
-        // await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
-        // await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
+        await makeBarChartPdf(req, res, "Study Skills Profile Assessment", 20);
+        await makeBarChartPdf(req, res, "Aptitude", 6);
+        await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
+        await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
+        await makeBarChartPdf(req, res, "Personality", 28);
+        await makeBarChartPdf(req, res, "Learning Style", 35);
+        await makeBarChartPdf(req, res, "Leadership Style", 38);
+        await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
+        await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
+        await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
     } catch (error) {
         console.log(error);
         res.status(500);
@@ -1161,8 +1176,8 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Aptitude", "Numerical", 7, 13, 70, 330);
         await makeScorePercentPdf(req, res, "Aptitude", "Mechanical", 8, 13, 70, 678);
         await makeScorePercentPdf(req, res, "Aptitude", "Abstract", 8, 13, 70, 330);
-        await makeScorePercentPdf(req, res, "Aptitude", "Spatial", 9, 13, 70, 655);
-        await makeScorePercentPdf(req, res, "Aptitude", "Logical", 9, 13, 70, 310);
+        await makeScorePercentPdf(req, res, "Aptitude", "Spatial", 9, 13, 75, 655);
+        await makeScorePercentPdf(req, res, "Aptitude", "Logical", 9, 13, 75, 310);
 
         //Multilple Intelligence
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 100, 632);
@@ -1197,8 +1212,8 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Students Wheel of Life", "Hobbies & Extracurriculars", 25, 13, 450, 220);
 
         //left-right brain
-        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain Dominance", 27, 13, 75, 657);
-        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain Dominance", 27, 13, 75, 362);
+        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 27, 13, 75, 657);
+        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain", 27, 13, 75, 362);
 
         //Personality
         await makeScorePercentPdf(req, res, "Personality", "Extroversion", 29, 13, 70, 664);
@@ -1210,7 +1225,7 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         //emotional intelligence
         await makeScorePercentPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 70, 663);
         await makeScorePercentPdf(req, res, "Emotional Intelligence", "Managing Emotions", 33, 13, 70, 437);
-        await makeScorePercentPdf(req, res, "Emotional Intelligence", "Motivating oneself", 33, 13, 70, 218);
+        await makeScorePercentPdf(req, res, "Emotional Intelligence", "Motivating Oneself", 33, 13, 70, 218);
         await makeScorePercentPdf(req, res, "Emotional Intelligence", "Empathy", 34, 13, 70, 663);
         await makeScorePercentPdf(req, res, "Emotional Intelligence", "Social Skill", 34, 13, 70, 402);
 
@@ -1229,7 +1244,7 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Leadership Style", "Situational", 40, 13, 70, 322);
 
         //cyber dependency
-        await makeScorePercentPdf(req, res, "Cyber Dependency", "Cyber", 41, 13, 80, 375);
+        await makeScorePercentPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 80, 375);
 
         //competitive state anxiety inventory
         await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Cognitive Anxiety", 43, 13, 70, 662);
