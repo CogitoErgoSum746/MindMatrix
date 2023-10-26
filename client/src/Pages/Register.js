@@ -58,11 +58,13 @@ const Register = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Registration successful:", data);
+        // console.log("Registration successful:", data);
 
         const token = data.token;
         localStorage.setItem("token", token);
-        navigate("/login");
+        setTimeout(() => {
+          navigate("/login");
+        }, 0);
       } else {
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
