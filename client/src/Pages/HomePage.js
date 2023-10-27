@@ -106,19 +106,69 @@ function HomePage() {
     );
   };
 
+  function Submit(e) {
+    e.preventDefault(); // Prevent the form from submitting by default
+  
+    // Get the form elements by their IDs
+    const nameInput = document.getElementById("nameInput");
+    const emailInput = document.getElementById("emailInput");
+    const selectedType = document.getElementById("selectedType"); // Added an ID
+  
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const selected = selectedType.value; // Get the selected value
+  
+    // Validation checks
+    if (name.length < 5) {
+      alert("Name must contain at least five characters.");
+      return; 
+    }
+  
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+  
+    const formEle = document.querySelector("form");
+    const formDatab = new FormData(formEle);
+    formDatab.set("SelectedType", selected); 
+  
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxG4_fVfuCOVdmv6De28PvRM11isUQiXVz6MHCgUzDeTDs0xwCO-q3VsvbX-IX4xCSS-Q/exec",
+      {
+        method: "POST",
+        body: formDatab,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  
+  
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+
   return (
     <>
       <Navbar />
       <Element name="discover">
-      <div className="relative text-center">
-  <img src={homebg} className="w-full" alt="Responsive Image" />
-  <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-3/4 text-5xl font-bold text-white">
-    Unlock Your Limitless Potential
-  </h1>
-  <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-3/4 text-2xl font-bold text-white mt-10">
-  Personal Resourcefulness and  Professional Excellence!
-  </h1>
-</div>
+        <div className="relative text-center">
+          <img src={homebg} className="w-full" alt="Responsive Image" />
+          <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-3/4 text-5xl font-bold text-white">
+            Unlock Your Limitless Potential
+          </h1>
+          <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-3/4 text-2xl font-bold text-white mt-10">
+            Personal Resourcefulness and Professional Excellence!
+          </h1>
+        </div>
 
         <div className="flex flex-row">
           <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
@@ -431,34 +481,22 @@ function HomePage() {
           </h1>
           <p className="text-zinc-500 text-base font-normal font-['Source Sans Pro'] leading-relaxed mb-5">
             We’re here to help. Chat with us 24/7 and get set up and ready to go
-            in just quick.
+            in just a quick.
           </p>
-          <form>
+          <form className="form" onSubmit={(e) => Submit(e)}>
             <div className="mb-4 flex flex-row mr-4">
               <div>
                 <label
                   className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                  htmlFor="username"
+                  htmlFor="name"
                 >
-                  First Name
+                  Name
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter First Name"
+                  placeholder="Enter Name"
+                  id="nameInput"
                   className="border-b border-gray-500 focus:border-b mr-6"
-                />
-              </div>
-              <div>
-                <label
-                  className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                  htmlFor="username"
-                >
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter Last Name"
-                  className="border-b border-gray-500 focus:border-b"
                 />
               </div>
             </div>
@@ -466,13 +504,14 @@ function HomePage() {
               <div>
                 <label
                   className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                  htmlFor="username"
+                  htmlFor="email"
                 >
                   Email Address
                 </label>
                 <input
                   type="email"
                   placeholder="Enter email address"
+                  id="emailInput"
                   className="border-b border-gray-500 focus:border-b mr-20 w-200"
                 />
               </div>
@@ -486,12 +525,34 @@ function HomePage() {
                   className="border-b border-gray-500 focus:border-b mr-20"
                   placeholder="Select"
                 >
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                  <option value="option4">Option 4</option>
+                  <option value="">Select your topic</option>
+                  <option value="Counselling and Therapies">Counselling and Therapies</option>
+                  <option value="Life Coaching Session">Life Coaching Session</option>
+                  <option value="Corporate Training">Corporate Training</option>
+                  <option value="Business Coaching">Business Coaching</option>
+                  <option value="Leadership Training">Leadership Training</option>
+                  <option value="Psychometric Test">Psychometric Test</option>
+                  <option value="Career Counselling">Career Counselling</option>
+                  <option value="Students Training">Students Training</option>
+                  <option value="Teachers Training">Teachers Training</option>
+                  <option value="Parenting Session">Parenting Session</option>
+                  <option value="Certification Program">Certification Program</option>
                 </select>
               </div>
+            </div>
+            <div className="mt-6">
+              <label
+                className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+                htmlFor="message"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                placeholder="Type your message here"
+                className="border-b border-gray-500 focus:border-b w-full p-2 rounded"
+                rows="5"
+              ></textarea>
             </div>
             <button
               className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"

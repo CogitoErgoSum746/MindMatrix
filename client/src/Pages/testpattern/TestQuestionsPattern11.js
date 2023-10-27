@@ -27,7 +27,7 @@ function TestQuestionsPattern11() {
     (subtest) => subtest.id === subtestIdInt
   );
 
-  const [categoryScore, setCategoryScore] = useState(0);
+  const [categoryScore, setCategoryScore] = useState(1);
   const [isTestCompleted, setIsTestCompleted] = useState(false);
 
   useEffect(() => {
@@ -125,7 +125,7 @@ function TestQuestionsPattern11() {
           applies to your situation. Use the following scale:
         </p>
         <p className="text-left font-semibold">
-          Rate it from 0 to 10, where 0 means it rarely applies to you, and 10
+          Rate it from 1 to 10, where 0 means it rarely applies to you, and 10
           means it consistently applies to you.
         </p>
       </div>
@@ -150,7 +150,7 @@ function TestQuestionsPattern11() {
             <div className="mt-2 text-left">
               <input
                 type="number"
-                min="0"
+                min="1"
                 max="10"
                 value={categoryScore}
                 onChange={(e) => handleScoreChange(parseInt(e.target.value))}
