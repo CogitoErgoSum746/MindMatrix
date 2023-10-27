@@ -1,7 +1,7 @@
 import React from "react";
 
 const FloatingIcon = () => {
-  const phoneNumber = "your-phone-number";
+  const phoneNumber = "9833086018";
 
 
   // Generate the WhatsApp URL

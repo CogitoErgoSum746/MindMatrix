@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import registerImg from "../images/register.png";
+import registerImg from "../images/register.jpg";
 import Navbar from "../components/Navbar";
 import { API_BASE_URL } from "../config";
 
@@ -43,7 +43,6 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Reset validation errors and registration error
     setValidationErrors({});
     setRegistrationError("");
 
@@ -110,11 +109,12 @@ const Register = () => {
     }
   };
 
+
   return (
     <>
       <Navbar />
-      <div className="flex flex-row bg-black">
-        <div className="hidden md:block md:flex-1">
+      <div className="flex flex-row">
+        <div className="hidden md:block md:flex-1 mt-20">
           <img src={registerImg} alt="register" className="w-full h-auto" />
         </div>
         <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
