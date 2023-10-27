@@ -58,11 +58,21 @@ const Register = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Registration successful:", data);
+        // console.log("Registration successful:", data);
 
         const token = data.token;
         localStorage.setItem("token", token);
-        navigate("/login");
+
+        toast.success("Registration successful. Please wait, we will redirect you to the login page.", {
+          autoClose: 3000, 
+        });
+        // setTimeout(() => {
+        //   navigate("/login");
+        // }, 0);
+
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000); 
       } else {
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {

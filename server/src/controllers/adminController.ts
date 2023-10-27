@@ -65,14 +65,25 @@ export async function createOrganization(req: Request, res: Response): Promise<a
       return res.status(404).json({ success, error: "organization already exists" });
     }
 
+    const generatedCodes = new Set();
+    const organizations = await Organization.find({});
+
+    organizations.forEach((org) => {
+      generatedCodes.add(org.org_code);
+    });
     const charset = '0123456789';
     // Create num_ids usernames for the organization and save them
 
     let orgi_code = '';
-    for (let j = 0; j < 4; j++) {
-      const randomIndex = Math.floor(Math.random() * charset.length);
-      orgi_code += charset.charAt(randomIndex);
-    }
+    do {
+      orgi_code = '';
+      for (let j = 0; j < 4; j++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        orgi_code += charset.charAt(randomIndex);
+      }
+    } while (generatedCodes.has(orgi_code)); // Check if the code already exists
+
+    generatedCodes.add(orgi_code);
 
     // Create and save a new user document
     const Org = new Organization({

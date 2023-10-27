@@ -18,7 +18,7 @@ import imggall12 from "../images/imagegallery/imggall12.jpg";
 import imggall13 from "../images/imagegallery/imggall13.jpg";
 import imggall14 from "../images/imagegallery/imggall14.jpg";
 import imggall15 from "../images/imagegallery/imggall15.jpg";
-import homebg from "../images/homebg.png";
+import homebg from "../images/newbg.jpg";
 import img3 from "../images/image 3.png";
 import img4 from "../images/image 4.png";
 import img5 from "../images/image 5.png";
@@ -110,7 +110,15 @@ function HomePage() {
     <>
       <Navbar />
       <Element name="discover">
-        <img src={homebg} className="w-full" alt="Responsive Image" />
+      <div className="relative text-center">
+  <img src={homebg} className="w-full" alt="Responsive Image" />
+  <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-3/4 text-5xl font-bold text-white">
+    Unlock Your Limitless Potential
+  </h1>
+  <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-3/4 text-2xl font-bold text-white mt-10">
+  Personal Resourcefulness and  Professional Excellence!
+  </h1>
+</div>
 
         <div className="flex flex-row">
           <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
@@ -276,13 +284,6 @@ function HomePage() {
                   />
                 </div>
               ))}
-              <div className="item">
-                <img
-                  src={images[0]}
-                  alt={`Image1`}
-                  style={{ width: "500px", height: "400px" }}
-                />
-              </div>
             </Carousel>
           </div>
         </div>
