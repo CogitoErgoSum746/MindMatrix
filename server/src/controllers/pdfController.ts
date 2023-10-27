@@ -95,18 +95,18 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
                     },
                 },
             },
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: (context) => {
-                            let label = context.dataset.label || '';
-                            if (context.parsed.y !== null) {
-                                label += `\nValue: ${context.parsed.y}`;
-                            }
-                            return label;
-                        },
-                    },
-                },
+            // plugins: {
+            //     tooltip: {
+            //         callbacks: {
+            //             label: (context) => {
+            //                 let label = context.dataset.label || '';
+            //                 if (context.parsed.y !== null) {
+            //                     label += `\nValue: ${context.parsed.y}`;
+            //                 }
+            //                 return label;
+            //             },
+            //         },
+            //     },
                 // datalabels: {
                 //     anchor: 'end',
                 //     align: 'end',
@@ -132,7 +132,7 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
                 //     },
                 //     color: 'black', // Label color
                 // },
-            }
+            // }
         },
     });
 
@@ -928,6 +928,9 @@ export async function makeRadarChartPdf(req: Request, res: Response, testType: s
 
     const scores = testSubcategories?.map(result => result.score);
 
+    console.log(names);
+    console.log(scores);
+
     Chart.register(...registerables);
     Chart.register(ChartDataLabels);
 
@@ -1050,7 +1053,7 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
         //Emotional Intelligence
         await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 80, 40, 620);
         await makeFeedbackPdf(req, res, "Emotional Intelligence", "Managing Emotions", 33, 13, 80, 40, 390);
-        await makeFeedbackPdf(req, res, "Emotional Intelligence", "Motivating oneself", 33, 13, 80, 40, 150);
+        await makeFeedbackPdf(req, res, "Emotional Intelligence", "Motivating Oneself", 33, 13, 80, 40, 150);
         await makeFeedbackPdf(req, res, "Emotional Intelligence", "Empathy", 34, 13, 80, 40, 620);
         await makeFeedbackPdf(req, res, "Emotional Intelligence", "Social Skill", 34, 13, 80, 40, 350);
 
@@ -1111,21 +1114,21 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
         await carreerOptionsPdf(req, res, 19, 13, 125, 375);
 
         //Cyber dependency
-        await makeFeedbackPdf(req, res, "Cyber Dependency", "Cyber", 41, 13, 80, 50, 320);
+        await makeFeedbackPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 80, 50, 320);
 
         //Left-Brain Dominance
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain Dominance", "Analytical Thinking", 27, 13, 80, 43, 610);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain Dominance", "Language Skills", 27, 13, 80, 43, 580);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain Dominance", "Math and Logic", 27, 13, 80, 43, 550);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain Dominance", "Structured Planning", 27, 13, 80, 43, 520);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain Dominance", "Sequential Processing", 27, 13, 80, 43, 490);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Analytical Thinking", 27, 13, 80, 43, 610);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Language Skills", 27, 13, 80, 43, 580);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Math and Logic", 27, 13, 80, 43, 550);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Structured Planning", 27, 13, 80, 43, 520);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Sequential Processing", 27, 13, 80, 43, 490);
 
         //Right Brain Dominance
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain Dominance", "Creativity", 27, 13, 80, 43, 310);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain Dominance", "Visual Perception", 27, 13, 80, 43, 280);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain Dominance", "Intuition", 27, 13, 80, 43, 250);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain Dominance", "Holistic Thinking", 27, 13, 80, 43, 220);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain Dominance", "Artistic Abilities", 27, 13, 80, 43, 190);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Creativity", 27, 13, 80, 43, 310);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Visual Perception", 27, 13, 80, 43, 280);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Intuition", 27, 13, 80, 43, 250);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Holistic Thinking", 27, 13, 80, 43, 220);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Artistic Abilities", 27, 13, 80, 43, 190);
 
     } catch (error) {
         console.log(error);
@@ -1137,10 +1140,10 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
 export async function sendUserInfo(req: Request, res: Response): Promise<void> {
     try {
         //user info
-        await userInfoPdf1(req, res, 2, 18, 260, 600);
-        await userInfoPdf3(req, res, 2, 18, 330, 545);
-        await userInfoPdf2(req, res, 2, 18, 230, 340);
-        await userInfoPdf4(req, res, 2, 18, 250, 290);
+        await userInfoPdf1(req, res, 2, 18, 225, 600);
+        await userInfoPdf3(req, res, 2, 18, 225, 545);
+        await userInfoPdf2(req, res, 2, 18, 225, 340);
+        await userInfoPdf4(req, res, 2, 18, 225, 290);
 
     } catch (error) {
         console.log(error);
@@ -1244,7 +1247,7 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Leadership Style", "Situational", 40, 13, 70, 322);
 
         //cyber dependency
-        await makeScorePercentPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 80, 375);
+        await makeScorePercentPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 85, 375);
 
         //competitive state anxiety inventory
         await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Cognitive Anxiety", 43, 13, 70, 662);

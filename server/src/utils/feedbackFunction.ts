@@ -143,7 +143,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
         }
     }
 
-    if (testType === "Students Wheel of Life" || testType === "Left Brain Dominance" || testType === "Right Brain Dominance") {
+    if (testType === "Students Wheel of Life" || testType === "Left Brain" || testType === "Right Brain") {
         if (score >= 1 && score <= 3) {
             scoreRange = '1-3';
             percentage = '25%';
