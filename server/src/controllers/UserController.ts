@@ -487,7 +487,7 @@ export async function checkScore(req: Request, res: Response): Promise<void> {
   }
 };
 
-export async function sendPdfToEmail(req: Request, res: Response): Promise<void> {
+async function sendPdfToEmail(req: Request, res: Response): Promise<void> {
   try {
     const username = req.user.username
     const email = req.user.email

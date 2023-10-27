@@ -166,7 +166,7 @@ export const feedbackData: FeedbackData = {
             "40-44": "You’re doing a great job in managing your emotions effectively. Your ability to handle various emotions and situations is noteworthy. Your capacity to regulate your feelings and respond thoughtfully contributes to healthier relationships and improved decision-making. Continue honing your emotional management skills, and you’ll find that you’re better equipped to navigate challenges and foster positive connections with others.",
             "45-50": "Outstanding job! Your ability to manage emotions is exceptional. You’ve demonstrated a high level of emotional regulation and control. Your skill in handling challenging situations and maintaining a balanced emotional state is truly commendable. Your proficiency in managing emotions positively influences your interactions, decision-making, and overall well-being. Keep up the impressive work in maintaining emotional resilience and equilibrium."
         },
-        "Motivating oneself": {
+        "Motivating Oneself": {
             "0-19": "Your self-motivation appears to be limited at the moment. It’s important to focus on building a stronger foundation of self-discipline, resilience, and goal-setting. While challenges may feel daunting, remember that developing the ability to motivate yourself is a gradual process. Begin by identifying what drives you and exploring strategies to maintain enthusiasm and determination. With persistence, you can make significant strides towards becoming more self-motivated.",
             "20-29": "You are in the process of developing your self-motivation skills. You demonstrate an understanding of the importance of motivation, but there’s room for improvement in consistently applying it to your goals. Recognize the significance of maintaining a positive mindset and finding sources of inspiration, even when facing challenges. With effort and dedication, you can strengthen your self-motivation and see positive changes in your accomplishments.",
             "30-39": "Your self-motivation is solid, and you display a commendable level of determination. While you may face occasional challenges, you approach them with resilience and work towards finding solutions. There is room for growth in terms of consistently maintaining your motivation, especially during tougher times. By identifying strategies that help you stay inspired and engaged, you can enhance your ability to maintain momentum towards your goals.",
@@ -317,7 +317,7 @@ export const feedbackData: FeedbackData = {
         }
     },
     "Cyber Dependency": {
-        "Cyber": {
+        "Cyber Dependency": {
             "0-20": "Your cyber dependency score is in the low range, indicating a strong ability to function independently of digital tools. You are self-reliant and can navigate various tasks without heavy reliance on technology. This suggests that you are well-prepared to handle situations with limited access to digital resources and can adapt easily to disruptions.",
             "21-40": "Your cyber dependency score is in the moderate-low range. While you are comfortable using digital technologies, you also have a reasonable level of self-sufficiency in non-digital tasks. This balanced approach allows you to adapt well to minor disruptions and maintain productivity even in situations where technology is not readily available.",
             "41-60": "Your cyber dependency score falls within the moderate range. You have a reasonable reliance on digital tools, which is beneficial in many aspects of modern life. Balancing this with offline skills can further enhance your ability to manage disruptions. Consider honing your proficiency in both digital and non-digital solutions for a well-rounded approach.",
@@ -371,7 +371,7 @@ export const feedbackData: FeedbackData = {
             "28-36": "High Self-Confidence: Congratulations on your high self-confidence! Your self-assured attitude and belief in yourself are powerful assets. Continue to tackle challenges with your optimistic outlook and embrace new opportunities. Remember, your confidence not only influences your actions but also inspires those around you."
         }
     },
-    "Left Brain Dominance": {
+    "Left Brain": {
         "Analytical Thinking": {
             "1-3": "Analytical Thinking: Minimal logical problem-solving ability.",
             "4-6": "Analytical Thinking: Some logical problem-solving skills.",
@@ -403,7 +403,7 @@ export const feedbackData: FeedbackData = {
             "9-10": "Sequential Processing: Seamlessly follows linear sequences."
         }
     },
-    "Right Brain Dominance": {
+    "Right Brain": {
         "Creativity": {
             "1-3": "Creativity: Minimal capacity for imaginative thinking.",
             "4-6": "Creativity: Some ability for imaginative and original thinking.",
