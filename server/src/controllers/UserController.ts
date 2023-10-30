@@ -723,8 +723,11 @@ export async function schoolSubTests(req: Request, res: Response): Promise<void>
             finalArray.push(0);
           }
         });
-      } else {
-        res.status(404).json({ message: 'TestType not found' });
+      } else if (theList){
+        theList.forEach(sub => {
+          finalArray.push(0);
+        });
+        res.status(200).json({ success: true, finalArray: finalArray });
         return;
       }
     } else {
