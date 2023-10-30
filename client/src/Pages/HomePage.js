@@ -109,39 +109,37 @@ function HomePage() {
     );
   };
 
-
   function Submit(e) {
-    e.preventDefault(); 
-  
+    e.preventDefault();
 
     const nameInput = document.getElementById("nameInput");
     const emailInput = document.getElementById("emailInput");
     const optionSelect = document.getElementById("optionSelect");
-  
+
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const option = optionSelect.value;
-  
+
     // Validation checks
     if (name.length < 5) {
       toast.error("Name must contain at least five characters.");
-      return; 
+      return;
     }
-  
+
     if (!isValidEmail(email)) {
       toast.error("Please enter a valid email address.");
       return;
     }
 
     if (option === "") {
-     toast.error("Please select an option.");
+      toast.error("Please select an option.");
       return;
     }
-  
+
     e.preventDefault();
     const formEle = document.querySelector("form");
     const formDatab = new FormData(formEle);
-  
+
     fetch(
       "https://script.google.com/macros/s/AKfycbws-vYS5vkKaG_jNUtv-3-enFlDdMEncZbvZ2-KwgaIvWYo37Z1hse8hkLyPKiUW7ynbw/exec",
       {
@@ -157,18 +155,16 @@ function HomePage() {
         console.log(error);
       });
 
-      toast.success("Form Submitted Successfully");
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000); 
+    toast.success("Form Submitted Successfully");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
-  
-  
+
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-  
 
   return (
     <>
@@ -489,99 +485,107 @@ function HomePage() {
       </div>
 
       <div id="getintouch" className="bg-stone-50 w-full h-600 p-6">
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10">
-          Get In Touch
-        </h1>
-        <p className="text-zinc-500 text-base font-normal font-['Source Sans Pro'] leading-relaxed mb-5">
-          We’re here to help. Chat with us 24/7 and get set up and ready to go
-          in just a quick.
-        </p>
-        <form className="form">
-          <div className="mb-4 flex flex-row mr-4">
-            <div>
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10">
+            Get In Touch
+          </h1>
+          <p className="text-zinc-500 text-base font-normal font-['Source Sans Pro'] leading-relaxed mb-5">
+            We’re here to help. Chat with us 24/7 and get set up and ready to go
+            in just a quick.
+          </p>
+          <form className="form">
+            <div className="mb-4 flex flex-row mr-4">
+              <div>
+                <label
+                  className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+                  htmlFor="name"
+                >
+                  Name
+                </label>
+                <input
+                  placeholder="Your Name"
+                  name="Name"
+                  type="text"
+                  className="border-b border-gray-500 focus:border-b mr-6"
+                  id="nameInput"
+                />
+              </div>
+            </div>
+            <div className="mt-6 flex flex-row mr-4">
+              <div>
+                <label
+                  className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+                  htmlFor="email"
+                >
+                  Email Address
+                </label>
+                <input
+                  placeholder="Your Email"
+                  name="Email"
+                  type="text"
+                  id="emailInput"
+                  className="border-b border-gray-500 focus-border-b mr-20 w-200"
+                />
+              </div>
+            </div>
+            <div className="mt-6 flex flex-row mr-20">
+              <div>
+                <label className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left">
+                  Select from the topic below
+                </label>
+                <select
+                  name="Option"
+                  className="border-b border-gray-500 focus-border-b mr-20"
+                  id="optionSelect"
+                >
+                  <option value="">Select your topic</option>
+                  <option value="Counselling and Therapies">
+                    Counselling and Therapies
+                  </option>
+                  <option value="Life Coaching Session">
+                    Life Coaching Session
+                  </option>
+                  <option value="Corporate Training">Corporate Training</option>
+                  <option value="Business Coaching">Business Coaching</option>
+                  <option value="Leadership Training">
+                    Leadership Training
+                  </option>
+                  <option value="Psychometric Test">Psychometric Test</option>
+                  <option value="Career Counselling">Career Counselling</option>
+                  <option value="Students Training">Students Training</option>
+                  <option value="Teachers Training">Teachers Training</option>
+                  <option value="Parenting Session">Parenting Session</option>
+                  <option value="Certification Program">
+                    Certification Program
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div className="mt-6">
               <label
                 className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                htmlFor="name"
+                htmlFor="message"
               >
-                Name
+                Message
               </label>
               <input
-                placeholder="Your Name"
-                name="Name"
+                placeholder="Your Message"
+                name="Message"
                 type="text"
-                className="border-b border-gray-500 focus:border-b mr-6"
-                id="nameInput"
+                className="border-b border-gray-500 focus-border-b w-full p-2 rounded"
+                id="messageInput"
               />
             </div>
-          </div>
-          <div className="mt-6 flex flex-row mr-4">
-            <div>
-              <label
-                className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                htmlFor="email"
-              >
-                Email Address
-              </label>
-              <input
-                placeholder="Your Email"
-                name="Email"
-                type="text"
-                id="emailInput"
-                className="border-b border-gray-500 focus-border-b mr-20 w-200"
-              />
-            </div>
-          </div>
-          <div className="mt-6 flex flex-row mr-20">
-            <div>
-              <label className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left">
-                Select from the topic below
-              </label>
-              <select
-                name="Option"
-                className="border-b border-gray-500 focus-border-b mr-20"
-                id="optionSelect"
-              >
-                <option value="">Select your topic</option>
-                <option value="Counselling and Therapies">Counselling and Therapies</option>
-                <option value="Life Coaching Session">Life Coaching Session</option>
-                <option value="Corporate Training">Corporate Training</option>
-                <option value="Business Coaching">Business Coaching</option>
-                <option value="Leadership Training">Leadership Training</option>
-                <option value="Psychometric Test">Psychometric Test</option>
-                <option value="Career Counselling">Career Counselling</option>
-                <option value="Students Training">Students Training</option>
-                <option value="Teachers Training">Teachers Training</option>
-                <option value="Parenting Session">Parenting Session</option>
-                <option value="Certification Program">Certification Program</option>
-              </select>
-            </div>
-          </div>
-          <div className="mt-6">
-            <label
-              className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-              htmlFor="message"
-            >
-              Message
-            </label>
             <input
-              placeholder="Your Message"
-              name="Message"
-              type="text"
-              className="border-b border-gray-500 focus-border-b w-full p-2 rounded"
-              id="messageInput"
+              type="button"
+              value="Submit"
+              onClick={(e) => Submit(e)}
+              className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
             />
-          </div>
-          <input
-            type="button"
-            value="Submit"
-            onClick={(e) => Submit(e)}
-            className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
-          />
-        </form>
+          </form>
+        </div>
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
-      <ToastContainer position="top-right" autoClose={2000} />
-    </div>
 
       <div id="contactus" className="mt-20">
         <p className="text-left ml-20 text-neutral-700 text-lg font-semibold font-['Source Sans Pro']">
@@ -597,43 +601,50 @@ function HomePage() {
               PHONE
             </p>
             <p className=" text-blue-950 text-base font-medium font-['Inter'] leading-tight">
-              (91) 9833-086-018
+              +91 98330 86018
             </p>
           </div>
           <div>
             <p className="text-black text-sm font-medium font-['Inter'] leading-tight text-left">
               EMAIL
             </p>
-            <p className=" text-blue-950 text-base font-medium font-['Inter'] leading-tight">
-              contact@successsteps.in
-            </p>
+            <a href="mailto:successtepsnlpa@gmail.com" target="_blank">
+              <p className=" text-blue-950 text-base font-medium font-['Inter'] leading-tight">
+                successtepsnlpa@gmail.com
+              </p>
+            </a>
           </div>
           <div className="mr-40">
             <p className="text-black text-sm font-medium font-['Inter'] leading-tight text-left">
               SOCIAL MEDIA
             </p>
             <div className="flex flex-row mt-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="20"
-                height="20"
-                viewBox="0 0 30 30"
-              >
-                <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
-              </svg>
+              <a href="https://www.instagram.com/antony.k.a" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                >
+                  <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
+                </svg>
+              </a>
+
               <div className="mr-5"></div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="20"
-                height="20"
-                viewBox="0 0 30 30"
-              >
-                <path d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z"></path>
-              </svg>
+              <a href="https://www.facebook.com/Successteps7" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                >
+                  <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>

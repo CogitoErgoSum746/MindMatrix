@@ -12,8 +12,10 @@ function Footer() {
   </div>
   <div className="w-44 h-24 left-[828px] top-[32px] absolute text-justify">
     <div className="w-44 h-7 left-0 top-0 absolute text-black text-base font-extrabold font-['Mulish'] uppercase tracking-wider">Contact US</div>
-    <div className="w-44 h-6 left-[2px] top-[46px] absolute text-black text-sm font-semibold font-['Mulish'] leading-snug">contact@Team.com</div>
-    <div className="w-44 h-6 left-[1px] top-[73px] absolute text-black text-sm font-semibold font-['Mulish'] leading-snug">1-800-200-300</div>
+    <a href="mailto:successtepsnlpa@gmail.com">
+    <div className="w-44 h-6 left-[2px] top-[46px] absolute text-black text-sm font-semibold font-['Mulish'] leading-snug">successtepsnlpa@gmail.com</div>
+    </a>
+    <div className="w-44 h-6 left-[1px] top-[73px] absolute text-black text-sm font-semibold font-['Mulish'] leading-snug">+91 98330 86018</div>
   </div>
   <div className="w-44 h-7 left-[1032px] top-[28px] absolute text-black text-base font-extrabold font-['Mulish'] uppercase tracking-wider">Stay up to date</div>
   <div className="w-64 h-11 left-[1033px] top-[83px] absolute">
