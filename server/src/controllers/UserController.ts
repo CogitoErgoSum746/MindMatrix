@@ -729,6 +729,9 @@ export async function schoolSubTests(req: Request, res: Response): Promise<void>
         });
         res.status(200).json({ success: true, finalArray: finalArray });
         return;
+      } else {
+        res.status(404).json({ message: 'testType not found' });
+        return;
       }
     } else {
       res.status(404).json({ message: 'User not found' });
