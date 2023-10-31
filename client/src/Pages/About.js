@@ -13,6 +13,7 @@ import abtimg8 from "../images/about/abtimg8.png"
 import abtimg9 from "../images/about/abtimg9.png"
 import abtimg10 from "../images/about/abtimg10.png"
 import abtimg11 from "../images/about/abtimg11.png"
+import Contact from '../components/HomePage/Contact'
 function About() {
   return (
     <>
@@ -128,7 +129,7 @@ But do not worry, for just as you shape your physical form, your mental strength
     </div>
 
 
-<Footer />
+<Contact />
     </div>
 
    

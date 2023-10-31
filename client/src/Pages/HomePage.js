@@ -167,7 +167,7 @@ function HomePage() {
   }
 
   return (
-    <>
+    <div className="container mx-auto">
       <Navbar />
       <Element name="discover">
         <div className="relative text-center">
@@ -181,7 +181,7 @@ function HomePage() {
         </div>
 
         <div className="flex flex-row">
-          <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
+          <div className="w-120 h-64 relative mt-10 mx-auto text-justify mb-40">
             <div className="mt-5">
               <div className="left-0 top-0 absolute text-neutral-700 text-lg font-normal font-['Source Sans Pro'] leading-9">
                 Unveiling the Fusion of
@@ -287,7 +287,7 @@ function HomePage() {
 
       <Element name="psychometrictest">
         <div className="flex flex-row justify-between items-center">
-          <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
+          <div className="w-120 h-64 relative mt-10 mx-auto text-justify mb-40">
             <div className="mt-3">
               <div className="w-120 left-0 top-[26px] absolute text-black text-4xl font-medium font-['Inter'] leading-10 mt-10">
                 Psychometric Tests And Career Guidance
@@ -349,14 +349,14 @@ function HomePage() {
         </div>
         <div id="services" className="mb-10">
           <div>
-            <div className="text-black text-4xl font-semibold font-['Inter'] leading-10 mt-20 text-left ml-20">
+            <div className="text-black text-4xl font-semibold font-['Inter'] leading-10 mt-20 text-left mx-auto">
               Satisfied Clients
             </div>
-            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 text-left ml-20 mb-20">
+            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 text-left mx-auto mb-20">
               Read what our customers have to say about us
             </p>
           </div>
-          <div className="flex flex-row ml-20">
+          <div className="flex flex-row mx-auto">
             <div className="flex flex-col text-left">
               <div className="container mx-auto p-1 flex justify-between">
                 <div className="w-5/6 mt-4 text-neutral-700 text-xl font-semibold font-['Source Sans Pro'] leading-loose mb-5">
@@ -463,15 +463,15 @@ function HomePage() {
       <div id="certificate">
         <div className="flex flex-row mt-15 justify-between">
           <div>
-            <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10 text-left ml-20">
+            <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10 text-left mx-auto">
               Explore Our Certification Program
             </h1>
-            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 ml-20 mb-10">
+            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 mx-auto mb-10">
               Explore from our wide range of certification program and get
               certified.
             </p>
             <Link to="">
-              <p className="text-neutral-700 text-lg font-semibold font-['Source Sans Pro'] text-left ml-20 mb-20">
+              <p className="text-neutral-700 text-lg font-semibold font-['Source Sans Pro'] text-left mx-auto mb-20">
                 <u>View Certification</u>
               </p>
             </Link>
@@ -588,15 +588,15 @@ function HomePage() {
       </div>
 
       <div id="contactus" className="mt-20">
-        <p className="text-left ml-20 text-neutral-700 text-lg font-semibold font-['Source Sans Pro']">
+        <p className="text-left mx-auto text-neutral-700 text-lg font-semibold font-['Source Sans Pro']">
           Get in touch now
         </p>
-        <div className="text-left ml-20 text-black text-4xl font-semibold font-['Inter'] leading-10 mb-20">
+        <div className="text-left mx-auto text-black text-4xl font-semibold font-['Inter'] leading-10 mb-20">
           Contact Us
         </div>
 
         <div className="flex flex-row justify-between">
-          <div className="ml-20">
+          <div className="mx-auto">
             <p className="text-black text-sm font-medium font-['Inter'] leading-tight text-left">
               PHONE
             </p>
@@ -653,7 +653,7 @@ function HomePage() {
       <Footer />
 
       <FloatingIcon />
-    </>
+    </div>
   );
 }
 
