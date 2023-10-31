@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Ellipse1 from "../../images/Ellipse1.png";
-import Ellipse2 from "../../images/Ellipse2.png";
-import Ellipse3 from "../../images/Ellipse3.png";
+// import Ellipse1 from "../../images/Ellipse1.png";
+// import Ellipse2 from "../../images/Ellipse2.png";
+// import Ellipse3 from "../../images/Ellipse3.png";
+import purple from "../../images/purple.png";
 import { API_BASE_URL } from "../../config";
 
 function TestQuestionsPattern10() {
@@ -298,7 +299,7 @@ function TestQuestionsPattern10() {
       {!isTestCompleted && (
         <>
           <div className="hidden md:flex">
-          <img
+          {/* <img
             src={Ellipse1}
             alt="business"
             className="absolute top-0 left-6 mb-20"
@@ -312,7 +313,8 @@ function TestQuestionsPattern10() {
             className="absolute top-0 left-80"
             style={{ marginBottom: 40 }}
           />
-          <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+          <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" /> */}
+           <img src={purple} alt="headerimg" className="w-full" style={{ height: '350px' }}></img>
           </div>
         </>
       )}
