@@ -4,6 +4,7 @@ import Ellipse1 from "../images/Ellipse1.png";
 import Ellipse2 from "../images/Ellipse2.png";
 import Ellipse3 from "../images/Ellipse3.png";
 import { API_BASE_URL } from "../config";
+import Footer from "../components/Footer";
 
 function Test() {
   const [tests] = useState([
@@ -229,6 +230,7 @@ function Test() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

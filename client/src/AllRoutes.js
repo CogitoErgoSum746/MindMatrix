@@ -15,6 +15,7 @@ import Careeropt from './Pages/Careeropt';
 import Sendmail from './components/Sendmail';
 import ResetPass from './ResetPass';
 import About from './Pages/About';
+import NewHomePage from './Pages/NewHomePage';
 function AllRoutes() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
@@ -23,7 +24,8 @@ function AllRoutes() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/admin' element={<AdminPanel loggedIn={loggedIn}/>} />
-        <Route path='/' element = {<HomePage/>} />
+        <Route path='/' element = {<NewHomePage/>} />
+        {/* <Route path='/' element = {<HomePage/>} /> */}
         <Route path='/getstarted' element = {<Home1 />} />
         <Route path='/admin/getusers/:org_name/:org_email/:org_studentType/:org_code' element={<Getusers/>} />
         {/* <Route path="/test/:testAlias" element={<TestPage />} /> */}

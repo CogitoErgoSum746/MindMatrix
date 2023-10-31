@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "react-toastify/dist/ReactToastify.css";
 import imggall1 from "../images/imagegallery/imggall1.jpeg";
 import imggall2 from "../images/imagegallery/imggall2.jpg";
 import imggall3 from "../images/imagegallery/imggall3.jpg";
@@ -24,6 +26,7 @@ import img4 from "../images/image 4.png";
 import img5 from "../images/image 5.png";
 import { Link as ScrollLink, Element } from "react-scroll";
 import FloatingIcon from "../components/FloatingIcon";
+import Footer from "../components/Footer";
 
 const images = [
   imggall1,
@@ -107,34 +110,38 @@ function HomePage() {
   };
 
   function Submit(e) {
-    e.preventDefault(); // Prevent the form from submitting by default
-  
-    // Get the form elements by their IDs
+    e.preventDefault();
+
     const nameInput = document.getElementById("nameInput");
     const emailInput = document.getElementById("emailInput");
-    const selectedType = document.getElementById("selectedType"); // Added an ID
-  
+    const optionSelect = document.getElementById("optionSelect");
+
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
-    const selected = selectedType.value; // Get the selected value
-  
+    const option = optionSelect.value;
+
     // Validation checks
     if (name.length < 5) {
-      alert("Name must contain at least five characters.");
-      return; 
-    }
-  
-    if (!isValidEmail(email)) {
-      alert("Please enter a valid email address.");
+      toast.error("Name must contain at least five characters.");
       return;
     }
-  
+
+    if (!isValidEmail(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    if (option === "") {
+      toast.error("Please select an option.");
+      return;
+    }
+
+    e.preventDefault();
     const formEle = document.querySelector("form");
     const formDatab = new FormData(formEle);
-    formDatab.set("SelectedType", selected); 
-  
+
     fetch(
-      "https://script.google.com/macros/s/AKfycbxG4_fVfuCOVdmv6De28PvRM11isUQiXVz6MHCgUzDeTDs0xwCO-q3VsvbX-IX4xCSS-Q/exec",
+      "https://script.google.com/macros/s/AKfycbws-vYS5vkKaG_jNUtv-3-enFlDdMEncZbvZ2-KwgaIvWYo37Z1hse8hkLyPKiUW7ynbw/exec",
       {
         method: "POST",
         body: formDatab,
@@ -147,17 +154,20 @@ function HomePage() {
       .catch((error) => {
         console.log(error);
       });
+
+    toast.success("Form Submitted Successfully");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
-  
-  
+
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-  
 
   return (
-    <>
+    <div className="container mx-auto">
       <Navbar />
       <Element name="discover">
         <div className="relative text-center">
@@ -171,7 +181,7 @@ function HomePage() {
         </div>
 
         <div className="flex flex-row">
-          <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
+          <div className="w-120 h-64 relative mt-10 mx-auto text-justify mb-40">
             <div className="mt-5">
               <div className="left-0 top-0 absolute text-neutral-700 text-lg font-normal font-['Source Sans Pro'] leading-9">
                 Unveiling the Fusion of
@@ -277,7 +287,7 @@ function HomePage() {
 
       <Element name="psychometrictest">
         <div className="flex flex-row justify-between items-center">
-          <div className="w-120 h-64 relative mt-10 ml-20 text-justify mb-40">
+          <div className="w-120 h-64 relative mt-10 mx-auto text-justify mb-40">
             <div className="mt-3">
               <div className="w-120 left-0 top-[26px] absolute text-black text-4xl font-medium font-['Inter'] leading-10 mt-10">
                 Psychometric Tests And Career Guidance
@@ -339,14 +349,14 @@ function HomePage() {
         </div>
         <div id="services" className="mb-10">
           <div>
-            <div className="text-black text-4xl font-semibold font-['Inter'] leading-10 mt-20 text-left ml-20">
+            <div className="text-black text-4xl font-semibold font-['Inter'] leading-10 mt-20 text-left mx-auto">
               Satisfied Clients
             </div>
-            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 text-left ml-20 mb-20">
+            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 text-left mx-auto mb-20">
               Read what our customers have to say about us
             </p>
           </div>
-          <div className="flex flex-row ml-20">
+          <div className="flex flex-row mx-auto">
             <div className="flex flex-col text-left">
               <div className="container mx-auto p-1 flex justify-between">
                 <div className="w-5/6 mt-4 text-neutral-700 text-xl font-semibold font-['Source Sans Pro'] leading-loose mb-5">
@@ -453,15 +463,15 @@ function HomePage() {
       <div id="certificate">
         <div className="flex flex-row mt-15 justify-between">
           <div>
-            <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10 text-left ml-20">
+            <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10 text-left mx-auto">
               Explore Our Certification Program
             </h1>
-            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 ml-20 mb-10">
+            <p className="text-neutral-700 text-xl font-normal font-['Source Sans Pro'] leading-9 mx-auto mb-10">
               Explore from our wide range of certification program and get
               certified.
             </p>
             <Link to="">
-              <p className="text-neutral-700 text-lg font-semibold font-['Source Sans Pro'] text-left ml-20 mb-20">
+              <p className="text-neutral-700 text-lg font-semibold font-['Source Sans Pro'] text-left mx-auto mb-20">
                 <u>View Certification</u>
               </p>
             </Link>
@@ -483,7 +493,7 @@ function HomePage() {
             We’re here to help. Chat with us 24/7 and get set up and ready to go
             in just a quick.
           </p>
-          <form className="form" onSubmit={(e) => Submit(e)}>
+          <form className="form">
             <div className="mb-4 flex flex-row mr-4">
               <div>
                 <label
@@ -493,10 +503,11 @@ function HomePage() {
                   Name
                 </label>
                 <input
+                  placeholder="Your Name"
+                  name="Name"
                   type="text"
-                  placeholder="Enter Name"
-                  id="nameInput"
                   className="border-b border-gray-500 focus:border-b mr-6"
+                  id="nameInput"
                 />
               </div>
             </div>
@@ -509,10 +520,11 @@ function HomePage() {
                   Email Address
                 </label>
                 <input
-                  type="email"
-                  placeholder="Enter email address"
+                  placeholder="Your Email"
+                  name="Email"
+                  type="text"
                   id="emailInput"
-                  className="border-b border-gray-500 focus:border-b mr-20 w-200"
+                  className="border-b border-gray-500 focus-border-b mr-20 w-200"
                 />
               </div>
             </div>
@@ -522,21 +534,30 @@ function HomePage() {
                   Select from the topic below
                 </label>
                 <select
-                  className="border-b border-gray-500 focus:border-b mr-20"
-                  placeholder="Select"
+                  name="Option"
+                  className="border-b border-gray-500 focus-border-b mr-20"
+                  id="optionSelect"
                 >
                   <option value="">Select your topic</option>
-                  <option value="Counselling and Therapies">Counselling and Therapies</option>
-                  <option value="Life Coaching Session">Life Coaching Session</option>
+                  <option value="Counselling and Therapies">
+                    Counselling and Therapies
+                  </option>
+                  <option value="Life Coaching Session">
+                    Life Coaching Session
+                  </option>
                   <option value="Corporate Training">Corporate Training</option>
                   <option value="Business Coaching">Business Coaching</option>
-                  <option value="Leadership Training">Leadership Training</option>
+                  <option value="Leadership Training">
+                    Leadership Training
+                  </option>
                   <option value="Psychometric Test">Psychometric Test</option>
                   <option value="Career Counselling">Career Counselling</option>
                   <option value="Students Training">Students Training</option>
                   <option value="Teachers Training">Teachers Training</option>
                   <option value="Parenting Session">Parenting Session</option>
-                  <option value="Certification Program">Certification Program</option>
+                  <option value="Certification Program">
+                    Certification Program
+                  </option>
                 </select>
               </div>
             </div>
@@ -547,81 +568,92 @@ function HomePage() {
               >
                 Message
               </label>
-              <textarea
-                id="message"
-                placeholder="Type your message here"
-                className="border-b border-gray-500 focus:border-b w-full p-2 rounded"
-                rows="5"
-              ></textarea>
+              <input
+                placeholder="Your Message"
+                name="Message"
+                type="text"
+                className="border-b border-gray-500 focus-border-b w-full p-2 rounded"
+                id="messageInput"
+              />
             </div>
-            <button
+            <input
+              type="button"
+              value="Submit"
+              onClick={(e) => Submit(e)}
               className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
-              type="submit"
-            >
-              Submit
-            </button>
+            />
           </form>
         </div>
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
 
       <div id="contactus" className="mt-20">
-        <p className="text-left ml-20 text-neutral-700 text-lg font-semibold font-['Source Sans Pro']">
+        <p className="text-left mx-auto text-neutral-700 text-lg font-semibold font-['Source Sans Pro']">
           Get in touch now
         </p>
-        <div className="text-left ml-20 text-black text-4xl font-semibold font-['Inter'] leading-10 mb-20">
+        <div className="text-left mx-auto text-black text-4xl font-semibold font-['Inter'] leading-10 mb-20">
           Contact Us
         </div>
 
         <div className="flex flex-row justify-between">
-          <div className="ml-20">
+          <div className="mx-auto">
             <p className="text-black text-sm font-medium font-['Inter'] leading-tight text-left">
               PHONE
             </p>
             <p className=" text-blue-950 text-base font-medium font-['Inter'] leading-tight">
-              (91) 9833-086-018
+              +91 98330 86018
             </p>
           </div>
           <div>
             <p className="text-black text-sm font-medium font-['Inter'] leading-tight text-left">
               EMAIL
             </p>
-            <p className=" text-blue-950 text-base font-medium font-['Inter'] leading-tight">
-              contact@successsteps.in
-            </p>
+            <a href="mailto:successtepsnlpa@gmail.com" target="_blank">
+              <p className=" text-blue-950 text-base font-medium font-['Inter'] leading-tight">
+                successtepsnlpa@gmail.com
+              </p>
+            </a>
           </div>
           <div className="mr-40">
             <p className="text-black text-sm font-medium font-['Inter'] leading-tight text-left">
               SOCIAL MEDIA
             </p>
             <div className="flex flex-row mt-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="20"
-                height="20"
-                viewBox="0 0 30 30"
-              >
-                <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
-              </svg>
+              <a href="https://www.instagram.com/antony.k.a" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                >
+                  <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
+                </svg>
+              </a>
+
               <div className="mr-5"></div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="20"
-                height="20"
-                viewBox="0 0 30 30"
-              >
-                <path d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z"></path>
-              </svg>
+              <a href="https://www.facebook.com/Successteps7" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                >
+                  <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
+      <Footer />
+
       <FloatingIcon />
-    </>
+    </div>
   );
 }
 

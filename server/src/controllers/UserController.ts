@@ -675,3 +675,72 @@ export async function multipleIRank(req: Request, res: Response): Promise<void> 
     res.status(500).json({ success: false, error: 'Internal server error' });
   }
 }
+
+export async function schoolSubTests(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    const bodyTestType = req.body.testType;
+
+    const testTypes = existingUser?.testResults.map(result => result.testType).filter(Boolean);
+
+    const general: Record<string, Array<string>> = {
+      "Aptitude": ["Linguistic", "Numerical", "Mechanical", "Abstract", "Spatial", "Logical"],
+      "Study Skills Profile Assessment": ["Time Management and Procrastination", "Concentration and Memory", "Study Aids and Note-Taking", "Test Strategies and Test Anxiety", "Organizing and Processing Information", "Motivation and Attitude", "Reading and Selecting the Main Idea", "Writing"],
+      "Students Wheel of Life": ["Academic Competency", "Health & Fitness", "Social Friends", "Discipline", "Good Manners", "Spirituality", "Goal Orientation", "Confidence", "Responsible", "Hobbies & Extracurriculars"],
+      "Left-Right Brain Dominance": ["Right Brain","Left Brain"],
+      "Personality": ["Openness", "Conscientiousness", "Extroversion", "Agreeableness", "Neuroticism"],
+      "Multiple Intelligence": ["Linguistic", "Logical", "Spatial", "Interpersonal", "Musical", "Naturalistic","Intrapersonal", "Kinesthetic"],
+      "Emotional Intelligence": ["Self-Awareness", "Managing Emotions", "Motivating Oneself", "Empathy", "Social Skill"],
+      "Learning Style": ["Visual", "Auditory", "Kinesthetic"],
+      "Leadership skills": ["Leadership"],
+      "Leadership Style": ["Authoritative", "Democratic", "Facilitative", "Situational"],
+      "Cyber Dependency": ["Cyber Dependency"],
+      "Competitive State Anxiety Inventory": ["Cognitive Anxiety", "Somatic Anxiety", "Self-Confidence"]
+    };
+
+    const finalArray: number[] = [];
+
+    if (existingUser) {
+      // Find the test result with the matching testType
+      const testResult = existingUser.testResults.find((result) => result.testType === bodyTestType);
+      const theList = general[bodyTestType];
+
+      if (testResult && theList) {
+        theList.forEach(sub => {
+          const foundSubcategory = testResult.subcategories.find((subcategory) => subcategory.name === sub);
+
+          if (foundSubcategory) {
+            finalArray.push(1);
+          } else {
+            finalArray.push(0);
+          }
+        });
+      } else if (theList){
+        theList.forEach(sub => {
+          finalArray.push(0);
+        });
+        res.status(200).json({ success: true, finalArray: finalArray });
+        return;
+      } else {
+        res.status(404).json({ message: 'testType not found' });
+        return;
+      }
+    } else {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+
+    res.status(200).json({ success: true, finalArray: finalArray });
+  } catch (error) {
+    console.error('Error updating document:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+};
