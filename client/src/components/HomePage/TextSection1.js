@@ -21,7 +21,7 @@ const TextSection1 = () => {
               Mapping.
             </p>
             <p>
-              Find Your Stream of Learning- Carer Pathway by the most scientific
+              Find Your Stream of Learning- Career Pathway by the most scientific
               way!
             </p>
           </div>

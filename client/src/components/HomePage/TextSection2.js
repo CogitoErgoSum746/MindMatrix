@@ -46,7 +46,7 @@ const TextSection2 = () => {
             NLP For Business Mastery & Leadership Mastery
             </p>
             <p>
-            Unleash Your Potential & Build A Stogner Team!
+            Unleash Your Potential & Build A Strogner Team!
             </p>
             <p>
             Do More Than Train.
