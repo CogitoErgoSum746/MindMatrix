@@ -17,7 +17,7 @@ const NewHomePage = () => {
     <div>
       <Navbar />
       <FrontImage />
-      <div className="container mx-auto flex flex-col gap-16">
+      <div className="container mx-auto flex flex-col gap-16 px-2">
         <TextSection1 />
         <ImageGalary />
         <TextSection2 />
@@ -26,7 +26,7 @@ const NewHomePage = () => {
         <GetInTouch />
         <FloatingIcon />
       </div>
-        <Contact/>
+      <Contact/>
     </div>
   );
 };
