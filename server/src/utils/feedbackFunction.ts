@@ -9,7 +9,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
     let percentage = '';
 
     if (testType === "Multiple Intelligence" || testType === "Leadership Style") {
-        if (score >= 1 && score <= 10) {
+        if (score >= 0 && score <= 10) {
             scoreRange = '1-10';
             percentage = 'Basic Proficiency';
         } else if (score >= 11 && score <= 20) {
@@ -27,7 +27,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
     }
 
     if (testType === "Study Skills Profile Assessment") {
-        if (score >= 1 && score <= 8) {
+        if (score >= 0 && score <= 8) {
             scoreRange = '1-8';
             percentage = 'Basic Proficiency';
         } else if (score >= 9 && score <= 16) {
@@ -45,7 +45,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
     }
 
     if (testType === "Aptitude") {
-        if (score >= 1 && score <= 4) {
+        if (score >= 0 && score <= 4) {
             scoreRange = '1-4';
             percentage = 'Developing';
         } else if (score >= 5 && score <= 8) {
@@ -87,7 +87,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
     }
 
     if (testType === "Personality") {
-        if (score >= 1 && score <= 10) {
+        if (score >= 0 && score <= 10) {
             scoreRange = '1-10';
             percentage = 'Developing';
         } else if (score >= 11 && score <= 20) {
@@ -108,7 +108,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
     }
 
     if (testType === "Learning Style") {
-        if (score >= 1 && score <= 7) {
+        if (score >= 0 && score <= 7) {
             scoreRange = '1-7';
             percentage = 'Low';
         } else if (score >= 8 && score <= 15) {
@@ -162,7 +162,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
     }
 
     if (testType === "Left Brain" || testType === "Right Brain") {
-        if (score >= 1 && score <= 3) {
+        if (score >= 0 && score <= 3) {
             scoreRange = '1-3';
             percentage = 'Limited Dominance';
         } else if (score >= 4 && score <= 6) {
@@ -231,7 +231,7 @@ export function getPersonalityType(testType: string, subCategory: string, score:
     let scoreRange = '';
 
     if (testType === "Personality") {   
-        if (score >= 1 && score <= 10) {
+        if (score >= 0 && score <= 10) {
             scoreRange = '1-10';
         } else if (score >= 11 && score <= 20) {
             scoreRange = '11-20';
@@ -257,7 +257,7 @@ export function getCarreerSug(testType: string, subCategory: string, score: numb
     let scoreRange = '';
 
     if (testType === "Aptitude") {
-        if (score >= 1 && score <= 4) {
+        if (score >= 0 && score <= 4) {
             scoreRange = '1-4';
         } else if (score >= 5 && score <= 8) {
             scoreRange = '5-8';
@@ -273,7 +273,7 @@ export function getCarreerSug(testType: string, subCategory: string, score: numb
     }
 
     if (testType === "Personality") {
-        if (score >= 1 && score <= 10) {
+        if (score >= 0 && score <= 10) {
             scoreRange = '1-10';
         } else if (score >= 11 && score <= 20) {
             scoreRange = '11-20';
@@ -289,7 +289,7 @@ export function getCarreerSug(testType: string, subCategory: string, score: numb
     }
 
     if (testType === "Multiple Intelligence") {
-        if (score >= 1 && score <= 10) {
+        if (score >= 0 && score <= 10) {
             scoreRange = '1-10';
         } else if (score >= 11 && score <= 20) {
             scoreRange = '11-20';
