@@ -152,7 +152,7 @@ function Test() {
       <div className="relative">
   <img src={mainpurple} alt="bbbnn" className="w-full h-80 md:h-100" />
 
-  <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-left md:text-justify mt-4 md:mt-0 mb-8 md:mb-20 ml-4 md:ml-0 font-['Inter'] uppercase leading-6 md:leading-10">
+  <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-left md:text-justify mt-4 mb-8 md:mb-20 ml-4  font-['Inter'] uppercase">
     GET ALL YOUR <br />
     <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10" style={{ lineHeight: "1" }}>
       PSYCHOMETRIC
