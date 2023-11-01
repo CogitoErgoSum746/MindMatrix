@@ -107,31 +107,31 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
             //             },
             //         },
             //     },
-                // datalabels: {
-                //     anchor: 'end',
-                //     align: 'end',
-                //     formatter: function (value) {
-                //         // Customize label formatting here
-                //         const label = value.toString();
-                //         if (label.includes(' ')) {
-                //             // If the label contains a space, split it into lines
-                //             const lines = label.split(' ');
-                //             if (lines.length > 1) {
-                //                 // If there are more than one word, join all but the last word with line breaks
-                //                 const firstPart = lines.slice(0, -1).join('\n');
-                //                 const lastWord = lines[lines.length - 1];
-                //                 return `${firstPart}\n${lastWord}`;
-                //             }
-                //         }
-                //         // If no space or only one word, return the label as is
-                //         return label;
-                //     },
-                //     font: {
-                //         family: 'Arial',
-                //         size: 12, // Adjust the font size as needed
-                //     },
-                //     color: 'black', // Label color
-                // },
+            // datalabels: {
+            //     anchor: 'end',
+            //     align: 'end',
+            //     formatter: function (value) {
+            //         // Customize label formatting here
+            //         const label = value.toString();
+            //         if (label.includes(' ')) {
+            //             // If the label contains a space, split it into lines
+            //             const lines = label.split(' ');
+            //             if (lines.length > 1) {
+            //                 // If there are more than one word, join all but the last word with line breaks
+            //                 const firstPart = lines.slice(0, -1).join('\n');
+            //                 const lastWord = lines[lines.length - 1];
+            //                 return `${firstPart}\n${lastWord}`;
+            //             }
+            //         }
+            //         // If no space or only one word, return the label as is
+            //         return label;
+            //     },
+            //     font: {
+            //         family: 'Arial',
+            //         size: 12, // Adjust the font size as needed
+            //     },
+            //     color: 'black', // Label color
+            // },
             // }
         },
     });
@@ -464,9 +464,16 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
     // Get a specific page (e.g., page 1)
     const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
 
-    // Getting feedback from function and converting into a list of lines
-    const { feedback, percentage } = getFeedback(testType, subCategory, score as number);
+    let feedback: string = '';
+    let percentage: string = '';
+    let tact: { feedback: string | null, percentage: string | null } = { feedback, percentage };
 
+    // Getting feedback from function and converting into a list of lines
+    if (testType === 'Left-Right Brain Dominance') {
+        tact = getFeedback(subCategory, subCategory, score as number);
+    } else {
+        tact = getFeedback(testType, subCategory, score as number);
+    }5
     // Set the fonts and drawing the text to page
     const fontSize = Fontsize;
     const TimesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
@@ -476,16 +483,29 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
     page.setFont(TimesRomanFont);
     page.setFontColor(rgb(0, 0, 0));
 
-    let line = score + '(' + percentage + ')';
+    if (testType === 'Students Wheel of Life') {
+        let line = score + '/10 ( ' + tact.percentage + ' )';
 
-    let xd = Xd;
-    let yd = Yd;
+        let xd = Xd;
+        let yd = Yd;
 
-    page.drawText(line,
-        {
-            x: xd,
-            y: yd,
-        },)
+        page.drawText(line,
+            {
+                x: xd,
+                y: yd,
+            },)
+    } else {
+        let line = score + ' ( Category: ' + tact.percentage + ' )';
+
+        let xd = Xd;
+        let yd = Yd;
+
+        page.drawText(line,
+            {
+                x: xd,
+                y: yd,
+            },)
+    }
 
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
@@ -928,9 +948,6 @@ export async function makeRadarChartPdf(req: Request, res: Response, testType: s
 
     const scores = testSubcategories?.map(result => result.score);
 
-    console.log(names);
-    console.log(scores);
-
     Chart.register(...registerables);
     Chart.register(ChartDataLabels);
 
@@ -1096,16 +1113,16 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
         await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Self-Confidence", 43, 13, 80, 35, 190);
 
         //Students wheel of life
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Academic Competency", 25, 13, 80, 40, 580);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Health & Fitness", 25, 13, 80, 40, 540);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Social Friends", 25, 13, 80, 40, 500);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Discipline", 25, 13, 80, 40, 460);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Good Manners", 25, 13, 80, 40, 420);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Spirituality", 25, 13, 80, 40, 380);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Goal Orientation", 25, 13, 80, 40, 340);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Confidence", 25, 13, 80, 40, 300);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Responsible", 25, 13, 80, 40, 260);
-        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Hobbies & Extracurriculars", 25, 13, 80, 40, 220);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Academic Competency", 25, 13, 80, 20, 580);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Health & Fitness", 25, 13, 80, 20, 540);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Social Friends", 25, 13, 80, 20, 500);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Discipline", 25, 13, 80, 20, 460);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Good Manners", 25, 13, 80, 20, 420);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Spirituality", 25, 13, 80, 20, 380);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Goal Orientation", 25, 13, 80, 20, 340);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Confidence", 25, 13, 80, 20, 300);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Responsible", 25, 13, 80, 20, 260);
+        await makeFeedbackPdf(req, res, "Students Wheel of Life", "Hobbies & Extracurriculars", 25, 13, 80, 20, 220);
 
         //Leadership skills
         await makeFeedbackPdf(req, res, "Leadership skills", "Leadership", 37, 13, 80, 45, 335);
@@ -1179,12 +1196,12 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Aptitude", "Numerical", 7, 13, 70, 330);
         await makeScorePercentPdf(req, res, "Aptitude", "Mechanical", 8, 13, 70, 678);
         await makeScorePercentPdf(req, res, "Aptitude", "Abstract", 8, 13, 70, 330);
-        await makeScorePercentPdf(req, res, "Aptitude", "Spatial", 9, 13, 75, 655);
+        await makeScorePercentPdf(req, res, "Aptitude", "Spatial", 9, 13, 75, 660);
         await makeScorePercentPdf(req, res, "Aptitude", "Logical", 9, 13, 75, 310);
 
         //Multilple Intelligence
-        await makeScorePercentPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 100, 632);
-        await makeScorePercentPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 100, 625);
+        await makeScorePercentPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 632);
+        await makeScorePercentPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 625);
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 100, 640);
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Interpersonal", 14, 13, 100, 635);
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 100, 640);
@@ -1193,30 +1210,30 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 100, 640);
 
         //Study skill profile
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Time Management and Procrastination", 21, 13, 70, 655);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Time Management and Procrastination", 21, 13, 75, 660);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Concentration and Memory", 21, 13, 70, 438);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Study Aids and Note-Taking", 21, 13, 70, 200);
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Test Strategies and Test Anxiety", 22, 13, 70, 655);
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Organizing and Processing Information", 22, 13, 70, 435);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Test Strategies and Test Anxiety", 22, 13, 75, 660);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Organizing and Processing Information", 22, 13, 70, 440);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Motivation and Attitude", 22, 13, 70, 200);
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Reading and Selecting the Main Idea", 23, 13, 70, 650);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Reading and Selecting the Main Idea", 23, 13, 75, 655);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Writing", 23, 13, 70, 350);
 
         //students wheel of life
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Academic Competency", 25, 13, 450, 580);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Health & Fitness", 25, 13, 450, 540);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Social Friends", 25, 13, 450, 500);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Discipline", 25, 13, 450, 460);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Good Manners", 25, 13, 450, 420);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Spirituality", 25, 13, 450, 380);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Goal Orientation", 25, 13, 450, 340);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Confidence", 25, 13, 450, 300);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Responsible", 25, 13, 450, 260);
-        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Hobbies & Extracurriculars", 25, 13, 450, 220);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Academic Competency", 25, 13, 385, 580);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Health & Fitness", 25, 13, 385, 540);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Social Friends", 25, 13, 385, 500);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Discipline", 25, 13, 385, 460);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Good Manners", 25, 13, 385, 420);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Spirituality", 25, 13, 385, 380);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Goal Orientation", 25, 13, 385, 340);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Confidence", 25, 13, 385, 300);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Responsible", 25, 13, 385, 260);
+        await makeScorePercentPdf(req, res, "Students Wheel of Life", "Hobbies & Extracurriculars", 25, 13, 385, 220);
 
         //left-right brain
-        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 27, 13, 75, 657);
-        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain", 27, 13, 75, 362);
+        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 27, 13, 80, 655);
+        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain", 27, 13, 80, 362);
 
         //Personality
         await makeScorePercentPdf(req, res, "Personality", "Extroversion", 29, 13, 70, 664);
