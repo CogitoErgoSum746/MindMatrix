@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import img3 from "../../../src/images/image 3.png";
 import img4 from "../../../src/images/image 4.png";
 import img5 from "../../../src/images/image 5.png";
@@ -20,7 +21,7 @@ const TextSection1 = () => {
               Mapping.
             </p>
             <p>
-              Find Your Stream of Learning- Carer Pathway by the most scientific
+              Find Your Stream of Learning- Career Pathway by the most scientific
               way!
             </p>
           </div>
@@ -89,9 +90,11 @@ const TextSection1 = () => {
            
           <div className="mt-4">
             <p className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">Your Dynamic Path to Total Success</p>
-            <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
-                Know More
-            </button>
+            <Link to="/getstarted">
+              <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
+                  Get Started
+              </button>
+            </Link>
           </div>
         </div>
         <div className='self-center'>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Ellipse1 from "../images/Ellipse1.png";
-import Ellipse2 from "../images/Ellipse2.png";
-import Ellipse3 from "../images/Ellipse3.png";
+// import Ellipse1 from "../images/Ellipse1.png";
+// import Ellipse2 from "../images/Ellipse2.png";
+// import Ellipse3 from "../images/Ellipse3.png";
+import mainpurple from "../images/mainpurple.png";
 import { API_BASE_URL } from "../config";
 import Footer from "../components/Footer";
+import Contact from "../components/HomePage/Contact";
 
 function Test() {
   const [tests] = useState([
@@ -132,7 +134,7 @@ function Test() {
   return (
     <div>
       <div className="container bg-white min-h-screen">
-        <img
+        {/* <img
           src={Ellipse1}
           alt="business"
           className="absolute top-0 left-6 mb-20"
@@ -146,20 +148,21 @@ function Test() {
           className="absolute top-0 left-80"
           style={{ marginBottom: 40 }}
         />
-        <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" />
+        <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" /> */}
+      <div className="relative">
+  <img src={mainpurple} alt="bbbnn" className="w-full h-80 md:h-100" />
 
-        <h1 className="text-4xl font-semibold text-white absolute top-1/3 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-justify mb-20 font-['Inter'] uppercase leading-10">
-          GET ALL YOUR <br />
-          <span
-            className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10"
-            style={{ lineHeight: "1" }}
-          >
-            PSYCHOMETRIC
-          </span>{" "}
-          TESTS
-          <br />
-          HERE
-        </h1>
+  <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-left md:text-justify mt-4 md:mt-0 mb-8 md:mb-20 ml-4 md:ml-0 font-['Inter'] uppercase leading-6 md:leading-10">
+    GET ALL YOUR <br />
+    <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10" style={{ lineHeight: "1" }}>
+      PSYCHOMETRIC
+    </span>{" "}
+    TESTS
+    <br />
+    HERE
+  </h1>
+</div>
+
 
         <div className="flex flex-col bg-white mt-10 p-10">
           <div className="flex justify-start ml-5 mb-10">
@@ -195,9 +198,9 @@ function Test() {
                       </button>
                     ) : (
                       <Link to={`/test/${test.id}`}>
-                      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black font-['Inter']">
-                        Start Test
-                      </button>
+                        <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black font-['Inter']">
+                          Start Test
+                        </button>
                       </Link>
                     )
                   ) : (
@@ -230,7 +233,7 @@ function Test() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Contact />
     </div>
   );
 }
