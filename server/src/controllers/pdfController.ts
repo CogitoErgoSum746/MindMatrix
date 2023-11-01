@@ -158,7 +158,7 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
 }
 
 export async function userInfoPdf1(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
-    //get score from user
+    //get name from user
     const user = await User.findOne({
         username: req.user.username,
         email: req.user.email
@@ -187,6 +187,42 @@ export async function userInfoPdf1(req: Request, res: Response, pageNumber: numb
     let yd = Yd;
 
     page.drawText(name as string,
+        {
+            x: xd,
+            y: yd,
+        },)
+
+    // Save to yay.pdf again
+    const modifiedPdfBytes = await pdfDoc.save();
+    await fs.promises.writeFile(filePath, modifiedPdfBytes);
+}
+
+export async function userInfoPdf5(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
+    
+    // Get the current date and format it as needed
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+
+    const filePath: string = await customFolderName(req, res);
+    const pdfBuffer = await fs.promises.readFile(filePath);
+    const pdfDoc = await PDFDocument.load(pdfBuffer);
+
+    // Get a specific page (e.g., page 1)
+    const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
+
+    // Set the fonts and drawing the text to page
+    const fontSize = Fontsize;
+    const TimesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
+
+    // Set the font, font size, and color for the TextDraw object
+    page.setFontSize(fontSize);
+    page.setFont(TimesRomanFont);
+    page.setFontColor(rgb(0, 0, 0));
+
+    let xd = Xd;
+    let yd = Yd;
+
+    page.drawText(formattedDate,
         {
             x: xd,
             y: yd,
@@ -1134,11 +1170,11 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
         await makeFeedbackPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 80, 50, 320);
 
         //Left-Brain Dominance
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Analytical Thinking", 27, 13, 80, 43, 610);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Language Skills", 27, 13, 80, 43, 580);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Math and Logic", 27, 13, 80, 43, 550);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Structured Planning", 27, 13, 80, 43, 520);
-        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Sequential Processing", 27, 13, 80, 43, 490);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Analytical Thinking", 27, 13, 80, 43, 600);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Language Skills", 27, 13, 80, 43, 570);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Math and Logic", 27, 13, 80, 43, 540);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Structured Planning", 27, 13, 80, 43, 510);
+        await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Sequential Processing", 27, 13, 80, 43, 480);
 
         //Right Brain Dominance
         await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Creativity", 27, 13, 80, 43, 310);
@@ -1157,10 +1193,11 @@ export async function sendFeedback(req: Request, res: Response): Promise<void> {
 export async function sendUserInfo(req: Request, res: Response): Promise<void> {
     try {
         //user info
-        await userInfoPdf1(req, res, 2, 18, 225, 600);
-        await userInfoPdf3(req, res, 2, 18, 225, 545);
-        await userInfoPdf2(req, res, 2, 18, 225, 340);
-        await userInfoPdf4(req, res, 2, 18, 225, 290);
+        await userInfoPdf1(req, res, 2, 18, 225, 600); //Name
+        await userInfoPdf3(req, res, 2, 18, 225, 545); //Age
+        await userInfoPdf2(req, res, 2, 18, 225, 340); //Email
+        await userInfoPdf4(req, res, 2, 18, 225, 290); //Organization
+        await userInfoPdf5(req, res, 2, 18, 225, 130); //Date   
 
     } catch (error) {
         console.log(error);
@@ -1196,8 +1233,8 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Aptitude", "Numerical", 7, 13, 70, 330);
         await makeScorePercentPdf(req, res, "Aptitude", "Mechanical", 8, 13, 70, 678);
         await makeScorePercentPdf(req, res, "Aptitude", "Abstract", 8, 13, 70, 330);
-        await makeScorePercentPdf(req, res, "Aptitude", "Spatial", 9, 13, 75, 660);
-        await makeScorePercentPdf(req, res, "Aptitude", "Logical", 9, 13, 75, 310);
+        await makeScorePercentPdf(req, res, "Aptitude", "Spatial", 9, 13, 80, 657);
+        await makeScorePercentPdf(req, res, "Aptitude", "Logical", 9, 13, 80, 310);
 
         //Multilple Intelligence
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 632);
@@ -1210,13 +1247,13 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 100, 640);
 
         //Study skill profile
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Time Management and Procrastination", 21, 13, 75, 660);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Time Management and Procrastination", 21, 13, 80, 650);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Concentration and Memory", 21, 13, 70, 438);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Study Aids and Note-Taking", 21, 13, 70, 200);
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Test Strategies and Test Anxiety", 22, 13, 75, 660);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Test Strategies and Test Anxiety", 22, 13, 80, 650);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Organizing and Processing Information", 22, 13, 70, 440);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Motivation and Attitude", 22, 13, 70, 200);
-        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Reading and Selecting the Main Idea", 23, 13, 75, 655);
+        await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Reading and Selecting the Main Idea", 23, 13, 75, 650);
         await makeScorePercentPdf(req, res, "Study Skills Profile Assessment", "Writing", 23, 13, 70, 350);
 
         //students wheel of life
@@ -1232,7 +1269,7 @@ export async function sendScores(req: Request, res: Response): Promise<void> {
         await makeScorePercentPdf(req, res, "Students Wheel of Life", "Hobbies & Extracurriculars", 25, 13, 385, 220);
 
         //left-right brain
-        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 27, 13, 80, 655);
+        await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 27, 13, 80, 652);
         await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain", 27, 13, 80, 362);
 
         //Personality
