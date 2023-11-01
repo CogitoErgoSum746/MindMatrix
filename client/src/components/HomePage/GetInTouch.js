@@ -70,96 +70,96 @@ const GetInTouch = () => {
           We’re here to help. Chat with us 24/7 and get set up and ready to go
           in just a quick.
         </p>
-        <form className="form flex flex-col items-center">
-          <div className="mb-4 md:flex md:flex-row md:mr-4">
-            <div>
-              <label
-                className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                htmlFor="name"
-              >
-                Name
-              </label>
-              <input
-                placeholder="Your Name"
-                name="Name"
-                type="text"
-                className="border-b border-gray-500 focus:border-b md:mr-6"
-                id="nameInput"
-              />
-            </div>
-          </div>
-          <div className="mb-4 md:flex md:flex-row md:mr-4">
-            <div>
-              <label
-                className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-                htmlFor="email"
-              >
-                Email Address
-              </label>
-              <input
-                placeholder="Your Email"
-                name="Email"
-                type="text"
-                id="emailInput"
-                className="border-b border-gray-500 focus-border-b md:mr-6"
-              />
-            </div>
-          </div>
-          <div className="mb-4 md:flex md:flex-row md:mr-4">
-            <div>
-              <label className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left">
-                Select from the topics below
-              </label>
-              <select
-                name="Option"
-                className="border-b border-gray-500 focus-border-b md:mr-6"
-                id="optionSelect"
-              >
-                <option value="">Select your topic</option>
-                <option value="Counselling and Therapies">
-                  Counselling and Therapies
-                </option>
-                <option value="Life Coaching Session">
-                  Life Coaching Session
-                </option>
-                <option value="Corporate Training">Corporate Training</option>
-                <option value="Business Coaching">Business Coaching</option>
-                <option value="Leadership Training">Leadership Training</option>
-                <option value="Psychometric Test">Psychometric Test</option>
-                <option value="Career Counselling">Career Counselling</option>
-                <option value="Students Training">Students Training</option>
-                <option value="Teachers Training">Teachers Training</option>
-                <option value="Parenting Session">Parenting Session</option>
-                <option value="Certification Program">
-                  Certification Program
-                </option>
-              </select>
-            </div>
-          </div>
-          <div className="mb-4 md:flex md:flex-row md:mr-4">
-            <div>
-            <label
-              className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-              htmlFor="message"
-            >
-              Message
-            </label>
-            <input
-              placeholder="Your Message"
-              name="Message"
-              type="text"
-              className="border-b border-gray-500 focus-border-b w-full p-2 rounded"
-              id="messageInput"
-            />
-          </div>
-          </div>
-          <input
-            type="button"
-            value="Submit"
-            onClick={(e) => Submit(e)}
-            className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
-          />
-        </form>
+        <form className="form">
+  <div className="flex flex-col justify-center items-center text-justify">
+    <div className="mb-4">
+      <div>
+        <label
+          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+          htmlFor="name"
+        >
+          Name
+        </label>
+        <input
+          placeholder="Your Name"
+          name="Name"
+          type="text"
+          className="border-b border-gray-500 focus:border-b"
+          id="nameInput"
+        />
+      </div>
+    </div>
+    <div className="mb-4">
+      <div>
+        <label
+          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+          htmlFor="email"
+        >
+          Email Address
+        </label>
+        <input
+          placeholder="Your Email"
+          name="Email"
+          type="text"
+          id="emailInput"
+          className="border-b border-gray-500 focus-border-b"
+        />
+      </div>
+    </div>
+    <div className="mb-4 ml-5">
+      <div>
+        <label
+          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+        >
+          Select from the topics below
+        </label>
+        <select
+          name="Option"
+          className="border-b border-gray-500 focus-border-b"
+          id="optionSelect"
+        >
+          <option value="">Select your topic</option>
+          <option value="Counselling and Therapies">Counselling and Therapies</option>
+          <option value="Life Coaching Session">Life Coaching Session</option>
+          <option value="Corporate Training">Corporate Training</option>
+          <option value="Business Coaching">Business Coaching</option>
+          <option value="Leadership Training">Leadership Training</option>
+          <option value="Psychometric Test">Psychometric Test</option>
+          <option value="Career Counselling">Career Counselling</option>
+          <option value="Students Training">Students Training</option>
+          <option value="Teachers Training">Teachers Training</option>
+          <option value="Parenting Session">Parenting Session</option>
+          <option value="Certification Program">Certification Program</option>
+        </select>
+      </div>
+    </div>
+    <div className="mb-4 ml-5">
+      <div>
+        <label
+          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+          htmlFor="message"
+        >
+          Message
+        </label>
+        <input
+          placeholder="Your Message"
+          rows="4"
+          type="text"
+          id="messageInput"
+          className="border-b border-gray-500 focus-border-b md:mr-6"
+        />
+      </div>
+    </div>
+    <input
+      type="button"
+      value="Submit"
+      onClick={(e) => Submit(e)}
+      className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
+    />
+  </div>
+</form>
+
+       
       </div>
       <ToastContainer position="top-right" autoClose={2000} />
     </div>

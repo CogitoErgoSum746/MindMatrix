@@ -4,7 +4,6 @@ const FloatingIcon = () => {
   const phoneNumber = "9833086018";
 
 
-  // Generate the WhatsApp URL
   const whatsappURL = `https://wa.me/${phoneNumber}`;
 
   return (
