@@ -1517,7 +1517,7 @@ function TestQuestionsPattern12() {
               <p className="text-lg mb-2 text-left ">
                 {subtest.questions[questionIndex].questionText}
               </p>
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-col justify-between md:flex-row">
                 <div className="mt-2 text-left">
                   {subtest.questions[questionIndex].options.map(
                     (option, optionIndex) => (
@@ -1532,7 +1532,7 @@ function TestQuestionsPattern12() {
                             onChange={() => handleOptionChange(optionIndex)}
                           />
                           <span
-                            className="ml-3 bg-gray-300 p-3 block"
+                            className="ml-1 bg-gray-300 p-3 block"
                             style={{ width: "300px" }}
                           >
                             {option.text}

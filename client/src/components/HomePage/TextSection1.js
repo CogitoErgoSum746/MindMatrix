@@ -3,54 +3,47 @@ import { Link } from "react-router-dom";
 import img3 from "../../../src/images/image 3.png";
 import img4 from "../../../src/images/image 4.png";
 import img5 from "../../../src/images/image 5.png";
+import oct from "../../../src/images/Octahedron.png";
 
 const TextSection1 = () => {
   return (
     <div className="flex flex-col py-10 gap-9">
+
       <div className="flex flex-col md:flex-row gap-6 justify-between">
-        <div className="self-center text-left">
-          <div className="text-neutral-700 text-base md:text:lg lg:text-xl font-['Source Sans Pro']">
-            Unveiling the Fusion of
-          </div>
+        <div className="self-center">
+          <img src={img4}></img>
+        </div>
+        <div className="self-center">
           <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">
-            Neurocognitive Emotional Behavior (NCEB)
+          MIND WELLNESS
           </div>
-          <div className="text-black text-sm md:text-base lg:text-lg font-['Inter']">
-            <p>
-              Neuro-cognitive-emotional Intelligence Behaviour Competency
-              Mapping.
-            </p>
-            <p>
-              Find Your Stream of Learning- Carer Pathway by the most scientific
-              way!
-            </p>
+          <div className=" text-black text-xl md:text-2xl font-semibold lg:text-3xl font-['Inter']">
+          Counselling Therapy
           </div>
-          <div className="flex justify-around mt-4 font-bold">
-            <div>
+          <div className="text-black text-xl mt-4 font-semibold font-['Inter'] ">
+            Talk Resolve Heal
+          </div>
+          <div className=" text-neutral-700 font-['Source Sans Pro']">
+            100% Safe and Secure Platform
+          </div>
+          <div className="flex justify-around my-4 font-bold text-base lg:text-xl">
+            <div className='flex gap-1 lg:gap-2'>
+              <img src={oct}></img>
               <p>Remedial</p>
             </div>
-            <div>
+            <div className='flex gap-1 lg:gap-2'>
+              <img src={oct}></img>
               <p>Promotional</p>
             </div>
-            <div>
+            <div className='flex gap-1 lg:gap-2'>
+              <img src={oct}></img>
               <p>Preventive</p>
             </div>
           </div>
-        </div>
-        <div className='self-center'>
-          <img src={img3}></img>
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-6 justify-between">
-        <div className='self-center'>
-          <img src={img4}></img>
-        </div>
-        <div className="self-center text-left">
-          <div className=" text-black text-2xl md:text-3xl font-bold lg:text-4xl font-['Inter'] mb-2">
+          <div className=" text-black text-lg md:text-xl font-semibold  lg:text-2xl font-['Inter'] mb-2">
             Get Rid of
           </div>
-          <ul class="list-disc">
+          <ul class="list-disc text-left">
             <div class="grid grid-cols-2 lg:grid-cols-4">
               <li>Stress</li>
               <li>Anxiety</li>
@@ -70,34 +63,37 @@ const TextSection1 = () => {
               <li>ADHD & Teenage Issues</li>
             </div>
           </ul>
-          <div className="text-black text-xl mt-4 font-semibold font-['Inter'] ">
-            Talk Resolve Heal
-          </div>
-          <div className=" text-neutral-700 font-['Source Sans Pro']">
-            100% Safe and Secure Platform
-          </div>
+
           <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
             Get In Touch
           </button>
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6 justify-between ">
-        <div className="self-center text-left">
+      <div className="flex flex-col md:flex-row gap-6 justify-between " id="services">
+        <div className="self-center">
           <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter']">
-            Psychometric Tests And Career Guidance
+            PSYCHOMETRIC TESTS & CAREER GUIDANCE
           </div>
-           
+          <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter']">
+            Neuro-cognitive-emotional Intelligence Behaviour Competency Mapping
+          </p>
+          <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter'] mt-4">
+            Find Your Stream of Learning- Carer Pathway by the most scientific
+            way!
+          </p>
+          <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter'] mt-1">
+            Your Dynamic Path to Total Success
+          </div>
           <div className="mt-4">
-            <p className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">Your Dynamic Path to Total Success</p>
             <Link to="/getstarted">
-              <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
-                  Get Started
+              <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
+                Get Started
               </button>
             </Link>
           </div>
         </div>
-        <div className='self-center'>
+        <div className="self-center">
           <img src={img5}></img>
         </div>
       </div>
