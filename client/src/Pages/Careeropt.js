@@ -858,10 +858,12 @@ function CareerOptions() {
   };
 
   const sendCareerOptionsToBackend = () => {
-    const careerOptions = selectedPriorities;
-    console.log(careerOptions);
+    const careerOptions= selectedPriorities
+  .sort((a, b) => a.priority - b.priority) 
+  .map((option) => option.option);
 
-    fetch(`${API_BASE_URL}/user//carreerOptions`, {
+  console.log(careerOptions)
+    fetch(`${API_BASE_URL}/user/carreerOptions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

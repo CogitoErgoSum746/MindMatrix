@@ -1,19 +1,16 @@
-import React from 'react'
+import React from "react";
 import logoImage from "../../../src/images/logo.png";
 
 const Contact = () => {
   return (
-    
-    <div className='bg-neutral-300 py-5 px-20 flex flex-col md:flex-row justify-around'>
-
-
-<a href="/" className='self-center'>
+    <div className="bg-neutral-300 py-5 px-20 flex flex-col md:flex-row justify-around">
+      <a href="/" className="self-center">
         <img src={logoImage} alt="Logo" width="150px" height="40px" />
-        </a>
-        {/* <p className=" text-neutral-700 text-base lg:text-lg font-semibold font-['Source Sans Pro'] ">
+      </a>
+      {/* <p className=" text-neutral-700 text-base lg:text-lg font-semibold font-['Source Sans Pro'] ">
           Get in touch now
         </p> */}
-        <div>
+      <div>
         <div className=" text-black text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter'] mb-6 ">
           Contact Us
         </div>
@@ -66,12 +63,24 @@ const Contact = () => {
                   <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z"></path>
                 </svg>
               </a>
+              <a href="https://www.youtube.com/@antonyaugusthy" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 30 30"
+                >
+                  <path d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z"></path>
+                </svg>
+              </a>
             </div>
-          </div>
           </div>
         </div>
       </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Contact
+export default Contact;
