@@ -19,10 +19,10 @@ const NewHomePage = () => {
       <FrontImage />
       <div className="container mx-auto flex flex-col gap-16">
         <TextSection1 />
-        <ImageGalary />
         <TextSection2 />
-        <SatisfiedClients />
         <Certification />
+        <SatisfiedClients />
+        <ImageGalary />
         <GetInTouch />
         <FloatingIcon />
       </div>
