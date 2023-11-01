@@ -61,7 +61,7 @@ const GetInTouch = () => {
   }
 
   return (
-    <div id="getintouch" className="bg-stone-50 w-full h-600 p-6">
+    <div id="getintouch" className="bg-stone-50 w-full h-600 py-12">
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10">
           Get In Touch
