@@ -50,7 +50,7 @@ function Home1() {
       <Navbar />
       <div className="bg-white min-h-screen py-10">
         <div className="container mx-auto p-5">
-          <h1 className="text-black text-center text-lg mb-2 font-bold font-['Inter']">
+          <h1 className="text-black text-center text-xl mb-3 font-bold font-['Inter']">
             PSYCHOMETRIC TESTS
           </h1>
           <p className="text-black text-center text-md mb-1 italic">
@@ -82,7 +82,6 @@ function Home1() {
                 yourself, our tests are your trusted companions. Start exploring
                 and pave the way to a successful future.
               </p>
-            
               {isLoggedin && studentType === "High school" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
