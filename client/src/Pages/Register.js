@@ -13,7 +13,7 @@ const Register = () => {
     studentType: "",
     age: "",
     password: "",
-    organization_code: "", // Make sure this matches the backend field name
+    organization_code: "", 
   });
 
   const [validationErrors, setValidationErrors] = useState({});

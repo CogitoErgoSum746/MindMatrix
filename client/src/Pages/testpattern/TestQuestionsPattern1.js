@@ -509,7 +509,7 @@ function TestQuestionsPattern1() {
   };
 
   return (
-    <div className="container bg-white min-h-screen ">
+    <div className="bg-white min-h-screen">
       {!isTestCompleted && (
         <>
           <div className="hidden md:flex">
@@ -528,7 +528,7 @@ function TestQuestionsPattern1() {
               style={{ marginBottom: 40 }}
             />
             <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" /> */}
-            <img src={purple} alt="headerimg" className="w-full" style={{ height: '350px' }}></img>
+            <img src={purple} alt="headerimg" className="md:min-w-full md:w-full lg:h-80 md:h-30 sm:h-30"></img>
           </div>
         </>
       )}
