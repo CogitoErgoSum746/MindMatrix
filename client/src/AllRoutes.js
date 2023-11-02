@@ -15,6 +15,7 @@ import Careeropt from './Pages/Careeropt';
 import Sendmail from './components/Sendmail';
 import ResetPass from './ResetPass';
 import About from './Pages/About';
+import MindW from './Pages/Mindwellness';
 import NewHomePage from './Pages/NewHomePage';
 import ComingSoon from './Pages/ComingSoon';
 function AllRoutes() {
@@ -28,6 +29,7 @@ function AllRoutes() {
         <Route path='/' element = {<NewHomePage/>} />
         {/* <Route path='/' element = {<HomePage/>} /> */}
         <Route path='/getstarted' element = {<Home1 />} />
+        <Route path='/mindwellness' element = {<MindW />} />
         <Route path='/upcoming' element = {<ComingSoon />} />
         <Route path='/admin/getusers/:org_name/:org_email/:org_studentType/:org_code' element={<Getusers/>} />
         {/* <Route path="/test/:testAlias" element={<TestPage />} /> */}
