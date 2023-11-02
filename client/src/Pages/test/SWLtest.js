@@ -24,7 +24,7 @@ function SWLtest({id}) {
     const fetchData = async () => {
       try {
         const authtoken = localStorage.getItem("authtoken");
-        const response = await fetch(`${API_BASE_URL}/user/schoolsubtests`, {
+        const response = await fetch(`${API_BASE_URL}/user/donesubtests`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

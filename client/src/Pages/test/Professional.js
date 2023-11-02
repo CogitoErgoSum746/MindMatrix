@@ -1,16 +1,12 @@
-import React,{useEffect,useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../config';
 
-function LeadershipStyle({id}) {
+function Professional({id}) {
     const subtests = [
-        { id: 1, name: 'Authoritative' },
-        { id: 2, name: 'Democratic' },
-        { id: 3, name: 'Facilitative' },
-        {id:4, name: 'Situational'},
+        { id: 1, name: 'Professional Suitability Assessment ' },
       ];
-
-      const testType="Leadership Style"
+      const testType="Professional Suitability Assessment";
       const [testStatus, setTestStatus] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -49,11 +45,9 @@ function LeadershipStyle({id}) {
     fetchData();
   }, [id]);
 
-
-
   return (
     <div className="bg-white min-h-screen p-10">
-    <h1 className="text-2xl font-bold text-black mb-8 font-['Inter']">Leadership Style</h1>
+    <h1 className="text-2xl font-bold text-black mb-8 font-['Inter']">Professional Suitability Assessment </h1>
     <div className='flex justify-start ml-5 mb-10'>
       <Link to="/test">
         <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold font-['Inter']">{"<"}Go Back</button>
@@ -79,4 +73,4 @@ function LeadershipStyle({id}) {
   )
 }
 
-export default LeadershipStyle
+export default Professional

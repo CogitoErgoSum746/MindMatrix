@@ -18,6 +18,7 @@ import About from './Pages/About';
 import MindW from './Pages/Mindwellness';
 import NewHomePage from './Pages/NewHomePage';
 import ComingSoon from './Pages/ComingSoon';
+
 function AllRoutes() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
@@ -40,7 +41,7 @@ function AllRoutes() {
         <Route path='/sendmail' element={<Sendmail/>} />
         <Route path="/reset-password/:token" element={<ResetPass />} />
         <Route path="/about" element={<About />} />
-        {/* <Route path="/test/:id/:testAlias" element={<TestPage />} /> */}
+       
     </Routes>
   )
 }

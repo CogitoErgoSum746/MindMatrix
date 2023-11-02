@@ -1,9 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../config';
-// import Ellipse1 from "../../images/Ellipse1.png"; 
-// import Ellipse2 from '../../images/Ellipse2.png';
-// import Ellipse3 from "../../images/Ellipse3.png";
 
 function CDtest({id}) {
     const subtests = [
@@ -17,7 +14,7 @@ function CDtest({id}) {
     const fetchData = async () => {
       try {
         const authtoken = localStorage.getItem("authtoken");
-        const response = await fetch(`${API_BASE_URL}/user/schoolsubtests`, {
+        const response = await fetch(`${API_BASE_URL}/user/donesubtests`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
