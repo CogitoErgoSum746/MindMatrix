@@ -424,11 +424,17 @@ export async function professionalTotalTests(req: Request, res: Response): Promi
       "Learning Style": 3,
       "Leadership Style": 4,
       "Competitive State Anxiety Inventory": 3,
-      "Students Wheel of Life": 10,
+      "Wheel of Life": 10,
       "Leadership skills": 1,
       "Cyber Dependency": 1,
       "Left-Right Brain Dominance": 2,
-      "Personality": 5
+      "Personality": 5,
+      "Professional Suitability Assessment": 1,
+      "Integrity Assessment": 1,
+      "Emotional Styles": 6,
+      "Entrepreneurship Suitability Assessment": 1,
+      "Work Life Balance": 5,
+      "Parenting Style": 4,
     };
 
     let testTypeCount: Record<string, number> = {};
