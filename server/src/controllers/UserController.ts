@@ -362,7 +362,8 @@ export async function collegeTotalTests(req: Request, res: Response): Promise<vo
       "Leadership skills": 1,
       "Cyber Dependency": 1,
       "Left-Right Brain Dominance": 2,
-      "Personality": 5
+      "Personality": 5,
+      "Professional Skills Set Assessment": 1
     };
 
     let testTypeCount: Record<string, number> = {};
