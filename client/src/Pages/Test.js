@@ -18,37 +18,58 @@ function Test() {
       id: 3,
       name: "Left-Right Brain Dominance",
     },
-    { id: 4, name: "Personality"},
+    { id: 4, name: "Personality" },
     {
       id: 5,
       name: "Emotional Intelligence",
     },
-    { id: 6, name: "Learning Style"},
+    { id: 6, name: "Learning Style" },
     { id: 7, name: "Leadership skills" },
-    { id: 8, name: "Leadership Style"},
-    { id: 9, name: "Cyber Dependency"},
+    { id: 8, name: "Leadership Style" },
+    { id: 9, name: "Cyber Dependency" },
     {
       id: 10,
-      name: "Competitive State Anxiety Inventory"
+      name: "Competitive State Anxiety Inventory",
     },
     {
       id: 11,
       name: "Students Wheel of Life",
     },
-    { id: 12, name: "Aptitude"},
+    { id: 12, name: "Aptitude" },
+    { id: 13, name: "Professional Skills Set Assessment" },
+    { id: 14, name: "Parenting Style" },
+    { id: 15, name: "Work Life Balance" },
+    { id: 16, name: "Wheel of Life" },
+    { id: 17, name: "Integrity Assessment" },
+    { id: 18, name: "Emotional Styles" },
+    { id: 19, name: "Entrepreneurship Suitability Assessment" },
+    { id: 20, name: "Professional Suitability Assessment" },
   ]);
 
   const [remainingTests, setRemainingTests] = useState(null);
   const [loading, setLoading] = useState(false);
   const [pdfSent, setPdfSent] = useState(false);
-  const [careerOptions, setCareerOptions] = useState(null); // Add state for PDF sent
+  const [careerOptions, setCareerOptions] = useState(null);
+  const [studentType, setStudentType] = useState("");
+
+  const authtoken = localStorage.getItem("authtoken");
 
   useEffect(() => {
     async function fetchTotalTests() {
       try {
-        const authtoken = localStorage.getItem("authtoken");
 
-        const response = await fetch(`${API_BASE_URL}/user/schooltotaltests`, {
+        if (studentType) {
+          let TestsRoute = "";
+          if (studentType === "High school") {
+            TestsRoute = "/schooltotaltests";
+          } else if (studentType === "College") {
+            TestsRoute = "/collegetotaltests";
+          } else if (studentType === "Professional") {
+            TestsRoute = "/professionaltotaltests";
+          }
+     
+
+        const response = await fetch(`${API_BASE_URL}/user${TestsRoute}`, {
           method: "GET",
           headers: {
             authtoken: authtoken,
@@ -62,12 +83,11 @@ function Test() {
         if (data.success) {
           setRemainingTests(data.differenceList);
         }
+      }
       } catch (error) {
         console.error("Error fetching totalTests:", error);
       }
     }
-
-    fetchTotalTests();
 
     async function checkCareeroptions() {
       try {
@@ -90,7 +110,42 @@ function Test() {
     }
 
     checkCareeroptions();
-  }, []);
+
+    if(authtoken)
+    {
+      fetchUserData();
+    }
+
+    fetchTotalTests();
+  }, [studentType,authtoken]);
+
+  const fetchUserData = async () => {
+    const authtoken = localStorage.getItem("authtoken");
+    try {
+      const response = await fetch(`${API_BASE_URL}/user/getuser`, {
+        method: "GET",
+        headers: {
+          authtoken: authtoken,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.status === "success" && data.results === 1) {
+          const userData = data.data.user;
+          setStudentType(userData.studentType);
+          console.log(userData.studentType)
+        } else {
+          console.error("Error: User data retrieval failed.", data);
+        }
+      } else {
+        console.error("Error: Request failed with status", response.status);
+      }
+    } catch (error) {
+      console.error("Network error", error);
+    }
+  };
 
   const handleGeneratePDF = async () => {
     setLoading(true);
@@ -121,28 +176,43 @@ function Test() {
     (count) => count === 0
   );
 
+
+  const additionalTests = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  if (studentType === "High school") {
+    // console.log(studentType)
+    additionalTests.push(1, 11, 12);
+    // console.log(additionalTests)
+  } else if (studentType === "College") {
+    additionalTests.push(1, 11, 12, 13);
+  } else if (studentType === "Professional") {
+    additionalTests.push(14, 15, 16, 17, 18, 19, 20);
+  }
+
+  const filteredTests = tests.filter((test) => additionalTests.includes(test.id));
+
   return (
     <div className="">
       <div className="bg-white min-h-screen">
-      <div className="relative">
-  <img src={mainpurple} alt="bbbnn" className="md:min-w-full md:w-full lg:h-80 md:h-30 sm:h-30" />
+        <div className="relative">
+          <img
+            src={mainpurple}
+            alt="bbbnn"
+            className="md:min-w-full md:w-full lg:h-80 md:h-30 sm:h-30"
+          />
 
-   <div className="flex justify-center">
-  <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/3 lg:left-1/3 text-left md:text-justify font-['Inter'] uppercase">
-    GET ALL YOUR <br />
-    <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10">
-      PSYCHOMETRIC
-    </span>{" "}
-    TESTS
-    <br />
-    HERE
-  </h1>   
-  </div>
-
-  
-
-</div>
-
+          <div className="flex justify-center">
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/3 lg:left-1/3 text-left md:text-justify font-['Inter'] uppercase">
+              GET ALL YOUR <br />
+              <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10">
+                PSYCHOMETRIC
+              </span>{" "}
+              TESTS
+              <br />
+              HERE
+            </h1>
+          </div>
+        </div>
 
         <div className="flex flex-col bg-white mt-10 p-10">
           <div className="flex justify-start ml-5 mb-10">
@@ -153,7 +223,7 @@ function Test() {
             </Link>
           </div>
 
-          {tests.map((test) => (
+          {filteredTests.map((test) => (
             <div className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex justify-between items-center">
               <h1 className="text-lg font-semibold font-['Inter']">
                 {test.name}

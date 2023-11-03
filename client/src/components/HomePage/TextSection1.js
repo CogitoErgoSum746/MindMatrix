@@ -63,7 +63,7 @@ const TextSection1 = () => {
               <li>ADHD & Teenage Issues</li>
             </div>
           </ul>
-          <Link to="/upcoming">
+          <Link to="/mindwellness">
             <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
               Get In Touch
             </button>

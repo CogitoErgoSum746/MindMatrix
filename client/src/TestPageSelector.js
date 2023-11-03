@@ -13,6 +13,14 @@ import CDtest from './Pages/test/CDtest';
 import CSAtest from './Pages/test/CSAtest';
 import SWLtest from './Pages/test/SWLtest';
 import Aptitest from './Pages/test/Aptitest';
+import PSAtest from './Pages/test/PSAtest';
+import ParentingStyle from './Pages/test/ParentingStyle';
+import WLBtest from './Pages/test/WLBtest';
+import WOLtest from './Pages/test/WOLtest';
+import Integrity from './Pages/test/Integrity';
+import EStest from './Pages/test/EStest';
+import ESAtest from './Pages/test/ESAtest';
+import Professional from './Pages/test/Professional';
 function TestPageSelector() {
   const { id } = useParams();
 
@@ -31,6 +39,14 @@ function TestPageSelector() {
     '10':CSAtest,
     '11': SWLtest,
     '12': Aptitest,
+    '13': PSAtest,
+    '14': ParentingStyle,
+    '15': WLBtest,
+    '16': WOLtest,
+    '17': Integrity,
+    '18': EStest,
+    '19': ESAtest,
+    '20': Professional
   };
 
   const SelectedComponent = testPageComponents[id.toString()] || TestPage;

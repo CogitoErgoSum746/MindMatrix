@@ -12,6 +12,14 @@ import TestQuestionsPattern9 from './Pages/testpattern/TestQuestionsPattern9';
 import TestQuestionsPattern10 from './Pages/testpattern/TestQuestionsPattern10';
 import TestQuestionsPattern11 from './Pages/testpattern/TestQuestionsPattern11';
 import TestQuestionsPattern12 from './Pages/testpattern/TestQuestionsPattern12';
+import TestQuestionsPattern13 from './Pages/testpattern/TestQuestionsPattern13';
+import TestQuestionsPattern14 from './Pages/testpattern/TestQuestionsPattern14';
+import TestQuestionsPattern15 from './Pages/testpattern/TestQuestionsPattern15';
+import TestQuestionsPattern16 from './Pages/testpattern/TestQuestionsPattern16';
+import TestQuestionsPattern17 from './Pages/testpattern/TestQuestionsPattern17';
+import TestQuestionsPattern18 from './Pages/testpattern/TestQuestionsPattern18';
+import TestQuestionsPattern19 from './Pages/testpattern/TestQuestionsPattern19';
+import TestQuestionsPattern20 from './Pages/testpattern/TestQuestionsPattern20';
 function TestQuestions() {
   const { id, subtestId } = useParams();
 
@@ -51,6 +59,34 @@ function TestQuestions() {
   else if(id==='12')
   {
     return <TestQuestionsPattern12 subtestId={subtestId} />;
+  }
+  else if(id==='13')
+  {
+    return <TestQuestionsPattern13 subtestId={subtestId} />;
+  }
+  else if(id==='14')
+  {
+    return <TestQuestionsPattern14 subtestId={subtestId} />;
+  }
+  else if(id==='15')
+  {
+    return <TestQuestionsPattern15 subtestId={subtestId} />;
+  }
+  else if(id==='16')
+  {
+    return <TestQuestionsPattern16 subtestId={subtestId} />;
+  }
+  else if(id==='17')
+  {
+    return <TestQuestionsPattern17 subtestId={subtestId} />;
+  }
+  else if(id==='19')
+  {
+    return <TestQuestionsPattern19 subtestId={subtestId} />;
+  }
+  else if(id==='20')
+  {
+    return <TestQuestionsPattern20 subtestId={subtestId} />;
   }
   else {
     return <div>Test not found</div>;
