@@ -15,9 +15,13 @@ import Careeropt from './Pages/Careeropt';
 import Sendmail from './components/Sendmail';
 import ResetPass from './ResetPass';
 import About from './Pages/About';
+import MindW from './Pages/Mindwellness';
 import NewHomePage from './Pages/NewHomePage';
 import CorporateLeadership from './Pages/CorporateLeadership';
 import BusinessCoaching from './Pages/BusinessCoaching';
+import ComingSoon from './Pages/ComingSoon';
+import Corporate from './Pages/HomeButtons/Corporate';
+
 function AllRoutes() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
@@ -27,10 +31,13 @@ function AllRoutes() {
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/admin' element={<AdminPanel loggedIn={loggedIn}/>} />
         <Route path='/' element = {<NewHomePage/>} />
-        <Route path='/corporateleadership' element={<CorporateLeadership />} />
-        <Route path='/businesscoaching' element={<BusinessCoaching />} />
+        <Route path='/corporate' element = {<Corporate/>} />
+        <Route path='/corporate/corporateleadership' element={<CorporateLeadership />} />
+        <Route path='/corporate/businesscoaching' element={<BusinessCoaching />} />
         {/* <Route path='/' element = {<HomePage/>} /> */}
         <Route path='/getstarted' element = {<Home1 />} />
+        <Route path='/mindwellness' element = {<MindW />} />
+        <Route path='/upcoming' element = {<ComingSoon />} />
         <Route path='/admin/getusers/:org_name/:org_email/:org_studentType/:org_code' element={<Getusers/>} />
         {/* <Route path="/test/:testAlias" element={<TestPage />} /> */}
         <Route path="/test" element={<Test />} />
@@ -40,7 +47,7 @@ function AllRoutes() {
         <Route path='/sendmail' element={<Sendmail/>} />
         <Route path="/reset-password/:token" element={<ResetPass />} />
         <Route path="/about" element={<About />} />
-        {/* <Route path="/test/:id/:testAlias" element={<TestPage />} /> */}
+       
     </Routes>
   )
 }

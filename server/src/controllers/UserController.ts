@@ -196,6 +196,30 @@ export async function deleteTestResult(req: Request, res: Response): Promise<voi
   }
 }
 
+export async function deleteCareerList(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    if (existingUser) {
+      await User.findOneAndUpdate({ carreerOptions : [] });
+      res.status(200).json({ success: true});
+    } else {
+      // If the user document doesn't exist, handle accordingly
+      console.log("User not found");
+      res.status(404).json({ success: false, error: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 export async function checkSubscores(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
@@ -338,7 +362,8 @@ export async function collegeTotalTests(req: Request, res: Response): Promise<vo
       "Leadership skills": 1,
       "Cyber Dependency": 1,
       "Left-Right Brain Dominance": 2,
-      "Personality": 5
+      "Personality": 5,
+      "Professional Skills Set Assessment": 1
     };
 
     let testTypeCount: Record<string, number> = {};
@@ -399,11 +424,17 @@ export async function professionalTotalTests(req: Request, res: Response): Promi
       "Learning Style": 3,
       "Leadership Style": 4,
       "Competitive State Anxiety Inventory": 3,
-      "Students Wheel of Life": 10,
+      "Wheel of Life": 10,
       "Leadership skills": 1,
       "Cyber Dependency": 1,
       "Left-Right Brain Dominance": 2,
-      "Personality": 5
+      "Personality": 5,
+      "Professional Suitability Assessment": 1,
+      "Integrity Assessment": 1,
+      "Emotional Styles": 6,
+      "Entrepreneurship Suitability Assessment": 1,
+      "Work Life Balance": 5,
+      "Parenting Style": 4,
     };
 
     let testTypeCount: Record<string, number> = {};
@@ -676,7 +707,7 @@ export async function multipleIRank(req: Request, res: Response): Promise<void> 
   }
 }
 
-export async function schoolSubTests(req: Request, res: Response): Promise<void> {
+export async function doneSubTests(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
     const filter = {
@@ -703,7 +734,15 @@ export async function schoolSubTests(req: Request, res: Response): Promise<void>
       "Leadership skills": ["Leadership"],
       "Leadership Style": ["Authoritative", "Democratic", "Facilitative", "Situational"],
       "Cyber Dependency": ["Cyber Dependency"],
-      "Competitive State Anxiety Inventory": ["Cognitive Anxiety", "Somatic Anxiety", "Self-Confidence"]
+      "Competitive State Anxiety Inventory": ["Cognitive Anxiety", "Somatic Anxiety", "Self-Confidence"],
+      "Professional Skills Set Assessment": ["Professional Skills Set Assessment"],
+      "Parenting Style": ["Authoritarian", "Authoritative", "Permissive","Uninvolved"],
+      "Work Life Balance": ["Time Management", "Boundaries and Communication", "Well-being and Self-Care", "Flexibility and Adaptability", "Relationships and Fulfilment"],
+      "Wheel of Life": ["Money & Wealth", "Career & Work", "Health & Fitness", "Fun & Recreation", "Contribution", "Community", "Family", "Social & Friends","Love & Romance","Growth & Learning"],
+      "Integrity Assessment": ["Integrity Assessment"],
+      "Emotional Styles": ["Resilience", "Outlook", "Social Intuition", "Self-Awareness", "Sensitivity to Context", "Attention"],
+      "Entrepreneurship Suitability Assessment": ["Entrepreneurship Suitability Assessment"],
+      "Professional Suitability Assessment": ["Professional Suitability Assessment"]
     };
 
     const finalArray: number[] = [];

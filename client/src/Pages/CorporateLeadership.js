@@ -18,7 +18,7 @@ const CorporateLeadership = () => {
   return (
     <>
       <Navbar />
-      <div className="container p-2 md:px-0 md:py-4 mx-auto flex flex-col gap-2">
+      <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl">CORPORATE RETREAT</p>
         <p className="text-lg md:text-xl lg:text-3xl">
           Unlocking Leadership Mastery Through Brain Science
@@ -226,7 +226,7 @@ const CorporateLeadership = () => {
           <p>Team Dynamics</p>
         </div>
         <img src={pic12} className="max-h-96 self-center"></img>
-        <p className="text-xl md:text-2xl lg:text-4xl">
+        <p className="text-xl md:text-2xl lg:text-4xl mb-2">
           KEY OBJECTIVES :
         </p>
                 <ul className="list-disc list-inside text-left text-base md:text-lg lg:text-xl">

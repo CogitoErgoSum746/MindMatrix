@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-// import Ellipse1 from "../../images/Ellipse1.png";
-// import Ellipse2 from "../../images/Ellipse2.png";
-// import Ellipse3 from "../../images/Ellipse3.png";
 import { API_BASE_URL } from "../../config";
 import purple from "../../images/purple.png";
 
@@ -83,60 +80,60 @@ function TestQuestionsPattern3() {
       questions: [
         {
           questionText:
-            "11. When given a task or assignment, you don’t always need to know why it’s important.",
+            "1. When given a task or assignment, you don’t always need to know why it’s important.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "12. You get a great deal of pleasure in creating to-do lists and checking each item off as it is accomplished.",
+            "2. You get a great deal of pleasure in creating to-do lists and checking each item off as it is accomplished.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "13. You would prefer puzzles over getting messy with clay.",
+            "3. You would prefer puzzles over getting messy with clay.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "14. When shopping for a new dress, you would probably look at quality ratings over the looks of the dress.",
+            "4. When shopping for a new dress, you would probably look at quality ratings over the looks of the dress.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "15. When travelling, you like to have your journey completely planned down to the last detail.",
+            "5. When travelling, you like to have your journey completely planned down to the last detail.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "16. Because you respond to verbal cues, you prefer lectures to textbooks.",
+            "6. Because you respond to verbal cues, you prefer lectures to textbooks.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
-          questionText: "17. You are good at remembering names.",
-          options: commonoption,
-          optionWeightage: [1, 0],
-        },
-        {
-          questionText:
-            "18. Your study room is neatly organized with a place for everything. You spend little time looking for things.",
+          questionText: "7. You are good at remembering names.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "19. When trying a new software program, you prefer to use the instruction manual.",
+            "8. Your study room is neatly organized with a place for everything. You spend little time looking for things.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
         {
           questionText:
-            "20. You are almost always on time or early for meetings and appointments.",
+            "9. When trying a new software program, you prefer to use the instruction manual.",
+          options: commonoption,
+          optionWeightage: [1, 0],
+        },
+        {
+          questionText:
+            "10. You are almost always on time or early for meetings and appointments.",
           options: commonoption,
           optionWeightage: [1, 0],
         },
@@ -250,22 +247,7 @@ function TestQuestionsPattern3() {
       {!isTestCompleted && (
         <>
           <div className="hidden md:flex">
-            {/* <img
-              src={Ellipse1}
-              alt="business"
-              className="absolute top-0 left-6 mb-20"
-              height="100px"
-            />
-            <img
-              src={Ellipse2}
-              alt="business"
-              width="700px"
-              height="400px"
-              className="absolute top-0 left-80"
-              style={{ marginBottom: 40 }}
-            />
-            <img src={Ellipse3} alt="bbbnn" width="1600px" height="400px" /> */}
-             <img src={purple} alt="headerimg" className="w-full" style={{ height: '350px' }}></img>
+            <img src={purple} alt="headerimg" className="md:min-w-full md:w-full lg:h-80 md:h-30 sm:h-30"></img>
           </div>
         </>
       )}

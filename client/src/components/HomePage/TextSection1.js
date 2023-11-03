@@ -15,10 +15,10 @@ const TextSection1 = () => {
         </div>
         <div className="self-center">
           <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">
-          MIND WELLNESS
+            MIND WELLNESS
           </div>
           <div className=" text-black text-xl md:text-2xl font-semibold lg:text-3xl font-['Inter']">
-          Counselling Therapy
+            Counselling Therapy
           </div>
           <div className="text-black text-xl mt-4 font-semibold font-['Inter'] ">
             Talk Resolve Heal
@@ -63,10 +63,11 @@ const TextSection1 = () => {
               <li>ADHD & Teenage Issues</li>
             </div>
           </ul>
-
-          <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
-            Get In Touch
-          </button>
+          <Link to="/mindwellness">
+            <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
+              Get In Touch
+            </button>
+          </Link>
         </div>
       </div>
 
