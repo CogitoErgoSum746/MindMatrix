@@ -11,7 +11,6 @@ const OrganizationSchema = new Schema({
     org_email: {
         type: String,
         required: true,
-        unique: true,
     },
     org_studentType: {
         type: String,
@@ -20,7 +19,6 @@ const OrganizationSchema = new Schema({
     org_code: {
         type: String,
         required: true,
-        unique: true,
     },
 });
 

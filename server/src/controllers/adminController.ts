@@ -59,12 +59,6 @@ export async function createOrganization(req: Request, res: Response): Promise<a
   try {
     const { orgi_name, orgi_email, orgi_studentType } = req.body;
 
-    //check if organization exists
-    let org = await Organization.findOne({ org_name: orgi_name, org_email: orgi_email, org_studentType: orgi_studentType });
-    if (org) {
-      return res.status(404).json({ success, error: "organization already exists" });
-    }
-
     const generatedCodes = new Set();
     const organizations = await Organization.find({});
 
@@ -84,6 +78,12 @@ export async function createOrganization(req: Request, res: Response): Promise<a
     } while (generatedCodes.has(orgi_code)); // Check if the code already exists
 
     generatedCodes.add(orgi_code);
+
+    //check if organization exists
+    let org = await Organization.findOne({ org_name: orgi_name, org_studentType: orgi_studentType});
+    if (org) {
+      return res.status(404).json({ success, error: "organization configuration already exists" });
+    }
 
     // Create and save a new user document
     const Org = new Organization({
