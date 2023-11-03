@@ -707,7 +707,7 @@ export async function multipleIRank(req: Request, res: Response): Promise<void> 
   }
 }
 
-export async function schoolSubTests(req: Request, res: Response): Promise<void> {
+export async function doneSubTests(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
     const filter = {
