@@ -707,7 +707,7 @@ export async function multipleIRank(req: Request, res: Response): Promise<void> 
   }
 }
 
-export async function schoolSubTests(req: Request, res: Response): Promise<void> {
+export async function doneSubTests(req: Request, res: Response): Promise<void> {
   try {
     // Define the filter criteria
     const filter = {
@@ -734,7 +734,15 @@ export async function schoolSubTests(req: Request, res: Response): Promise<void>
       "Leadership skills": ["Leadership"],
       "Leadership Style": ["Authoritative", "Democratic", "Facilitative", "Situational"],
       "Cyber Dependency": ["Cyber Dependency"],
-      "Competitive State Anxiety Inventory": ["Cognitive Anxiety", "Somatic Anxiety", "Self-Confidence"]
+      "Competitive State Anxiety Inventory": ["Cognitive Anxiety", "Somatic Anxiety", "Self-Confidence"],
+      "Professional Skills Set Assessment": ["Professional Skills Set Assessment"],
+      "Parenting Style": ["Authoritarian", "Authoritative", "Permissive","Uninvolved"],
+      "Work Life Balance": ["Time Management", "Boundaries and Communication", "Well-being and Self-Care", "Flexibility and Adaptability", "Relationships and Fulfilment"],
+      "Wheel of Life": ["Money & Wealth", "Career & Work", "Health & Fitness", "Fun & Recreation", "Contribution", "Community", "Family", "Social & Friends","Love & Romance","Growth & Learning"],
+      "Integrity Assessment": ["Integrity Assessment"],
+      "Emotional Styles": ["Resilience", "Outlook", "Social Intuition", "Self-Awareness", "Sensitivity to Context", "Attention"],
+      "Entrepreneurship Suitability Assessment": ["Entrepreneurship Suitability Assessment"],
+      "Professional Suitability Assessment": ["Professional Suitability Assessment"]
     };
 
     const finalArray: number[] = [];

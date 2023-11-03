@@ -26,13 +26,13 @@ function MindW() {
                 <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter'] py-4" >
                     Mind Wellness
                 </h1>
-                <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-2xl font-['Inter']">
+                <h1 className="text-center text-black  text-lg md:text-2xl lg:text-3xl font-['Inter']">
                     Counseling and Psycho-Therapies Services
                 </h1>
                 <div className="flex flex-col py-10 gap-10">
 
                     {/* 1st */}
-                    <div className="flex md:flex-row gap-6 justify-between">
+                    <div className="flex flex-col md:flex-row gap-3 justify-around">
                         <img src={mindimg1}></img>
                         <img src={mindimg2}></img>
                     </div>

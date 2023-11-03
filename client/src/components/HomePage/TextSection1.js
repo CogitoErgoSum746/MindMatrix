@@ -64,7 +64,7 @@ const TextSection1 = () => {
             </div>
           </ul>
           <Link to="/mindwellness">
-            <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium">
+            <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
               Get In Touch
             </button>
           </Link>

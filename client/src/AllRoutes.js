@@ -17,7 +17,10 @@ import ResetPass from './ResetPass';
 import About from './Pages/About';
 import MindW from './Pages/Mindwellness';
 import NewHomePage from './Pages/NewHomePage';
+import CorporateLeadership from './Pages/CorporateLeadership';
+import BusinessCoaching from './Pages/BusinessCoaching';
 import ComingSoon from './Pages/ComingSoon';
+import Corporate from './Pages/HomeButtons/Corporate';
 
 function AllRoutes() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -28,6 +31,9 @@ function AllRoutes() {
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/admin' element={<AdminPanel loggedIn={loggedIn}/>} />
         <Route path='/' element = {<NewHomePage/>} />
+        <Route path='/corporate' element = {<Corporate/>} />
+        <Route path='/corporate/corporateleadership' element={<CorporateLeadership />} />
+        <Route path='/corporate/businesscoaching' element={<BusinessCoaching />} />
         {/* <Route path='/' element = {<HomePage/>} /> */}
         <Route path='/getstarted' element = {<Home1 />} />
         <Route path='/mindwellness' element = {<MindW />} />
