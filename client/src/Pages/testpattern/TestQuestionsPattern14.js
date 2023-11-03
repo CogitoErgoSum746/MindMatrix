@@ -17,7 +17,7 @@ function TestQuestionsPattern14() {
 
   const tests = {
     1: {
-      title: "Authoritarian ",
+      title: "Authoritarian",
       questions: [
         {
           questionText: "1.	I want my child to follow my instructions because I am the authority to decide what to do or what not to do.",

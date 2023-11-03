@@ -17,7 +17,7 @@ function TestQuestionsPattern16() {
     {id:7,name:"Family"},
     {id:8,name:"Social & Friends"},
     {id:9,name:"Love & Romance"},
-    {id:10,name:"Growth & Learning "}
+    {id:10,name:"Growth & Learning"}
   ];
 
   const subtestIdInt = parseInt(subtestId);
