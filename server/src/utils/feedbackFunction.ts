@@ -44,6 +44,27 @@ export function getFeedback(testType: string, subCategory: string, score: number
         }
     }
 
+    if (testType === "Professional Skills Set Assessment") {
+        if (score >= 1 && score <= 20) {
+            scoreRange = '1-20';
+            percentage = 'Needs Significant Improvement';
+        } else if (score >= 21 && score <= 40) {
+            scoreRange = '21-40';
+            percentage = 'Below Average';
+        } else if (score >= 41 && score <= 60) {
+            scoreRange = '41-60';
+            percentage = 'Average';
+        } else if (score >= 61 && score <= 80) {
+            scoreRange = '61-80';
+            percentage = 'Above Average';
+        } else if (score >= 81 && score <= 100) {
+            scoreRange = '81-100';
+            percentage = 'Excellent';
+        }else {
+            console.log('Invalid score');
+        }
+    }
+
     if (testType === "Aptitude") {
         if (score >= 0 && score <= 4) {
             scoreRange = '1-4';
