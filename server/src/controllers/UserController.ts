@@ -83,7 +83,6 @@ export async function tektest(req: Request, res: Response): Promise<void> {
   try {
     // const keys = Object.keys(req.body);
     // console.log(keys);
-    sendCharts(req, res);
     res.status(200).json('oki');
   } catch (error) {
     res.status(500).json({ success: false, error: 'Internal server error' });
@@ -145,6 +144,32 @@ export async function getTestResults(req: Request, res: Response): Promise<void>
     res.status(500).json({ success: false, error: 'Internal server error' });
   }
 };
+
+export async function getAllTestResults(req: Request, res: Response): Promise<void> {
+  try {
+    // Define the filter criteria
+    const filter = {
+      username: req.user.username,
+      email: req.user.email,
+    };
+
+    const results = req.body.testResults;
+
+    // Check if a document with the same testType exists
+    const existingUser = await User.findOne(filter);
+
+    if (existingUser) {
+      await User.findOneAndUpdate({ testResults : results });
+      res.status(200).json({ success: true});
+    } else {
+      // If the user document doesn't exist, handle accordingly
+      console.log("User not found");
+      res.status(404).json({ success: false, error: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
 
 export async function deleteTestResult(req: Request, res: Response): Promise<void> {
   try {
@@ -552,6 +577,13 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     const username = req.user.username;
     const email = req.user.email;
 
+    const existinguser = await User.findOne({
+      username: username,
+      email: email
+    });
+
+    const studentType = existinguser?.studentType;
+
     // Extract the first 5 letters from 'username' and 'email'
     const usernameFirst5 = username.slice(0, 5);
     const emailFirst5 = email.slice(0, 5);
@@ -572,19 +604,27 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     }
     // Copy the PDF file to the custom folder
     const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
-    const sourcePdfPath = path.join(sourceFolderPath, 'yay.pdf');
+
+    let sourcePdfPath = "";
+    if (studentType === "High School") {
+      sourcePdfPath = path.join(sourceFolderPath, 'High School.pdf');
+    } else if (studentType === "College") {
+      sourcePdfPath = path.join(sourceFolderPath, 'College.pdf');
+    } else if (studentType === "Professional") {
+      sourcePdfPath = path.join(sourceFolderPath, 'Professional.pdf');
+    }
 
 
     const destinationPdfPath = path.join(customFolderPath, pdfFileName);
     fs.copyFileSync(sourcePdfPath, destinationPdfPath);
 
-    await sendUserInfo(req, res);
+    await sendUserInfo(req, res, studentType as string);
 
-    await sendCharts(req, res);
+    await sendCharts(req, res, studentType as string);
 
-    await sendScores(req, res);
+    await sendScores(req, res, studentType as string);
 
-    await sendFeedback(req, res);
+    await sendFeedback(req, res, studentType as string);
 
     await sendPdfToEmail(req, res);
 
