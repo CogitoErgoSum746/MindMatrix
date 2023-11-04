@@ -9,17 +9,36 @@ const testimonials = [
       imageUrl: img7,
       title: `Corporate Leadership`,
       description: `“Unleash Your Potential & Build a Stronger Team” is a corporate retreat program designed to empower business leaders and here's an elaboration of the key components and benefits of this program...`,
-      url: "/corporate/corporateleadership"
+      url: "/training/corporateleadership"
     },
     {
       imageUrl: img7,
       title: `Business Coaching`,
       description: `This coaching approach equips professionals with valuable tools to navigate the complex landscape of business and optimize their personal and organizational effectiveness...`,
-      url : "/corporate/businesscoaching"
+      url : "/training/businesscoaching"
     },
+    {
+      imageUrl: img7,
+      title: `Students`,
+      description: `Success Steps provides ultra-personalized guidance on areas such as ‘emotional well-being’, ‘skill development’, ‘education and career planning’, ‘goal setting and achievement’. We help the children to access their dreams...`,
+      url: "/training/students"
+  },
+  {
+      imageUrl: img7,
+      title: `Teachers`,
+      description: `NLP can be a powerful tool for addressing the specific needs of teachers, providing them with the skills and strategies they need to create a positive and engaging learning environment...`,
+      url: "/training/teachers"
+  },
+  {
+      imageUrl: img7,
+      title: `Parents`,
+      description: `NLP offers valuable assistance to parents in addressing the challenges of stress and overwhelm that can accompany the responsibilities of nurturing a child's growth...`,
+      url: "/training/parents"
+  },
+    
   ]
 
-const Corporate = () => {
+const Training = () => {
   return (
     <div className='flex flex-col h-screen justify-between'>
         <Navbar />
@@ -35,4 +54,4 @@ const Corporate = () => {
   )
 }
 
-export default Corporate
+export default Training

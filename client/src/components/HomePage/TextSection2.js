@@ -74,7 +74,7 @@ const TextSection2 = () => {
           <div className=" text-black text-xl md:text-2xl font-bold lg:text-3xl font-['Inter']">
             Engage, Inspire And Motivate.
           </div>
-          <Link to="/corporate">
+          <Link to="/training">
             <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
               Know More
             </button>

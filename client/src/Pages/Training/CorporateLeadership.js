@@ -1,18 +1,18 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Contact from "../components/HomePage/Contact";
-import pic1 from "../images/corporateLeadership/pic1.png";
-import pic2 from "../images/corporateLeadership/pic2.png";
-import pic3 from "../images/corporateLeadership/pic3.png";
-import pic4 from "../images/corporateLeadership/pic4.png";
-import pic5 from "../images/corporateLeadership/pic5.png";
-import pic6 from "../images/corporateLeadership/pic6.png";
-import pic7 from "../images/corporateLeadership/pic7.png";
-import pic8 from "../images/corporateLeadership/pic8.png";
-import pic9 from "../images/corporateLeadership/pic9.png";
-import pic10 from "../images/corporateLeadership/pic10.png";
-import pic11 from "../images/corporateLeadership/pic11.png";
-import pic12 from "../images/corporateLeadership/pic12.png";
+import Navbar from "../../components/Navbar";
+import Contact from "../../components/HomePage/Contact";
+import pic1 from "../../images/corporateLeadership/pic1.png";
+import pic2 from "../../images/corporateLeadership/pic2.png";
+import pic3 from "../../images/corporateLeadership/pic3.png";
+import pic4 from "../../images/corporateLeadership/pic4.png";
+import pic5 from "../../images/corporateLeadership/pic5.png";
+import pic6 from "../../images/corporateLeadership/pic6.png";
+import pic7 from "../../images/corporateLeadership/pic7.png";
+import pic8 from "../../images/corporateLeadership/pic8.png";
+import pic9 from "../../images/corporateLeadership/pic9.png";
+import pic10 from "../../images/corporateLeadership/pic10.png";
+import pic11 from "../../images/corporateLeadership/pic11.png";
+import pic12 from "../../images/corporateLeadership/pic12.png";
 
 const CorporateLeadership = () => {
   return (

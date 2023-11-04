@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Contact from '../components/HomePage/Contact'
-import pic1 from "../images/businesscoaching/pic1.png";
-import pic2 from "../images/businesscoaching/pic2.png";
-import pic3 from "../images/businesscoaching/pic3.png";
-import pic4 from "../images/businesscoaching/pic4.png";
-import pic5 from "../images/businesscoaching/pic5.png";
+import Navbar from '../../components/Navbar'
+import Contact from '../../components/HomePage/Contact'
+import pic1 from "../../images/businesscoaching/pic1.png";
+import pic2 from "../../images/businesscoaching/pic2.png";
+import pic3 from "../../images/businesscoaching/pic3.png";
+import pic4 from "../../images/businesscoaching/pic4.png";
+import pic5 from "../../images/businesscoaching/pic5.png";
 
 const BusinessCoaching = () => {
   return (

@@ -11,7 +11,7 @@ const Card = ({ imageUrl, title, description ,url}) => {
       </div>
       <div className="px-6 py-4">
         <Link to={url}>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <button className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold py-2 px-4 rounded-full">
             Know More
             </button>
         </Link>
