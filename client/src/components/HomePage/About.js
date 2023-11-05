@@ -12,10 +12,13 @@ import abtimg10 from "../../images/about/abtimg10.png";
 import abtimg11 from "../../images/about/abtimg11.png";
 import abtimg12 from "../../images/about/abtimg3.png";
 import Contact from "./Contact";
+import ScrollToTop from "../ScrollToTop";
+
 function About() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <div className="container mx-auto px-2">
 
         <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter']">

@@ -11,11 +11,13 @@ import Certification from "../components/HomePage/Certification";
 import Contact from "../components/HomePage/Contact";
 import GetInTouch from "../components/HomePage/GetInTouch";
 import FloatingIcon from "../components/FloatingIcon";
+import ScrollToTop from "../components/ScrollToTop";
 
 const NewHomePage = () => {
   return (
     <div>
       <Navbar />
+      <ScrollToTop />
       <FrontImage />
       <div className="container mx-auto flex flex-col gap-16 px-2">
         <TextSection1 />
