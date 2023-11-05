@@ -11,6 +11,7 @@ import img1 from "../../images/Certificate/NeuroLinguistic/pic4.jpg";
 import img2 from "../../images/Certificate/NlpMaster/pic1.jpg";
 import img7 from "../../images/Certificate/REBT/pic1.jpg";
 import img8 from "../../images/Certificate/Transactional/pic1.jpg";
+import ScrollToTop from "../../components/ScrollToTop.js";
 
 const testimonials = [
   {
@@ -76,6 +77,7 @@ const Certificate = () => {
   return (
     <div className='flex flex-col h-screen justify-between'>
       <Navbar />
+      <ScrollToTop />
       <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
         {testimonials.map((testimonial, index) => (
           <div key={index} className='mb-2'>
