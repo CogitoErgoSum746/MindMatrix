@@ -8,7 +8,7 @@ const FrontImage = () => {
         <img src={homebg} className="w-full" alt="Responsive Image" />
         <div className="absolute top-10 md:top-24 lg:top-36 transform -translate-y-1/2 text-white text-center w-full">
           <h1 className="text-xl md:text-5xl lg:text-7xl font-bold">
-            Unlock Your Limitless Potential
+            UNLOCK YOUR LIMITLESS POTENTIAL
           </h1>
           <h1 className="text-[8px] md:text-sm lg:text-2xl font-bold mt-0 md:mt-2 lg:mt-4">
             Personal Resourcefulness and Professional Excellence!

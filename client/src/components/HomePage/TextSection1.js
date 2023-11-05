@@ -65,7 +65,7 @@ const TextSection1 = () => {
           </ul>
           <Link to="/mindwellness">
             <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
-              Get In Touch
+              Know More
             </button>
           </Link>
         </div>
@@ -73,23 +73,28 @@ const TextSection1 = () => {
 
       <div className="flex flex-col md:flex-row gap-6 justify-between " id="services">
         <div className="self-center">
-          <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter']">
+          <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] py-10">
             PSYCHOMETRIC TESTS & CAREER GUIDANCE
           </div>
           <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter']">
             Neuro-cognitive-emotional Intelligence Behaviour Competency Mapping
           </p>
-          <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter'] mt-4">
+          <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter'] mt-2">
             Find Your Stream of Learning- Carer Pathway by the most scientific
             way!
           </p>
-          <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter'] mt-1">
+          <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter'] mt-6">
             Your Dynamic Path to Total Success
           </div>
           <div className="mt-4">
             <Link to="/getstarted">
               <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
                 Get Started
+              </button>
+            </Link>
+            <Link to="/getstarted">
+              <button className="px-3 py-2 bg-transparent border mt-4 ml-8 border-black font-medium hover:bg-black hover:text-white">
+                Know More
               </button>
             </Link>
           </div>

@@ -1,17 +1,17 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import abtimg1 from "../images/about/abtimg1.png";
-import abtimg2 from "../images/about/abtimg2.png";
-import abtimg4 from "../images/about/abtimg4.png";
-import abtimg5 from "../images/about/abtimg5.png";
-import abtimg6 from "../images/about/abtimg6.png";
-import abtimg7 from "../images/about/abtimg7.png";
-import abtimg8 from "../images/about/abtimg8.png";
-import abtimg9 from "../images/about/abtimg9.png";
-import abtimg10 from "../images/about/abtimg10.png";
-import abtimg11 from "../images/about/abtimg11.png";
-import abtimg12 from "../images/about/abtimg3.png";
-import Contact from "../components/HomePage/Contact";
+import Navbar from "../Navbar";
+import abtimg1 from "../../images/about/abtimg1.png";
+import abtimg2 from "../../images/about/abtimg2.png";
+import abtimg4 from "../../images/about/abtimg4.png";
+import abtimg5 from "../../images/about/abtimg5.png";
+import abtimg6 from "../../images/about/abtimg6.png";
+import abtimg7 from "../../images/about/abtimg7.png";
+import abtimg8 from "../../images/about/abtimg8.png";
+import abtimg9 from "../../images/about/abtimg9.png";
+import abtimg10 from "../../images/about/abtimg10.png";
+import abtimg11 from "../../images/about/abtimg11.png";
+import abtimg12 from "../../images/about/abtimg3.png";
+import Contact from "./Contact";
 function About() {
   return (
     <>
@@ -42,7 +42,7 @@ function About() {
           </div>
 
           {/* 2nd */}
-          <div className="hidden md:flex flex-col md:flex-row gap-6 justify-between ">
+          <div className="flex flex-col md:flex-row gap-6 justify-between">
             <img src={abtimg2}></img>
             <div className="self-center text-left text-base md:text-lg">
               Our approach takes into account every facet of your being, aiming
