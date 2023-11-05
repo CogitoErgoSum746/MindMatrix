@@ -1,81 +1,89 @@
-import React from 'react'
-import Navbar from '../../components/Navbar'
-import Contact from '../../components/HomePage/Contact'
-import img7 from "../../images/image 7.png";
+import React from 'react';
+import Navbar from '../../components/Navbar';
+import Contact from '../../components/HomePage/Contact';
 import Card from '../../components/Card';
+import img6 from "../../images/Certificate/Cognitive/pic1.jpg";
+import img4 from "../../images/Certificate/Counselling/pic1.jpg";
+import img9 from "../../images/Certificate/Developmental/pic1.jpg";
+import img3 from "../../images/Certificate/Emotional/pic1.jpg";
+import img5 from "../../images/Certificate/Gestalt/pic1.jpg";
+import img1 from "../../images/Certificate/NeuroLinguistic/pic4.jpg";
+import img2 from "../../images/Certificate/NlpMaster/pic1.jpg";
+import img7 from "../../images/Certificate/REBT/pic1.jpg";
+import img8 from "../../images/Certificate/Transactional/pic1.jpg";
 
 const testimonials = [
-    {
-      imageUrl: img7,
-      title: `NEURO LINGUISTIC PROGRAMMING`,
-      description: `“Unleash Your Potential & Build a Stronger Team” is a corporate retreat program designed to empower business leaders and here's an elaboration of the key components and benefits of this program...`,
-      url: "/certificate/1"
-    },
-    {
-      imageUrl: img7,
-      title: `NLP MASTER PRACTITIONER & LIFE COACHING `,
-      description: `This coaching approach equips professionals with valuable tools to navigate the complex landscape of business and optimize their personal and organizational effectiveness...`,
-      url : "/certificate/2"
-    },
-    {
-      imageUrl: img7,
-      title: `EMOTIONAL INTELLIGENCE COACH PRACTITIONER`,
-      description: `Success Steps provides ultra-personalized guidance on areas such as ‘emotional well-being’, ‘skill development’, ‘education and career planning’, ‘goal setting and achievement’. We help the children to access their dreams...`,
-      url: "/certificate/3"
+  {
+    imageUrl: img1,
+    title: `NLP PRACTITIONER`,
+    description: `NLP is a versatile field linking mind, language, and behaviour. As an NLP Practitioner, you gain powerful tools to enhance communication, understand human behaviour, and inspire positive change. This course offers respected certification programs for those aspiring to excel in NLP practice.`,
+    url: "/certificate/1"
   },
   {
-      imageUrl: img7,
-      title: `COUNSELLING AND THERAPIES`,
-      description: `NLP can be a powerful tool for addressing the specific needs of teachers, providing them with the skills and strategies they need to create a positive and engaging learning environment...`,
-      url: "/certificate/4"
+    imageUrl: img2,
+    title: `NLP MASTER PRACTITIONER & LIFE COACHING `,
+    description: `Elevate Your NLP Journey. This advanced course takes you beyond practitioner level to true NLP mastery. Reserved for NLP Certified Practitioner, it empowers you to create custom NLP techniques, explore advanced patterning, and delve into the essence of NLP. `,
+    url: "/certificate/2"
   },
   {
-      imageUrl: img7,
-      title: `GESTALT PSYCHOTHERAPY`,
-      description: `NLP offers valuable assistance to parents in addressing the challenges of stress and overwhelm that can accompany the responsibilities of nurturing a child's growth...`,
-      url: "/certificate/5"
+    imageUrl: img3,
+    title: `EMOTIONAL INTELLIGENCE COACH PRACTITIONER`,
+    description: `Unlock the power of Emotional Intelligence Training Certifications to supercharge your emotional acumen and master interpersonal skills. Perfect for HR professionals, teachers, business leaders, managers, and anyone on a mission to elevate your emotional intelligence.`,
+    url: "/certificate/3"
+  },
+  {
+    imageUrl: img4,
+    title: `COUNSELLING AND THERAPY SKILLS`,
+    description: `Our program equips aspiring mental health professionals with vital skills for counselling and therapy certification. We focus on therapeutic techniques, ethics, and mental health advocacy, fostering excellence and mindfulness advocacy.`,
+    url: "/certificate/4"
+  },
+  {
+    imageUrl: img5,
+    title: `GESTALT PSYCHOTHERAPY`,
+    description: `The gestalt psychotherapy certification program is a comprehensive and specialized training initiative that equips mental health professionals with the skills and knowledge needed to practice gestalt psychotherapy effectively.`,
+    url: "/certificate/5"
+  },
+  {
+    imageUrl: img6,
+    title: `COGNITIVE BEHAVIOURAL THERAPY (CBT)`,
+    description: `Elevate your journey to becoming a mental health professional through CBT program. It's your gateway to certification, expertise in therapy, ethical practice, and championing mental health awareness. Be a dynamic advocate for mindful living.`,
+    url: "/certificate/6"
   },
   {
     imageUrl: img7,
-    title: `COGNITIVE BEHAVIOURAL THERAPY `,
-    description: `NLP offers valuable assistance to parents in addressing the challenges of stress and overwhelm that can accompany the responsibilities of nurturing a child's growth...`,
-    url: "/certificate/6"
-},
-{
-  imageUrl: img7,
-  title: `
-  RATIONAL EMOTIVE BEHAVIROAL THERAPY 
+    title: `
+  RATIONAL EMOTIVE BEHAVIROAL THERAPY (REBT)
  `,
-  description: `NLP offers valuable assistance to parents in addressing the challenges of stress and overwhelm that can accompany the responsibilities of nurturing a child's growth...`,
-  url: "/certificate/7"
-},
-{
-  imageUrl: img7,
-  title: `TRANSACTIONAL ANALYSIS CERFIFICATION`,
-  description: `NLP offers valuable assistance to parents in addressing the challenges of stress and overwhelm that can accompany the responsibilities of nurturing a child's growth...`,
-  url: "/certificate/8"
-},
-{
-  imageUrl: img7,
-  title: `DEVELOPMENTAL PSYCHOLOGY`,
-  description: `NLP offers valuable assistance to parents in addressing the challenges of stress and overwhelm that can accompany the responsibilities of nurturing a child's growth...`,
-  url: "/certificate/9"
-},
-    
-  ]
+    description: `Unleash your potential with the REBT Certification Program! Dive into the world of Rational Emotive Behavioural Therapy and become a certified REBT therapist. Master the techniques and principles of this transformative psychotherapy approach with our comprehensive training.`,
+    url: "/certificate/7"
+  },
+  {
+    imageUrl: img8,
+    title: `TRANSACTIONAL ANALYSIS CERTIFICATION`,
+    description: `Our Transactional Analysis Certification Program equips you to become a certified transactional analyst. Delve into interpersonal dynamics and communication patterns with this comprehensive training. You gain a deep understanding of how individuals interact, communicate, and navigate life's challenges.`,
+    url: "/certificate/8"
+  },
+  {
+    imageUrl: img9,
+    title: `DEVELOPMENTAL PSYCHOLOGY`,
+    description: `The Developmental Psychology Certification Program is a transformative educational journey, empowering individuals with profound insights into human growth and development across the lifespan. Dive into the complex interplay of biological, cognitive, emotional, and social factors shaping behaviour and personality from infancy to old age.`,
+    url: "/certificate/9"
+  },
+
+]
 
 const Certificate = () => {
   return (
     <div className='flex flex-col h-screen justify-between'>
-        <Navbar />
-        <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
-            {testimonials.map((testimonial,index)=>(
-                <div key={index} className='mb-2'>
-                    <Card imageUrl={testimonial.imageUrl} description={testimonial.description} title={testimonial.title} url={testimonial.url}/>
-                </div>
-            ))}
-        </div>
-        <Contact />
+      <Navbar />
+      <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
+        {testimonials.map((testimonial, index) => (
+          <div key={index} className='mb-2'>
+            <Card imageUrl={testimonial.imageUrl} description={testimonial.description} title={testimonial.title} url={testimonial.url} />
+          </div>
+        ))}
+      </div>
+      <Contact />
     </div>
   )
 }

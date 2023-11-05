@@ -18,7 +18,7 @@ import MindW from "./components/HomePage/Mindwellness";
 import NewHomePage from "./Pages/NewHomePage";
 import CorporateLeadership from "./Pages/Training/CorporateLeadership";
 import BusinessCoaching from "./Pages/Training/BusinessCoaching";
-// import ComingSoon from "./Pages/ComingSoon";
+import ComingSoon from "./Pages/ComingSoon";
 import Training from "./Pages/HomeButtons/Training";
 import Student from "./Pages/Training/Student";
 import Teacher from "./Pages/Training/Teacher";

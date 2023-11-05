@@ -14,7 +14,10 @@ function NeuroLinguistic() {
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">
           NEURO LINGUISTIC PROGRAMMING
         </p>
-        <img src={pic1} className="max-h-96 self-center"></img>
+        <img src={pic1} className="max-h-96 self-center py-10"></img>
+        <p className="text-xl md:text-2xl lg:text-4xl font-bold">
+          NLP PRACTITIONER
+        </p>
         <p className="text-left text-base lg:text-xl">
           Neuro-Linguistic Programming, often abbreviated as NLP, is a powerful
           and versatile field of study that delves into the intricate
