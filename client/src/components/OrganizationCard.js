@@ -6,7 +6,7 @@ function OrganizationCard({ org, handleSendCodeToEmail,handleDeleteOrganization}
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 m-4">
-       <Link to={`/admin/getusers/${org.org_name}/${org.org_email}/${org.org_studentType}/${org.org_code}`}>
+       <Link to={`/admin/getusers/${org.org_name}/${org.org_studentType}/${org.org_code}`}>
       <h3 className="text-xl font-semibold">{org.org_name}</h3>
       <p>Email: {org.org_email}</p>
       <p>Type: {org.org_studentType}</p>

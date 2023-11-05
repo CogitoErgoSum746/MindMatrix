@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
 
 function Getusers() {
-  const { org_name, org_email, org_code } = useParams();
+  const { org_name, org_studentType, org_code } = useParams();
 // console.log(org_name)
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ function Getusers() {
         'Content-Type': 'application/json',
         'authtoken': authtoken,
       },
-      body: JSON.stringify({ org_name, org_email, org_code }),
+      body: JSON.stringify({ org_name, org_studentType, org_code }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -33,7 +33,7 @@ function Getusers() {
         console.error('Error:', error);
         setLoading(false);
       });
-  }, [org_name, org_email, org_code]);
+  }, [org_name, org_studentType, org_code]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -44,7 +44,7 @@ function Getusers() {
       <h2>Users for Organization: {org_name}</h2>
       <ul>
         {users.map((user) => (
-          <li key={user._id}>{user.username}</li>
+          <li key={user._id}>{[user.username, user.email, user.studentType]}</li>
         ))}
       </ul>
     </div>

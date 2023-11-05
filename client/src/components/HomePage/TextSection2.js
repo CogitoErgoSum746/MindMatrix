@@ -8,11 +8,14 @@ const TextSection2 = () => {
   return (
     <div className="flex flex-col py-10 gap-9">
       <div className="flex flex-col md:flex-row gap-6 justify-between">
-        <div className="self-center">
-          <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] mb-5">
-            Student - Teacher - Parent Connect
+        <div className="self-center"> 
+          <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] mb-2">
+            STUDENT - TEACHER - PARENT
           </div>
-          <div className="text-black font-extrabold text-sm md:text-base lg:text-lg font-['Inter']  ">
+          <div className=" text-black text-xl md:text-3xl font-bold lg:text-3xl font-['Inter'] mb-10">
+            CONNECT
+          </div>
+          <div className="text-black font-extrabold text-sm md:text-base lg:text-xl font-['Inter']  ">
             <div className='flex gap-2'>
               <img src={oct}></img>
               <p>
@@ -57,8 +60,8 @@ const TextSection2 = () => {
           <img src={img7}></img>
         </div>
         <div className="self-center">
-          <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] mb-5">
-            Corporate Executive Leadership
+          <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] mb-8">
+            CORPORATE EXECUTIVE LEADERSHIP
           </div>
           <div className="text-gray-400 text-lg md:text-xl lg:text-2xl font-['Inter']">
             <p>
@@ -74,8 +77,8 @@ const TextSection2 = () => {
           <div className=" text-black text-xl md:text-2xl font-bold lg:text-3xl font-['Inter']">
             Engage, Inspire And Motivate.
           </div>
-          <Link to="/corporate">
-            <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
+          <Link to="/training">
+            <button className="px-3 py-2 bg-transparent border mt-6 border-black font-medium hover:bg-black hover:text-white">
               Know More
             </button>
           </Link>

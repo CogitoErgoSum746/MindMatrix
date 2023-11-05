@@ -120,10 +120,10 @@ export async function getAllOrg(req: Request, res: Response): Promise<any> {
 
 export async function getUsersOrg(req: Request, res: Response): Promise<any> {
   try {
-    const { org_name, org_email, org_studentType, org_code } = req.body;
+    const { org_name, org_studentType, org_code } = req.body;
 
     const usersPerOrg = await User.find({ studentType: org_studentType, org_code: org_code });
-    const Org = await Organization.findOne({ org_name: org_name, org_email: org_email });
+    const Org = await Organization.findOne({ org_name: org_name, org_studentType: org_studentType, org_code: org_code});
 
     if (!usersPerOrg) {
       res.status(404).send('No users found');
@@ -355,7 +355,7 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
 
     const email = org.org_email;
     const subject = "Psychometric Test Organizational Code";
-    const text = `Dear Sir/Ma’am,\n\nWe are delighted to announce that we are fully prepared to commence the implementation of the Psychometric Test Suite program at your prestigious institution.\n\nAs part of this process, we are sharing with you a unique organizational code: ${disCode}.\nThe candidates must input this code in order to gain access to the test.\n\nPlease note that this code is strictly meant for those who have successfully completed their test registration. It is of utmost importance that this code remains confidential and not to be shared with anyone else.\n\nIf you have any queries, please feel free to reach out to us.\n\nWarm regards,\n\nDr. Antony Augusthy`;
+    const text = `Dear Sir/Ma’am from ${org.org_name},\n\nWe are delighted to announce that we are fully prepared to commence the implementation of the Psychometric Test Suite program at your prestigious institution.\n\nAs part of this process, we are sharing with you a unique organizational code: ${disCode}.\nThe candidates must input this code in order to gain access to the test.\n\nPlease note that this code is strictly meant for those who have successfully completed their test registration. It is of utmost importance that this code remains confidential and not to be shared with anyone else.\n\nIf you have any queries, please feel free to reach out to us.\n\nWarm regards,\n\nDr. Antony Augusthy`;
     const attachments = [{
       filename: 'Psychometric Test Instructions.pdf',
       path: `src/tp/Psychometric Test Instructions.pdf`,

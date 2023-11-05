@@ -91,7 +91,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
     if (userCreated) {
       const subject = "Welcome to the Psychometric Test Journey";
-      const text = "Dear Aspirant,\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nWarm regards,\n\nDr. Antony Augusthy";
+      const text = `Dear ${userCreated.username},\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nWarm regards,\n\nDr. Antony Augusthy`;
       const attachments = [{
         filename: 'Psychometric Test Instructions.pdf',
         path: `src/tp/Psychometric Test Instructions.pdf`,
@@ -175,7 +175,7 @@ export async function forgotPassword(req: Request, res: Response): Promise<any> 
     expiration.setHours(expiration.getHours() + 1);
 
     // const resetLink = `http://localhost:3000/reset-password/${token}`;
-    const resetLink = `https://mindmatrix.successteps.in/api/reset-password/${token}`;
+    const resetLink = `https://successteps.in/api/reset-password/${token}`;
 
     const subject = 'Password Reset';
     const text = `This link is active only for an hour.\nClick the following link to reset your password: ${resetLink}`;

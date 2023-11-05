@@ -1,22 +1,22 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import mindimg1 from "../images/Mindwellness/image 1.png";
-import mindimg2 from "../images/Mindwellness/image 2.png";
-import mindimg3 from "../images/Mindwellness/image 3.png";
-import mindimg4 from "../images/Mindwellness/image 4.png";
-import mindimg5 from "../images/Mindwellness/image 5.png";
-import abtimg1 from "../images/about/abtimg1.png";
-import abtimg2 from "../images/about/abtimg2.png";
-import abtimg4 from "../images/about/abtimg4.png";
-import abtimg5 from "../images/about/abtimg5.png";
-import abtimg6 from "../images/about/abtimg6.png";
-import abtimg7 from "../images/about/abtimg7.png";
-import abtimg8 from "../images/about/abtimg8.png";
-import abtimg9 from "../images/about/abtimg9.png";
-import abtimg10 from "../images/about/abtimg10.png";
-import abtimg11 from "../images/about/abtimg11.png";
-import abtimg12 from "../images/about/abtimg3.png";
-import Contact from "../components/HomePage/Contact";
+import Navbar from "../Navbar";
+import mindimg1 from "../../images/Mindwellness/image 1.png";
+import mindimg2 from "../../images/Mindwellness/image 2.png";
+import mindimg3 from "../../images/Mindwellness/image 3.png";
+import mindimg4 from "../../images/Mindwellness/image 4.png";
+import mindimg5 from "../../images/Mindwellness/image 5.png";
+import abtimg1 from "../../images/about/abtimg1.png";
+import abtimg2 from "../../images/about/abtimg2.png";
+import abtimg4 from "../../images/about/abtimg4.png";
+import abtimg5 from "../../images/about/abtimg5.png";
+import abtimg6 from "../../images/about/abtimg6.png";
+import abtimg7 from "../../images/about/abtimg7.png";
+import abtimg8 from "../../images/about/abtimg8.png";
+import abtimg9 from "../../images/about/abtimg9.png";
+import abtimg10 from "../../images/about/abtimg10.png";
+import abtimg11 from "../../images/about/abtimg11.png";
+import abtimg12 from "../../images/about/abtimg3.png";
+import Contact from "./Contact";
 function MindW() {
     return (
         <>

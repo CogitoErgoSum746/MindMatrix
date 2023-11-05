@@ -434,7 +434,268 @@ export const feedbackData: FeedbackData = {
             "7-8": "Artistic Abilities: Proficient artistic expression.",
             "9-10": "Artistic Abilities: Exceptional skills in artistic expression."
         }
-    }
+    },
+    "Professional Suitability Assessment": {
+        "Skills and Qualifications": {
+          "0-1": "Your skills and qualifications are not strongly matched with the requirements of the profession. You may need to explore alternative options that better leverage your strengths.",
+          "2-3": "While you have some skills and qualifications, they might not fully align with the demands of the profession. Exploring additional training or related skills could be beneficial.",
+          "4-5": "You possess certain skills and qualifications that relate to the profession. Consider investing in further training and development to bolster your capabilities and effectiveness.",
+          "6-7": "Your skills and qualifications are well-aligned with the requirements of the profession, though there's room for further enhancement. With some focused development, you'll be even more equipped to succeed.",
+          "8-10": "Your skills and qualifications are not only impressive but also a perfect match for this profession. Your expertise is a strong asset that will set you on a path to excel and make a significant impact."
+        },
+        "Passion and Interest": {
+          "0-1": "Your passion and interest might not be strongly aligned with the profession. Reflecting on what truly excites you about this path could offer insights for your career direction.",
+          "2-3": "While you have some curiosity about the profession, your passion and interest could be more pronounced. Exploring why this profession appeals to you and ignites your interest will be valuable.",
+          "4-5": "You have some level of passion and interest in the profession. By nurturing and deepening these aspects, you'll find increased satisfaction and drive in your career.",
+          "6-7": "Your passion and interest for the profession are evident, and with continued cultivation, they can become a cornerstone of your success and growth.",
+          "8-10": "Your passion and interest for this profession are palpable and infectious. Your enthusiasm is a driving force that will keep you motivated and fulfilled in your career journey."
+        },
+        "Work-Life Balance and Demands": {
+          "0-1": "Your grasp of the work-life balance and demands is limited. Gaining more insight into these aspects will be crucial as you assess the compatibility of this profession with your lifestyle.",
+          "2-3": "While you have an idea of the work-life balance and demands, a deeper understanding will help you make informed decisions about this career path.",
+          "4-5": "You have a general sense of the work-life balance and demands, though further exploration and preparation are recommended to align your expectations effectively.",
+          "6-7": "You're well-aware of the work-life balance and demands associated with the profession. With some intentional planning, you can navigate these aspects adeptly.",
+          "8-10": "Your understanding and acceptance of the work-life balance and demands of this profession are exceptional. Your realistic approach positions you to manage responsibilities effectively while maintaining well-being."
+        },
+        "Long-Term Goals": {
+          "0-1": "Your long-term goals might not strongly align with the profession. Reflecting on your ambitions and assessing how they mesh with this career path will be beneficial.",
+          "2-3": "While you're contemplating long-term goals, they might need further alignment with the profession's opportunities and growth trajectory.",
+          "4-5": "You're beginning to envision long-term goals that align with the profession. As you solidify these aspirations, your career path will gain clarity.",
+          "6-7": "Your long-term goals are well-suited to the profession, and with some refinement, you'll craft a clear path toward meaningful accomplishments.",
+          "8-10": "Your long-term goals seamlessly align with this profession, and your vision for your career's trajectory is both compelling and achievable."
+        },
+        "Market Demand and Trends": {
+          "0-1": "Your awareness of market demand and trends is limited. Delving into this aspect will provide insights into the industry landscape and its potential impact on your career.",
+          "2-3": "While you're beginning to explore market dynamics, further understanding of trends will be essential to align yourself with industry shifts.",
+          "4-5": "You're developing your awareness of market demand and trends. As you continue to learn and engage, your strategic insights will evolve and strengthen.",
+          "6-7": "You have a solid grasp of market dynamics, and with ongoing exploration, you'll stay ahead of trends that can shape your career journey.",
+          "8-10": "Your awareness of market demand and trends is exceptional, and your strategic insights are invaluable in positioning yourself for long-term success."
+        }
+    },
+    "Integrity Assessment": {
+        "Integrity Assessment": {
+            "0-14": "Your integrity assessment score reflects a low level of ethical behaviour. While there is room for improvement, remember that positive change is achievable. By reflecting on your values and focusing on ethical decision-making, you can progressively strengthen your integrity and its impact on both your personal and professional spheres.",
+            "15-24": "Your integrity assessment score indicates a basic level of ethical conduct. There are areas where your actions could be better aligned with your values, highlighting an opportunity for growth in consistently making ethical choices. By actively working on enhancing your ethical decision-making, you can contribute to a more trustworthy environment.",
+            "25-34": "Your integrity assessment score falls within a moderate range, suggesting a sincere effort towards ethical behaviour. While you make ethical choices, there's room for improvement in consistently aligning your actions with your values. As you continue to reflect on your decisions, you have the potential to further strengthen your commitment to integrity.",
+            "35-44": "Your integrity assessment score indicates a strong dedication to ethical behaviour. You generally make choices that align with your values, and your actions demonstrate a commitment to doing what is right. Your solid ethical foundation is evident in your interactions and decision-making.",
+            "45-50": "Your integrity assessment score falls within the highest bracket, reflecting an exceptional commitment to ethical conduct. Your consistent display of honesty and principled decision-making is truly commendable. You are a shining example of integrity, inspiring those around you with your unwavering dedication to ethical behaviour.",
+        },
+    },
+    "Emotional Styles": {
+        "Resilience": {
+            "0-14": "Your total score suggests a limited level of resilience. Building your emotional strength and coping strategies will be crucial to effectively handle challenges and stressors. Consider seeking guidance and support to develop techniques that will empower you to bounce back more effectively.",
+            "15-24": "Your total score indicates that you are in the process of developing your resilience. While you possess some coping mechanisms, further exploration and investment in resilience-building strategies will serve you well. Focus on learning and applying techniques to enhance your emotional strength.",
+            "25-34": "Your total score suggests a moderate level of resilience. You have the foundation to cope with challenges, though there's room for growth. By actively developing and implementing resilience-building techniques, you can enhance your ability to bounce back and adapt in various situations.",
+            "35-44": "Well done! Your total score reflects a strong level of resilience. You possess effective strategies for managing adversity and maintaining composure in the face of challenges. With continued nurturing of your resilience skills, you'll be even better equipped to overcome obstacles and thrive.",
+            "45-50": "Congratulations! Your total score indicates an exceptional level of resilience. You have a remarkable ability to bounce back from setbacks and maintain a positive outlook even in challenging situations. Your strong coping strategies and positive mindset make you well-equipped to handle various stressors and navigate difficulties with grace.",
+        },
+        "Outlook": {
+            "0-14": "Your total score suggests a limited outlook on life. It's important to consider how your perspective might impact your responses to challenges. Exploring ways to cultivate positivity and resilience can lead to a more fulfilling and optimistic life.",
+            "15-24": "Your total score indicates that you are in the process of developing your outlook on life. While you may face challenges with a bit of scepticism, there's room for growth in adopting a more positive and resilient perspective.",
+            "25-34": "Your total score suggests a balanced outlook on life. You have a mix of positive and realistic perspectives, which allows you to navigate challenges with a reasonable approach. Focus on cultivating both optimism and pragmatism for a well-rounded outlook.",
+            "35-44": "Well done! Your total score reflects a positive outlook on life. You maintain an optimistic perspective and approach challenges with a hopeful attitude. With continued nurturing, your outlook can further contribute to your success and well-being.",
+            "45-50": "Congratulations! Your total score indicates an exceptional outlook on life. Your perspective is overwhelmingly positive, and you approach challenges with resilience and optimism. Your mindset is a powerful asset that can lead to profound achievements and fulfilment.",
+        },
+        "Social Intuition": {
+            "0-14": "Your total score suggests limited social intuition. Enhancing your ability to read and respond to social cues will be valuable. Focus on empathetic listening and observing social behaviors to better understand others.",
+            "15-24": "Your total score indicates you're in the process of developing your social intuition. While you're starting to recognize social cues, there's room for growth. Engaging in active listening and observing behaviors will contribute to your progress.",
+            "25-34": "Your total score suggests a good level of social intuition. You're attuned to social dynamics, although there's room for deeper understanding. By honing your skills and being attentive to nonverbal cues, you'll enhance your social interactions.",
+            "35-44": "Well done! Your total score reflects a strong social intuition. You have a solid grasp of social cues and emotions, enabling you to build meaningful connections. With further refinement, you'll excel in understanding and responding to others.",
+            "45-50": "Congratulations! Your total score indicates exceptional social intuition. Your ability to understand and navigate social dynamics is outstanding. You possess a keen awareness of emotions and behaviors, allowing you to connect effectively with others.",
+        },
+        "Self-Awareness": {
+            "0-14": "Your total score suggests minimal self-awareness at the moment. Developing this skill can greatly benefit your personal growth and relationships. Consider engaging in self-reflection exercises, seeking feedback, and exploring resources to increase your self-awareness.",
+            "15-24": "Your total score indicates a limited level of self-awareness. There's room for growth in understanding how your thoughts and emotions influence your actions. Focus on practicing mindfulness, reflection, and seeking insights from others to enhance your self-awareness",
+            "25-34": "Your total score suggests that you're in the process of developing your self-awareness. You're beginning to recognize the connection between your thoughts, emotions, and behaviours. With continued effort and introspection, you'll make significant strides in your self-awareness journey.",
+            "35-44": "Well done! Your total score reflects a strong level of self-awareness. You have a good grasp of your thoughts and emotions, and you're proactive in understanding how they influence your actions. With ongoing reflection and refinement, you'll continue to thrive.",
+            "45-50": "Congratulations! Your total score indicates an exceptional level of self-awareness. You have a deep understanding of your thoughts, emotions, and behaviours. Your ability to reflect on your actions and make intentional choices sets you on a path of continuous growth and personal development.",
+        },
+        "Sensitivity to Context": {
+            "0-14": "Your total score suggests limited sensitivity to context. It's important to work on recognizing and understanding the contextual factors that impact various situations. Strengthening this skill will improve your adaptability and decision-making.",
+            "15-24": "Your total score indicates a developing sensitivity to context. While you have some awareness of context, there's room for growth. Focusing on observing and comprehending context will contribute to your ability to navigate situations more effectively.",
+            "25-34": "Your total score suggests an adequate level of sensitivity to context. You are beginning to recognize the influence of context on different scenarios. By further honing this skill, you can increase your adaptability and understanding.",
+            "35-44": "Well done! Your total score reflects strong sensitivity to context. You have a solid grasp of the subtleties that shape various situations. With continued awareness and refinement, you can enhance your ability to adapt effectively.",
+            "45-50": "Congratulations! Your total score indicates exceptional sensitivity to context. Your ability to perceive and understand the nuances of different situations is remarkable. Your keen awareness of context allows you to navigate diverse scenarios with finesse and adaptability.",
+        },
+        "Attention": {
+            "0-14": "Your total score suggests limited attention skills. It's important to acknowledge areas where your attention might be challenged. Exploring techniques for improving focus, minimizing distractions, and enhancing your task engagement will be valuable",
+            "15-24": "Your total score indicates that you are developing your attention skills. There is room for improvement in maintaining focus and attention on tasks. By implementing strategies for enhancing concentration and managing distractions, you can make meaningful progress.",
+            "25-34": "Your total score suggests good attention skills. You possess a reasonable ability to focus on tasks, and with intentional effort, you can further refine your attention to detail and task persistence. Practice and mindfulness can help you excel.",
+            "35-44": "Well done! Your total score reflects strong attention skills. You have a commendable ability to focus and maintain attention on tasks. With some continued practice and fine-tuning, you can further enhance your attention to detail and task engagement.",
+            "45-50": "Congratulations! Your total score indicates exceptional attention skills. You possess a remarkable ability to focus, concentrate, and maintain attention on tasks. Your attention to detail and capacity to stay engaged are exceptional strengths that set you apart.",
+        },
+    },
+    "Entrepreneurship Suitability Assessment": {
+        "Vision and Risk Assessment": {
+          "0-1": "Your vision and risk assessment are not aligned with entrepreneurship.",
+          "2-3": "You're unsure about your vision or hesitant to take risks in entrepreneurship.",
+          "4-5": "You're considering entrepreneurship but need to refine your vision and assess your risk appetite.",
+          "6-7": "You have a sense of direction but may need to further clarify your vision and risk tolerance.",
+          "8-10": "You have a clear vision for your entrepreneurial endeavors and are comfortable with taking calculated risks."
+        },
+        "Passion and Commitment": {
+          "0-1": "Your passion and commitment aren't aligned with entrepreneurship.",
+          "2-3": "Your passion and commitment levels might not be sufficient for the demands of entrepreneurship.",
+          "4-5": "You have some passion for entrepreneurship, but your commitment needs reinforcement.",
+          "6-7": "You're passionate about entrepreneurship but could amplify your commitment.",
+          "8-10": "Your passion for your business idea is palpable, and your commitment is unwavering."
+        },
+        "Decision-Making and Responsibility": {
+          "0-1": "Decision-making and responsibility are not your strong suits.",
+          "2-3": "You're uncertain about making key decisions and taking full responsibility.",
+          "4-5": "You're developing your decision-making and responsibility skills.",
+          "6-7": "You're comfortable with decision-making but could bolster your sense of responsibility.",
+          "8-10": "You're confident in making important decisions and fully embracing responsibility."
+        },
+        "Innovation and Adaptability": {
+          "0-1": "Innovation and adaptability are not your primary strengths.",
+          "2-3": "Innovation and adaptability might not come naturally to you.",
+          "4-5": "You have potential for innovation and adaptability, but there's room for growth.",
+          "6-7": "You possess some innovation and adaptability traits but can further develop them.",
+          "8-10": "You're highly innovative and adaptable, eager to embrace new ideas and changes."
+        },
+        "Market Awareness": {
+          "0-1": "Market awareness is not a strong point for you.",
+          "2-3": "Your market awareness needs improvement.",
+          "4-5": "You're developing market awareness skills, but there's more to learn.",
+          "6-7": "You have a solid grasp of market dynamics but could deepen your knowledge.",
+          "8-10": "Your understanding of the market, customers, and competitors is exceptional."
+        }
+    },
+    "Work Life Balance": {
+        "Time Management": {
+            "0-4": "Urgent attention needed to improve time management skills for a balanced life.",
+            "5-8": "Time management needs significant improvement to achieve equilibrium.",
+            "9-12": "Focus on enhancing time management to better balance work and personal life.",
+            "13-16": "You're doing well, but there's room for improvement in managing your time for better balance.",
+            "17-20": "Excellent job managing time effectively for a harmonious work-life balance.",
+        },
+        "Boundaries and Communication": {
+            "0-4": "Lack of boundaries and ineffective communication are affecting your balance. Immediate action is crucial.",
+            "5-8": "Your boundaries and communication need significant attention for a healthier work-life integration.",
+            "9-12": "Focus on strengthening your boundaries and communication for improved balance.",
+            "13-16": "You're on the right track, but enhancing boundaries and communication can optimize your balance.",
+            "17-20": "Your exceptional boundaries and communication skills ensure a clear separation between work and personal life.",
+        },
+        "Well-being and Self-Care": {
+            "0-4": "Neglecting well-being jeopardizes your work-life balance. Immediate steps are necessary.",
+            "5-8": "Enhance your well-being and self-care practices to prevent burnout and improve balance.",
+            "9-12": "Prioritize self-care activities for better stress management and a healthier work-life balance.",
+            "13-16": "You're doing well, but further commitment to well-being and self-care can lead to even better balance.",
+            "17-20": "Your dedication to well-being and self-care significantly contributes to your overall balance.",
+        },
+        "Flexibility and Adaptability": {
+            "0-4": "Lack of flexibility and adaptability hinder your ability to balance work and personal life. Immediate action is vital.",
+            "5-8": "Developing greater flexibility and adaptability is crucial for a more balanced approach.",
+            "9-12": "Embrace changes more effectively to prevent disruptions and enhance your work-life equilibrium.",
+            "13-16": "Enhancing flexibility and adaptability will ensure a smoother transition between work and personal commitments.",
+            "17-20": "Your remarkable adaptability allows you to navigate changes without disturbing your balance.",
+        },
+        "Relationships and Fulfilment": {
+            "0-4": "Lack of relationships and fulfilment negatively impacts your well-being. Immediate action is required.",
+            "5-8": "Prioritize relationships and activities that fulfil you to prevent imbalance.",
+            "9-12": "Invest more time in relationships and activities outside of work for a more balanced and fulfilling life.",
+            "13-16": "You're doing well, but nurturing relationships and personal interests further will enhance your balance.",
+            "17-20": "Your focus on relationships and personal fulfilment enriches your overall work-life balance.",
+        },
+    },
+    "Parenting Style": {
+        "Authoritarian": {
+            "1-10": "Your parenting style falls into the low authoritarian category, which means you tend to be lenient and permissive in your approach. You prioritize freedom and independence for your child, allowing them to make many decisions on their own. While this approach can foster creativity and self-expression, it's important to strike a balance between freedom and guidance to ensure your child's safety and development.",
+            "11-20": "Your parenting style falls into the moderate authoritarian category. You provide some structure and rules for your child, but you also give them room for individuality and autonomy. This balanced approach can be effective in teaching responsibility and discipline while allowing your child to explore their interests. Continue to monitor and adjust your parenting style to meet your child's evolving needs.",
+            "21-30": "Your parenting style falls into the high authoritarian category. You have a strong focus on rules, discipline, and control in your approach to parenting. While this can create a structured and orderly environment, it's essential to be mindful of balancing rules with emotional support and understanding. Consider allowing your child more room for self-expression and independence within appropriate boundaries.",
+            "31-40": "Your parenting style falls into the very high authoritarian category. You prioritize strict rules, discipline, and control over your child's actions. While structure is important, it's essential to ensure that your child also feels supported, heard, and valued. Be open to flexibility and empathy in your approach to help your child develop a strong sense of self-esteem and emotional well-being.",
+        },
+        "Authoritative": {
+            "1-10": "Your parenting style falls into the low authoritative category, indicating that you may lean towards a more permissive approach. While it's essential to give your child freedom and independence, it's also important to provide clear boundaries and expectations. Consider incorporating more structure and consistent communication to help your child thrive.",
+            "11-20": "Your parenting style falls into the moderate authoritative category. You strike a good balance between setting boundaries and giving your child room for autonomy. Continue fostering open communication and nurturing a supportive environment for your child's growth. This approach can help them develop a strong sense of responsibility and self-discipline.",
+            "21-30": "Your parenting style falls into the high authoritative category. You excel in creating a structured and supportive environment for your child. You balance clear rules and expectations with warmth and understanding. Keep up the good work, as this approach is known to foster independence, self-esteem, and healthy development in children.",
+            "31-40": "Your parenting style falls into the very high authoritative category, indicating that you prioritize clear boundaries, communication, and emotional support. Your approach is highly effective in promoting your child's well-being, self-esteem, and autonomy. Continue to provide a nurturing and empowering environment while remaining open to your child's changing needs and perspectives.",
+        },
+        "Permissive": {
+            "1-10": "Your parenting style falls into the low permissiveness category, suggesting that you tend to set clear boundaries and expectations for your child. While structure and discipline are important, it's also essential to strike a balance by allowing your child room for autonomy and self-expression. Consider finding opportunities to be more flexible and open to your child's ideas and desires.",
+            "11-20": "Your parenting style falls into the moderate permissiveness category. You provide a reasonable amount of freedom and independence for your child while also setting some limits. This balanced approach can be effective in fostering creativity and self-esteem, but it's crucial to ensure that your child understands the importance of rules and responsibilities.",
+            "21-30": "Your parenting style falls into the high permissiveness category. You tend to be lenient and permissive, allowing your child a great deal of freedom and autonomy. While this approach can foster independence, it's essential to ensure that there are clear boundaries and expectations in place to promote responsible behaviour and learning.",
+            "31-40": "Your parenting style falls into the very high permissiveness category, indicating that you prioritize giving your child maximum freedom and minimal restrictions. While it's important to respect your child's autonomy, it's equally crucial to provide guidance and structure to help them develop essential life skills and a sense of responsibility.",
+        },
+        "Uninvolved": {
+            "1-10": "Your parenting style falls into the low uninvolved category, suggesting that you are somewhat involved in your child's life and well-being. While you may be present, it's important to increase your engagement and support for your child. Consider spending more quality time with them, showing interest in their activities, and providing emotional support.",
+            "11-20": "Your parenting style falls into the moderate uninvolved category. While you are somewhat involved, there is room for improvement in terms of providing emotional support and guidance. Strive to become more engaged in your child's life, showing interest in their interests and concerns, and being present when they need you.",
+            "21-30": "Your parenting style falls into the high uninvolved category. This suggests that you are generally distant and uninvolved in your child's life. It's crucial to recognize the importance of being present and emotionally available for your child. Consider seeking ways to improve your engagement and support, as your child needs your presence and guidance for their development.",
+            "31-40": "Your parenting style falls into the very high uninvolved category, indicating a significant lack of involvement in your child's life and well-being. It's essential to recognize that your child requires emotional support, guidance, and attention to thrive. Consider seeking help or resources to improve your parenting involvement and create a more nurturing environment for your child.",
+        },
+    },
+    "Professional Skills Set Assessment": {
+        "Professional Skills Set Assessment": {
+            "1-20": "• Your journey begins here, and remember, even the most accomplished professionals once started as beginners.\n\n• Embrace this opportunity for growth and development as a stepping stone to your future success.\n\n• Keep your spirits high, and with focused training and practice, you'll see remarkable progress.",
+            "21-40": "• You're on the path to improvement, and perseverance is key. Every step you take is a step forward.\n\n• Recognize your potential and invest in further development – the journey to excellence is within reach.\n\n• With consistent effort and dedication, you will soon see yourself moving up the ladder.",
+            "41-60": "• Congratulations, you've achieved an average level of proficiency in the assessed skill.\n\n• You're already demonstrating fundamental competence – now aim higher and strive for excellence.\n\n• Continue your journey of practice and refinement, and watch your skills evolve.",
+            "61-80": "• You're performing above the average, and it's time to celebrate your accomplishments.\n\n• Your competency and effectiveness in this skill are commendable; now aim to be a standout.\n\n• With further refinement and continuous practice, you're poised to reach the pinnacle of excellence.",
+            "81-100": "• Congratulations! Your excellence in this skill is truly remarkable and inspiring.\n\n• You've set a high standard and demonstrated consistent outstanding competence.\n\n• You're already on the path to becoming an expert in this area; keep up the exceptional work and inspire others along the way.",
+        }
+    },
+    "Wheel of Life": {
+        "Money & Wealth": {
+            "1-3": "Your financial situation requires significant improvement. It's important to take proactive steps to address your financial challenges. Consider creating a budget, seeking financial advice, and exploring opportunities for saving and investing. Focusing on enhancing your financial literacy and setting clear financial goals will help you build a stronger foundation for your future.",
+            "4-6": "There is room for improvement in your financial management. While you're making efforts to manage your money, there are areas that could benefit from further attention. Consider refining your budget, exploring ways to increase your income, and seeking avenues for smart investments. By enhancing your financial discipline and continuing to learn about effective money management, you can work towards a more secure financial future.",
+            "7-8": "Your financial situation is above average, indicating effective money management practices. You're making positive strides in managing your finances and building wealth. However, there's still room for refinement. Continue to make informed financial decisions, explore opportunities for growth, and maintain a proactive approach to securing your financial well-being.",
+            "9-10": "Congratulations! Your financial management is outstanding. Your dedication to managing your money and building wealth is evident. You've likely demonstrated strong financial discipline, effective investment strategies, and a well-rounded understanding of money matters. Keep up the excellent work and consider sharing your insights with others who may benefit from your financial acumen."
+        },
+        "Career & Work": {
+            "1-3": "Your career and work situation requires significant improvement, as you're currently in the lower percentage range. It's important to evaluate your career goals, assess your current role, and consider opportunities for advancement or skill development.",
+            "4-6": "You're in the middle percentage range, indicating room for improvement in your career and work. While you're making progress, there are areas where you can further develop your skills, expand your responsibilities, or explore new opportunities.",
+            "7-8": "Your performance in your career and work is above average, falling within the higher percentage range. You're making valuable contributions and have a solid understanding of your role. Consider continuing to refine your skills and seek out growth prospects.",
+            "9-10": "Congratulations! You're in the outstanding percentage range, which signifies exceptional achievements in your career and work. You consistently demonstrate a high level of dedication and expertise in your field. Your contributions have a significant positive impact, and your commitment is commendable."
+        },
+        "Health & Fitness": {
+            "1-3": "Your health and fitness routines are in need of significant improvement. It's crucial to address this area for the sake of your overall well-being. Consider consulting a healthcare professional to create a plan that includes regular exercise, balanced nutrition, and a focus on mental health.",
+            "4-6": "There is room for improvement in your health and fitness practices. While you're making an effort, there's potential to enhance your routines. Aim to establish consistent exercise habits, improve your diet, and prioritize self-care to elevate your overall health.",
+            "7-8": "Your health and fitness practices are above average, reflecting a positive commitment to your well-being. You're incorporating exercise and healthy choices, but there's still room to fine-tune your routines for even greater health benefits.",
+            "9-10": "Your dedication to health and fitness is outstanding. You've achieved a high level of physical and mental well-being through consistent exercise, balanced nutrition, and self-care practices. Keep up the exceptional work, as your efforts are commendable and contribute to your overall quality of life."
+        },
+        "Fun & Recreation": {
+            "1-3": "Your engagement in fun and recreational activities needs significant improvement. Allocating time for enjoyable pursuits can greatly enhance your overall happiness. Consider exploring new hobbies or finding ways to incorporate leisure into your routine.",
+            "4-6": "There's room for improvement in incorporating fun and recreation into your routine. Balancing work and play can contribute to a more fulfilling lifestyle. Look for opportunities to diversify your recreational activities and make them a consistent part of your life.",
+            "7-8": "Your participation in fun and recreational activities is above average. Continue to prioritize enjoyment and relaxation for a well-rounded lifestyle. Keep discovering new activities that bring you joy and make sure to consistently include them in your schedule.",
+            "9-10": "Your commitment to fun and recreation is outstanding. You consistently make time for activities that bring you joy. Your approach to balance is commendable. Keep exploring new ways to have fun and embrace your well-rounded approach to life."
+        },
+        "Contribution": {
+            "1-3": "Your level of contribution to others and the community needs significant improvement. There's a notable opportunity for you to make a more positive impact on those around you.",
+            "4-6": "There's room for improvement in your contributions to others and the community. By identifying ways to give back and actively participating in meaningful initiatives, you can enhance your role as a contributor.",
+            "7-8": "Your level of contribution is above average. You're making commendable efforts to give back and contribute to the well-being of others and your community.",
+            "9-10": "Your contributions are outstanding. You consistently go above and beyond to make a positive impact on others and the community. Your dedication to making a difference is truly commendable."
+        },
+        "Community": {
+            "1-3": "Your engagement with your community needs significant improvement. Consider exploring ways to actively participate in community events and initiatives to foster stronger connections.",
+            "4-6": "There's room for improvement in your community involvement. By seeking out opportunities to contribute and engage with your community, you can make a more meaningful impact.",
+            "7-8": "Your involvement with your community is above average. You're actively participating and making a positive difference, but there's potential for further engagement and outreach.",
+            "9-10": "Your commitment to your community is outstanding. You consistently demonstrate a high level of engagement and contribute positively to the well-being of those around you. Your dedication is commendable."
+        },
+        "Family": {
+            "1-3": "Your engagement and connection with your family need significant improvement. Investing time and effort in nurturing familial relationships can lead to stronger bonds and greater happiness.",
+            "4-6": "There's room for improvement in your family interactions. Actively seeking quality time together and open communication can contribute to a more harmonious family dynamic.",
+            "7-8": "Your involvement with your family is above average. You're making positive contributions, but there's potential for deeper connections and more meaningful interactions.",
+            "9-10": "Your commitment to your family is outstanding. You consistently prioritize spending time together, fostering understanding, and providing support. Your dedication to maintaining strong family relationships is commendable."
+        },
+        "Social & Friends": {
+            "1-3": "Your social interactions and friendships need significant improvement. Investing more time and effort in building and maintaining connections can lead to a richer social life.",
+            "4-6": "There's room for improvement in your social interactions and friendships. Cultivating deeper connections and engaging in social activities can enhance your overall well-being.",
+            "7-8": "Your approach to social interactions and friendships is above average. You're proactive in connecting with others, but there's potential for further strengthening relationships.",
+            "9-10": "Your social interactions and friendships are outstanding. You consistently foster meaningful connections and contribute positively to your social circle. Your ability to connect is commendable."
+        },
+        "Love & Romance": {
+            "1-3": "Your love and romance aspect needs significant improvement. It's important to invest time and effort into nurturing your romantic relationships and addressing any underlying concerns.",
+            "4-6": "There's room for improvement in your love and romance life. Consider enhancing communication and connection with your partner to foster a deeper bond.",
+            "7-8": "Your love and romance situation is above average. You're demonstrating a strong commitment and effort in maintaining a healthy romantic relationship.",
+            "9-10": "Your love and romance aspect is outstanding. Your relationship is characterized by exceptional communication, affection, and mutual respect. Your dedication to nurturing love and romance is commendable."
+        },
+        "Growth and Learning": {
+            "1-3": "Your commitment to personal growth and learning requires significant improvement. It's important to invest time and effort in expanding your knowledge and skills to reach your full potential.",
+            "4-6": "There's room for improvement in your pursuit of growth and learning. Consider setting clear goals for self-improvement and seeking opportunities to enhance your expertise.",
+            "7-8": "Your dedication to growth and learning is above average. You actively seek ways to expand your horizons, but there's still potential for further development.",
+            "9-10": "Your approach to growth and learning is outstanding. Your continuous pursuit of knowledge and skill improvement sets you apart. Keep up the exceptional work in your journey of self-enrichment."
+        }
+    },
 } as const;
 
 
@@ -575,39 +836,39 @@ export const carreerSuggestions: FeedbackData = {
 export const personalityType: FeedbackData = {
     "Personality": {
         "Openness": {
-          "1-10": "Possible Personality Type: Conventional, Practical, Routine-Oriented",
-          "11-20": "Possible Personality Type: Balanced, Adaptable, Practical Visionary",
-          "21-30": "Possible Personality Type: Inquisitive, Versatile, Adaptive",
-          "31-40": "Possible Personality Type: Curious, Imaginative, Innovative",
-          "41-50": "Possible Personality Type: Creative, Visionary, Intellectual Explorer"
+            "1-10": "Possible Personality Type: Conventional, Practical, Routine-Oriented",
+            "11-20": "Possible Personality Type: Balanced, Adaptable, Practical Visionary",
+            "21-30": "Possible Personality Type: Inquisitive, Versatile, Adaptive",
+            "31-40": "Possible Personality Type: Curious, Imaginative, Innovative",
+            "41-50": "Possible Personality Type: Creative, Visionary, Intellectual Explorer"
         },
         "Conscientiousness": {
-          "1-10": "Possible Personality Type: Unstructured, Free-Spirited, Creative",
-          "11-20": "Possible Personality Type: Flexible, Adaptable, Laid-Back Achiever",
-          "21-30": "Possible Personality Type: Balanced, Diligent, Methodical",
-          "31-40": "Possible Personality Type: Dependable, Detail-Focused, Goal-Driven",
-          "41-50": "Possible Personality Type: Methodical, Disciplined, Achievement-Oriented"
+            "1-10": "Possible Personality Type: Unstructured, Free-Spirited, Creative",
+            "11-20": "Possible Personality Type: Flexible, Adaptable, Laid-Back Achiever",
+            "21-30": "Possible Personality Type: Balanced, Diligent, Methodical",
+            "31-40": "Possible Personality Type: Dependable, Detail-Focused, Goal-Driven",
+            "41-50": "Possible Personality Type: Methodical, Disciplined, Achievement-Oriented"
         },
         "Extroversion": {
-          "1-10": "Possible Personality Type: Introverted, Reflective, Thoughtful",
-          "11-20": "Possible Personality Type: Balanced, Adaptable, Reserved-Extrovert",
-          "21-30": "Possible Personality Type: Ambivert, Socially Versatile, Team Player",
-          "31-40": "Possible Personality Type: Outgoing, Sociable, Energetic",
-          "41-50": "Possible Personality Type: Extroverted, Enthusiastic, Charismatic"
+            "1-10": "Possible Personality Type: Introverted, Reflective, Thoughtful",
+            "11-20": "Possible Personality Type: Balanced, Adaptable, Reserved-Extrovert",
+            "21-30": "Possible Personality Type: Ambivert, Socially Versatile, Team Player",
+            "31-40": "Possible Personality Type: Outgoing, Sociable, Energetic",
+            "41-50": "Possible Personality Type: Extroverted, Enthusiastic, Charismatic"
         },
         "Agreeableness": {
-          "1-10": "Possible Personality Type: Independent, Assertive, Objective",
-          "11-20": "Possible Personality Type: Pragmatic, Diplomatic, Balanced",
-          "21-30": "Possible Personality Type: Empathetic, Flexible, Collaborative",
-          "31-40": "Possible Personality Type: Cooperative, Supportive, Amiable",
-          "41-50": "Possible Personality Type: Compassionate, Empathic, Harmonious"
+            "1-10": "Possible Personality Type: Independent, Assertive, Objective",
+            "11-20": "Possible Personality Type: Pragmatic, Diplomatic, Balanced",
+            "21-30": "Possible Personality Type: Empathetic, Flexible, Collaborative",
+            "31-40": "Possible Personality Type: Cooperative, Supportive, Amiable",
+            "41-50": "Possible Personality Type: Compassionate, Empathic, Harmonious"
         },
         "Neuroticism": {
-          "1-10": "Possible Personality Type: Resilient, Calm, Emotionally Stable",
-          "11-20": "Possible Personality Type: Balanced, Adaptable, Realistic",
-          "21-30": "Possible Personality Type: Stable, Flexible, Self-Aware",
-          "31-40": "Possible Personality Type: Sensitive, Reflective, Resilient Learner",
-          "41-50": "Possible Personality Type: Emotional, Empathetic, Introspective"
+            "1-10": "Possible Personality Type: Resilient, Calm, Emotionally Stable",
+            "11-20": "Possible Personality Type: Balanced, Adaptable, Realistic",
+            "21-30": "Possible Personality Type: Stable, Flexible, Self-Aware",
+            "31-40": "Possible Personality Type: Sensitive, Reflective, Resilient Learner",
+            "41-50": "Possible Personality Type: Emotional, Empathetic, Introspective"
         }
     }
 }
