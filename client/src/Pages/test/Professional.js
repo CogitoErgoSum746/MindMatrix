@@ -4,7 +4,11 @@ import { API_BASE_URL } from '../../config';
 
 function Professional({id}) {
     const subtests = [
-        { id: 1, name: 'Professional Suitability Assessment ' },
+        { id: 1, name: 'Skills and Qualifications' },
+        { id: 2, name: 'Passion and Interest' },
+        { id: 3, name: 'Work-Life Balance and Demands' },
+        { id: 4, name: 'Long-Term Goals' },
+        { id: 5, name: 'Market Demand and Trends' },
       ];
       const testType="Professional Suitability Assessment";
       const [testStatus, setTestStatus] = useState({});

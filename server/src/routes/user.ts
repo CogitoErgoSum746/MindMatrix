@@ -37,6 +37,9 @@ router.post('/testResultToAPI', fetchUser, getTestResults); // One single route 
 router.post('/deletetest', fetchUser, deleteTestResult);
 
 router.post('/allthis', fetchUser, getAllTestResults);
+// just use {
+//     testResults: yourArrayOfTestResults
+// }
 
 router.get('/deletecarlist', fetchUser, deleteCareerList);
 

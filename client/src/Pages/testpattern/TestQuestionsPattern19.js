@@ -17,7 +17,7 @@ function TestQuestionsPattern19() {
 
   const tests = {
     1: {
-      title: "Entrepreneurship Suitability Assessment",
+      title: "Vision and Risk Assessment",
       questions: [
         {
           questionText: "1. I am willing to take significant financial and career risks to achieve my entrepreneurial goals.",
@@ -29,48 +29,68 @@ function TestQuestionsPattern19() {
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
+      ],
+    },
+    2:{
+      title: "Passion and Commitment",
+      questions:[
         {
-          questionText: "3. I am extremely motivated to bring my business idea to life.",
+          questionText: "1. I am extremely motivated to bring my business idea to life.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "4. I am willing to put in the necessary time and effort to make my business successful.",
+          questionText: "2. I am willing to put in the necessary time and effort to make my business successful.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ]
+    },
+    3:{
+      title: "Decision-Making and Responsibility",
+      questions:[
+        {
+          questionText: "1. I am comfortable making crucial decisions and taking full responsibility for their outcomes.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "5. I am comfortable making crucial decisions and taking full responsibility for their outcomes.",
+          questionText: "2. I enjoy having control over business decisions and outcomes.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ]
+    },
+    4:{
+      title: "Innovation and Adaptability",
+      questions:[
+        {
+          questionText: "1. I am excited about introducing new and innovative ideas to the market.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "6. I enjoy having control over business decisions and outcomes.",
+          questionText: "2. I can adjust my business strategies based on feedback and evolving trends.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ]
+    },
+    5:{
+      title: "Market Awareness",
+      questions:[
+        {
+          questionText: "1. I understand the needs of my target market and how to tailor my offerings to meet those needs.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "7. I am excited about introducing new and innovative ideas to the market.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "8. I can adjust my business strategies based on feedback and evolving trends.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "9. I understand the needs of my target market and how to tailor my offerings to meet those needs.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "10. I am knowledgeable about my competitors and can differentiate my business effectively.",
+          questionText: "2. I am knowledgeable about my competitors and can differentiate my business effectively.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         }
-      ],
-    },
+      ]
+    }
   };
   const subtestIdInt = parseInt(subtestId);
   const subtest = tests[subtestIdInt];

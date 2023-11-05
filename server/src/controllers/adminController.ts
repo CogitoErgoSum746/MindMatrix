@@ -262,47 +262,47 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
   }
 }
 
-// export async function downloadPdf(req: Request, res: Response): Promise<any> {
-//   try {
-//     const { username, email } = req.body;
+export async function displayPdf(req: Request, res: Response): Promise<any> {
+  try {
+    const { username, email} = req.body;
 
-//     const existinguser = await User.find({
-//       username: username,
-//       email: email
-//     })
+    const existinguser = await User.find({
+      username: username,
+      email: email
+    })
 
-//     if (existinguser) {
-//       // Extract the first 5 letters from 'username' and 'email'
-//       const usernameFirst5 = username.slice(0, 5);
-//       const emailFirst5 = email.slice(0, 5);
+    if (existinguser) {
+      // Extract the first 5 letters from 'username' and 'email'
+      const usernameFirst5 = username.slice(0, 5);
+      const emailFirst5 = email.slice(0, 5);
 
-//       // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
-//       const customFolderName = `${usernameFirst5}${emailFirst5}`;
-//       const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
+      // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+      const customFolderName = `${usernameFirst5}${emailFirst5}`;
+      const filePath = `src/runningPdfs/${customFolderName}/feedback.pdf`;
 
-//       // Check if the file exists
-//       if (!fs.existsSync(filePath)) {
-//         return res.status(404).send('File not found/created');
-//       }
+      // Check if the file exists
+      if (!fs.existsSync(filePath)) {
+        return res.status(404).send('File not found/created');
+      }
 
-//       // Set the response headers to prompt a download
-//       res.setHeader('Content-disposition', `attachment; filename=feedback.pdf`);
-//       res.setHeader('Content-type', 'application/pdf');
-
-//       // Send the file as a download
-//       res.status(200).download(filePath, `feedback.pdf`, (err) => {
-//         if (err) {
-//           console.error('Error downloading file:', err);
-//           return res.status(500).send('Internal Server Error');
-//         }
-//       });
-//     } else {
-//       res.status(404).json({ success: false, message: 'User not found' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// }
+      fs.readFile(filePath, (err, data) => {
+        if (err) {
+          res.status(500).send('Error reading the PDF file');
+        } else {
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', 'inline; filename="feedback.pdf"');
+          res.status(200).send(data);
+        }
+      });
+      
+    } else {
+      res.status(404).json({ success: false, message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Internal server error:', error);
+    res.status(500).json({ error: 'Internal server error', erroris: error });
+  }
+}
 
 export async function getOrganization(req: Request, res: Response): Promise<any> {
   let success = false;
