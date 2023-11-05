@@ -42,7 +42,7 @@ function About() {
           </div>
 
           {/* 2nd */}
-          <div className="flex flex-col md:flex-row gap-6 justify-between">
+          <div className="hidden md:flex flex-col md:flex-row gap-6 justify-between ">
             <img src={abtimg2}></img>
             <div className="self-center text-left text-base md:text-lg">
               Our approach takes into account every facet of your being, aiming

@@ -20,7 +20,7 @@ const Certification = () => {
             <li>Counselling Skills and Therapies</li>
           </ul>
         </div>
-        <Link to="/upcoming">
+        <Link to="/certificate">
           <button className="px-7 py-3 bg-black text-white font-normal font-['Inter'] justify-center items-center inline-flex hover:bg-white hover:text-black border-2 border-black">
             Know More
           </button>

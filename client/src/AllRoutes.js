@@ -23,6 +23,8 @@ import Training from "./Pages/HomeButtons/Training";
 import Student from "./Pages/Training/Student";
 import Teacher from "./Pages/Training/Teacher";
 import Parent from "./Pages/Training/Parent";
+import Certificate from "./Pages/HomeButtons/Certificate";
+import CertificateContent from "./Pages/HomeButtons/CertificateContent";
 
 function AllRoutes() {
   const authtoken = localStorage.getItem("authtoken");
@@ -57,6 +59,8 @@ function AllRoutes() {
       />
       <Route path="/mindwellness" element={<MindW />} />
       <Route path="/upcoming" element={<ComingSoon />} />
+      <Route path="/certificate" element={<Certificate />} />
+      <Route path="/certificate/:id" element={<CertificateContent />} />
       <Route path="/about" element={<About />} />
 
       <Route path="/admin" element={authtoken ? <AdminPanel />: <Navigate to='/login'/>} />
