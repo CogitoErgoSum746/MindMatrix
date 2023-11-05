@@ -24,7 +24,7 @@ function ResetPass() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ token, newPassword }), // Include token and newPassword in the request body
+        body: JSON.stringify({ token, newPassword }), 
       });
 
       if (response.status === 200) {
