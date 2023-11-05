@@ -65,11 +65,11 @@ function Home1() {
                 <img src={school}></img>
               </div>
               
-              <h1 className="text-center text-lg font-bold mb-2 font-['Inter'] mt-1">
+              <h1 className="text-center text-xl font-bold mb-2 font-['Inter'] mt-1">
                 HIGH SCHOOLERS
               </h1>
               <h1 className="text-center text-lg font-bold font-['Inter']">
-                Unlocking your potentials
+              Unlock Your Potential  
               </h1>
               <p className="text-lg text-gray-800 mb-10 text-justify">
                 Welcome to our psychometric test’s platform tailored for high
@@ -101,11 +101,11 @@ function Home1() {
               <div className="mb-12 flex justify-center">
                 <img src={clg}></img>
               </div>
-              <h1 className="text-center text-lg font-bold mb-2  font-['Inter'] ">
+              <h1 className="text-center text-xl font-bold mb-2  font-['Inter'] ">
                 COLLEGE STUDENTS
               </h1>
               <h1 className="text-center text-lg font-bold font-['Inter']">
-                Empowering your choices
+              Empower Your Choice
               </h1>
               <p className="text-lg text-gray-800 mb-4 text-justify md:text-md">
                 As a college student, you're at the crossroads of academic and
@@ -137,11 +137,11 @@ function Home1() {
               <div className="flex justify-center">
                 <img src={prof}></img>
               </div>
-              <h1 className="text-center text-lg font-bold mb-2 font-['Inter'] ">
+              <h1 className="text-center text-xl font-bold mb-2 font-['Inter'] ">
                 PROFESSIONALS
               </h1>
               <h1 className="text-center text-lg font-bold font-['Inter']">
-                Optimizing your career
+              Optimise Your Career
               </h1>
               <p className="text-lg text-gray-800 mb-10 text-justify  md:text-md ">
                 In the professional world, continuous growth and advancement are
