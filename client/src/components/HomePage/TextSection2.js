@@ -44,7 +44,7 @@ const TextSection2 = () => {
 
 
           </div>
-          <Link to="/upcoming">
+          <Link to="/training">
             <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
               Know More
             </button>
