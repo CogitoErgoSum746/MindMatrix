@@ -435,15 +435,43 @@ export const feedbackData: FeedbackData = {
             "9-10": "Artistic Abilities: Exceptional skills in artistic expression."
         }
     },
-    // "Professional Suitability Assessment": {
-    //     "Professional Suitability Assessment": {
-    //         "0-14": "Your total score suggests a limited suitability for the chosen profession. It's important to evaluate whether this profession aligns well with your skills, interests, and aspirations. Consider exploring other options that better match your strengths and preferences.",
-    //         "15-24": "Your total score indicates that you are in the process of developing your suitability for the chosen profession. While there is room for improvement, you demonstrate some interest and attributes that align with the profession. Focus on enhancing your skills and passion to progress in this career path.",
-    //         "25-34": "Your total score suggests a good suitability for the chosen profession. You have potential and some alignment with the required attributes. With further development and investment in your skills and passion, you can enhance your effectiveness and success in this field.",
-    //         "25-44": "Well done! Your total score reflects a strong suitability for the chosen profession. You have a solid combination of skills, passion, and alignment with your career goals. With continued effort and development, you can thrive and contribute meaningfully to this profession.",
-    //         "45-50": "Congratulations! Your total score indicates an exceptional suitability for the chosen profession. Your skills, qualifications, passion, and alignment with long-term goals are outstanding. You possess all the right attributes to excel and make a significant impact in this field.",
-    //     },
-    // },
+    "Professional Suitability Assessment": {
+        "Skills and Qualifications": {
+          "0-1": "Your skills and qualifications are not strongly matched with the requirements of the profession. You may need to explore alternative options that better leverage your strengths.",
+          "2-3": "While you have some skills and qualifications, they might not fully align with the demands of the profession. Exploring additional training or related skills could be beneficial.",
+          "4-5": "You possess certain skills and qualifications that relate to the profession. Consider investing in further training and development to bolster your capabilities and effectiveness.",
+          "6-7": "Your skills and qualifications are well-aligned with the requirements of the profession, though there's room for further enhancement. With some focused development, you'll be even more equipped to succeed.",
+          "8-10": "Your skills and qualifications are not only impressive but also a perfect match for this profession. Your expertise is a strong asset that will set you on a path to excel and make a significant impact."
+        },
+        "Passion and Interest": {
+          "0-1": "Your passion and interest might not be strongly aligned with the profession. Reflecting on what truly excites you about this path could offer insights for your career direction.",
+          "2-3": "While you have some curiosity about the profession, your passion and interest could be more pronounced. Exploring why this profession appeals to you and ignites your interest will be valuable.",
+          "4-5": "You have some level of passion and interest in the profession. By nurturing and deepening these aspects, you'll find increased satisfaction and drive in your career.",
+          "6-7": "Your passion and interest for the profession are evident, and with continued cultivation, they can become a cornerstone of your success and growth.",
+          "8-10": "Your passion and interest for this profession are palpable and infectious. Your enthusiasm is a driving force that will keep you motivated and fulfilled in your career journey."
+        },
+        "Work-Life Balance and Demands": {
+          "0-1": "Your grasp of the work-life balance and demands is limited. Gaining more insight into these aspects will be crucial as you assess the compatibility of this profession with your lifestyle.",
+          "2-3": "While you have an idea of the work-life balance and demands, a deeper understanding will help you make informed decisions about this career path.",
+          "4-5": "You have a general sense of the work-life balance and demands, though further exploration and preparation are recommended to align your expectations effectively.",
+          "6-7": "You're well-aware of the work-life balance and demands associated with the profession. With some intentional planning, you can navigate these aspects adeptly.",
+          "8-10": "Your understanding and acceptance of the work-life balance and demands of this profession are exceptional. Your realistic approach positions you to manage responsibilities effectively while maintaining well-being."
+        },
+        "Long-Term Goals": {
+          "0-1": "Your long-term goals might not strongly align with the profession. Reflecting on your ambitions and assessing how they mesh with this career path will be beneficial.",
+          "2-3": "While you're contemplating long-term goals, they might need further alignment with the profession's opportunities and growth trajectory.",
+          "4-5": "You're beginning to envision long-term goals that align with the profession. As you solidify these aspirations, your career path will gain clarity.",
+          "6-7": "Your long-term goals are well-suited to the profession, and with some refinement, you'll craft a clear path toward meaningful accomplishments.",
+          "8-10": "Your long-term goals seamlessly align with this profession, and your vision for your career's trajectory is both compelling and achievable."
+        },
+        "Market Demand and Trends": {
+          "0-1": "Your awareness of market demand and trends is limited. Delving into this aspect will provide insights into the industry landscape and its potential impact on your career.",
+          "2-3": "While you're beginning to explore market dynamics, further understanding of trends will be essential to align yourself with industry shifts.",
+          "4-5": "You're developing your awareness of market demand and trends. As you continue to learn and engage, your strategic insights will evolve and strengthen.",
+          "6-7": "You have a solid grasp of market dynamics, and with ongoing exploration, you'll stay ahead of trends that can shape your career journey.",
+          "8-10": "Your awareness of market demand and trends is exceptional, and your strategic insights are invaluable in positioning yourself for long-term success."
+        }
+    },
     "Integrity Assessment": {
         "Integrity Assessment": {
             "0-14": "Your integrity assessment score reflects a low level of ethical behaviour. While there is room for improvement, remember that positive change is achievable. By reflecting on your values and focusing on ethical decision-making, you can progressively strengthen your integrity and its impact on both your personal and professional spheres.",
@@ -497,15 +525,43 @@ export const feedbackData: FeedbackData = {
             "45-50": "Congratulations! Your total score indicates exceptional attention skills. You possess a remarkable ability to focus, concentrate, and maintain attention on tasks. Your attention to detail and capacity to stay engaged are exceptional strengths that set you apart.",
         },
     },
-    // "Entrepreneurship Suitability Assessment": {
-    //     "Entrepreneurship Suitability Assessment": {
-    //         "0-14": "Your total score suggests minimal alignment with entrepreneurial characteristics. It's essential to evaluate your interest and readiness for entrepreneurship. The score indicates a significant gap between your current profile and the demands of entrepreneurship. Consider exploring your strengths and areas of passion to determine the best path forward for your career goals.",
-    //         "15-24": "Your total score indicates a limited alignment with entrepreneurial traits. While you may have some interest in entrepreneurship, there is a notable gap between your current abilities and the attributes needed for success. Consider exploring opportunities to further develop your skills, expand your business knowledge, and refine your entrepreneurial mindset.",
-    //         "25-34": "Your total score suggests that you are in the process of developing your entrepreneurial skills. While you possess some of the key qualities required for entrepreneurship, there is room for growth and improvement. Focus on enhancing your understanding of business strategies, leadership, and innovation to elevate your entrepreneurial journey.",
-    //         "35-44": "Well done! Your total score reflects promising entrepreneurial traits. You showcase a solid foundation of entrepreneurial qualities, and your mindset is conducive to navigating the challenges and opportunities of business ownership. With continued effort and development, you have the potential to further enhance your skills and succeed as an entrepreneur.",
-    //         "45-50": "Congratulations! Your total score indicates exceptional entrepreneurial potential. You possess a strong alignment with the characteristics, mindset, and skills required for successful entrepreneurship. Your passion, dedication, and strategic thinking set you apart. With your attributes, you are well-equipped to excel in the world of entrepreneurship and make a significant impact.",
-    //     }
-    // },
+    "Entrepreneurship Suitability Assessment": {
+        "Vision and Risk Assessment": {
+          "0-1": "Your vision and risk assessment are not aligned with entrepreneurship.",
+          "2-3": "You're unsure about your vision or hesitant to take risks in entrepreneurship.",
+          "4-5": "You're considering entrepreneurship but need to refine your vision and assess your risk appetite.",
+          "6-7": "You have a sense of direction but may need to further clarify your vision and risk tolerance.",
+          "8-10": "You have a clear vision for your entrepreneurial endeavors and are comfortable with taking calculated risks."
+        },
+        "Passion and Commitment": {
+          "0-1": "Your passion and commitment aren't aligned with entrepreneurship.",
+          "2-3": "Your passion and commitment levels might not be sufficient for the demands of entrepreneurship.",
+          "4-5": "You have some passion for entrepreneurship, but your commitment needs reinforcement.",
+          "6-7": "You're passionate about entrepreneurship but could amplify your commitment.",
+          "8-10": "Your passion for your business idea is palpable, and your commitment is unwavering."
+        },
+        "Decision-Making and Responsibility": {
+          "0-1": "Decision-making and responsibility are not your strong suits.",
+          "2-3": "You're uncertain about making key decisions and taking full responsibility.",
+          "4-5": "You're developing your decision-making and responsibility skills.",
+          "6-7": "You're comfortable with decision-making but could bolster your sense of responsibility.",
+          "8-10": "You're confident in making important decisions and fully embracing responsibility."
+        },
+        "Innovation and Adaptability": {
+          "0-1": "Innovation and adaptability are not your primary strengths.",
+          "2-3": "Innovation and adaptability might not come naturally to you.",
+          "4-5": "You have potential for innovation and adaptability, but there's room for growth.",
+          "6-7": "You possess some innovation and adaptability traits but can further develop them.",
+          "8-10": "You're highly innovative and adaptable, eager to embrace new ideas and changes."
+        },
+        "Market Awareness": {
+          "0-1": "Market awareness is not a strong point for you.",
+          "2-3": "Your market awareness needs improvement.",
+          "4-5": "You're developing market awareness skills, but there's more to learn.",
+          "6-7": "You have a solid grasp of market dynamics but could deepen your knowledge.",
+          "8-10": "Your understanding of the market, customers, and competitors is exceptional."
+        }
+    },
     "Work Life Balance": {
         "Time Management": {
             "0-4": "Urgent attention needed to improve time management skills for a balanced life.",

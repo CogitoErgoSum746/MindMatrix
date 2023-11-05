@@ -65,6 +65,108 @@ export function getFeedback(testType: string, subCategory: string, score: number
         }
     }
 
+    if (testType === "Integrity Assessment") {
+        if (score >= 0 && score <= 14) {
+            scoreRange = '0-14';
+            percentage = 'Developing';
+        } else if (score >= 15 && score <= 24) {
+            scoreRange = '15-24';
+            percentage = 'Progressing';
+        } else if (score >= 25 && score <= 34) {
+            scoreRange = '25-34';
+            percentage = 'Competing';
+        } else if (score >= 35 && score <= 44) {
+            scoreRange = '35-44';
+            percentage = 'Excelling';
+        } else if (score >= 45 && score <= 50) {
+            scoreRange = '45-50';
+            percentage = 'Outstanding';
+        }else {
+            console.log('Invalid score');
+        }
+    }
+
+    if (testType === "Emotional Styles") {
+        if (score >= 0 && score <= 14) {
+            scoreRange = '0-14';
+            percentage = 'Developing';
+        } else if (score >= 15 && score <= 24) {
+            scoreRange = '15-24';
+            percentage = 'Progressing';
+        } else if (score >= 25 && score <= 34) {
+            scoreRange = '25-34';
+            percentage = 'Competing';
+        } else if (score >= 35 && score <= 44) {
+            scoreRange = '35-44';
+            percentage = 'Excelling';
+        } else if (score >= 45 && score <= 50) {
+            scoreRange = '45-50';
+            percentage = 'Outstanding';
+        }else {
+            console.log('Invalid score');
+        }
+    }
+
+    if (testType === "Work Life Balance") {
+        if (score >= 0 && score <= 4) {
+            scoreRange = '0-4';
+            percentage = 'Developing';
+        } else if (score >= 5 && score <= 8) {
+            scoreRange = '5-8';
+            percentage = 'Progressing';
+        } else if (score >= 9 && score <= 12) {
+            scoreRange = '9-12';
+            percentage = 'Competing';
+        } else if (score >= 13 && score <= 16) {
+            scoreRange = '13-16';
+            percentage = 'Excelling';
+        } else if (score >= 17 && score <= 20) {
+            scoreRange = '17-20';
+            percentage = 'Outstanding';
+        }else {
+            console.log('Invalid score');
+        }
+    }
+
+    if (testType === "Parenting Style") {
+        if (score >= 1 && score <= 10) {
+            scoreRange = '1-10';
+            percentage = 'Developing';
+        } else if (score >=11 && score <=20) {
+            scoreRange = '11-20';
+            percentage = 'Progressing';
+        } else if (score >= 21 && score <= 30) {
+            scoreRange = '21-30';
+            percentage = 'Competing';
+        } else if (score >= 31 && score <= 40) {
+            scoreRange = '31-40';
+            percentage = 'Excelling';
+        } else if (score >= 41 && score <= 50) {
+            scoreRange = '41-50';
+            percentage = 'Outstanding';
+        }else {
+            console.log('Invalid score');
+        }
+    }
+
+    if (testType === "Wheel of Life") {
+        if (score >= 1 && score <= 3) {
+            scoreRange = '1-3';
+            percentage = 'Needs Significant Improvement';
+        } else if (score >=4 && score <=6) {
+            scoreRange = '4-6';
+            percentage = 'Room for improvement';
+        } else if (score >= 7 && score <= 8) {
+            scoreRange = '7-8';
+            percentage = 'Average';
+        } else if (score >= 9 && score <= 10) {
+            scoreRange = '9-10';
+            percentage = 'Above Average';
+        } else {
+            console.log('Invalid score');
+        }
+    }
+
     if (testType === "Aptitude") {
         if (score >= 0 && score <= 4) {
             scoreRange = '1-4';
@@ -177,6 +279,48 @@ export function getFeedback(testType: string, subCategory: string, score: number
         } else if (score >= 9 && score <= 10) {
             scoreRange = '9-10';
             percentage = 'Exceptional Mastery';
+        } else {
+            console.log('Invalid score');
+        }
+    }
+
+    if (testType === "Professional Suitability Assessment") {
+        if (score >= 0 && score <= 1) {
+            scoreRange = '0-1';
+            percentage = 'Developing';
+        } else if (score >= 2 && score <= 3) {
+            scoreRange = '2-3';
+            percentage = 'Progressing';
+        } else if (score >= 4 && score <= 5) {
+            scoreRange = '4-5';
+            percentage = 'Competing';
+        } else if (score >= 6 && score <= 7) {
+            scoreRange = '6-7';
+            percentage = 'Excelling';
+        } else if (score >= 8 && score <= 10) {
+            scoreRange = '8-10';
+            percentage = 'Outstanding';
+        } else {
+            console.log('Invalid score');
+        }
+    }
+
+    if (testType === "Entrepreneurship Suitability Assessment") {
+        if (score >= 0 && score <= 1) {
+            scoreRange = '0-1';
+            percentage = 'Developing';
+        } else if (score >= 2 && score <= 3) {
+            scoreRange = '2-3';
+            percentage = 'Progressing';
+        } else if (score >= 4 && score <= 5) {
+            scoreRange = '4-5';
+            percentage = 'Competing';
+        } else if (score >= 6 && score <= 7) {
+            scoreRange = '6-7';
+            percentage = 'Excelling';
+        } else if (score >= 8 && score <= 10) {
+            scoreRange = '8-10';
+            percentage = 'Outstanding';
         } else {
             console.log('Invalid score');
         }
