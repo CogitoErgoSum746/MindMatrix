@@ -16,12 +16,12 @@ const Certification = () => {
           <ul className="list-disc text-left lg:text-lg font-['Inter']">
             <li>NLP Practitioner </li>
             <li>NLP Master Practitioner </li>
-            <li>Emotional Intelligence Practitioner</li>
+            <li>Emotional Intelligence Practitioner</li>
             <li>Counselling Skills and Therapies</li>
           </ul>
         </div>
         <Link to="/certificate">
-          <button className="px-7 py-3 bg-black text-white font-normal font-['Inter'] justify-center items-center inline-flex hover:bg-white hover:text-black border-2 border-black">
+          <button className="px-3 py-2 bg-white text-black font-medium justify-center items-center inline-flex hover:bg-black hover:text-white border border-black">
             Know More
           </button>
         </Link>
