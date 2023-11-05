@@ -3,10 +3,12 @@ import Navbar from "../../components/Navbar";
 import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Certificate/REBT/pic1.jpg";
 import pic2 from "../../images/Certificate/REBT/pic2.jpg";
+import ScrollToTop from "../../components/ScrollToTop.js";
 
 function Rebt() {
   return (
     <>
+<ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-semibold">

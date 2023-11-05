@@ -5,10 +5,12 @@ import pic1 from "../../images/Certificate/NlpMaster/pic1.jpg";
 import pic2 from "../../images/Certificate/NlpMaster/pic2.jpg";
 import pic3 from "../../images/Certificate/NlpMaster/pic3.jpg";
 import pic4 from "../../images/Certificate/NlpMaster/pic4.jpg";
+import ScrollToTop from "../../components/ScrollToTop.js";
 
 function NlpMaster() {
   return (
     <>
+<ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">

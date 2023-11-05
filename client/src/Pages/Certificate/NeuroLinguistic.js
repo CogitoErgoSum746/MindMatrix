@@ -6,9 +6,11 @@ import pic2 from "../../images/Certificate/NeuroLinguistic/pic2.jpg";
 import pic3 from "../../images/Certificate/NeuroLinguistic/pic3.jpg";
 import pic4 from "../../images/Certificate/NeuroLinguistic/pic4.jpg";
 import pic5 from "../../images/Certificate/NeuroLinguistic/pic5.jpg";
+import ScrollToTop from "../../components/ScrollToTop.js";
 function NeuroLinguistic() {
   return (
     <>
+<ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">

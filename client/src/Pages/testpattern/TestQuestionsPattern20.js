@@ -17,7 +17,7 @@ function TestQuestionsPattern20() {
 
   const tests = {
     1: {
-      title: "Professional Suitability Assessment",
+      title: "Skills and Qualifications",
       questions : [
         {
           questionText: "1. I possess the necessary skills and qualifications for a successful career in this profession.",
@@ -29,48 +29,69 @@ function TestQuestionsPattern20() {
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
+      ],
+    },
+    2:{
+      title:"Passion and Interest",
+      questions :[
         {
-          questionText: "3. I am genuinely interested in the activities and responsibilities associated with this profession.",
+          questionText: "1. I am genuinely interested in the activities and responsibilities associated with this profession.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "4. I see myself finding fulfillment and satisfaction in this career.",
+          questionText: "2. I see myself finding fulfillment and satisfaction in this career.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ]
+    },
+    3:{
+      title:"Work-Life Balance and Demands",
+      questions :[
+        {
+          questionText: "1. I am comfortable with the expected work hours and demands of this profession.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "5. I am comfortable with the expected work hours and demands of this profession.",
+          questionText: "2. I value a career that allows for a healthy work-life balance.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ]
+    },
+    4:{
+      title:"Long-Term Goals",
+      questions :[
+        {
+          questionText: "1. This profession aligns well with my long-term career aspirations and goals.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "6. I value a career that allows for a healthy work-life balance.",
+          questionText: "2. I can envision myself progressing and excelling in this field.",
+          options: commonoption,
+          optionWeightage: [1, 2, 3, 4, 5],
+        },
+      ]
+    },
+    5:{
+      title:"Market Demand and Trends",
+      questions :[
+        {
+          questionText: "1. I am aware of the current and future demand for professionals in this field.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         },
         {
-          questionText: "7. This profession aligns well with my long-term career aspirations and goals.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "8. I can envision myself progressing and excelling in this field.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "9. I am aware of the current and future demand for professionals in this field.",
-          options: commonoption,
-          optionWeightage: [1, 2, 3, 4, 5],
-        },
-        {
-          questionText: "10. I am confident that this profession will continue to be relevant and valuable.",
+          questionText: "2. I am confident that this profession will continue to be relevant and valuable.",
           options: commonoption,
           optionWeightage: [1, 2, 3, 4, 5],
         }
-      ],
-    },
+      ]
+    }
+
   };
   const subtestIdInt = parseInt(subtestId);
   const subtest = tests[subtestIdInt];

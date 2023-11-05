@@ -5,9 +5,11 @@ import pic1 from "../../images/Certificate/Emotional/pic1.jpg";
 import pic2 from "../../images/Certificate/Emotional/pic2.jpg";
 import pic3 from "../../images/Certificate/Emotional/pic3.jpg";
 import pic4 from "../../images/Certificate/Emotional/pic4.jpg";
+import ScrollToTop from "../../components/ScrollToTop.js";
 function Emotional() {
   return (
     <>
+<ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-semibold">

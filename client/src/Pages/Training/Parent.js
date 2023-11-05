@@ -8,10 +8,12 @@ import pic4 from "../../images/Parents/pic4.jpg";
 import pic5 from "../../images/Parents/pic5.jpg";
 import pic6 from "../../images/Parents/pic6.jpg";
 import pic7 from "../../images/Parents/pic7.jpg";
+import ScrollToTop from "../../components/ScrollToTop.js";
 
 const Parent = () => {
   return (
     <>
+<ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">

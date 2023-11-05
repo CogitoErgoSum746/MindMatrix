@@ -13,10 +13,12 @@ import pic9 from "../../images/corporateLeadership/pic9.png";
 import pic10 from "../../images/corporateLeadership/pic10.png";
 import pic11 from "../../images/corporateLeadership/pic11.png";
 import pic12 from "../../images/corporateLeadership/pic12.png";
+import ScrollToTop from "../../components/ScrollToTop.js";
 
 const CorporateLeadership = () => {
   return (
     <>
+<ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl">CORPORATE RETREAT</p>

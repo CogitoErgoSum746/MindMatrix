@@ -454,10 +454,10 @@ export async function professionalTotalTests(req: Request, res: Response): Promi
       "Cyber Dependency": 1,
       "Left-Right Brain Dominance": 2,
       "Personality": 5,
-      "Professional Suitability Assessment": 1,
+      "Professional Suitability Assessment": 5,
       "Integrity Assessment": 1,
       "Emotional Styles": 6,
-      "Entrepreneurship Suitability Assessment": 1,
+      "Entrepreneurship Suitability Assessment": 5,
       "Work Life Balance": 5,
       "Parenting Style": 4,
     };
@@ -781,8 +781,8 @@ export async function doneSubTests(req: Request, res: Response): Promise<void> {
       "Wheel of Life": ["Money & Wealth", "Career & Work", "Health & Fitness", "Fun & Recreation", "Contribution", "Community", "Family", "Social & Friends","Love & Romance","Growth & Learning"],
       "Integrity Assessment": ["Integrity Assessment"],
       "Emotional Styles": ["Resilience", "Outlook", "Social Intuition", "Self-Awareness", "Sensitivity to Context", "Attention"],
-      "Entrepreneurship Suitability Assessment": ["Entrepreneurship Suitability Assessment"],
-      "Professional Suitability Assessment": ["Professional Suitability Assessment"]
+      "Entrepreneurship Suitability Assessment": ["Vision and Risk Assessment","Passion and Commitment","Decision-Making and Responsibility","Innovation and Adaptability","Market Awareness"],
+      "Professional Suitability Assessment": ["Skills and Qualifications","Passion and Interest","Work-Life Balance and Demands","Long-Term Goals","Market Demand and Trends"]
     };
 
     const finalArray: number[] = [];

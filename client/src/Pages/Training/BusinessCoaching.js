@@ -6,10 +6,12 @@ import pic2 from "../../images/businesscoaching/pic2.png";
 import pic3 from "../../images/businesscoaching/pic3.png";
 import pic4 from "../../images/businesscoaching/pic4.png";
 import pic5 from "../../images/businesscoaching/pic5.png";
+import ScrollToTop from "../../components/ScrollToTop.js";
 
 const BusinessCoaching = () => {
   return (
     <>
+<ScrollToTop />
     <Navbar />
     <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">MASTERING BUSINESS STRATEGIES:</p>

@@ -42,7 +42,7 @@ function Navbar() {
           <img src={logoImage} alt="Logo" width="150px" height="50px" />
         </a>
         <div className="space-x-4 hidden md:flex">
-        <ScrollLink to="discover" smooth={true} duration={500} className="hover:cursor-pointer nav-link px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
+        <ScrollLink to="services" smooth={true} duration={500} className="hover:cursor-pointer nav-link px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
             Discover More
           </ScrollLink>
           <Link to="/about" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
@@ -80,7 +80,7 @@ function Navbar() {
         </div>
         {isMobileMenuOpen && (
   <div className="md:hidden p-2 bg-white space-y-2">
-    <ScrollLink to="discover" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
+    <ScrollLink to="services" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
       Discover More
     </ScrollLink>
     <Link to="/about" onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">

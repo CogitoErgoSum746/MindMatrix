@@ -4,7 +4,11 @@ import { API_BASE_URL } from '../../config';
 
 function ESAtest({id}) {
     const subtests = [
-        { id: 1, name: 'Entrepreneurship Suitability Assessment' },
+        { id: 1, name: 'Vision and Risk Assessment' },
+        {id:2,name: 'Passion and Commitment'},
+        {id:3,name: 'Decision-Making and Responsibilit'},
+        {id:4,name: 'Innovation and Adaptability'},
+        {id:5,name: 'Market Awareness'}
       ];
       const testType="Entrepreneurship Suitability Assessment";
       const [testStatus, setTestStatus] = useState({});
