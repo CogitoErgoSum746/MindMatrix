@@ -19,7 +19,8 @@ const app = express();
 
 app.use(
     cors({
-        origin: "*",
+        origin: 'https://successteps.in',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
     })
 );
 app.use(express.json());
