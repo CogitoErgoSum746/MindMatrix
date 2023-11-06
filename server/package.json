@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/chart.js": "^2.9.38",
+    "@types/fs-extra": "^11.0.3",
     "@types/google.visualization": "^0.0.70",
     "@types/node": "^20.7.0",
     "bcryptjs": "^2.4.3",
