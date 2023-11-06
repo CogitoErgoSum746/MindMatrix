@@ -45,8 +45,11 @@ function Navbar() {
       case "Training Program":
         navigate("/training");
         break;
-      case "Certificate program":
+      case "Certificate Program":
         navigate("/certificate");
+        break;
+      case "Psychometric Test":
+        navigate("/getstarted");
         break;
       case "Facilitator Profile":
         navigate("/facilitative");
@@ -78,14 +81,17 @@ function Navbar() {
             >
               <option value="">NLP Services Offered</option>
               <option value="Mind Wellness">Mind Wellness</option>
-              <option value="Training Program">Training Program</option>
-              <option value="Certificate program">Certificate program</option>
-              <option value="Psychometric Test">Psychometric Test</option>
+              <option value="Training Program">Training Programs</option>
+              <option value="Certificate Program">Certificate Programs</option>
+              <option value="Psychometric Test">Psychometric Tests</option>
             </select>
           </div>
           <Link to="/facilitative" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
           Facilitator Profile
           </Link>
+          <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          Contact Us
+          </ScrollLink>
           <Link to={isLoggedin ? "/" : "/login"}>
             <button
               className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
@@ -135,6 +141,9 @@ function Navbar() {
           <Link to="/facilitative" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
           Facilitator Profile
           </Link>
+          <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          Contact Us
+          </ScrollLink>
           <Link to={isLoggedin ? "/" : "/login"} onClick={scrollToTop}>
             <button
               className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"

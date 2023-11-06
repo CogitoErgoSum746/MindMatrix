@@ -5,6 +5,7 @@ import { API_BASE_URL } from "../config";
 import clg from "../images/Home1/clgstudent.png";
 import school from "../images/Home1/Highschool.png";
 import prof from "../images/Home1/professional.png";
+import ScrollToTop from "../components/ScrollToTop";
 
 function Home1() {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ function Home1() {
 
   return (
     <>
+    <ScrollToTop />
       <Navbar />
       <div className="bg-white min-h-screen py-10">
         <div className="container mx-auto p-5">

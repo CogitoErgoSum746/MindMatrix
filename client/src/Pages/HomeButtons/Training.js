@@ -7,6 +7,7 @@ import img2 from "../../images/businesscoaching/pic1.png";
 import img3 from "../../images/students/pic1.jpg";
 import img4 from "../../images/Teachers/pic1.jpg";
 import img5 from "../../images/Parents/pic1.jpg";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const testimonials = [
     {
@@ -45,6 +46,7 @@ const testimonials = [
 const Training = () => {
   return (
     <div className='flex flex-col h-screen justify-between'>
+      <ScrollToTop />
         <Navbar />
         <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
             {testimonials.map((testimonial,index)=>(
