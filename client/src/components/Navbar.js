@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import logoImage from "../images/logo.png";
-import { Link } from "react-router-dom";
-import { Link as ScrollLink, Events, animateScroll as scroll } from "react-scroll";
+import { Link, useNavigate } from "react-router-dom";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 
 function Navbar() {
   const authtoken = localStorage.getItem("authtoken");
 
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(""); // Track the selected service
+
+  const navigate = useNavigate(); // Access the history object for navigation
 
   useEffect(() => {
     if (authtoken) {
@@ -19,20 +22,38 @@ function Navbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   const Logout = () => {
     localStorage.clear();
     window.location.reload();
     setIsLoggedin(false);
-    closeMobileMenu();
+    setIsMobileMenuOpen(false);
   };
 
   const scrollToTop = () => {
     scroll.scrollToTop();
-    closeMobileMenu();
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleServiceChange = (event) => {
+    const selectedOption = event.target.value;
+    setIsMobileMenuOpen(false);
+
+    switch (selectedOption) {
+      case "Mind Wellness":
+        navigate("/mindwellness");
+        break;
+      case "Training Program":
+        navigate("/training");
+        break;
+      case "Certificate program":
+        navigate("/certificate");
+        break;
+      case "Facilitator Profile":
+        navigate("/facilitative");
+        break;
+      default:
+        
+    }
   };
 
   return (
@@ -42,17 +63,28 @@ function Navbar() {
           <img src={logoImage} alt="Logo" width="150px" height="50px" />
         </a>
         <div className="space-x-4 hidden md:flex">
-        <ScrollLink to="services" smooth={true} duration={500} className="hover:cursor-pointer nav-link px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
-            Discover More
-          </ScrollLink>
+        <Link to="/" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+            Home
+          </Link>
           <Link to="/about" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             About Us
           </Link>
-          <ScrollLink to="services" smooth={true} duration={500} className="hover:cursor-pointer nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-            Services
-          </ScrollLink>
-          <Link to="/getstarted" smooth={true} duration={500} className=" nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-            Psychometric Test
+          {/* Use a <select> element for services */}
+          <div className="relative">
+            <select
+              value={selectedService}
+              onChange={handleServiceChange}
+              className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
+            >
+              <option value="">NLP Services Offered</option>
+              <option value="Mind Wellness">Mind Wellness</option>
+              <option value="Training Program">Training Program</option>
+              <option value="Certificate program">Certificate program</option>
+              <option value="Psychometric Test">Psychometric Test</option>
+            </select>
+          </div>
+          <Link to="/facilitative" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          Facilitator Profile
           </Link>
           <Link to={isLoggedin ? "/" : "/login"}>
             <button
@@ -71,47 +103,57 @@ function Navbar() {
             </a>
           )}
         </div>
-  
-      <div className="md:hidden">
+        <div className="md:hidden">
           <button className="text-2xl items-end" onClick={toggleMobileMenu}>
             ☰
           </button>
         </div>
+      </div>
+      {isMobileMenuOpen && (
+        <div className="md:hidden p-2 bg-white space-y-2">
+          <Link to="/" onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
+            Home
+          </Link>
+            
+  
+          <Link to="/about" onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
+            About Us
+          </Link>
+          <div className="flex justify-center items-center">
+            <select
+              value={selectedService}
+              onChange={handleServiceChange}
+              className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
+            >
+              <option value="">NLP Services Offered</option>
+              <option value="Mind Wellness">Mind Wellness</option>
+              <option value="Training Program">Training Program</option>
+              <option value="Certificate program">Certificate program</option>
+              <option value="Psychometric Test">Psychometric Test</option>
+            </select>
+          </div>
+          <Link to="/facilitative" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
+          Facilitator Profile
+          </Link>
+          <Link to={isLoggedin ? "/" : "/login"} onClick={scrollToTop}>
+            <button
+              className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
+              onClick={isLoggedin ? Logout : null}
+            >
+              {isLoggedin ? "Logout" : "Login"}
+            </button>
+          </Link>
+          {!isLoggedin && (
+            <a
+              href="/register"
+              onClick={scrollToTop}
+              className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
+            >
+              Sign up
+            </a>
+          )}
         </div>
-        {isMobileMenuOpen && (
-  <div className="md:hidden p-2 bg-white space-y-2">
-    <ScrollLink to="services" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
-      Discover More
-    </ScrollLink>
-    <Link to="/about" onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-      About Us
-    </Link>
-    <ScrollLink to="services" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-      Services
-    </ScrollLink>
-    <ScrollLink to="psychometrictest" smooth={true} duration={500} onClick={closeMobileMenu} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-      Psychometric Test
-    </ScrollLink>
-    <Link to={isLoggedin ? "/" : "/login"} onClick={closeMobileMenu}>
-      <button
-        className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
-        onClick={isLoggedin ? Logout : null}
-      >
-        {isLoggedin ? "Logout" : "Login"}
-      </button>
-    </Link>
-    {!isLoggedin && (
-      <a
-        href="/register"
-        onClick={closeMobileMenu}
-        className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
-      >
-        Sign up
-      </a>
-    )}
-  </div>
-)}
-
+      )}
     </nav>
   );
 }

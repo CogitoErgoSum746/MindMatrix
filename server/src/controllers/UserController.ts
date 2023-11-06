@@ -5,8 +5,7 @@ import User from '../models/users'; // Assuming you have a User model
 import fs from 'fs';
 import path from 'path';
 import { sendFeedback, sendUserInfo, sendCharts, sendScores } from './pdfController';
-import fetchUser from '../middlewares/fetchUser';
-import { resetPassword } from './authController';
+import { errorLogger, appLogger } from '../logger';
 // import { signToken } from '../utils/token';
 // import { validationResult } from 'express-validator';
 
@@ -39,6 +38,7 @@ async function sendEmail(
     await transporter.sendMail(mailOptions);
     // console.log('Email sent successfully');
   } catch (error) {
+    errorLogger.error(`Error sending email to user:`, error instanceof Error ? error.message : error);
     console.error('Error sending email:', error);
   }
 }
@@ -70,6 +70,7 @@ export async function getUser(req: Request, res: Response): Promise<void> {
       },
     });
   } catch (error) {
+    errorLogger.error(`Error getting user:`, error instanceof Error ? error.message : error);
     console.error(error);
     res.status(500).send('Internal server error');
   }
@@ -140,6 +141,7 @@ export async function getTestResults(req: Request, res: Response): Promise<void>
     // };
 
   } catch (error) {
+    errorLogger.error(`Error sending testResults:`, error instanceof Error ? error.message : error);
     console.error('Error updating document:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
   }
@@ -538,7 +540,7 @@ export async function checkScore(req: Request, res: Response): Promise<void> {
       return;
     }
   } catch (error) {
-    console.error('Error updating document:', error);
+    console.error(error);
     res.status(500).json({ success: false, error: 'Internal server error' });
   }
 };
@@ -567,6 +569,7 @@ async function sendPdfToEmail(req: Request, res: Response): Promise<void> {
 
     // res.status(200).json({ success: true });
   } catch (error) {
+    errorLogger.error(`Error sending pdf to mail:`, error instanceof Error ? error.message : error);
     res.status(500).json({ success: false, error: error });
   }
 };
@@ -630,6 +633,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
 
     res.status(200).json({ success: true });
   } catch (error) {
+    errorLogger.error(`Error with the makepdf route:`, error instanceof Error ? error.message : error);
     console.log(error);
     res.status(500);
   }

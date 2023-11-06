@@ -8,10 +8,12 @@ const GetInTouch = () => {
 
     const nameInput = document.getElementById("nameInput");
     const emailInput = document.getElementById("emailInput");
+    const contactInput = document.getElementById("contactInput");
     const optionSelect = document.getElementById("optionSelect");
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
+    const contact = contactInput.value.trim();
     const option = optionSelect.value;
 
     // Validation checks
@@ -30,12 +32,17 @@ const GetInTouch = () => {
       return;
     }
 
+    if (!isValidContact(contact)) {
+      toast.error("Please enter a valid 10-digit contact number starting with 7, 8, or 9.");
+      return;
+    }
+
     e.preventDefault();
     const formEle = document.querySelector("form");
     const formDatab = new FormData(formEle);
 
     fetch(
-      "https://script.google.com/macros/s/AKfycbws-vYS5vkKaG_jNUtv-3-enFlDdMEncZbvZ2-KwgaIvWYo37Z1hse8hkLyPKiUW7ynbw/exec",
+      "https://script.google.com/macros/s/AKfycbyOYCwqob7-7YT5za4qB9Tp2abFgYR8joUxhJMjehjvccXG_YuPfChWTk8ukEaAM5ZtvQ/exec",
       {
         method: "POST",
         body: formDatab,
@@ -58,6 +65,10 @@ const GetInTouch = () => {
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  }
+  function isValidContact(contact) {
+    const contactRegex = /^[789]\d{9}$/;
+    return contactRegex.test(contact);
   }
 
   return (
@@ -106,6 +117,23 @@ const GetInTouch = () => {
         />
       </div>
     </div>
+    <div className="mb-4">
+      <div>
+        <label
+          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
+          htmlFor="contact"
+        >
+          Contact No.
+        </label>
+        <input
+          placeholder="Enter Contact no."
+          name="Contact"
+          type="number"
+          id="contactInput"
+          className="border-b border-gray-500 focus-border-b"
+        />
+      </div>
+    </div>
     <div className="mb-4 ml-5">
       <div>
         <label
@@ -142,8 +170,8 @@ const GetInTouch = () => {
           Message
         </label>
         <input
+        name="Message"
           placeholder="Your Message"
-          rows="4"
           type="text"
           id="messageInput"
           className="border-b border-gray-500 focus-border-b md:mr-6"
