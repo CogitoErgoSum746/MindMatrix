@@ -4,6 +4,7 @@ config();
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import helmet from 'helmet';
 // import { signToken } from './utils/token';
 // import jwt from "jsonwebtoken";
 
@@ -17,6 +18,7 @@ const PORT = 8001;
 
 const app = express();
 
+app.use(helmet()); //helmet.js and cors modules for security purposes
 app.use(
     cors({
         origin: "*",
