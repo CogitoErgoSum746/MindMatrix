@@ -12,7 +12,7 @@ function NeuroLinguistic() {
     <>
 <ScrollToTop />
       <Navbar />
-      <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
+      <div className="container p-2 px-4 lg:px-8 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">
           NEURO LINGUISTIC PROGRAMMING
         </p>
