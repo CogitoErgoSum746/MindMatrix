@@ -8,6 +8,7 @@ import fs from 'fs';
 import fsextra from 'fs-extra';
 import path from 'path';
 import OrganizationModel from '../models/organizations';
+import { errorLogger, appLogger } from '../logger';
 
 async function sendEmail(
   to: string,
@@ -38,6 +39,7 @@ async function sendEmail(
     await transporter.sendMail(mailOptions);
     // console.log('Email sent successfully');
   } catch (error) {
+    errorLogger.error(`Error sending email to organiztion:`, error instanceof Error ? error.message : error);
     console.error('Error sending email:', error);
   }
 }
@@ -94,10 +96,12 @@ export async function createOrganization(req: Request, res: Response): Promise<a
     });
     await Org.save();
 
+    appLogger.info(`Organization registered: ${Org.org_name}`);
     // Response
     success = true;
     res.status(201).json({ success });
   } catch (error) {
+    errorLogger.error(`Error creating organization:`, error instanceof Error ? error.message : error);
     console.error(error);
     res.status(500).send('Internal server error');
   }
@@ -113,6 +117,7 @@ export async function getAllOrg(req: Request, res: Response): Promise<any> {
     success = true;
     res.status(201).json({ success, orgs });
   } catch (error) {
+
     console.error(error);
     res.status(500).send('Internal server error');
   }
@@ -134,6 +139,7 @@ export async function getUsersOrg(req: Request, res: Response): Promise<any> {
 
     res.status(200).json({ Org, usersPerOrg, totalUsers });
   } catch (error) {
+    errorLogger.error(`Error getting the orgUsers:`, error instanceof Error ? error.message : error);
     console.error('Error finding users:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -169,14 +175,17 @@ export async function deleteOrgAlongWithUsers(req: Request, res: Response): Prom
       });
     }
 
-    await OrganizationModel.findOneAndDelete({
+    const org = await OrganizationModel.findOneAndDelete({
       org_name: org_name,
       org_email: org_email,
       org_code: org_code
     });
 
+    appLogger.info(`Organization DELETED: ${org?.org_name}`);
+
     res.status(200).json({ success: true });
   } catch (error) {
+    errorLogger.error(`Error deleting the organization:`, error instanceof Error ? error.message : error);
     console.error('Error finding users:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -253,11 +262,14 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
         });
       }
 
+      appLogger.info(`User DELETED: ${existinguser.username}`);
+
       res.status(200).json({ success: true});
     } else {
       res.status(404).json({ success: false, message: 'User not found' });
     }
   } catch (error) {
+    errorLogger.error(`Error deleting a user:`, error instanceof Error ? error.message : error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }
@@ -299,6 +311,7 @@ export async function displayPdf(req: Request, res: Response): Promise<any> {
       res.status(404).json({ success: false, message: 'User not found' });
     }
   } catch (error) {
+    errorLogger.error(`Error displaying the pdf:`, error instanceof Error ? error.message : error);
     console.error('Internal server error:', error);
     res.status(500).json({ error: 'Internal server error', erroris: error });
   }
@@ -367,6 +380,7 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
     res.status(200).json({ success: true });
 
   } catch (error) {
+    errorLogger.error(`Error sending org_code email to organiztion:`, error instanceof Error ? error.message : error);
     res.status(500).json({ success: false, error: error });
   }
 };

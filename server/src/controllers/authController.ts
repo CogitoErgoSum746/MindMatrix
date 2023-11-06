@@ -9,6 +9,8 @@ import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
+import { errorLogger, appLogger } from '../logger';
+
 
 async function sendEmail(
   to: string,
@@ -97,6 +99,8 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
         path: `src/tp/Psychometric Test Instructions.pdf`,
       }];
 
+      appLogger.info(`User registered: ${userCreated.username}`);
+
       await sendEmail(userCreated.email, subject, text, attachments);
     }
 
@@ -130,6 +134,8 @@ export async function login(req: Request, res: Response): Promise<any> {
     if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
       const authtoken = signToken(username, AdminEmail as string, '6969');
 
+      appLogger.info(`Admin logged in: ${username}`);
+
       res.status(200).json({ success: true, userType: 'admin', authtoken });
       return;
     }
@@ -139,17 +145,22 @@ export async function login(req: Request, res: Response): Promise<any> {
       username: username,
     });
     if (!user) {
+
+      appLogger.info(`Login failed due to wrong username for: ${username}`);
       return res.status(400).json({ success, error: 'Please try to login with correct username' });
     }
 
     // Matching user password
     const passwordCompare = await bcrypt.compare(password, user.password);
     if (!passwordCompare) {
+      appLogger.info(`Login failed due to wrong password for: ${username}`);
       return res.status(400).json({ success, error: 'Please try to login with correct password' });
     }
     // Token authentication using JWT
     const authtoken = signToken(user.username, user.email, user.org_code);
 
+    appLogger.info(`User logged in: ${user.username}`);
+    
     // Response
     success = true;
     res.status(200).json({ success, userType: 'user', authtoken });

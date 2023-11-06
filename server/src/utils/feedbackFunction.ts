@@ -65,28 +65,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
         }
     }
 
-    if (testType === "Integrity Assessment") {
-        if (score >= 0 && score <= 14) {
-            scoreRange = '0-14';
-            percentage = 'Developing';
-        } else if (score >= 15 && score <= 24) {
-            scoreRange = '15-24';
-            percentage = 'Progressing';
-        } else if (score >= 25 && score <= 34) {
-            scoreRange = '25-34';
-            percentage = 'Competing';
-        } else if (score >= 35 && score <= 44) {
-            scoreRange = '35-44';
-            percentage = 'Excelling';
-        } else if (score >= 45 && score <= 50) {
-            scoreRange = '45-50';
-            percentage = 'Outstanding';
-        }else {
-            console.log('Invalid score');
-        }
-    }
-
-    if (testType === "Emotional Styles") {
+    if (testType === "Integrity Assessment" || testType === "Emotional Styles") {
         if (score >= 0 && score <= 14) {
             scoreRange = '0-14';
             percentage = 'Developing';
@@ -284,28 +263,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
         }
     }
 
-    if (testType === "Professional Suitability Assessment") {
-        if (score >= 0 && score <= 1) {
-            scoreRange = '0-1';
-            percentage = 'Developing';
-        } else if (score >= 2 && score <= 3) {
-            scoreRange = '2-3';
-            percentage = 'Progressing';
-        } else if (score >= 4 && score <= 5) {
-            scoreRange = '4-5';
-            percentage = 'Competing';
-        } else if (score >= 6 && score <= 7) {
-            scoreRange = '6-7';
-            percentage = 'Excelling';
-        } else if (score >= 8 && score <= 10) {
-            scoreRange = '8-10';
-            percentage = 'Outstanding';
-        } else {
-            console.log('Invalid score');
-        }
-    }
-
-    if (testType === "Entrepreneurship Suitability Assessment") {
+    if (testType === "Professional Suitability Assessment" || testType === "Entrepreneurship Suitability Assessment") {
         if (score >= 0 && score <= 1) {
             scoreRange = '0-1';
             percentage = 'Developing';
