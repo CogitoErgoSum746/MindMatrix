@@ -14,6 +14,9 @@ const Facilitative = () => {
       <Navbar />
       <ScrollToTop />
       <div className="container mx-auto px-2">
+      <p className="text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter']">
+              Profile
+            </p>
         <div className="flex flex-col md:flex-row gap-4 justify-evenly items-center">
           <div className="flex flex-col justify-center items-center">
             <img
@@ -21,18 +24,18 @@ const Facilitative = () => {
               className="max-h-96 md:max-h-80 self-start lg:ml-10 md:ml-10"
               alt="Image 1"
             />
-            <img
+            {/* <img
               src={pic2}
               className="max-h-40 md:max-h-28 self-start"
               alt="Image 2"
-            />
+            /> */}
           </div>
 
           <div className="md:w-1/2 text-justify">
-            <p className="text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter']">
+            {/* <p className="text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter']">
               Who Am I?
-            </p>
-            <ul className="list-disc list-inside text-left text-base md:text-lg lg:text-xl ml-2 font-['Inter']">
+            </p> */}
+            <ul className="list-disc list-inside text-left text-base md:text-lg lg:text-xl ml-2 font-['Inter'] mt-10">
               <li>Neurocognitive Psychologist</li>
               <li>NLP Master Practitioner Trainer</li>
               <li>Motivational Speaker & Author</li>
