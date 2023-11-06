@@ -34,6 +34,35 @@ function Getusers() {
   }, [org_name, org_studentType, org_code]);
 
 
+  const deleteUser = (username, email) => {
+    const authtoken = localStorage.getItem('authtoken');
+
+    fetch(`${API_BASE_URL}/admin/deleteuser`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authtoken': authtoken,
+      },
+      body: JSON.stringify({ username, email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("user deleted successfully")
+          const updatedUsers = users.filter(
+            (user) => user.username !== username && user.email !== email
+          );
+          setUsers(updatedUsers);
+        } else {
+          console.error('Error deleting the user:', data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+
   const displayPDF = (username, email) => {
     const authtoken = localStorage.getItem('authtoken');
 
@@ -71,6 +100,12 @@ function Getusers() {
               <p><strong>Email:</strong> {user.email}</p>
               <p><strong>Student Type:</strong> {user.studentType}</p>
             </div>
+            <button
+              className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+              onClick={() => deleteUser(user.username, user.email)}
+            >
+              Delete
+            </button>
             <button
               className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
               onClick={() => displayPDF(user.username, user.email)}
