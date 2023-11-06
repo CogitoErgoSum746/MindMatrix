@@ -25,6 +25,7 @@ import Teacher from "./Pages/Training/Teacher";
 import Parent from "./Pages/Training/Parent";
 import Certificate from "./Pages/HomeButtons/Certificate";
 import CertificateContent from "./Pages/HomeButtons/CertificateContent";
+import Facilitative from "./Pages/Facilitative.js";
 
 function AllRoutes() {
   const authtoken = localStorage.getItem("authtoken");
@@ -58,6 +59,7 @@ function AllRoutes() {
         element={<Parent />}
       />
       <Route path="/mindwellness" element={<MindW />} />
+     <Route path="/facilitative" element={<Facilitative />} />
       <Route path="/upcoming" element={<ComingSoon />} />
       <Route path="/certificate" element={<Certificate />} />
       <Route path="/certificate/:id" element={<CertificateContent />} />

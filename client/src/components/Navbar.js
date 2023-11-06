@@ -48,8 +48,8 @@ function Navbar() {
       case "Certificate program":
         navigate("/certificate");
         break;
-      case "Psychometric Test":
-        navigate("/getstarted");
+      case "Facilitator Profile":
+        navigate("/facilitative");
         break;
       default:
         
@@ -63,10 +63,10 @@ function Navbar() {
           <img src={logoImage} alt="Logo" width="150px" height="50px" />
         </a>
         <div className="space-x-4 hidden md:flex">
-          <ScrollLink to="discover" smooth={true} duration={500} className="hover:cursor-pointer nav-link px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
-            Discover More
-          </ScrollLink>
-          <Link to="/about" className="nav-link px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+        <Link to="/" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+            Home
+          </Link>
+          <Link to="/about" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             About Us
           </Link>
           {/* Use a <select> element for services */}
@@ -74,17 +74,17 @@ function Navbar() {
             <select
               value={selectedService}
               onChange={handleServiceChange}
-              className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white cursor-pointer"
+              className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
             >
-              <option value="">Services</option>
+              <option value="">NLP Services Offered</option>
               <option value="Mind Wellness">Mind Wellness</option>
               <option value="Training Program">Training Program</option>
               <option value="Certificate program">Certificate program</option>
               <option value="Psychometric Test">Psychometric Test</option>
             </select>
           </div>
-          <Link to="/getstarted" smooth={true} duration={500} className="nav-link px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-            Psychometric Test
+          <Link to="/facilitative" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          Facilitator Profile
           </Link>
           <Link to={isLoggedin ? "/" : "/login"}>
             <button
@@ -111,28 +111,30 @@ function Navbar() {
       </div>
       {isMobileMenuOpen && (
         <div className="md:hidden p-2 bg-white space-y-2">
-          <ScrollLink to="discover" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300">
-            Discover More
-          </ScrollLink>
-          <Link to="/about" onClick={scrollToTop} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          <Link to="/" onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
+            Home
+          </Link>
+            
+  
+          <Link to="/about" onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
             About Us
           </Link>
-          <div className="relative">
+          <div className="flex justify-center items-center">
             <select
               value={selectedService}
               onChange={handleServiceChange}
-              className="nav-link block px-2 py-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-white cursor-pointer select-dropdown focus:bg-yellow-500 focus:text-white hover:bg-yellow-500 hover:text-white w-full"
+              className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
             >
-              <option value="">Services</option>
+              <option value="">NLP Services Offered</option>
               <option value="Mind Wellness">Mind Wellness</option>
               <option value="Training Program">Training Program</option>
               <option value="Certificate program">Certificate program</option>
               <option value="Psychometric Test">Psychometric Test</option>
             </select>
           </div>
-          <ScrollLink to="psychometrictest" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover-bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-            Psychometric Test
-          </ScrollLink>
+          <Link to="/facilitative" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
+          Facilitator Profile
+          </Link>
           <Link to={isLoggedin ? "/" : "/login"} onClick={scrollToTop}>
             <button
               className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
