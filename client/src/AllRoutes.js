@@ -25,7 +25,8 @@ import Teacher from "./Pages/Training/Teacher";
 import Parent from "./Pages/Training/Parent";
 import Certificate from "./Pages/HomeButtons/Certificate";
 import CertificateContent from "./Pages/HomeButtons/CertificateContent";
-import Facilitative from "./Pages/Facilitative.js";
+import Facilitative from "./Pages/Facilitative";
+import PsychometricTestInfo from "./Pages/PsychometricTestInfo";
 
 function AllRoutes() {
   const authtoken = localStorage.getItem("authtoken");
@@ -64,6 +65,7 @@ function AllRoutes() {
       <Route path="/certificate" element={<Certificate />} />
       <Route path="/certificate/:id" element={<CertificateContent />} />
       <Route path="/about" element={<About />} />
+      <Route path="/psychometrictest" element={<PsychometricTestInfo />} />
 
       <Route path="/admin" element={authtoken ? <AdminPanel />: <Navigate to='/login'/>} />
       <Route path="/getstarted" element={<Home1 />} />
@@ -77,7 +79,7 @@ function AllRoutes() {
       <Route path="/test/:id/:subtestId" element={authtoken ? <TestQuestions /> : <Navigate to='/login'/>} />
       <Route path="/test/2/careeropt" element={authtoken ? <Careeropt /> : <Navigate to='/login'/>} />
 
-      <Route path="/sendmail" element={authtoken ? <Sendmail /> : <Navigate to='/login'/>} />
+      <Route path="/sendmail" element={<Sendmail />} />
       <Route path="/reset-password/:token" element={<ResetPass />} />
     </Routes>
   );

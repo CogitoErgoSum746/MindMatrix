@@ -92,7 +92,7 @@ const TextSection1 = () => {
                 Get Started
               </button>
             </Link>
-            <Link to="/getstarted">
+            <Link to="/psychometrictest">
               <button className="px-3 py-2 bg-transparent border mt-4 ml-8 border-black font-medium hover:bg-black hover:text-white">
                 Know More
               </button>
