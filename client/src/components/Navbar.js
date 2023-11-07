@@ -55,7 +55,7 @@ function Navbar() {
         navigate("/facilitative");
         break;
       default:
-        
+
     }
   };
 
@@ -66,28 +66,38 @@ function Navbar() {
           <img src={logoImage} alt="Logo" width="150px" height="50px" />
         </a>
         <div className="space-x-4 hidden md:flex">
-        <Link to="/" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          <Link to="/" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             Home
           </Link>
           <Link to="/about" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             About Us
           </Link>
-          {/* Use a <select> element for services */}
-          <div className="relative">
+          <div className="relative group">
             <select
               value={selectedService}
               onChange={handleServiceChange}
               className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
             >
-              <option value="">NLP Services Offered</option>
-              <option value="Mind Wellness">Mind Wellness</option>
-              <option value="Training Program">Training Programs</option>
-              <option value="Certificate Program">Certificate Programs</option>
-              <option value="Psychometric Test">Psychometric Tests</option>
+              <option className="py-6" value="">
+                NLP Services Offered
+              </option>
+              <option className="py-6" value="Mind Wellness">
+                Mind Wellness
+              </option>
+              <option className="py-6" value="Training Program">
+                Training Programs
+              </option>
+              <option className="py-6" value="Certificate Program">
+                Certificate Programs
+              </option>
+              <option className="py-6" value="Psychometric Test">
+                Psychometric Tests
+              </option>
             </select>
           </div>
+
           <Link to="/facilitative" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-          Facilitator Profile
+            Facilitator Profile
           </Link>
           {/* <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
           Contact Us
@@ -122,8 +132,8 @@ function Navbar() {
           <Link to="/" onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
             Home
           </Link>
-            
-  
+
+
           <Link to="/about" onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
             About Us
           </Link>
@@ -141,10 +151,10 @@ function Navbar() {
             </select>
           </div>
           <Link to="/facilitative" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
-          Facilitator Profile
+            Facilitator Profile
           </Link>
           <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-          Contact Us
+            Contact Us
           </ScrollLink>
           <Link to={isLoggedin ? "/" : "/login"} onClick={scrollToTop}>
             <button
