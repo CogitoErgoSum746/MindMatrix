@@ -13,6 +13,25 @@ import GetInTouch from "../components/HomePage/GetInTouch";
 import FloatingIcon from "../components/FloatingIcon";
 import ScrollToTop from "../components/ScrollToTop";
 
+document.addEventListener("DOMContentLoaded", function () {
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  
+  for (const anchorLink of anchorLinks) {
+    anchorLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offsetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth"
+        });
+      }
+    });
+  }
+});
+
 const NewHomePage = () => {
   return (
     <div>
@@ -28,7 +47,7 @@ const NewHomePage = () => {
         <GetInTouch />
         <FloatingIcon />
       </div>
-      <Contact/>
+      <Contact />
     </div>
   );
 };
