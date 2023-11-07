@@ -4,10 +4,12 @@ import Contact from "../components/HomePage/Contact";
 import pic1 from "../images/Psychomteric/pic1.jpg";
 import pic2 from "../images/Psychomteric/pic2.jpg";
 import pic3 from "../images/Psychomteric/pic3.jpg";
+import ScrollToTop from "../components/ScrollToTop";
 
 const PsychometricTestInfo = () => {
   return (
     <>
+    <ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
         <img src={pic1} className="max-h-96 self-center"></img>

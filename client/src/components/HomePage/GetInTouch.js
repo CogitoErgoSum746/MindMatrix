@@ -72,125 +72,91 @@ const GetInTouch = () => {
   }
 
   return (
-    <div id="getintouch" className="bg-stone-50 w-full h-600 py-12">
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-black text-4xl font-semibold font-['Inter'] leading-10">
-          Get In Touch
-        </h1>
-        <p className="text-zinc-500 text-base font-normal font-['Source Sans Pro'] leading-relaxed mb-5">
-          We’re here to help. Chat with us 24/7 and get set up and ready to go
-          in just a quick.
-        </p>
-        <form className="form">
-  <div className="flex flex-col justify-center items-center text-justify">
-    <div className="mb-4">
-      <div>
-        <label
-          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-          htmlFor="name"
-        >
+    <div id="getintouch" className="bg-stone-50 w-full py-12">
+  <div className="max-w-screen-lg mx-auto px-4 border-2 border-gray-400 rounded-lg shadow-lg p-4">
+    <div className="text-center">
+      <h1 className="text-black text-4xl font-semibold font-inter leading-10">
+        Get In Touch
+      </h1>
+      <p className="text-zinc-500 text-base font-normal font-sans-pro leading-relaxed my-5">
+        We’re here to help. Chat with us 24/7 and get set up and ready to go in just a quick.
+      </p>
+    </div>
+    <form className="mt-6 space-y-6">
+      <div className="flex flex-col items-center mb-4">
+        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="name">
           Name
         </label>
         <input
-          placeholder="Your Name"
+          placeholder="  Your Name"
           name="Name"
           type="text"
-          className="border-b border-gray-500 focus:border-b"
+          className="border-b border-gray-500 focus:border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
           id="nameInput"
         />
       </div>
-    </div>
-    <div className="mb-4">
-      <div>
-        <label
-          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-          htmlFor="email"
-        >
+      <div className="flex flex-col items-center mb-4">
+        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="email">
           Email Address
         </label>
         <input
-          placeholder="Your Email"
+          placeholder="  Your Email"
           name="Email"
           type="text"
           id="emailInput"
-          className="border-b border-gray-500 focus-border-b"
+          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
         />
       </div>
-    </div>
-    <div className="mb-4">
-      <div>
-        <label
-          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-          htmlFor="contact"
-        >
+      <div className="flex flex-col items-center mb-4">
+        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="contact">
           Contact No.
         </label>
         <input
-          placeholder="Enter Contact no."
+          placeholder="  Enter Contact no."
           name="Contact"
           type="number"
           id="contactInput"
-          className="border-b border-gray-500 focus-border-b"
+          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
         />
       </div>
-    </div>
-    <div className="mb-4 ml-5">
-      <div>
-        <label
-          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-        >
+      <div className="flex flex-col items-center mb-4">
+        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="optionSelect">
           Select from the topics below
         </label>
         <select
           name="Option"
-          className="border-b border-gray-500 focus-border-b"
+          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
           id="optionSelect"
         >
           <option value="">Select your topic</option>
           <option value="Counselling and Therapies">Counselling and Therapies</option>
-          <option value="Life Coaching Session">Life Coaching Session</option>
-          <option value="Corporate Training">Corporate Training</option>
-          <option value="Business Coaching">Business Coaching</option>
-          <option value="Leadership Training">Leadership Training</option>
-          <option value="Psychometric Test">Psychometric Test</option>
-          <option value="Career Counselling">Career Counselling</option>
-          <option value="Students Training">Students Training</option>
-          <option value="Teachers Training">Teachers Training</option>
-          <option value="Parenting Session">Parenting Session</option>
-          <option value="Certification Program">Certification Program</option>
         </select>
       </div>
-    </div>
-    <div className="mb-4 ml-5">
-      <div>
-        <label
-          className="flex items-start text-gray-700 text-sm font-bold mb-2 text-left"
-          htmlFor="message"
-        >
+      <div className="flex flex-col items-center mb-4">
+        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="message">
           Message
         </label>
-        <input
-        name="Message"
-          placeholder="Your Message"
-          type="text"
+        <textarea
+          name="Message"
+          placeholder="  Your Message"
           id="messageInput"
-          className="border-b border-gray-500 focus-border-b md:mr-6"
-        />
+          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-24 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+        ></textarea>
       </div>
-    </div>
-    <input
-      type="button"
-      value="Submit"
-      onClick={(e) => Submit(e)}
-      className="mt-10 p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500"
-    />
+      <button
+        type="button"
+        onClick={(e) => Submit(e)}
+        className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-500 hover:to-orange-500 focus:outline-none w-64"
+      >
+        Submit
+      </button>
+    </form>
+    <ToastContainer position="top-right" autoClose={2000} />
   </div>
-</form>
+</div>
 
-       
-      </div>
-      <ToastContainer position="top-right" autoClose={2000} />
-    </div>
+
+
   );
 };
 
