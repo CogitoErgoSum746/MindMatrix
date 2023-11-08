@@ -45,7 +45,7 @@ const TextSection2 = () => {
 
           </div>
           <Link to="/training">
-            <button className="px-3 py-2 bg-transparent border mt-4 border-black font-medium hover:bg-black hover:text-white">
+          <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 border border-gray-500 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
               Know More
             </button>
           </Link>
@@ -78,7 +78,7 @@ const TextSection2 = () => {
             Engage, Inspire And Motivate.
           </div>
           <Link to="/training">
-            <button className="px-3 py-2 bg-transparent border mt-6 border-black font-medium hover:bg-black hover:text-white">
+          <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 border border-gray-500 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
               Know More
             </button>
           </Link>
