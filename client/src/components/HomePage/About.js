@@ -19,11 +19,31 @@ function About() {
     <>
       <Navbar />
       <ScrollToTop />
-      <div className="container mx-auto px-2">
+      <div className="container mx-auto px-2 md:px-10">
 
-        <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter']">
+        <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10">
           About Us
         </h1>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="border p-4 md:w-1/3">
+            <h2 className="text-3xl font-semibold font-inter mb-2">Vision</h2>
+            <p className="text-base font-inter leading-relaxed">
+              Our vision is a relentless dedication to offering accessible, high-quality counseling, therapies, coaching, and training services. We aspire to uncover, nurture, and magnify human potential, igniting inspiration. Our mission is to empower individuals by fostering connections and collaboration through therapeutic coaching and training services.    </p>
+          </div>
+          <div className="border p-4 md:w-1/3">
+            <h2 className="text-3xl font-semibold font-inter mb-2">Mission</h2>
+            <p className="text-base font-inter leading-relaxed">
+              Our mission centers on being a catalyst for societal change and a facilitator of personal success. With therapeutic coaching and training services, we empower individuals to strengthen connections and foster collaborative environments. Our goal is to uplift individuals and communities, fostering a positive and transformative impact.    </p>
+          </div>
+          <div className="border p-4 md:w-1/3">
+            <h2 className="text-3xl font-semibold font-inter mb-2">Values</h2>
+            <p className="text-base font-inter leading-relaxed">
+              Our values encompass unwavering honesty, integrity, and authenticity. We prioritize transparency, maintain the highest ethical standards, and build genuine connections with our clients. Driven by a commitment to excellence, we constantly strive to exceed expectations and provide top-quality experiences.    </p>
+          </div>
+        </div>
+        <div className="border-t border-blue-500 border-b-2 my-10"></div>
+
+
         <div className="flex flex-col py-10 gap-9">
 
           {/* 1st */}
@@ -143,25 +163,25 @@ function About() {
           {/* 7th */}
           <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-['Inter'] text-center">
-            Embrace Serenity for Unshakable Confidence!
+              Embrace Serenity for Unshakable Confidence!
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
-            <img src={abtimg7}></img>
+              <img src={abtimg7}></img>
               <div className="self-center text-left text-base md:text-lg">
-              A stressed mind is a mind burdened with questions, doubts, and chaos. In contrast, a mind steeped in tranquillity becomes a treasure house of answers and resourceful solutions. When stress asserts its grip, your natural rhythm stumbles, obscuring your thoughts, sabotaging your decision-making process, and restricting your creative spark.
-              But do not worry, for just as you shape your physical form, your mental strength can be moulded and strengthened. Envision a reality where stress is a mere whisper, emotional intelligence lights your path, and confidence stands unwavering by your side to embrace serenity amidst stress!
-              </div> 
+                A stressed mind is a mind burdened with questions, doubts, and chaos. In contrast, a mind steeped in tranquillity becomes a treasure house of answers and resourceful solutions. When stress asserts its grip, your natural rhythm stumbles, obscuring your thoughts, sabotaging your decision-making process, and restricting your creative spark.
+                But do not worry, for just as you shape your physical form, your mental strength can be moulded and strengthened. Envision a reality where stress is a mere whisper, emotional intelligence lights your path, and confidence stands unwavering by your side to embrace serenity amidst stress!
+              </div>
             </div>
           </div>
 
           {/* 8th */}
           <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-['Inter'] text-center">
-            Forge Your Mental Resilience: From Turmoil to Triumph
+              Forge Your Mental Resilience: From Turmoil to Triumph
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
               <div className="self-center text-left text-base md:text-lg">
-              At Success Steps, we're architects of serenity. We offer you a blueprint to forge unbreakable mental resilience. Imagine a life where stress dissipates like morning mist, your emotional intelligence guides you precisely, and confidence becomes your eternal ally on the path to success. Thus, your journey to this transformative existence starts right away.
+                At Success Steps, we're architects of serenity. We offer you a blueprint to forge unbreakable mental resilience. Imagine a life where stress dissipates like morning mist, your emotional intelligence guides you precisely, and confidence becomes your eternal ally on the path to success. Thus, your journey to this transformative existence starts right away.
               </div>
               <img src={abtimg8}></img>
             </div>
@@ -170,50 +190,50 @@ function About() {
           {/* 9th */}
           <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-['Inter'] text-center">
-            Ignite Your Educational Journey: Uniting Students, Teachers, and Parents
+              Ignite Your Educational Journey: Uniting Students, Teachers, and Parents
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
               <img src={abtimg9}></img>
               <div className="self-center text-left text-base md:text-lg">
-              Our educational synergy hub for Students, Teachers, and Parents – where we stand as your steadfast allies. Our platform forges vital connections, propels accelerated learning, and nurtures unwavering progress. Fuel the spark of potential, surpass performance boundaries, and chart a luminous course towards a future of brilliance.
-              </div>   
+                Our educational synergy hub for Students, Teachers, and Parents – where we stand as your steadfast allies. Our platform forges vital connections, propels accelerated learning, and nurtures unwavering progress. Fuel the spark of potential, surpass performance boundaries, and chart a luminous course towards a future of brilliance.
+              </div>
             </div>
           </div>
 
           {/* 10th */}
           <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-['Inter'] text-center">
-            Find Your Authentic Career Pathway:   Harnessing the Force of NCEB Competency Mapping!
+              Find Your Authentic Career Pathway:   Harnessing the Force of NCEB Competency Mapping!
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
               <div className="self-center text-left text-base md:text-lg">
-              Step into the spotlight of revelation with our Psychometric Tests & Career Guidance. Here, the dynamic fusion of Neuro Cognitive Emotional Behaviour (NCEB) Competency Mapping becomes the protagonist. Brace yourself, for within this transformative stage, your odyssey from unearthing to metamorphosis unfolds in all its glory. Your potential unfurls its wings and soars. Immerse yourself in the enchantment were discovery embraces transformation. Our purpose-built platform is your compass, guiding you to unearth your latent abilities and propelling you dynamically along the path to absolute success. NCEB Competency Mapping is your guiding light, illuminating the way to Discover Your Stream of Learning. Let it chisel a definitive and exhilarating path to your professional aspirations.
+                Step into the spotlight of revelation with our Psychometric Tests & Career Guidance. Here, the dynamic fusion of Neuro Cognitive Emotional Behaviour (NCEB) Competency Mapping becomes the protagonist. Brace yourself, for within this transformative stage, your odyssey from unearthing to metamorphosis unfolds in all its glory. Your potential unfurls its wings and soars. Immerse yourself in the enchantment were discovery embraces transformation. Our purpose-built platform is your compass, guiding you to unearth your latent abilities and propelling you dynamically along the path to absolute success. NCEB Competency Mapping is your guiding light, illuminating the way to Discover Your Stream of Learning. Let it chisel a definitive and exhilarating path to your professional aspirations.
               </div>
               <img src={abtimg10}></img>
             </div>
           </div>
 
-                    {/* 11th */}
-                    <div>
+          {/* 11th */}
+          <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-['Inter'] text-center">
-            Ignite Excellence in Corporate Executive Leadership Mastery!
+              Ignite Excellence in Corporate Executive Leadership Mastery!
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
               <img src={abtimg11}></img>
               <div className="self-center text-left text-base md:text-lg">
-              Step into the dominion of Corporate Executive Leadership and witness NLP as the masterstroke, igniting the gateway to unrivalled business mastery and leadership brilliance. Propel your innate potential to new heights, nurture teams that embody resilience, and transcend the ordinary norms of training, ushering in a sphere of authentic engagement, relentless inspiration, and limitless motivation.
-              </div>   
+                Step into the dominion of Corporate Executive Leadership and witness NLP as the masterstroke, igniting the gateway to unrivalled business mastery and leadership brilliance. Propel your innate potential to new heights, nurture teams that embody resilience, and transcend the ordinary norms of training, ushering in a sphere of authentic engagement, relentless inspiration, and limitless motivation.
+              </div>
             </div>
           </div>
 
-                 {/* 12th */}
-                 <div>
+          {/* 12th */}
+          <div>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold font-['Inter'] text-center">
-            Certification Program: The Roadmap to Excellence Awaits!
+              Certification Program: The Roadmap to Excellence Awaits!
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
               <div className="self-center text-left text-base md:text-lg">
-              Seize the chance to embark on a dynamic voyage toward excellence through our Certification Program. This is your gateway to becoming a certified NLP Practitioner, NLP Master Practitioner, Emotional Intelligence Practitioner, and a proficient expert in Counseling Skills and Therapies. Right here, right now, your journey to a triumphant success story begins.
+                Seize the chance to embark on a dynamic voyage toward excellence through our Certification Program. This is your gateway to becoming a certified NLP Practitioner, NLP Master Practitioner, Emotional Intelligence Practitioner, and a proficient expert in Counseling Skills and Therapies. Right here, right now, your journey to a triumphant success story begins.
               </div>
               <img src={abtimg12}></img>
             </div>
