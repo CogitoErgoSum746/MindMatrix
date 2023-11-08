@@ -159,7 +159,7 @@ function Navbar() {
               <option value="">NLP Services Offered</option>
               <option value="Mind Wellness">Mind Wellness</option>
               <option value="Training Program">Training Program</option>
-              <option value="Certificate program">Certificate program</option>
+              <option value="Certificate Program">Certificate program</option>
               <option value="Psychometric Test">Psychometric Test</option>
             </select>
           </div>
