@@ -53,7 +53,7 @@ const testimonials = [
     author: "Saikrishna",
     location: "Ahmednagar | India",
   },
-  
+
   {
     text: `"As a startup founder, I was facing numerous challenges in scaling my business. The business coaching program at Success Steps NLP Academy was the guidance I needed. The personalized strategies and actionable insights helped me navigate hurdles with confidence. My revenue has doubled, and I credit a significant portion of that success to the coaching I received here."`,
     author: "Joseph Devis",
@@ -62,9 +62,11 @@ const testimonials = [
   // Add more reviews as needed...
 ];
 
+
 const SatisfiedClients = () => {
   const [currentReview, setCurrentReview] = useState(0);
-  const reviewsPerPage = 2;
+  const reviewsPerPage = window.innerWidth < 640 ? 1 : 2; // Show 1 testimonial on mobile, 2 on larger screens
+
   const handleNext = () => {
     setCurrentReview((prevReview) =>
       prevReview + reviewsPerPage >= testimonials.length
@@ -81,48 +83,71 @@ const SatisfiedClients = () => {
     );
   };
 
+  const [expandedTextIndex, setExpandedTextIndex] = useState(-1);
+
+  const toggleReadMore = (index) => {
+    if (expandedTextIndex === index) {
+      setExpandedTextIndex(-1);
+    } else {
+      setExpandedTextIndex(index);
+    }
+  };
+
   return (
     <div>
-      <p className="text-black text-xl md:text-3xl lg:text-5xl font-semibold font-['Inter']">
+      <p className="text-xl md:text-3xl lg:text-5xl font-semibold font-['Inter'] text-black">
         Satisfied Clients
       </p>
-      <p className="text-neutral-700 text-base md:text-lg lg:text-xl font-normal font-['Source Sans Pro'] mx-auto">
+      <p className="text-base md:text-lg lg:text-xl font-normal font-['Source Sans Pro'] text-neutral-700 mx-auto">
         Read what our customers have to say about us
       </p>
-      <div>
-        <div className="mx-auto">
-          <div className=" mt-4 text-neutral-700 text-sm mb:text-lg lg:text-xl font-semibold font-['Source Sans Pro'] leading-loose mb-5">
-            <div className="grid grid-cols-2 text-left gap-4 lg:gap-8">
-              {testimonials
-                .slice(currentReview, currentReview + reviewsPerPage)
-                .map((testimonial, index) => (
-                  <div key={index} >
-                    <FiveStar />
-                    <p className="line-clamp-4">{testimonial.text}</p>
-                    <br />
-                    <br />
-                    <p className="text-neutral-700 font-semibold font-['Source Sans Pro']">
-                      {testimonial.author}
-                    </p>
-                    <div className="text-zinc-600 font-normal font-['Source Sans Pro']">
-                      {testimonial.location}
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
+      <div className="mx-auto mt-4 text-neutral-700 text-lg lg:text-xl font-semibold font-['Source Sans Pro'] leading-loose mb-5">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 text-left gap-4 lg:gap-8`}>
+          {testimonials
+            .slice(currentReview, currentReview + reviewsPerPage)
+            .map((testimonial, index) => (
+              <div
+                key={index}
+                className={`${
+                  expandedTextIndex === index ? 'scale-100' : 'scale-90'
+                } transform transition-transform`}
+              >
+                <FiveStar />
+                {expandedTextIndex === index ? (
+                  <p>{testimonial.text}</p>
+                ) : (
+                  <p className="line-clamp-4">{testimonial.text}</p>
+                )}
+                {testimonial.text.length > 4 && (
+                  <button
+                    onClick={() => toggleReadMore(index)}
+                    className="text-zinc-600 font-normal font-['Source Sans Pro'] cursor-pointer underline"
+                  >
+                    {expandedTextIndex === index ? 'Read Less' : 'Read More'}
+                  </button>
+                )}
+                <br />
+                <br />
+                <p className="font-semibold font-['Source Sans Pro'] text-neutral-700">
+                  {testimonial.author}
+                </p>
+                <div className="font-normal font-['Source Sans Pro'] text-zinc-600">
+                  {testimonial.location}
+                </div>
+              </div>
+            ))}
         </div>
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto flex space-x-4">
         <button
           onClick={handlePrevious}
-          className="bg-transparent border border-gray-400 p-2 mr-1 rounded-full hover:bg-black hover:text-white transition duration-300 font-bold"
+          className="p-3 text-lg border rounded-full border-gray-400 hover:bg-black hover:text-white focus:outline-none"
         >
           {"<"}
         </button>
         <button
           onClick={handleNext}
-          className="bg-transparent border border-gray-400 p-2 rounded-full hover:bg-black hover:text-white transition duration-300 font-bold"
+          className="p-3 text-lg border rounded-full border-gray-400 hover:bg-black hover:text-white focus:outline-none"
         >
           {">"}
         </button>

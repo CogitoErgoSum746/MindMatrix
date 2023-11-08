@@ -80,6 +80,10 @@ function TestQuestions() {
   {
     return <TestQuestionsPattern17 subtestId={subtestId} />;
   }
+  else if(id==='18')
+  {
+    return <TestQuestionsPattern18 subtestId={subtestId} />;
+  }
   else if(id==='19')
   {
     return <TestQuestionsPattern19 subtestId={subtestId} />;

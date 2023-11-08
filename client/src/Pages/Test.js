@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import mainpurple from "../images/mainpurple.png";
 import { API_BASE_URL } from "../config";
+import logout from "../images/logout.png"
 import Contact from "../components/HomePage/Contact";
 
 function Test() {
@@ -53,11 +54,11 @@ function Test() {
   const [studentType, setStudentType] = useState("");
 
   const authtoken = localStorage.getItem("authtoken");
+  const navigate=useNavigate();
 
   useEffect(() => {
     async function fetchTotalTests() {
       try {
-
         if (studentType) {
           let TestsRoute = "";
           if (studentType === "High school") {
@@ -67,23 +68,22 @@ function Test() {
           } else if (studentType === "Professional") {
             TestsRoute = "/professionaltotaltests";
           }
-     
 
-        const response = await fetch(`${API_BASE_URL}/user${TestsRoute}`, {
-          method: "GET",
-          headers: {
-            authtoken: authtoken,
-          },
-        });
+          const response = await fetch(`${API_BASE_URL}/user${TestsRoute}`, {
+            method: "GET",
+            headers: {
+              authtoken: authtoken,
+            },
+          });
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          if (data.success) {
+            setRemainingTests(data.differenceList);
+          }
         }
-        const data = await response.json();
-        if (data.success) {
-          setRemainingTests(data.differenceList);
-        }
-      }
       } catch (error) {
         console.error("Error fetching totalTests:", error);
       }
@@ -111,13 +111,12 @@ function Test() {
 
     checkCareeroptions();
 
-    if(authtoken)
-    {
+    if (authtoken) {
       fetchUserData();
     }
 
     fetchTotalTests();
-  }, [studentType,authtoken]);
+  }, [studentType, authtoken]);
 
   const fetchUserData = async () => {
     const authtoken = localStorage.getItem("authtoken");
@@ -135,7 +134,7 @@ function Test() {
         if (data.status === "success" && data.results === 1) {
           const userData = data.data.user;
           setStudentType(userData.studentType);
-          console.log(userData.studentType)
+          console.log(userData.studentType);
         } else {
           console.error("Error: User data retrieval failed.", data);
         }
@@ -172,10 +171,18 @@ function Test() {
     }
   };
 
+
+
+  function handleLogout(){
+    localStorage.clear();
+    navigate('/');
+
+
+  }
+
   const areTestsRemaining = Object.values(remainingTests || {}).every(
     (count) => count === 0
   );
-
 
   const additionalTests = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -189,7 +196,9 @@ function Test() {
     additionalTests.push(14, 15, 16, 17, 18, 19, 20);
   }
 
-  const filteredTests = tests.filter((test) => additionalTests.includes(test.id));
+  const filteredTests = tests.filter((test) =>
+    additionalTests.includes(test.id)
+  );
 
   return (
     <div className="">
@@ -200,6 +209,12 @@ function Test() {
             alt="bbbnn"
             className="md:min-w-full md:w-full lg:h-80 md:h-30 sm:h-30"
           />
+
+          <button
+            onClick={handleLogout} // Add your logout function here
+            className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointe flex flex-row items-center mr-1"
+          ><img src={logout} alt="logout" className="w-5 h-5"></img>
+            Logout </button>
 
           <div className="flex justify-center">
             <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/3 lg:left-1/3 text-left md:text-justify font-['Inter'] uppercase">
