@@ -28,6 +28,7 @@ import CertificateContent from "./Pages/HomeButtons/CertificateContent";
 import Facilitative from "./Pages/Facilitative";
 import PsychometricTestInfo from "./Pages/PsychometricTestInfo";
 import FloatingIcon from "./components/FloatingIcon";
+import ContactUs from "./Pages/Contactus";
 
 
 function AllRoutes() {
@@ -69,7 +70,9 @@ function AllRoutes() {
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/certificate/:id" element={<CertificateContent />} />
         <Route path="/about" element={<About />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/psychometrictest" element={<PsychometricTestInfo />} />
+
 
         <Route path="/admin" element={authtoken ? <AdminPanel /> : <Navigate to='/login' />} />
         <Route path="/getstarted" element={<Home1 />} />

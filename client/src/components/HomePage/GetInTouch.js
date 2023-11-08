@@ -91,7 +91,7 @@ const GetInTouch = () => {
           placeholder="  Your Name"
           name="Name"
           type="text"
-          className="border-b border-gray-500 focus:border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+          className="border-b border-gray-500 focus:border-b pl-4 focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
           id="nameInput"
         />
       </div>
@@ -104,7 +104,7 @@ const GetInTouch = () => {
           name="Email"
           type="text"
           id="emailInput"
-          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
         />
       </div>
       <div className="flex flex-col items-center mb-4">
@@ -116,7 +116,7 @@ const GetInTouch = () => {
           name="Contact"
           type="number"
           id="contactInput"
-          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
         />
       </div>
       <div className="flex flex-col items-center mb-4">
@@ -125,7 +125,7 @@ const GetInTouch = () => {
         </label>
         <select
           name="Option"
-          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
           id="optionSelect"
         >
           <option value="">Select your topic</option>
@@ -140,7 +140,7 @@ const GetInTouch = () => {
           name="Message"
           placeholder="  Your Message"
           id="messageInput"
-          className="border-b border-gray-500 focus-border-b focus:outline-none w-96 h-24 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-96 h-24 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
         ></textarea>
       </div>
       <button

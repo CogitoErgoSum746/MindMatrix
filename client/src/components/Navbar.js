@@ -34,6 +34,18 @@ function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  const scrollToContact = () => {
+    navigate('/'); // Navigate to the homepage
+    // Delay the scroll to ensure it happens after the redirect
+  setTimeout(() => {
+    scroll.scrollTo("getintouch", {
+      duration: 800, // You can adjust the duration as needed
+      smooth: "easeInOutQuart", // You can adjust the scrolling effect
+      offset: -100, // You can adjust the scroll offset
+    });
+  }, 1000); // Adjust the delay time as needed
+  };
+
   const handleServiceChange = (event) => {
     const selectedOption = event.target.value;
     setIsMobileMenuOpen(false);
@@ -102,7 +114,8 @@ function Navbar() {
           {/* <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
           Contact Us
           </ScrollLink> */}
-          <a href="/#getintouch" class="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">Contact Us</a>
+          <a href="/ContactUs" class="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">Contact Us</a>
+
 
           <Link to={isLoggedin ? "/" : "/login"}>
             <button
