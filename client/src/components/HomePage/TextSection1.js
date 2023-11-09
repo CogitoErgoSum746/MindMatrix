@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import img3 from "../../../src/images/image 3.png";
-import img4 from "../../../src/images/image 4.png";
-import img5 from "../../../src/images/image 5.png";
+import img3 from "../../../src/images/landingPage/image-3.webp";
+import img4 from "../../../src/images/landingPage/image-4.webp";
+import img5 from "../../../src/images/landingPage/image-5.webp";
 import oct from "../../../src/images/Octahedron.png";
 
 const TextSection1 = () => {
+  const [fadeIn, setFadeIn] = useState(false);
+
+    useEffect(() => {
+        // Trigger the fade-in animation when the component mounts
+        setFadeIn(true);
+    }, []);
+
   return (
+    <div className={`opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
     <div className="flex flex-col py-10 gap-9">
 
       <div className="flex flex-col md:flex-row gap-6 justify-between">
@@ -107,6 +115,7 @@ const TextSection1 = () => {
         </div>
       </div>
     </div>
+        </div>
   );
 };
 

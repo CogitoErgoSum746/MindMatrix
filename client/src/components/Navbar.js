@@ -72,7 +72,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white p-2 top-0 left-0 right-0 z-50 sticky">
+    <nav className={`bg-white p-2 top-0 left-0 right-0 z-50 sticky`}>
       <div className="container mx-auto flex justify-between items-center">
         <a href="/" onClick={scrollToTop}>
           <img src={logoImage} alt="Logo" width="150px" height="50px" />

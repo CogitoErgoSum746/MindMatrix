@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import registerImg from "../images/register.jpg";
+import registerImg from "../images/register.webp";
 import Navbar from "../components/Navbar";
 import { API_BASE_URL } from "../config";
 
 const Register = () => {
+  const [fadeIn, setFadeIn] = useState(false);
+
+    useEffect(() => {
+        // Trigger the fade-in animation when the component mounts
+        setFadeIn(true);
+    }, []);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -113,7 +120,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-row">
+      <div className={`flex flex-row opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
         <div className="hidden md:block md:flex-1 mt-20">
           <img src={registerImg} alt="register" className="w-full h-auto" />
         </div>

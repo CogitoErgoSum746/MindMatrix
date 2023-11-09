@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import cert from "../../../src/images/certification.png";
+import cert from "../../../src/images/landingPage/certification.webp";
 
 const Certification = () => {
   return (
@@ -21,7 +21,7 @@ const Certification = () => {
           </ul>
         </div>
         <Link to="/certificate">
-        <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 border border-gray-500 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
+        <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 border-gray-500 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
             Know More
           </button>
         </Link>
