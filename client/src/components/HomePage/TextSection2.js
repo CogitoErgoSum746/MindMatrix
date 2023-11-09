@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import img6 from "../../../src/images/image 6.png";
-import img7 from "../../../src/images/image 7.png";
+import img6 from "../../../src/images/landingPage/image-6.webp";
+import img7 from "../../../src/images/landingPage/image-7.webp";
 import oct from "../../../src/images/Octahedron.png";
 
 const TextSection2 = () => {

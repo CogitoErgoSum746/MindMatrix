@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "react-multi-carousel/lib/styles.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,43 +13,34 @@ import GetInTouch from "../components/HomePage/GetInTouch";
 import FloatingIcon from "../components/FloatingIcon";
 import ScrollToTop from "../components/ScrollToTop";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  
-  for (const anchorLink of anchorLinks) {
-    anchorLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const offsetTop = targetElement.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: "smooth"
-        });
-      }
-    });
-  }
-});
-
 const NewHomePage = () => {
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    // Trigger the fade-in animation when the component mounts
+    setFadeIn(true);
+  }, []);
+
+
   return (
     <div>
-      <Navbar />
-      <ScrollToTop />
-      <FrontImage />
-      <div className="container mx-auto flex flex-col gap-16 px-2">
-        <TextSection1 />
-        <TextSection2 />
-        <Certification />
-        <SatisfiedClients />
-        <ImageGalary />
-        <GetInTouch />
-        <FloatingIcon />
-      </div>
-      <Contact />
+        <div className={`opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-400' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-400'}`}>
+          <Navbar />
+        </div>
+        <ScrollToTop />
+        <FrontImage />
+        <div className="container mx-auto flex flex-col gap-16 px-2">
+          <TextSection1 />
+          <TextSection2 />
+          <Certification />
+          <SatisfiedClients />
+          <ImageGalary />
+          <GetInTouch />
+          <FloatingIcon />
+        </div>
+        <Contact />
     </div>
-  );
+      );
 };
 
-export default NewHomePage;
+      export default NewHomePage;
