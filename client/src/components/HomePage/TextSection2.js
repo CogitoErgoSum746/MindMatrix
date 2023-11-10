@@ -9,6 +9,7 @@ const TextSection2 = () => {
     <div className="flex flex-col py-10 gap-9">
       <div className="flex flex-col md:flex-row gap-6 justify-between">
         <div className="self-center"> 
+        <img src={img6} className="md:hidden"></img>
           <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] mb-2">
             STUDENT - TEACHER - PARENT
           </div>
@@ -40,9 +41,6 @@ const TextSection2 = () => {
                 Sustain Your Diligence
               </p>
             </div>
-
-
-
           </div>
           <Link to="/training">
           <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
@@ -51,7 +49,7 @@ const TextSection2 = () => {
           </Link>
         </div>
         <div className='self-center'>
-          <img src={img6}></img>
+          <img src={img6} className="hidden md:block"></img>
         </div>
       </div>
 

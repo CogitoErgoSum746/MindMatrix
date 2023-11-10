@@ -1,42 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Contact from "../components/HomePage/Contact";
 import ScrollToTop from "../components/ScrollToTop";
 import pic1 from "../images/Facilitator/pic1.png";
-import pic2 from "../images/Facilitator/pic2.png";
 import pic3 from "../images/Facilitator/pic3.png";
 import pic4 from "../images/Facilitator/pic4.png";
 import pic5 from "../images/Facilitator/pic5.png";
 import pic6 from "../images/Facilitator/pic6.png";
 const Facilitative = () => {
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+      // Trigger the fade-in animation when the component mounts
+      setFadeIn(true);
+  }, []);
+
   return (
     <>
       <Navbar />
       <ScrollToTop />
-      <div className="container mx-auto px-2">
-      <p className="text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter']">
-              Profile
-            </p>
-        <div className="flex flex-col md:flex-row gap-4 justify-evenly items-center">
-          <div className="flex flex-col justify-center items-center">
+      <div className={`container mx-auto px-4 text-center opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold font-inter mt-10">
+          Profile
+        </h1>
+
+        <div className="flex flex-col md:flex-row gap-4 justify-evenly items-center mt-10">
+          <div className="flex justify-center items-center">
             <img
               src={pic1}
-              className="max-h-96 md:max-h-80 self-start lg:ml-10 md:ml-10"
-              alt="Image 1"
+              className="max-h-96 md:max-h-96 lg:max-h-100 md:ml-10 rounded-md shadow-md"
+              alt="Profile"
             />
-            {/* <img
-              src={pic2}
-              className="max-h-40 md:max-h-28 self-start"
-              alt="Image 2"
-            /> */}
           </div>
 
-          <div className="md:w-1/2 text-justify">
-            {/* <p className="text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter']">
-              Who Am I?
-            </p> */}
-            <ul className="list-disc list-inside text-left text-base md:text-lg lg:text-xl ml-2 font-['Inter'] mt-10">
-              <li>Neurocognitive Psychologist</li>
+          <div className="md:w-1/2 text-left mt-10 md:mt-0">
+            <ul className="list-disc list-inside text-left text-base md:text-lg lg:text-xl ml-2 font-['Inter'] mt-5">
+            <li>Neurocognitive Psychologist</li>
               <li>NLP Master Practitioner Trainer</li>
               <li>Motivational Speaker & Author</li>
               <li>Transpersonal Hypnotherapist</li>
@@ -49,11 +48,12 @@ const Facilitative = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-row gap-4 justify-between mt-20">
+
+        <div className="flex flex-row gap-4 justify-between mt-10">
           <div className="md:w-1/2">
-            <p className="text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter'] mb-5">
+            <p className="text-xl md:text-2xl lg:text-3xl font-semibold font-inter mb-5">
               Certifications:
-            </p>
+            </p> 
             <ul className="list-disc list-inside text-left text-base md:text-lg lg:text-xl ml-2 font-['Inter']">
               <li>
                 NLP Master Practitioner & Coach (The American Board of NLP- USA)
@@ -107,8 +107,9 @@ const Facilitative = () => {
               </li>
             </ul>
           </div>
-          <div className="md:w-1/3 mt-10 md:mt-10">
-            <div className="md:flex md:flex-col gap-6">
+
+          <div className="md:w-1/3 mt-10 md:mt-0">
+          <div className="md:flex md:flex-col gap-6">
               <img src={pic3} alt="Image 1" className="w-40 h-40 max-w-xs" />
               <img src={pic4} alt="Image 2" className="w-40 h-40 max-w-xs" />
               <img src={pic5} alt="Image 3" className="w-40 h-40 max-w-xs" />
@@ -116,6 +117,7 @@ const Facilitative = () => {
             </div>
           </div>
         </div>
+
         <p className="text-left text-base lg:text-xl mt-10">
           Dr. Antony Augusthy is an esteemed and accomplished professional in
           the field of psychology. With a doctorate from the United States, he
@@ -128,7 +130,7 @@ const Facilitative = () => {
           insights into human brain thought processes. He is a certified NLP
           Master Practitioner Trainer, enabling him to effectively guide
           individuals towards personal and professional transformation.
-        </p>
+        </p><br></br><br></br>
         <p className="text-left text-base lg:text-xl">
           He is also a renowned motivational speaker, captivating audiences with
           his inspiring talks that motivate and empower individuals to reach
@@ -141,7 +143,7 @@ const Facilitative = () => {
           to life coaching and peak performance coaching, enabling individuals
           in setting and achieving meaningful goals while maximizing their
           performance in various aspects of life.
-        </p>
+        </p><br></br><br></br>
         <p className="text-left text-base lg:text-xl">
           With his deep understanding of Emotional Intelligence, Dr. Antony also
           trains practitioners in this field, equipping them with the tools and
@@ -151,7 +153,7 @@ const Facilitative = () => {
           topics including Psychology, Cognitive Neuroscience, NLP, Emotional
           Intelligence, Leadership, Motivation, Spirituality, Holistic
           Approaches to Wellness, Parenting, And Student's Study Focus etc.
-        </p>
+        </p><br></br><br></br>
         <p className="text-left text-base lg:text-xl mb-5">
           Dr. Antony's multifaceted expertise and extensive knowledge make him a
           highly passionate for helping individuals and organizations thrive has

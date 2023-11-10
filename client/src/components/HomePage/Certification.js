@@ -6,6 +6,7 @@ const Certification = () => {
   return (
     <div className="flex flex-col md:flex-row gap-3 mb-5 justify-between">
       <div className='flex flex-col gap-3 self-center'>
+      <img src={cert} className="md:hidden"></img>
         <h1 className="text-black text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter'] md-5">
           CERTIFICATION PROGRAM
         </h1>
@@ -32,7 +33,7 @@ const Certification = () => {
             </Link> */}
       </div>
       <div className='self-center'>
-      <img src={cert}></img>
+      <img src={cert} className="hidden md:block"></img>
       </div>
     </div>
   )

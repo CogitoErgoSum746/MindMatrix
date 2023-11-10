@@ -12,7 +12,7 @@ import TestQuestions from "./TestQuestions";
 import Getusers from "./Pages/Getusers";
 import Careeropt from "./Pages/Careeropt";
 import Sendmail from "./components/Sendmail";
-import ResetPass from "./ResetPass";
+import ResetPass from "./components/ResetPass";
 import About from "./components/HomePage/About";
 import MindW from "./components/HomePage/Mindwellness";
 import NewHomePage from "./Pages/NewHomePage";
