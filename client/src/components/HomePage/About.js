@@ -48,6 +48,7 @@ function About() {
 
           {/* 1st */}
           <div className="flex flex-col md:flex-row gap-6 justify-between">
+          <img src={abtimg1} className="md:hidden"></img>
             <div className="self-center text-left text-base md:text-lg">
               Here at Success Steps, we invite you to join us on an
               extraordinary journey towards realizing your fullest potential and
@@ -61,12 +62,13 @@ function About() {
               consciousness, and the ultimate state of insight. These elements
               together pave the way for enduring success and limitless joy.
             </div>
-            <img src={abtimg1}></img>
+            <img src={abtimg1} className="hidden md:block"></img> 
           </div>
-
+                  
           {/* 2nd */}
-          <div className="hidden md:flex flex-col md:flex-row gap-6 justify-between ">
-            <img src={abtimg2}></img>
+          <div className="flex flex-col md:flex-row gap-6 justify-between ">
+            <img src={abtimg2} className="hidden md:block"></img>
+            <img src={abtimg2} className="md:hidden"></img>
             <div className="self-center text-left text-base md:text-lg">
               Our approach takes into account every facet of your being, aiming
               to boost your self-confidence, nurture a strong sense of
@@ -101,6 +103,7 @@ function About() {
               Unleash Your Boundless Potential
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
+            <img src={abtimg4} className="md:hidden"></img>
               <div className="self-center text-left text-base md:text-lg">
                 Our approach takes into account every facet of your being,
                 aiming to boost your self-confidence, nurture a strong sense of
@@ -111,7 +114,7 @@ function About() {
                 process empowers you to harness your personal and professional
                 capacities to the absolute maximum.
               </div>
-              <img src={abtimg4}></img>
+              <img src={abtimg4} className="hidden md:block"></img>
             </div>
           </div>
 
@@ -122,7 +125,8 @@ function About() {
               Challenges!
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
-              <img src={abtimg5}></img>
+              <img src={abtimg5} className="md:hidden"></img>
+              <img src={abtimg5} className="hidden md:block"></img>
               <div className="self-center text-left text-base md:text-lg">
                 Our approach takes into account every facet of your being,
                 aiming to boost your self-confidence, nurture a strong sense of

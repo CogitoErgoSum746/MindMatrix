@@ -187,7 +187,7 @@ export async function forgotPassword(req: Request, res: Response): Promise<any> 
     expiration.setHours(expiration.getHours() + 1);
 
     // const resetLink = `http://localhost:3000/reset-password/${token}`;
-    const resetLink = `https://successteps.in/api/reset-password/${token}`;
+    const resetLink = `https://successteps.in/reset-password/${token}`;
 
     const subject = 'Password Reset';
     const text = `This link is active only for an hour.\nClick the following link to reset your password: ${resetLink}`;
@@ -208,8 +208,6 @@ export async function resetPassword(req: Request, res: Response): Promise<any> {
 
     // Step 1: Verify if the token is valid and not expired
     const user = await User.findOne({
-      username: req.body.username,
-      email: req.body.email,
       resetToken: token,
       resetTokenExpiry: { $gt: new Date() }, // Check if the token is not expired
     });
@@ -231,6 +229,7 @@ export async function resetPassword(req: Request, res: Response): Promise<any> {
 
     res.status(200).json({ success: true });
   } catch (error) {
+    errorLogger.error(`Error in reseting password:`, error instanceof Error ? error.message : error);
     res.status(500).json({ success: false, error: error });
   }
 }
