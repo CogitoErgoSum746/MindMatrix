@@ -101,7 +101,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
       appLogger.info(`User registered: ${userCreated.username}`);
 
-      await sendEmail(userCreated.email, subject, text, attachments);
+      sendEmail(userCreated.email, subject, text, attachments);
     }
 
     // Token authentication using JWT
@@ -136,7 +136,7 @@ export async function login(req: Request, res: Response): Promise<any> {
 
       appLogger.info(`Admin logged in: ${username}`);
 
-      res.status(200).json({ success: true, userType: 'admin', authtoken });
+      res.status(200).json({ success: true, username: username, userType: 'admin', authtoken });
       return;
     }
 
@@ -162,8 +162,7 @@ export async function login(req: Request, res: Response): Promise<any> {
     appLogger.info(`User logged in: ${user.username}`);
     
     // Response
-    success = true;
-    res.status(200).json({ success, userType: 'user', authtoken });
+    res.status(200).json({ success: true, username: username, userType: 'user', authtoken });
     return;
   } catch (error) {
     console.error(error);

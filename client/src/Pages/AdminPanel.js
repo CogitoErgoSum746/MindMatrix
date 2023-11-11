@@ -3,19 +3,38 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import OrganizationCard from "../components/OrganizationCard";
 import { API_BASE_URL } from "../config";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AdminPanel() {
   const [organizations, setOrganizations] = useState([]);
+  const authtoken = localStorage.getItem("authtoken");
   const [orgi_name, setName] = useState("");
   const [orgi_email, setEmail] = useState("");
   const [orgi_studentType, setType] = useState("");
   const [username, setUsername] = useState("");
   const [email, setUserEmail] = useState("");
-
-
   const navigate = useNavigate();
 
-  const authtoken = localStorage.getItem("authtoken");
+  useEffect(() => {
+    if (authtoken) {
+      const toastMessage = localStorage.getItem("toastMessage");
+      if (toastMessage) {
+        toast.success(toastMessage, {
+          autoClose: 5000,
+        });
+
+        // Clear the success message from local storage
+        localStorage.removeItem('toastMessage');
+      }
+      getAllOrganization();
+    }else {
+      // Clear the success message from local storage
+      localStorage.removeItem('toastMessage');
+      navigate("/login");
+    }
+  }, [authtoken]);
+  
 
   const Logout = () => {
     localStorage.clear();
@@ -167,10 +186,6 @@ function AdminPanel() {
   };
 
 
-  useEffect(() => {
-    getAllOrganization();
-  }, []);
-
   return (
     <div className="bg-gray-100 min-h-screen p-4">
       <h1 className="text-2xl mb-4">Admin Panel</h1>
@@ -265,7 +280,9 @@ function AdminPanel() {
           </button>
         </Link>
       </div>
+      <ToastContainer autoClose={3000} />
     </div>
+    
   );
 }
 

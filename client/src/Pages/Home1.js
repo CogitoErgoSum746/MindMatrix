@@ -6,6 +6,8 @@ import clg from "../images/Home1/clgstudent.png";
 import school from "../images/Home1/Highschool.png";
 import prof from "../images/Home1/professional.png";
 import ScrollToTop from "../components/ScrollToTop";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Home1() {
   const navigate = useNavigate();
@@ -15,6 +17,15 @@ function Home1() {
 
   useEffect(() => {
     if (authtoken) {
+      const toastMessage = localStorage.getItem("toastMessage");
+      if (toastMessage) {
+        toast.success(toastMessage, {
+          autoClose: 5000,
+        });
+
+        // Clear the success message from local storage
+        localStorage.removeItem('toastMessage');
+      }
       setIsLoggedin(true);
       fetchUserData();
     }
@@ -48,7 +59,7 @@ function Home1() {
 
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <Navbar />
       <div className="bg-white min-h-screen py-10">
         <div className="container mx-auto p-5">
@@ -66,12 +77,12 @@ function Home1() {
               <div className="flex justify-center">
                 <img src={school}></img>
               </div>
-              
+
               <h1 className="text-center text-xl font-bold mb-2 font-['Inter'] mt-1">
                 HIGH SCHOOLERS
               </h1>
               <h1 className="text-center text-lg font-bold font-['Inter']">
-              Unlock Your Potential  
+                Unlock Your Potential
               </h1>
               <p className="text-lg text-gray-800 mb-10 text-justify">
                 Welcome to our psychometric test’s platform tailored for high
@@ -107,7 +118,7 @@ function Home1() {
                 COLLEGE STUDENTS
               </h1>
               <h1 className="text-center text-lg font-bold font-['Inter']">
-              Empower Your Choice
+                Empower Your Choice
               </h1>
               <p className="text-lg text-gray-800 mb-4 text-justify md:text-md">
                 As a college student, you're at the crossroads of academic and
@@ -143,7 +154,7 @@ function Home1() {
                 PROFESSIONALS
               </h1>
               <h1 className="text-center text-lg font-bold font-['Inter']">
-              Optimise Your Career
+                Optimise Your Career
               </h1>
               <p className="text-lg text-gray-800 mb-10 text-justify  md:text-md ">
                 In the professional world, continuous growth and advancement are
@@ -172,6 +183,7 @@ function Home1() {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={3000} />
     </>
   );
 }
