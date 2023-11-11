@@ -24,9 +24,7 @@ const NewHomePage = () => {
 
   return (
     <div>
-        <div className={`opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-400' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-400'}`}>
           <Navbar />
-        </div>
         <ScrollToTop />
         <FrontImage />
         <div className="container mx-auto flex flex-col gap-16 px-2">
