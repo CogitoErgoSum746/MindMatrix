@@ -359,29 +359,10 @@ function TestQuestionsPattern8() {
       {!isTestCompleted && (
         <>
           <div className="p-10">
-            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-              Assessment Rating Criteria:{" "}
-            </h2>
-            <p className="text-left font-semibold mb-5">
+            <h2 className="text-left font-semibold text-xl mb-5">
               Please evaluate each statement according to how often it applies
-              to your situation. Use the following scale:
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Strongly Disagree: </strong>Assign a rating of 1.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Somewhat Disagree: </strong> Assign a rating of 2.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Neither Agree nor Disagree: </strong> Assign a rating of
-              3.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Somewhat Agree: </strong> Assign a rating of 4.
-            </p>
-            <p className="text-left mb-5 font-semibold">
-              <strong>Strongly Agree: </strong> Assign a rating of 5.
-            </p>
+              to your situation.
+            </h2>
           </div>
         </>
       )}

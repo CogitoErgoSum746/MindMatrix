@@ -528,33 +528,10 @@ function TestQuestionsPattern2() {
       {!isTestCompleted && (
         <>
           <div className="p-10">
-            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-              Assessment Rating Criteria:{" "}
-            </h2>
-            <p className="text-left font-semibold mb-5">
+            <h2 className="text-left font-semibold text-xl mb-5">
               Please evaluate each statement according to how often it applies
-              to your situation. Use the following scale:
-            </p>
-            <p className="text-left font-semibold">
-              <strong>NO, the statement is not at all like me :</strong>Assign a
-              rating of 1 if it is applies to you.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>The statement is a little like me :</strong> Assign a
-              rating of 2 if it is applies to you.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>The statement is somewhat like me :</strong> Assign a
-              rating of 3 if is is applies to you.
-            </p>
-            <p className="text-left mb-5 font-semibold">
-              <strong>The statement is a lot like me : </strong> Assign a rating
-              of 4 if it is applies to you.
-            </p>
-            <p className="text-left mb-5 font-semibold">
-              <strong>YES, the statement is me : </strong> Assign a rating of 5
-              if it is applies to you.
-            </p>
+              to your situation.
+            </h2>
           </div>
         </>
       )}

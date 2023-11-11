@@ -269,33 +269,10 @@ function TestQuestionsPattern9() {
       {!isTestCompleted && (
         <>
           <div className="p-10">
-            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-              Assessment Rating Criteria:{" "}
-            </h2>
-            <p className="text-left font-semibold mb-5">
+            <h2 className="text-left font-semibold text-xl mb-5">
               Please evaluate each statement according to how often it applies
-              to your situation. Use the following scale:
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Rarely: </strong>Assign a rating of 1 if the statement
-              rarely applies to you.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Occasionally: </strong> Assign a rating of 2 if the
-              statement applies occasionally.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Frequently: </strong> Assign a rating of 3 if the
-              statement applies frequently.
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Often: </strong> Assign a rating of 4 if the statement
-              consistently applies to you.
-            </p>
-            <p className="text-left mb-5 font-semibold">
-              <strong>Always: </strong> Assign a rating of 5 if the statement
-              always applies to you.
-            </p>
+              to your situation.
+            </h2>
           </div>
         </>
       )}

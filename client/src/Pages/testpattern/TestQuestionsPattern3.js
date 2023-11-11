@@ -278,11 +278,11 @@ function TestQuestionsPattern3() {
               to your situation. Use the following scale:
             </p>
             <p className="text-left font-semibold">
-              <strong>Yes: </strong>Assign a rating of 1 if the statement
+              <strong>Yes: </strong>If the statement
               applies to you.
             </p>
             <p className="text-left font-semibold mb-5">
-              <strong>No:</strong> Assign a rating of 0 if the statement applies
+              <strong>No: </strong>If the statement doesn't apply
               to you.
             </p>
           </div>

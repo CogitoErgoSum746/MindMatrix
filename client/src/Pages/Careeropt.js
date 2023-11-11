@@ -832,44 +832,104 @@ function CareerOptions() {
   };
 
   const handleOptionChange = () => {
-    if (selectedCategory && selectedOption && selectedPriority) {
-      if (selectedPriorities.length < 10) {
-        const priorityValue = parseInt(selectedPriority, 10);
+    if (selectedCategory && selectedOption) {
+      const existingOption = selectedPriorities.find((item) => item.option === selectedOption);
 
-        const updatedPriorities = [...selectedPriorities];
-        updatedPriorities.push({
-          option: selectedOption,
-          priority: priorityValue,
-        });
-        setSelectedPriorities(updatedPriorities);
-
-        // Remove the selected priority from available priorities
-        const updatedAvailablePriorities = availablePriorities.filter(
-          (value) => value !== priorityValue
+      if (existingOption) {
+        // Career option already exists, update the priority
+        const updatedPriorities = selectedPriorities.map((item) =>
+          item.option === selectedOption ? { ...item, priority: parseInt(selectedPriority, 10) } : item
         );
-        setAvailablePriorities(updatedAvailablePriorities);
-
-        setSelectedOption("");
-        setSelectedPriority(""); // Reset the selected priority
+        setSelectedPriorities(updatedPriorities);
       } else {
-        alert("You can only select up to 5 career options.");
+        // Add new career option
+        if (selectedPriorities.length < 10) {
+          const priorityValue = parseInt(selectedPriority, 10);
+          const updatedPriorities = [
+            ...selectedPriorities,
+            { option: selectedOption, priority: priorityValue },
+          ];
+          setSelectedPriorities(updatedPriorities);
+
+          // Remove the selected priority from available priorities
+          const updatedAvailablePriorities = availablePriorities.filter(
+            (value) => value !== priorityValue
+          );
+          setAvailablePriorities(updatedAvailablePriorities);
+        } else {
+          alert('You can only select 10 career options.');
+        }
       }
+
+      setSelectedOption('');
+      setSelectedPriority(''); // Reset the selected priority
     }
   };
 
-  const sendCareerOptionsToBackend = () => {
-    const careerOptions= selectedPriorities
-  .sort((a, b) => a.priority - b.priority) 
-  .map((option) => option.option);
+  const handleIncreasePriority = (index) => {
+    const updatedPriorities = [...selectedPriorities];
+    if (updatedPriorities[index].priority < 10) {
+      // Remove the current priority from available priorities
+      const updatedAvailablePriorities = availablePriorities.filter(
+        (value) => value !== updatedPriorities[index].priority
+      );
+  
+      updatedPriorities[index].priority += 1;
+      setSelectedPriorities(updatedPriorities);
+  
+      // Update available priorities
+      const newPriority = updatedPriorities[index].priority;
+      const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
+      setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
+    }
+  };
+  
+  const handleDecreasePriority = (index) => {
+    const updatedPriorities = [...selectedPriorities];
+    if (updatedPriorities[index].priority > 1) {
+      // Remove the current priority from available priorities
+      const updatedAvailablePriorities = availablePriorities.filter(
+        (value) => value !== updatedPriorities[index].priority
+      );
+  
+      updatedPriorities[index].priority -= 1;
+      setSelectedPriorities(updatedPriorities);
+  
+      // Update available priorities
+      const newPriority = updatedPriorities[index].priority;
+      const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
+      setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
+    }
+  };
+  
+  const handleDeleteOption = (index) => {
+    const deletedOption = selectedPriorities[index];
+  
+    // Update available priorities by adding back the deleted priority
+    const updatedAvailablePriorities = [...availablePriorities, deletedOption.priority];
+    setAvailablePriorities(updatedAvailablePriorities.sort((a, b) => a - b));
+  
+    // Remove the selected option from selectedPriorities
+    const updatedPriorities = [...selectedPriorities];
+    updatedPriorities.splice(index, 1);
+    setSelectedPriorities(updatedPriorities);
+  };
+  
+  
 
-  console.log(careerOptions)
+  const sendCareerOptionsToBackend = () => {
+    const careerOptions = selectedPriorities
+      .sort((a, b) => a.priority - b.priority)
+      .map((option) => option.option);
+
+    console.log(careerOptions)
     fetch(`${API_BASE_URL}/user/carreerOptions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         authtoken: authtoken,
       },
-      body: JSON.stringify({ careerOptions}),
+      body: JSON.stringify({ careerOptions }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -906,75 +966,111 @@ function CareerOptions() {
   }, []);
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md justify-center items-center w-700 h-600">
+    <div className="bg-white p-4 rounded-lg shadow-md max-w-screen-md mx-auto sm:w-700 h-auto">
+  <div className="p-4 sm:p-8 bg-white">
+    <h1 className="text-3xl font-bold mb-4 sm:mb-8">Instructions for Choosing a Career</h1>
+
+    <p className="mb-4 text-left">Your intelligences listed from top to down, you have to choose 10 career options of your most
+      interest from the lists.</p>
+
+    <ol className="list-decimal pl-6 mb-6 text-left">
+      <li className="mb-2">Select a category from top to down.</li>
+      <li className="mb-2">Select your career option jobs from the list that align with your interests.</li>
+      <li className="mb-2">Select a priority number for each job.</li>
+      <li className="mb-2">Add Career Option your choices for each job.</li>
+      <li className="mb-2">Finally, submit the career option.</li>
+    </ol>
+  </div>
   {loading ? (
     <p>Loading...</p>
   ) : sortedNames.length === 0 ? (
     <p>No data available</p>
   ) : (
-    <div>
-      <h2 className="text-2xl font-bold">Sorted Subcategories</h2>
-      <select
-        className="w-48 p-2 border border-gray-300 rounded-md my-2"
-        value={selectedCategory}
-        onChange={handleCategoryChange}
-      >
-        <option value="">Select a category</option>
-        {sortedNames.map((name, index) => (
-          <option key={index} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Sorted Subcategories</h2>
+      <div className="flex flex-col space-y-4">
+        <select
+          className="w-full p-2 border border-gray-300 rounded-md"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+        >
+          <option value="">Select a category</option>
+          {sortedNames.map((name, index) => (
+            <option key={index} value={name}>
+              {name}
+            </option>
+          ))}
+        </select>
 
-      {selectedCategory && (
-        <div>
-          <h2 className="text-2xl font-bold">
-            Selected Category: {selectedCategory}
-          </h2>
-          <select
-            className="w-48 p-2 border border-gray-300 rounded-md my-2"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
-          >
-            <option value="">Select a career option</option>
-            {careerOptions.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <select
-            className="w-48 p-2 border border-gray-300 rounded-md my-2"
-            value={selectedPriority}
-            onChange={(e) => setSelectedPriority(e.target.value)}
-          >
-            <option value="">Select a priority</option>
-            {availablePriorities.map((value, index) => (
-              <option key={index} value={value.toString()}>
-                {value}
-              </option>
-            ))}
-          </select>
-          <button
-            onClick={handleOptionChange}
-            className="bg-blue-500 text-white p-2 rounded-md mt-2"
-          >
-            Add Career Option
-          </button>
-
-          {selectedPriorities.length === 10 && (
-            <Link to="/test">
-            <button
-              onClick={sendCareerOptionsToBackend}
-              className="bg-blue-500 text-white p-2 rounded-md mt-2"
+        {selectedCategory && (
+          <div className="flex flex-col space-y-4">
+            <h2 className="text-2xl font-bold">
+              Selected Category: {selectedCategory}
+            </h2>
+            <select
+              className="w-full p-2 border border-gray-300 rounded-md"
+              value={selectedOption}
+              onChange={(e) => setSelectedOption(e.target.value)}
             >
-              Send Career Options to Backend
+              <option value="">Select a career option</option>
+              {careerOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <select
+              className="w-full p-2 border border-gray-300 rounded-md"
+              value={selectedPriority}
+              onChange={(e) => setSelectedPriority(e.target.value)}
+            >
+              <option value="">Select a priority</option>
+              {availablePriorities.map((value, index) => (
+                <option key={index} value={value.toString()}>
+                  {value}
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={handleOptionChange}
+              className="bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600"
+            >
+              Add Career Option
             </button>
-            </Link>
-          )}
-        </div>
-      )}
+
+            {selectedPriorities.length === 10 && (
+              <Link to="/test">
+                <button
+                  onClick={sendCareerOptionsToBackend}
+                  className="bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600"
+                >
+                  Send Career Options to Backend
+                </button>
+              </Link>
+            )}
+          </div>
+        )}
+
+{selectedPriorities.length > 0 && (
+  <div className="mt-8">
+    <h2 className="text-2xl font-bold mb-4">Selected Career Options</h2>
+    <div className="grid grid-cols-2 gap-4 pl-6">
+      <div className="font-semibold">Name</div>
+      <div className="font-semibold">Priority</div>
+      {selectedPriorities
+        .sort((a, b) => a.priority - b.priority) // Sort by priority
+        .map((item, index) => (
+          <React.Fragment key={index}>
+            <div>{item.option}</div>
+            <div>{item.priority}</div>
+          </React.Fragment>
+        ))}
+    </div>
+  </div>
+)}
+
+
+      </div>
     </div>
   )}
 </div>
