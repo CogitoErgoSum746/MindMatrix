@@ -4,6 +4,8 @@ import mainpurple from "../images/mainpurple.png";
 import { API_BASE_URL } from "../config";
 import logout from "../images/logout.png"
 import Contact from "../components/HomePage/Contact";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Test() {
   const [tests] = useState([
@@ -149,6 +151,9 @@ function Test() {
   const handleGeneratePDF = async () => {
     setLoading(true);
 
+     // Show toast during report generation
+     toast.info('The final report based on all the scores of your tests is being generated. Note that you can send this report again if you did not receive it. The optimized generation might take a minute, please wait...', { autoClose: false });
+
     try {
       const authtoken = localStorage.getItem("authtoken");
       const response = await fetch(`${API_BASE_URL}/user/makepdf`, {
@@ -168,6 +173,10 @@ function Test() {
       console.error("Error generating PDF:", error);
     } finally {
       setLoading(false);
+      toast.dismiss(); // Close the info toast
+      toast.success("Congratulations on finishing the tests. You may now check your final report in your mail", {
+        autoClose: 6000,
+      });
     }
   };
 
@@ -299,6 +308,7 @@ function Test() {
         </div>
       </div>
       <Contact />
+      <ToastContainer autoClose={3000} />
     </div>
   );
 }

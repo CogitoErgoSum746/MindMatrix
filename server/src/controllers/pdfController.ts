@@ -1060,7 +1060,7 @@ export async function makeRadarChartPdf(req: Request, res: Response, testType: s
 //output
 export async function sendFeedback(req: Request, res: Response, studentType: string): Promise<void> {
     try {
-        if (studentType === "High School") {
+        if (studentType === "High school") {
             //Students wheel of life
             await makeFeedbackPdf(req, res, "Students Wheel of Life", "Academic Competency", 25, 13, 80, 20, 580);
             await makeFeedbackPdf(req, res, "Students Wheel of Life", "Health & Fitness", 25, 13, 80, 20, 540);
@@ -1467,7 +1467,7 @@ export async function sendUserInfo(req: Request, res: Response, studentType: str
         await userInfoPdf4(req, res, 2, 18, 225, 290); //Organization
         await userInfoPdf5(req, res, 2, 18, 225, 130); //Date   
 
-        if (studentType === "High School") {
+        if (studentType === "High school") {
         } else if (studentType === "College") {
         } else if (studentType === "Professional") {
 
@@ -1481,7 +1481,7 @@ export async function sendUserInfo(req: Request, res: Response, studentType: str
 export async function sendCharts(req: Request, res: Response, studentType: string): Promise<void> {
     try {
         //Charts
-        if (studentType === "High School") {
+        if (studentType === "High school") {
             await makeBarChartPdf(req, res, "Study Skills Profile Assessment", 20);
             await makeBarChartPdf(req, res, "Aptitude", 6);
             await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
@@ -1527,7 +1527,7 @@ export async function sendCharts(req: Request, res: Response, studentType: strin
 export async function sendScores(req: Request, res: Response, studentType: string): Promise<void> {
     try {
         //Scores
-        if (studentType === "High School") {
+        if (studentType === "High school") {
             //Aptitude
             await makeScorePercentPdf(req, res, "Aptitude", "Linguistic", 7, 13, 70, 660);
             await makeScorePercentPdf(req, res, "Aptitude", "Numerical", 7, 13, 70, 330);
