@@ -161,8 +161,8 @@ export async function getAllTestResults(req: Request, res: Response): Promise<vo
     const existingUser = await User.findOne(filter);
 
     if (existingUser) {
-      await User.findOneAndUpdate({ testResults : results });
-      res.status(200).json({ success: true});
+      await existingUser.updateOne({ testResults: results });
+      res.status(200).json({ success: true });
     } else {
       // If the user document doesn't exist, handle accordingly
       console.log("User not found");
@@ -235,8 +235,8 @@ export async function deleteCareerList(req: Request, res: Response): Promise<voi
     const existingUser = await User.findOne(filter);
 
     if (existingUser) {
-      await User.findOneAndUpdate({ carreerOptions : [] });
-      res.status(200).json({ success: true});
+      await User.findOneAndUpdate({ carreerOptions: [] });
+      res.status(200).json({ success: true });
     } else {
       // If the user document doesn't exist, handle accordingly
       console.log("User not found");
@@ -587,6 +587,18 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
 
     const studentType = existinguser?.studentType;
 
+    // Copy the PDF file to the custom folder
+    const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
+
+    let sourcePdfPath = "";
+    if (studentType === "High school") {
+      sourcePdfPath = path.join(sourceFolderPath, `High-School.pdf`);
+    } else if (studentType === "College") {
+      sourcePdfPath = path.join(sourceFolderPath, `College.pdf`);
+    } else if (studentType === "Professional") {
+      sourcePdfPath = path.join(sourceFolderPath, `Professional.pdf`);
+    }
+
     // Extract the first 5 letters from 'username' and 'email'
     const usernameFirst5 = username.slice(0, 5);
     const emailFirst5 = email.slice(0, 5);
@@ -594,7 +606,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     // Create the custom folder inside the "runningPdfs" folder
     const customFolderPath = path.join(__dirname, '..', 'runningPdfs', `${usernameFirst5}${emailFirst5}`);
     if (!fs.existsSync(customFolderPath)) {
-      fs.mkdirSync(customFolderPath, { recursive: true });
+      await fs.promises.mkdir(customFolderPath, { recursive: true });
     }
 
     const pdfFileName = 'feedback.pdf'; // Change this to your PDF file name
@@ -605,21 +617,8 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
       res.status(200).json({ success: true });
       return;
     }
-    // Copy the PDF file to the custom folder
-    const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
 
-    let sourcePdfPath = "";
-    if (studentType === "High School") {
-      sourcePdfPath = path.join(sourceFolderPath, 'High School.pdf');
-    } else if (studentType === "College") {
-      sourcePdfPath = path.join(sourceFolderPath, 'College.pdf');
-    } else if (studentType === "Professional") {
-      sourcePdfPath = path.join(sourceFolderPath, 'Professional.pdf');
-    }
-
-
-    const destinationPdfPath = path.join(customFolderPath, pdfFileName);
-    fs.copyFileSync(sourcePdfPath, destinationPdfPath);
+    await fs.promises.copyFile(sourcePdfPath, destiPdfPath);
 
     await sendUserInfo(req, res, studentType as string);
 
@@ -770,9 +769,9 @@ export async function doneSubTests(req: Request, res: Response): Promise<void> {
       "Aptitude": ["Linguistic", "Numerical", "Mechanical", "Abstract", "Spatial", "Logical"],
       "Study Skills Profile Assessment": ["Time Management and Procrastination", "Concentration and Memory", "Study Aids and Note-Taking", "Test Strategies and Test Anxiety", "Organizing and Processing Information", "Motivation and Attitude", "Reading and Selecting the Main Idea", "Writing"],
       "Students Wheel of Life": ["Academic Competency", "Health & Fitness", "Social Friends", "Discipline", "Good Manners", "Spirituality", "Goal Orientation", "Confidence", "Responsible", "Hobbies & Extracurriculars"],
-      "Left-Right Brain Dominance": ["Right Brain","Left Brain"],
+      "Left-Right Brain Dominance": ["Right Brain", "Left Brain"],
       "Personality": ["Openness", "Conscientiousness", "Extroversion", "Agreeableness", "Neuroticism"],
-      "Multiple Intelligence": ["Linguistic", "Logical", "Spatial", "Interpersonal", "Musical", "Naturalistic","Intrapersonal", "Kinesthetic"],
+      "Multiple Intelligence": ["Linguistic", "Logical", "Spatial", "Interpersonal", "Musical", "Naturalistic", "Intrapersonal", "Kinesthetic"],
       "Emotional Intelligence": ["Self-Awareness", "Managing Emotions", "Motivating Oneself", "Empathy", "Social Skill"],
       "Learning Style": ["Visual", "Auditory", "Kinesthetic"],
       "Leadership skills": ["Leadership"],
@@ -780,13 +779,13 @@ export async function doneSubTests(req: Request, res: Response): Promise<void> {
       "Cyber Dependency": ["Cyber Dependency"],
       "Competitive State Anxiety Inventory": ["Cognitive Anxiety", "Somatic Anxiety", "Self-Confidence"],
       "Professional Skills Set Assessment": ["Professional Skills Set Assessment"],
-      "Parenting Style": ["Authoritarian", "Authoritative", "Permissive","Uninvolved"],
+      "Parenting Style": ["Authoritarian", "Authoritative", "Permissive", "Uninvolved"],
       "Work Life Balance": ["Time Management", "Boundaries and Communication", "Well-being and Self-Care", "Flexibility and Adaptability", "Relationships and Fulfilment"],
-      "Wheel of Life": ["Money & Wealth", "Career & Work", "Health & Fitness", "Fun & Recreation", "Contribution", "Community", "Family", "Social & Friends","Love & Romance","Growth & Learning"],
+      "Wheel of Life": ["Money & Wealth", "Career & Work", "Health & Fitness", "Fun & Recreation", "Contribution", "Community", "Family", "Social & Friends", "Love & Romance", "Growth & Learning"],
       "Integrity Assessment": ["Integrity Assessment"],
       "Emotional Styles": ["Resilience", "Outlook", "Social Intuition", "Self-Awareness", "Sensitivity to Context", "Attention"],
-      "Entrepreneurship Suitability Assessment": ["Vision and Risk Assessment","Passion and Commitment","Decision-Making and Responsibility","Innovation and Adaptability","Market Awareness"],
-      "Professional Suitability Assessment": ["Skills and Qualifications","Passion and Interest","Work-Life Balance and Demands","Long-Term Goals","Market Demand and Trends"]
+      "Entrepreneurship Suitability Assessment": ["Vision and Risk Assessment", "Passion and Commitment", "Decision-Making and Responsibility", "Innovation and Adaptability", "Market Awareness"],
+      "Professional Suitability Assessment": ["Skills and Qualifications", "Passion and Interest", "Work-Life Balance and Demands", "Long-Term Goals", "Market Demand and Trends"]
     };
 
     const finalArray: number[] = [];
@@ -806,7 +805,7 @@ export async function doneSubTests(req: Request, res: Response): Promise<void> {
             finalArray.push(0);
           }
         });
-      } else if (theList){
+      } else if (theList) {
         theList.forEach(sub => {
           finalArray.push(0);
         });
