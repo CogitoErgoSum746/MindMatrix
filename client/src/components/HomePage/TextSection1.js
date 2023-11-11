@@ -90,7 +90,7 @@ const TextSection1 = () => {
               Neuro-cognitive-emotional Intelligence Behaviour Competency Mapping
             </p>
             <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter'] mt-2">
-              Find Your Stream of Learning- Carer Pathway by the most scientific
+              Find Your Stream of Learning- Career Pathway by the most scientific
               way!
             </p>
             <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter'] mt-6">

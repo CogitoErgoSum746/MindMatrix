@@ -1296,7 +1296,7 @@ function TestQuestionsPattern12() {
         },
         {
           questionText:
-            "16. Arrange the following words in a meaningful sequence -\n A)	Frog.  B) Grass. C) Grasshopper. D) Eagle.  E) Snake",
+            "16. Arrange the following words in a meaningful sequence -\n 1.	Frog.  2. Grass. 3. Grasshopper. 4. Eagle.  5. Snake",
           options: [
             { text: "A)	2, 3, 1, 5, 4", isCorrect: true },
             { text: "B)	3, 2, 1, 4, 5", isCorrect: false },
@@ -1488,18 +1488,10 @@ function TestQuestionsPattern12() {
       {!isTestCompleted && (
         <>
           <div className="p-10">
-            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-              Assessment Rating Criteria:{" "}
-            </h2>
-            <p className="text-left font-semibold mb-5">
+            <h2 className="text-left font-semibold text-xl mb-5">
               Please evaluate each statement according to how often it applies
-              to your situation. Use the following scale:
-            </p>
-            <p className="text-left font-semibold mb-5 font-['Spartan'] ">
-              <strong>
-                If you answer correctly you will score 1 mark for each question.
-              </strong>
-            </p>
+              to your situation.
+            </h2>
           </div>
         </>
       )}

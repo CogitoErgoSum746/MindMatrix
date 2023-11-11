@@ -79,7 +79,7 @@ const TestPage = () => {
           optionWeightage: [1, 2, 3, 4],
         },
         {
-          questionText: "2.My study place is free from auditory and visual distractions distractions, ",
+          questionText: "2.My study place is free from auditory and visual distractions.",
           options: ['Never', 'Sometimes', 'Usually', 'Always'],
           optionWeightage: [1, 2, 3, 4],
         },
