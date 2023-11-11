@@ -30,9 +30,11 @@ const Register = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Trim extra spaces from the beginning and end of the value
+    const trimmedValue = value.trim();
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: trimmedValue,
     });
 
 
