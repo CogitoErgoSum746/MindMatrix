@@ -9,10 +9,10 @@ import { API_BASE_URL } from "../config";
 const Register = () => {
   const [fadeIn, setFadeIn] = useState(false);
 
-    useEffect(() => {
-        // Trigger the fade-in animation when the component mounts
-        setFadeIn(true);
-    }, []);
+  useEffect(() => {
+    // Trigger the fade-in animation when the component mounts
+    setFadeIn(true);
+  }, []);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -20,7 +20,7 @@ const Register = () => {
     studentType: "",
     age: "",
     password: "",
-    organization_code: "", 
+    organization_code: "",
   });
 
   const [validationErrors, setValidationErrors] = useState({});
@@ -35,7 +35,7 @@ const Register = () => {
       [name]: value,
     });
 
-  
+
 
     setValidationErrors({
       ...validationErrors,
@@ -53,6 +53,11 @@ const Register = () => {
     setValidationErrors({});
     setRegistrationError("");
 
+    // Show loading toast
+    toast.info("Registration is in process. Please wait...", {
+      autoClose: false, // Do not auto-close, keep it open during registration
+    });
+
     try {
       const response = await fetch(`${API_BASE_URL}/auth/createuser`, {
         method: "POST",
@@ -69,8 +74,11 @@ const Register = () => {
         const token = data.token;
         localStorage.setItem("token", token);
 
-        toast.success("Registration successful. Please wait, we will redirect you to the login page.", {
-          autoClose: 3000, 
+        // Close the loading toast
+        toast.dismiss();
+
+        toast.success("Registration is successful. You may now check your mail for further instructions", {
+          autoClose: 6000,
         });
         // setTimeout(() => {
         //   navigate("/login");
@@ -78,14 +86,16 @@ const Register = () => {
 
         setTimeout(() => {
           navigate("/login");
-        }, 3000); 
+        }, 3000);
       } else {
+        // Close the loading toast
+        toast.dismiss();
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
           const data = await response.json();
           console.error("Registration failed:", data);
 
-  
+
           if (data.errors) {
             const errors = data.errors;
 

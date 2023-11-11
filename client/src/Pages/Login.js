@@ -10,10 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const [fadeIn, setFadeIn] = useState(false);
 
-    useEffect(() => {
-        // Trigger the fade-in animation when the component mounts
-        setFadeIn(true);
-    }, []);
+  useEffect(() => {
+    // Trigger the fade-in animation when the component mounts
+    setFadeIn(true);
+  }, []);
 
   const { login } = useAuth();
   const [formData, setFormData] = useState({
@@ -51,16 +51,20 @@ function Login() {
         console.log(data);
         console.log("successful login");
 
+        const toastMessage = `Welcome back ${data.username}, glad to see you again`;
+
         if (data.userType === "user") {
           const authtoken = data.authtoken;
           localStorage.setItem('authtoken', authtoken);
+          localStorage.setItem('toastMessage', toastMessage);
           login();
           window.location.href = '/getstarted';
         }
         if (data.userType === "admin") {
-          window.location.href = '/admin';
           const authtoken = data.authtoken;
           localStorage.setItem('authtoken', authtoken);
+          localStorage.setItem('toastMessage', toastMessage);
+          window.location.href = '/admin';
         }
       } else {
         const contentType = response.headers.get('content-type');

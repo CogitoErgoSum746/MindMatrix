@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import abtimg1 from "../../images/about/abtimg1.png";
 import abtimg2 from "../../images/about/abtimg2.png";
@@ -15,11 +15,18 @@ import Contact from "./Contact";
 import ScrollToTop from "../ScrollToTop";
 
 function About() {
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+      // Trigger the fade-in animation when the component mounts
+      setFadeIn(true);
+  }, []);
+
   return (
     <>
       <Navbar />
       <ScrollToTop />
-      <div className="container mx-auto px-2 md:px-10">
+      <div className={`container mx-auto px-2 md:px-10 opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
 
         <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10">
           About Us
