@@ -6,14 +6,9 @@ import registerImg from "../images/register.webp";
 import Navbar from "../components/Navbar";
 import { API_BASE_URL } from "../config";
 
+
 const Register = () => {
   const [fadeIn, setFadeIn] = useState(false);
-
-  useEffect(() => {
-    // Trigger the fade-in animation when the component mounts
-    setFadeIn(true);
-  }, []);
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -22,22 +17,21 @@ const Register = () => {
     password: "",
     organization_code: "",
   });
-
   const [validationErrors, setValidationErrors] = useState({});
   const [registrationError, setRegistrationError] = useState("");
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Trim extra spaces from the beginning and end of the value
     const trimmedValue = value.trim();
     setFormData({
       ...formData,
       [name]: trimmedValue,
     });
-
-
 
     setValidationErrors({
       ...validationErrors,
@@ -55,9 +49,8 @@ const Register = () => {
     setValidationErrors({});
     setRegistrationError("");
 
-    // Show loading toast
     toast.info("Registration is in process. Please wait...", {
-      autoClose: false, // Do not auto-close, keep it open during registration
+      autoClose: false,
     });
 
     try {
@@ -71,32 +64,25 @@ const Register = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // console.log("Registration successful:", data);
 
         const token = data.token;
         localStorage.setItem("token", token);
 
-        // Close the loading toast
         toast.dismiss();
 
         toast.success("Registration is successful. You may now check your mail for further instructions", {
           autoClose: 6000,
         });
-        // setTimeout(() => {
-        //   navigate("/login");
-        // }, 0);
 
         setTimeout(() => {
           navigate("/login");
         }, 3000);
       } else {
-        // Close the loading toast
         toast.dismiss();
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
           const data = await response.json();
           console.error("Registration failed:", data);
-
 
           if (data.errors) {
             const errors = data.errors;
@@ -112,7 +98,6 @@ const Register = () => {
             setValidationErrors(newValidationErrors);
           }
 
-          // Set the registration error message and display it using react-toastify
           if (data.error) {
             const newValidationErrors = {};
 
@@ -127,7 +112,6 @@ const Register = () => {
       console.error("Error during registration:", error);
     }
   };
-
 
   return (
     <>
@@ -238,7 +222,7 @@ const Register = () => {
                 htmlFor="organization_code"
                 className="flex items-start text-gray-700 font-semibold mb-1"
               >
-                Organization Code
+                Organization Code *
               </label>
               <input
                 type="text"
@@ -249,6 +233,24 @@ const Register = () => {
                 className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
               />
             </div>
+
+            <div className="mb-4">
+          <label
+            htmlFor="terms"
+            className="flex items-start text-gray-700 font-semibold mb-1"
+          >
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              className="mr-2"
+            />
+            I accept the{' '}
+            <Link to="/termsandconditions" className="text-blue-500 cursor-pointer">
+            Terms and Conditions
+            </Link>
+          </label>
+        </div>
 
             <div className="mb-4">
               <button

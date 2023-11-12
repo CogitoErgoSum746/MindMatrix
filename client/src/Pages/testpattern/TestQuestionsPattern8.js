@@ -360,8 +360,7 @@ function TestQuestionsPattern8() {
         <>
           <div className="p-10">
             <h2 className="text-left font-semibold text-xl mb-5">
-              Please evaluate each statement according to how often it applies
-              to your situation.
+            Carefully evaluate your degree of agreement or disagreement for each statement.
             </h2>
           </div>
         </>

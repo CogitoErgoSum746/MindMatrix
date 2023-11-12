@@ -1489,8 +1489,7 @@ function TestQuestionsPattern12() {
         <>
           <div className="p-10">
             <h2 className="text-left font-semibold text-xl mb-5">
-              Please evaluate each statement according to how often it applies
-              to your situation.
+            Carefully read each question and choose the correct answer.
             </h2>
           </div>
         </>

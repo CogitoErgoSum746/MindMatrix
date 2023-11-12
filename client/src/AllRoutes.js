@@ -29,6 +29,7 @@ import Facilitative from "./Pages/Facilitative";
 import PsychometricTestInfo from "./Pages/PsychometricTestInfo";
 import FloatingIcon from "./components/FloatingIcon";
 import ContactUs from "./Pages/Contactus";
+import Termsconds from "./Pages/Terms&Conditions";
 
 
 function AllRoutes() {
@@ -66,6 +67,7 @@ function AllRoutes() {
         />
         <Route path="/mindwellness" element={<MindW />} />
         <Route path="/facilitative" element={<Facilitative />} />
+        <Route path="/termsandconditions" element={<Termsconds />} />
         <Route path="/upcoming" element={<ComingSoon />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/certificate/:id" element={<CertificateContent />} />

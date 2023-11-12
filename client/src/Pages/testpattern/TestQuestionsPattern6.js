@@ -339,9 +339,8 @@ function TestQuestionsPattern6() {
         <>
           <div className="p-10">
             <h2 className="text-left font-semibold text-xl mb-5">
-              Please evaluate each statement according to how often it applies
-              to your situation.
-            </h2>
+            Assess each statement based on its frequency of relevance to your situation.
+            </h2> 
           </div>
         </>
       )}
