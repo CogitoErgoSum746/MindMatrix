@@ -30,6 +30,7 @@ import PsychometricTestInfo from "./Pages/PsychometricTestInfo";
 import FloatingIcon from "./components/FloatingIcon";
 import ContactUs from "./Pages/Contactus";
 import Termsconds from "./Pages/Terms&Conditions";
+import PageNotFound from "./PageNotFound";
 
 
 function AllRoutes() {
@@ -90,6 +91,7 @@ function AllRoutes() {
 
         <Route path="/sendmail" element={<Sendmail />} />
         <Route path="/reset-password/:token" element={<ResetPass />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
