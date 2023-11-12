@@ -842,7 +842,6 @@ function CareerOptions() {
         );
         setSelectedPriorities(updatedPriorities);
       } else {
-        // Add new career option
         if (selectedPriorities.length < 10) {
           const priorityValue = parseInt(selectedPriority, 10);
           const updatedPriorities = [
@@ -866,55 +865,69 @@ function CareerOptions() {
     }
   };
 
-  const handleIncreasePriority = (index) => {
-    const updatedPriorities = [...selectedPriorities];
-    if (updatedPriorities[index].priority < 10) {
-      // Remove the current priority from available priorities
-      const updatedAvailablePriorities = availablePriorities.filter(
-        (value) => value !== updatedPriorities[index].priority
-      );
+  // const handleIncreasePriority = (index) => {
+  //   const updatedPriorities = [...selectedPriorities];
+  //   if (updatedPriorities[index].priority < 10) {
+  //     // Remove the current priority from available priorities
+  //     const updatedAvailablePriorities = availablePriorities.filter(
+  //       (value) => value !== updatedPriorities[index].priority
+  //     );
   
-      updatedPriorities[index].priority += 1;
-      setSelectedPriorities(updatedPriorities);
+  //     updatedPriorities[index].priority += 1;
+  //     setSelectedPriorities(updatedPriorities);
   
-      // Update available priorities
-      const newPriority = updatedPriorities[index].priority;
-      const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
-      setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
-    }
-  };
+  //     // Update available priorities
+  //     const newPriority = updatedPriorities[index].priority;
+  //     const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
+  //     setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
+  //   }
+  // };
   
-  const handleDecreasePriority = (index) => {
-    const updatedPriorities = [...selectedPriorities];
-    if (updatedPriorities[index].priority > 1) {
-      // Remove the current priority from available priorities
-      const updatedAvailablePriorities = availablePriorities.filter(
-        (value) => value !== updatedPriorities[index].priority
-      );
+  // const handleDecreasePriority = (index) => {
+  //   const updatedPriorities = [...selectedPriorities];
+  //   if (updatedPriorities[index].priority > 1) {
+  //     // Remove the current priority from available priorities
+  //     const updatedAvailablePriorities = availablePriorities.filter(
+  //       (value) => value !== updatedPriorities[index].priority
+  //     );
   
-      updatedPriorities[index].priority -= 1;
-      setSelectedPriorities(updatedPriorities);
+  //     updatedPriorities[index].priority -= 1;
+  //     setSelectedPriorities(updatedPriorities);
   
-      // Update available priorities
-      const newPriority = updatedPriorities[index].priority;
-      const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
-      setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
-    }
-  };
+  //     // Update available priorities
+  //     const newPriority = updatedPriorities[index].priority;
+  //     const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
+  //     setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
+  //   }
+  // };
   
-  const handleDeleteOption = (index) => {
-    const deletedOption = selectedPriorities[index];
+  // const handleDeleteOption = (index) => {
+  //   const deletedOption = selectedPriorities[index];
   
-    // Update available priorities by adding back the deleted priority
-    const updatedAvailablePriorities = [...availablePriorities, deletedOption.priority];
-    setAvailablePriorities(updatedAvailablePriorities.sort((a, b) => a - b));
+  //   // Update available priorities by adding back the deleted priority
+  //   const updatedAvailablePriorities = [...availablePriorities, deletedOption.priority];
+  //   setAvailablePriorities(updatedAvailablePriorities.sort((a, b) => a - b));
   
-    // Remove the selected option from selectedPriorities
+  //   // Remove the selected option from selectedPriorities
+  //   const updatedPriorities = [...selectedPriorities];
+  //   updatedPriorities.splice(index, 1);
+  //   setSelectedPriorities(updatedPriorities);
+  // };
+  
+ 
+  const handleRemoveOption = (index) => {
+    const removedOption = selectedPriorities[index];
+    const updatedAvailablePriorities = [
+      ...availablePriorities,
+      removedOption.priority
+    ].sort((a, b) => a - b);
+  
+    setAvailablePriorities(updatedAvailablePriorities);
+  
     const updatedPriorities = [...selectedPriorities];
     updatedPriorities.splice(index, 1);
     setSelectedPriorities(updatedPriorities);
   };
-  
   
 
   const sendCareerOptionsToBackend = () => {
@@ -966,7 +979,7 @@ function CareerOptions() {
   }, []);
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md max-w-screen-md mx-auto sm:w-700 h-auto">
+    <div className="bg-white p-4 rounded-lg shadow-md max-w-screen-md mx-auto sm:w-700 h-auto mt-5">
   <div className="p-4 sm:p-8 bg-white">
     <h1 className="text-3xl font-bold mb-4 sm:mb-8">Instructions for Choosing a Career</h1>
 
@@ -1033,7 +1046,7 @@ function CareerOptions() {
             </select>
             <button
               onClick={handleOptionChange}
-              className="bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600"
+              className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-2 rounded-md mt-4"
             >
               Add Career Option
             </button>
@@ -1042,9 +1055,9 @@ function CareerOptions() {
               <Link to="/test">
                 <button
                   onClick={sendCareerOptionsToBackend}
-                  className="bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600"
+                  className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-2 rounded-md mt-4"
                 >
-                  Send Career Options to Backend
+                  Submit Career Options
                 </button>
               </Link>
             )}
@@ -1054,15 +1067,26 @@ function CareerOptions() {
 {selectedPriorities.length > 0 && (
   <div className="mt-8">
     <h2 className="text-2xl font-bold mb-4">Selected Career Options</h2>
-    <div className="grid grid-cols-2 gap-4 pl-6">
+    <div className="grid grid-cols-3 gap-4 pl-6">
       <div className="font-semibold">Name</div>
       <div className="font-semibold">Priority</div>
+      <div className="font-semibold">Actions</div>
       {selectedPriorities
         .sort((a, b) => a.priority - b.priority) // Sort by priority
         .map((item, index) => (
           <React.Fragment key={index}>
             <div>{item.option}</div>
-            <div>{item.priority}</div>
+            <div>
+              {item.priority}
+            </div>
+            <div>
+              <button
+                onClick={() => handleRemoveOption(index)}
+                className="text-red-500 hover:text-red-700"
+              >
+                Remove
+              </button>
+            </div>
           </React.Fragment>
         ))}
     </div>
