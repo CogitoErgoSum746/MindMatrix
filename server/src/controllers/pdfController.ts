@@ -522,7 +522,7 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
     page.setFont(TimesRomanFont);
     page.setFontColor(rgb(0, 0, 0));
 
-    if (testType === 'Students Wheel of Life') {
+    if (testType === 'Students Wheel of Life' || testType === 'Wheel of Life') {
         let line = score + '/10 ( ' + tact.percentage + ' )';
 
         let xd = Xd;
