@@ -75,7 +75,7 @@ function TestQuestionsPattern16() {
           authtoken: authtoken,
         },
         body: JSON.stringify({
-          testType: "Students Wheel of Life",
+          testType: "Wheel of Life",
           subCategory: selectedSubtest.name,
           score: categoryScore,
         }),
