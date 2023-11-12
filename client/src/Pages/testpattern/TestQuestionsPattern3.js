@@ -270,21 +270,9 @@ function TestQuestionsPattern3() {
       {!isTestCompleted && (
         <>
           <div className="p-10">
-            <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-              Assessment Rating Criteria:{" "}
+            <h2 className="text-left font-semibold text-xl mb-5">
+            Carefully read each statement and specify whether it applies to you by choosing "YES" or "NO."
             </h2>
-            <p className="text-left font-semibold mb-5">
-              Please evaluate each statement according to how often it applies
-              to your situation. Use the following scale:
-            </p>
-            <p className="text-left font-semibold">
-              <strong>Yes: </strong>If the statement
-              applies to you.
-            </p>
-            <p className="text-left font-semibold mb-5">
-              <strong>No: </strong>If the statement doesn't apply
-              to you.
-            </p>
           </div>
         </>
       )}

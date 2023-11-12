@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 import Navbar from "../Navbar";
 import abtimg1 from "../../images/about/abtimg1.png";
 import abtimg2 from "../../images/about/abtimg2.png";
@@ -249,6 +250,10 @@ function About() {
               <img src={abtimg12}></img>
             </div>
           </div>
+
+          <Link to="/termsandconditions" className="text-blue-500 cursor-pointer text-lg lg:text-2xl">
+            Terms and Conditions
+            </Link>
 
         </div>
       </div>

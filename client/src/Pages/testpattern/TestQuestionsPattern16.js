@@ -117,18 +117,10 @@ function TestQuestionsPattern16() {
         </>
       )}
       <div className="p-10">
-        <h2 className="text-left mt-70 font-bold text-2xl mb-10">
-          Assessment Rating Criteria:{" "}
-        </h2>
-        <p className="text-left font-semibold mb-5">
-          Please evaluate "{selectedSubtest.name}" according to how often it
-          applies to your situation. Use the following scale:
-        </p>
-        <p className="text-left font-semibold">
-          Rate it from 1 to 10, where 0 means it rarely applies to you, and 10
-          means it consistently applies to you.
-        </p>
-      </div>
+            <h2 className="text-left font-semibold text-xl mb-5">
+            For each category, rate your current satisfaction on a scale from 1 to 10, 
+            where 1 represents very dissatisfied and 10 represents extremely satisfied.             </h2>
+          </div>
       <div className="w-full h-full flex items-center justify-center">
         {isTestCompleted && (
           <div
