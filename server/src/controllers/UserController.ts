@@ -620,15 +620,15 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
 
     await fs.promises.copyFile(sourcePdfPath, destiPdfPath);
 
-    await sendUserInfo(req, res, studentType as string);
+    // await sendUserInfo(req, res, studentType as string);
 
-    await sendCharts(req, res, studentType as string);
+    // await sendCharts(req, res, studentType as string);
 
-    await sendScores(req, res, studentType as string);
+    // await sendScores(req, res, studentType as string);
 
     await sendFeedback(req, res, studentType as string);
 
-    await sendPdfToEmail(req, res);
+    // await sendPdfToEmail(req, res);
 
     res.status(200).json({ success: true });
   } catch (error) {

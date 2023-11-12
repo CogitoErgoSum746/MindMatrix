@@ -388,18 +388,26 @@ export async function makeFeedbackPdf(req: Request, res: Response, testType: str
         let currentCharCount = words[0].length;
 
         for (let i = 1; i < words.length; i++) {
-            const testLine = currentLine + ' ' + words[i]; // Test adding the next word
-            currentCharCount += words[i].length + 1;
-
-            // Check if the text width exceeds the maximum line width
-            if (currentCharCount <= maxLineWidth) {
-                // The line fits within the width, add the next word
-                currentLine = testLine;
-            } else {
-                // The line width exceeds the maximum, start a new line
-                lines.push(currentLine);
-                currentLine = words[i]; // Start a new line with the next word
-                currentCharCount = words[i].length;
+                if (words[i] === "\n") {
+                    // Start a new line
+                    lines.push(currentLine);
+                    currentLine = ""; // Reset the current line
+                    currentCharCount = 0;
+                    lines.push(currentLine);
+                } else {
+                    const testLine = currentLine + ' ' + words[i]; // Test adding the next word
+                    currentCharCount += words[i].length + 1;
+        
+                    // Check if the text width exceeds the maximum line width
+                    if (currentCharCount <= maxLineWidth) {
+                        // The line fits within the width, add the next word
+                        currentLine = testLine;
+                    } else {
+                        // The line width exceeds the maximum, start a new line
+                        lines.push(currentLine);
+                        currentLine = words[i]; // Start a new line with the next word
+                        currentCharCount = words[i].length;
+                    }
             }
         }
 
