@@ -352,8 +352,7 @@ function TestQuestionsPattern14() {
         <>
           <div className="p-10">
             <h2 className="text-left font-semibold text-xl mb-5">
-              Please evaluate each statement according to how often it applies
-              to your situation.
+            Read each statement carefully and select the response that best reflects your behaviour and attitudes.
             </h2>
           </div>
         </>
