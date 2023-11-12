@@ -30,7 +30,7 @@ import PsychometricTestInfo from "./Pages/PsychometricTestInfo";
 import FloatingIcon from "./components/FloatingIcon";
 import ContactUs from "./Pages/Contactus";
 import Termsconds from "./Pages/Terms&Conditions";
-import PageNotFound from "./PageNotFound";
+import PageNotFound from "./Pages/PageNotFound";
 
 
 function AllRoutes() {
