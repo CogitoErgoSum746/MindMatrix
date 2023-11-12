@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { Eye, EyeOff } from "react-feather";
 import "react-toastify/dist/ReactToastify.css";
 import registerImg from "../images/register.webp";
 import Navbar from "../components/Navbar";
@@ -25,6 +26,20 @@ const Register = () => {
     setFadeIn(true);
   }, []);
 
+  const [termsChecked, setTermsChecked] = useState(false);
+  const [checkboxError, setCheckboxError] = useState("");
+
+  const handleTermsChange = () => {
+    setTermsChecked(!termsChecked);
+    setCheckboxError("");
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     const trimmedValue = value.trim();
@@ -45,6 +60,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!termsChecked) {
+      setCheckboxError("Please accept the Terms and Conditions.");
+      return;
+    }
 
     setValidationErrors({});
     setRegistrationError("");
@@ -199,23 +219,33 @@ const Register = () => {
               />
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="flex items-start text-gray-700 font-semibold mb-1"
-              >
-                Password *
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
-              />
-            </div>
+            <div className="mb-4 relative">
+        <label
+          htmlFor="password"
+          className="flex items-start text-gray-700 font-semibold mb-1"
+        >
+          Password *
+        </label>
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            className="w-full px-14 py-2 border rounded-md pr-12 focus:outline-none focus:ring focus:ring-orange-200"
+          />
+          <button
+            type="button"
+            onClick={handleTogglePassword}
+            className="absolute top-2 right-2 -mr-10 h-8 w-8 flex items-center justify-center text-gray-600"
+          >
+            {showPassword ? <EyeOff /> : <Eye />}
+          </button>
+        </div>
+      </div>
+
 
             <div className="mb-4">
               <label
@@ -235,22 +265,32 @@ const Register = () => {
             </div>
 
             <div className="mb-4">
-          <label
-            htmlFor="terms"
-            className="flex items-start text-gray-700 font-semibold mb-1"
-          >
-            <input
-              type="checkbox"
-              id="terms"
-              name="terms"
-              className="mr-2"
-            />
-            I accept the{' '}
-            <Link to="/termsandconditions" className="text-blue-500 cursor-pointer">
-            Terms and Conditions
-            </Link>
-          </label>
-        </div>
+              <label
+                htmlFor="terms"
+                className="flex items-start text-gray-700 font-semibold mb-1"
+              >
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  checked={termsChecked}
+                  onChange={handleTermsChange}
+                  className="mr-2"
+                />
+                I accept the{' '}
+                <a
+                  href="/termsandconditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 cursor-pointer"
+                >
+                  Terms and Conditions
+                </a>
+              </label>
+              {checkboxError && (
+                <p className="text-red-500 mt-2">{checkboxError}</p>
+              )}
+            </div>
 
             <div className="mb-4">
               <button

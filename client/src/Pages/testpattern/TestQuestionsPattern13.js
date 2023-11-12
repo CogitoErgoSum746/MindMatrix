@@ -270,8 +270,7 @@ function TestQuestionsPattern13() {
         <>
           <div className="p-10">
             <h2 className="text-left font-semibold text-xl mb-5">
-            Carefully read each question and choose the correct answer.
-            </h2>
+            Assess each statement based on its frequency of relevance to your situation.            </h2>
           </div>
         </>
       )}
