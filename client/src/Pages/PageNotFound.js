@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import pgnot from "./images/pagenotfound.png"
+import pgnot from "../images/pagenotfound.png"
 
 const PageNotFound = () => {
   return (
