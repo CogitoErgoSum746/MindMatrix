@@ -2,18 +2,18 @@ import React from "react";
 import imggall1 from "../../../src/images/imagegallery/imggall1.jpeg";
 import imggall2 from "../../../src/images/imagegallery/imggall2.jpg";
 import imggall3 from "../../../src/images/imagegallery/imggall3.jpg";
-import imggall4 from "../../../src/images/imagegallery/imggall4.jpg";
-import imggall5 from "../../../src/images/imagegallery/imggall5.jpg";
+import imggall4 from "../../../src/images/imagegallery/imggall4.webp";
+import imggall5 from "../../../src/images/imagegallery/imggall5.webp";
 import imggall6 from "../../../src/images/imagegallery/imggall6.jpg";
 import imggall7 from "../../../src/images/imagegallery/imggall7.jpg";
 import imggall8 from "../../../src/images/imagegallery/imggall8.jpg";
-import imggall9 from "../../../src/images/imagegallery/imggall9.jpg";
-import imggall10 from "../../../src/images/imagegallery/imggall10.jpg";
+import imggall9 from "../../../src/images/imagegallery/imggall9.webp";
+import imggall10 from "../../../src/images/imagegallery/imggall10.webp";
 import imggall11 from "../../../src/images/imagegallery/imggall11.jpg";
 import imggall12 from "../../../src/images/imagegallery/imggall12.jpg";
-import imggall13 from "../../../src/images/imagegallery/imggall13.jpg";
-import imggall14 from "../../../src/images/imagegallery/imggall14.jpg";
-import imggall15 from "../../../src/images/imagegallery/imggall15.jpg";
+import imggall13 from "../../../src/images/imagegallery/imggall13.webp";
+import imggall14 from "../../../src/images/imagegallery/imggall14.webp";
+import imggall15 from "../../../src/images/imagegallery/imggall15.webp";
 import Carousel from "react-multi-carousel";
 
 const images = [

@@ -113,14 +113,7 @@ function About() {
             <div className="flex flex-col md:flex-row gap-6 justify-between">
             <img src={abtimg4} className="md:hidden"></img>
               <div className="self-center text-left text-base md:text-lg">
-                Our approach takes into account every facet of your being,
-                aiming to boost your self-confidence, nurture a strong sense of
-                self-worth, cultivate a positive mindset, and assist you in
-                uncovering your true passions. We believe that these aren't just
-                techniques; they are gateways that lead to profound
-                introspection and ignite your creativity. This transformative
-                process empowers you to harness your personal and professional
-                capacities to the absolute maximum.
+              Get on board a transformative voyage with Success Steps as your steadfast companions. Our mission is to guide you toward unearthing your untapped potential across personal and professional domains. Engage in an extraordinary journey fuelled by our innovative Neuro Cognitive Emotional Behaviour (NCEB) approach, seamlessly integrating NLP, neuroscience, emotional intelligence, cognitive psychology, and meta-cognition. This journey promises an unmatched expedition into mastering your mind and igniting your limitless capabilities. 
               </div>
               <img src={abtimg4} className="hidden md:block"></img>
             </div>
@@ -136,14 +129,7 @@ function About() {
               <img src={abtimg5} className="md:hidden"></img>
               <img src={abtimg5} className="hidden md:block"></img>
               <div className="self-center text-left text-base md:text-lg">
-                Our approach takes into account every facet of your being,
-                aiming to boost your self-confidence, nurture a strong sense of
-                self-worth, cultivate a positive mindset, and assist you in
-                uncovering your true passions. We believe that these aren't just
-                techniques; they are gateways that lead to profound
-                introspection and ignite your creativity. This transformative
-                process empowers you to harness your personal and professional
-                capacities to the absolute maximum.
+              Embark on a transformative journey towards enhanced wellbeing with our Talk! Resolve! Heal! Online and offline counselling therapy. Designed for your convenience, it's accessible anytime, anywhere, on any device. Our platform offers you a 100% private and secure haven for your healing voyage. 
               </div>
             </div>
           </div>

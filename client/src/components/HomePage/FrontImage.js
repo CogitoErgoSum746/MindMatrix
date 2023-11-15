@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import homebg from '../../../src/images/newbg.webp';
+import homebg from '../../../src/images/newbg(lesser).webp';
 
 const FrontImage = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -17,26 +17,26 @@ const FrontImage = () => {
                   <h1 className="text-xl md:text-5xl lg:text-7xl font-bold">
                       UNLOCK YOUR LIMITLESS POTENTIAL
                   </h1>
-                  <h1 className="text-[8px] md:text-sm lg:text-2xl font-bold mt-0 md:mt-2 lg:mt-4">
+                  <h4 className="text-[8px] md:text-sm lg:text-2xl font-bold mt-0 md:mt-2 lg:mt-4">
                       Personal Resourcefulness and Professional Excellence!
-                  </h1>
+                  </h4>
               </div>
               <div className='absolute top-1/2 text-white flex justify-around w-full'>
                   <div className='w-1/4 text-right'>
-                      <h3 className='text-[6px] md:text-sm lg:text-2xl'>
+                      <h4 className='text-[6px] md:text-sm lg:text-2xl'>
                           Unveiling the Fusion of
-                      </h3>
-                      <h1 className="text-xs md:text-xl lg:text-4xl font-semibold">
+                      </h4>
+                      <h2 className="text-xs md:text-xl lg:text-4xl font-semibold">
                           Neurocognitive Emotional Behavior (NCEB)
-                      </h1>
+                      </h2>
                   </div>
                   <div className='w-1/4 text-left'>
                       <h3 className='text-[6px] md:text-sm lg:text-2xl'>
                           NLP + Neuroscience + Emotional Intelligence + Cognitive Psychology =
                       </h3>
-                      <h1 className="text-xs md:text-xl lg:text-4xl font-semibold">
+                      <h2 className="text-xs md:text-xl lg:text-4xl font-semibold">
                           Next –Level Mind Mastery
-                      </h1>
+                      </h2>
                   </div>
               </div>
           </div>

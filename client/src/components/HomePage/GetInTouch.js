@@ -75,9 +75,9 @@ const GetInTouch = () => {
     <div id="getintouch" className="bg-stone-50 w-full py-12">
   <div className="max-w-screen-lg mx-auto px-4 border-2 border-gray-400 rounded-lg shadow-lg p-4">
     <div className="text-center">
-      <h1 className="text-black text-4xl font-semibold font-inter leading-10">
+      <h3 className="text-black text-4xl font-semibold font-inter leading-10">
         Get In Touch
-      </h1>
+      </h3>
       <p className="text-zinc-500 text-base font-normal font-sans-pro leading-relaxed my-5">
         We’re here to help. Chat with us 24/7 and get set up and ready to go in just a quick.
       </p>
