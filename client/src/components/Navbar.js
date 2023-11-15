@@ -166,9 +166,8 @@ function Navbar() {
           <Link to="/facilitative" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white py-1">
             Facilitator Profile
           </Link>
-          <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
-            Contact Us
-          </ScrollLink>
+          <a href="/ContactUs" class="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">Contact Us</a>
+
           <Link to={isLoggedin ? "/" : "/login"} onClick={scrollToTop}>
             <button
               className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"

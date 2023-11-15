@@ -34,8 +34,8 @@ const NewHomePage = () => {
           <SatisfiedClients />
           <ImageGalary />
           <GetInTouch />
-          <FloatingIcon />
         </div>
+        <FloatingIcon />
         <Contact />
     </div>
       );
