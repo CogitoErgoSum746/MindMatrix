@@ -41,6 +41,7 @@ async function sendEmail(
     await transporter.sendMail(mailOptions);
     // console.log('Email sent successfully');
   } catch (error) {
+    errorLogger.error(`Error in sending email in auth:`, error instanceof Error ? error.message : error);
     console.error('Error sending email:', error);
   }
 }
@@ -53,7 +54,7 @@ async function sendEmail(
 const saltRounds = 10;
 
 export const createUser = async (req: Request, res: Response): Promise<any> => {
-  
+
   let success = false;
 
   // If there are validation errors return bad request and the errors
@@ -72,7 +73,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     }
 
     // check whether the user with this email exists already
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email, org_code: organization_code });
     if (user) {
       return res.status(400).json({ success, error: "Email already exists" });
     }
@@ -92,6 +93,11 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
     });
 
     if (userCreated) {
+      // Token authentication using JWT
+      const authtoken = signToken(userCreated.username, userCreated.email, userCreated.org_code);
+
+      res.status(201).json(authtoken);
+
       const subject = "Welcome to the Psychometric Test Journey";
       const text = `Dear ${userCreated.username},\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nWarm regards,\n\nDr. Antony Augusthy`;
       const attachments = [{
@@ -103,13 +109,6 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
 
       sendEmail(userCreated.email, subject, text, attachments);
     }
-
-    // Token authentication using JWT
-    const authtoken = signToken(userCreated.username, userCreated.email, userCreated.org_code);
-
-    // Response
-    success = true;
-    res.status(201).json(authtoken);
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal server error");
@@ -159,7 +158,7 @@ export async function login(req: Request, res: Response): Promise<any> {
     const authtoken = signToken(user.username, user.email, user.org_code);
 
     appLogger.info(`User logged in: ${user.username}`);
-    
+
     // Response
     res.status(200).json({ success: true, username: username, userType: 'user', authtoken });
     return;
