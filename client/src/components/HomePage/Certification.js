@@ -7,9 +7,9 @@ const Certification = () => {
     <div className="flex flex-col md:flex-row gap-3 mb-5 justify-between">
       <div className='flex flex-col gap-3 self-center'>
       <img src={cert} className="md:hidden"></img>
-        <h1 className="text-black text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter'] md-5">
+        <h2 className="text-black text-xl md:text-2xl lg:text-4xl font-semibold font-['Inter'] md-5">
           CERTIFICATION PROGRAM
-        </h1>
+        </h2>
         <p className="text-neutral-700 lg:text-xl  font-semibold font-['Inter']">
           Begin Your Success Journey Getting  Certified
         </p>
