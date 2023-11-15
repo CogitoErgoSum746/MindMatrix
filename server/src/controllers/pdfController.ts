@@ -1323,141 +1323,141 @@ export async function sendFeedback(req: Request, res: Response, studentType: str
             await makeFeedbackPdf(req, res, "Professional Skills Set Assessment", "Professional Skills Set Assessment", 44, 13, 80, 60, 330);
         } else if (studentType === "Professional") {
             // Multiple Intelligence-feedback
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 50, 590);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 50, 580);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 80, 50, 595);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Interpersonal", 14, 13, 80, 50, 590);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 80, 50, 595);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 80, 50, 605);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 595);
-            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 595);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Linguistic", 6, 13, 80, 50, 590);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Logical", 7, 13, 80, 50, 580);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Spatial", 8, 13, 80, 50, 595);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Interpersonal", 9, 13, 80, 50, 590);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Musical", 10, 13, 80, 50, 595);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Naturalistic", 11, 13, 80, 50, 605);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Kinesthetic", 12, 13, 80, 50, 595);
+            await makeFeedbackPdf(req, res, "Multiple Intelligence", "Intrapersonal", 13, 13, 80, 50, 595);
 
             // Multiple Intelligence-carreer suggestions
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 50, 370);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Interpersonal", 14, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Linguistic", 6, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 7, 13, 80, 50, 370);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 8, 13, 80, 50, 385);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Interpersonal", 9, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 10, 13, 80, 50, 385);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 11, 13, 80, 50, 385);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 12, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 13, 13, 80, 50, 380);
 
             //Emotional Intelligence
-            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 80, 40, 620);
-            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Managing Emotions", 33, 13, 80, 40, 390);
-            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Motivating Oneself", 33, 13, 80, 40, 150);
-            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Empathy", 34, 13, 80, 40, 620);
-            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Social Skill", 34, 13, 80, 40, 350);
+            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 38, 13, 80, 40, 620);
+            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Managing Emotions", 38, 13, 80, 40, 390);
+            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Motivating Oneself", 38, 13, 80, 40, 150);
+            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Empathy", 39, 13, 80, 40, 620);
+            await makeFeedbackPdf(req, res, "Emotional Intelligence", "Social Skill", 39, 13, 80, 40, 350);
 
             //Personality-Feedback
-            await makeFeedbackPdf(req, res, "Personality", "Extroversion", 29, 13, 80, 40, 600);
-            await makeFeedbackPdf(req, res, "Personality", "Agreeableness", 29, 13, 80, 40, 320);
-            await makeFeedbackPdf(req, res, "Personality", "Conscientiousness", 30, 13, 80, 40, 600);
-            await makeFeedbackPdf(req, res, "Personality", "Neuroticism", 30, 13, 80, 40, 285);
-            await makeFeedbackPdf(req, res, "Personality", "Openness", 31, 13, 80, 40, 580);
+            await makeFeedbackPdf(req, res, "Personality", "Extroversion", 34, 13, 80, 40, 600);
+            await makeFeedbackPdf(req, res, "Personality", "Agreeableness", 34, 13, 80, 40, 320);
+            await makeFeedbackPdf(req, res, "Personality", "Conscientiousness", 35, 13, 80, 40, 600);
+            await makeFeedbackPdf(req, res, "Personality", "Neuroticism", 35, 13, 80, 40, 285);
+            await makeFeedbackPdf(req, res, "Personality", "Openness", 36, 13, 80, 40, 580);
 
             //Personality-possible personality type
-            await personalityTypePdf(req, res, "Personality", "Extroversion", 29, 13, 160, 533);
-            await personalityTypePdf(req, res, "Personality", "Agreeableness", 29, 13, 160, 228);
-            await personalityTypePdf(req, res, "Personality", "Conscientiousness", 30, 13, 160, 520);
-            await personalityTypePdf(req, res, "Personality", "Neuroticism", 30, 13, 160, 210);
-            await personalityTypePdf(req, res, "Personality", "Openness", 31, 13, 160, 470);
+            await personalityTypePdf(req, res, "Personality", "Extroversion", 34, 13, 160, 533);
+            await personalityTypePdf(req, res, "Personality", "Agreeableness", 34, 13, 160, 228);
+            await personalityTypePdf(req, res, "Personality", "Conscientiousness", 35, 13, 160, 520);
+            await personalityTypePdf(req, res, "Personality", "Neuroticism", 35, 13, 160, 210);
+            await personalityTypePdf(req, res, "Personality", "Openness", 36, 13, 160, 470);
 
             //Personality-carreer suggestions
-            await carreerSugPdf(req, res, "Personality", "Extroversion", 29, 13, 80, 40, 490);
-            await carreerSugPdf(req, res, "Personality", "Agreeableness", 29, 13, 80, 40, 180);
-            await carreerSugPdf(req, res, "Personality", "Conscientiousness", 30, 13, 80, 40, 475);
-            await carreerSugPdf(req, res, "Personality", "Neuroticism", 30, 13, 80, 40, 170);
-            await carreerSugPdf(req, res, "Personality", "Openness", 31, 13, 80, 40, 395);
+            await carreerSugPdf(req, res, "Personality", "Extroversion", 34, 13, 80, 40, 490);
+            await carreerSugPdf(req, res, "Personality", "Agreeableness", 34, 13, 80, 40, 180);
+            await carreerSugPdf(req, res, "Personality", "Conscientiousness", 35, 13, 80, 40, 475);
+            await carreerSugPdf(req, res, "Personality", "Neuroticism", 35, 13, 80, 40, 170);
+            await carreerSugPdf(req, res, "Personality", "Openness", 36, 13, 80, 40, 395);
 
             //Learning Style
-            await makeFeedbackPdf(req, res, "Learning Style", "Visual", 36, 13, 80, 40, 620);
-            await makeFeedbackPdf(req, res, "Learning Style", "Auditory", 36, 13, 84, 40, 455);
-            await makeFeedbackPdf(req, res, "Learning Style", "Kinesthetic", 36, 13, 80, 40, 230);
+            await makeFeedbackPdf(req, res, "Learning Style", "Visual", 41, 13, 80, 40, 620);
+            await makeFeedbackPdf(req, res, "Learning Style", "Auditory", 41, 13, 84, 40, 455);
+            await makeFeedbackPdf(req, res, "Learning Style", "Kinesthetic", 41, 13, 80, 40, 230);
 
             //Leadership Style
-            await makeFeedbackPdf(req, res, "Leadership Style", "Authoritative", 39, 13, 80, 40, 600);
-            await makeFeedbackPdf(req, res, "Leadership Style", "Democratic", 39, 13, 80, 40, 270);
-            await makeFeedbackPdf(req, res, "Leadership Style", "Facilitative", 40, 13, 80, 35, 580);
-            await makeFeedbackPdf(req, res, "Leadership Style", "Situational", 40, 13, 80, 35, 280);
+            await makeFeedbackPdf(req, res, "Leadership Style", "Authoritative", 44, 13, 80, 40, 600);
+            await makeFeedbackPdf(req, res, "Leadership Style", "Democratic", 44, 13, 80, 40, 270);
+            await makeFeedbackPdf(req, res, "Leadership Style", "Facilitative", 45, 13, 80, 35, 580);
+            await makeFeedbackPdf(req, res, "Leadership Style", "Situational", 45, 13, 80, 35, 280);
 
             //Competitive State Anxiety Inventory
-            await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Cognitive Anxiety", 43, 13, 80, 35, 620);
-            await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Somatic Anxiety", 43, 13, 80, 35, 415);
-            await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Self-Confidence", 43, 13, 80, 35, 190);
+            await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Cognitive Anxiety", 53, 13, 80, 35, 620);
+            await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Somatic Anxiety", 53, 13, 80, 35, 415);
+            await makeFeedbackPdf(req, res, "Competitive State Anxiety Inventory", "Self-Confidence", 53, 13, 80, 35, 190);
 
             //Leadership skills
-            await makeFeedbackPdf(req, res, "Leadership skills", "Leadership", 37, 13, 80, 45, 335);
+            await makeFeedbackPdf(req, res, "Leadership skills", "Leadership", 42, 13, 80, 45, 335);
 
             //carreerOptions
-            await carreerOptionsPdf(req, res, 19, 13, 125, 375);
+            await carreerOptionsPdf(req, res, 14, 13, 125, 375);
 
             //Cyber dependency
-            await makeFeedbackPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 80, 50, 320);
+            await makeFeedbackPdf(req, res, "Cyber Dependency", "Cyber Dependency", 51, 13, 80, 50, 320);
 
             //Left-Brain Dominance
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Analytical Thinking", 27, 13, 80, 43, 600);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Language Skills", 27, 13, 80, 43, 570);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Math and Logic", 27, 13, 80, 43, 540);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Structured Planning", 27, 13, 80, 43, 510);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Sequential Processing", 27, 13, 80, 43, 480);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Analytical Thinking", 32, 13, 80, 43, 600);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Language Skills", 32, 13, 80, 43, 570);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Math and Logic", 32, 13, 80, 43, 540);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Structured Planning", 32, 13, 80, 43, 510);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Left Brain", "Sequential Processing", 32, 13, 80, 43, 480);
 
             //Right Brain Dominance
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Creativity", 27, 13, 80, 43, 310);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Visual Perception", 27, 13, 80, 43, 280);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Intuition", 27, 13, 80, 43, 250);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Holistic Thinking", 27, 13, 80, 43, 220);
-            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Artistic Abilities", 27, 13, 80, 43, 190);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Creativity", 32, 13, 80, 43, 310);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Visual Perception", 32, 13, 80, 43, 280);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Intuition", 32, 13, 80, 43, 250);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Holistic Thinking", 32, 13, 80, 43, 220);
+            await BrainFeedback(req, res, "Left-Right Brain Dominance", "Right Brain", "Artistic Abilities", 32, 13, 80, 43, 190);
 
             //integrity assessment
-            await makeFeedbackPdf(req, res, "Integrity Assessment", "Integrity Assessment", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Integrity Assessment", "Integrity Assessment", 18, 13, 80, 85, 375);
 
             //emotional style
-            await makeFeedbackPdf(req, res, "Emotional Styles", "Resilience", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Emotional Styles", "Outlook", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Emotional Styles", "Social Intuition", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Emotional Styles", "Self-Awareness", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Emotional Styles", "Sensitivity to Context", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Emotional Styles", "Attention", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Emotional Styles", "Resilience", 20, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Emotional Styles", "Outlook", 20, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Emotional Styles", "Social Intuition", 21, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Emotional Styles", "Self-Awareness", 21, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Emotional Styles", "Sensitivity to Context", 22, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Emotional Styles", "Attention", 22, 13, 80, 85, 375);
 
             //work life balance
-            await makeFeedbackPdf(req, res, "Work Life Balance", "Time Management", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Work Life Balance", "Boundaries and Communication", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Work Life Balance", "Well-being and Self-Care", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Work Life Balance", "Flexibility and Adaptability", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Work Life Balance", "Relationships and Fulfilment", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Work Life Balance", "Time Management", 28, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Work Life Balance", "Boundaries and Communication", 28, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Work Life Balance", "Well-being and Self-Care", 29, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Work Life Balance", "Flexibility and Adaptability", 29, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Work Life Balance", "Relationships and Fulfilment", 30, 13, 80, 85, 375);
 
             //parenting style
-            await makeFeedbackPdf(req, res, "Parenting Style", "Authoritarian", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Parenting Style", "Authoritative", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Parenting Style", "Permissive", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Parenting Style", "Uninvolved", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Parenting Style", "Authoritarian", 47, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Parenting Style", "Authoritative", 47, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Parenting Style", "Permissive", 48, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Parenting Style", "Uninvolved", 48, 13, 80, 85, 375);
 
             //wheel of life
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Money & Wealth", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Career & Work", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Health & Fitness", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Fun & Recreation", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Contribution", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Community", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Family", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Social & Friends", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Love & Romance", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Wheel of Life", "Growth and Learning", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Money & Wealth", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Career & Work", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Health & Fitness", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Fun & Recreation", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Contribution", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Community", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Family", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Social & Friends", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Love & Romance", 50, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Wheel of Life", "Growth and Learning", 50, 13, 80, 85, 375);
 
             //Professional Suitability Assessment
-            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Skills and Qualifications", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Passion and Interest", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Work-Life Balance and Demands", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Long-Term Goals", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Market Demand and Trends", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Skills and Qualifications", 16, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Passion and Interest", 16, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Work-Life Balance and Demands", 16, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Long-Term Goals", 17, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Professional Suitability Assessment", "Market Demand and Trends", 17, 13, 80, 85, 375);
 
             //Entrepreneurship Suitability Assessment
-            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Vision and Risk Assessment", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Passion and Commitment", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Decision-Making and Responsibility", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Innovation and Adaptability", 41, 13, 80, 85, 375);
-            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Market Awareness", 41, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Vision and Risk Assessment", 24, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Passion and Commitment", 24, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Decision-Making and Responsibility", 25, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Innovation and Adaptability", 25, 13, 80, 85, 375);
+            await makeFeedbackPdf(req, res, "Entrepreneurship Suitability Assessment", "Market Awareness", 26, 13, 80, 85, 375);
         }
     } catch (error) {
         console.log(error);
@@ -1512,19 +1512,19 @@ export async function sendCharts(req: Request, res: Response, studentType: strin
             await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
             await makeRadarChartPdf(req, res, "Students Wheel of Life", 24);
         } else if (studentType === "Professional") {
-            await makeBarChartPdf(req, res, "Multiple Intelligence", 10);
-            await makeBarChartPdf(req, res, "Emotional Intelligence", 32);
-            await makeBarChartPdf(req, res, "Personality", 28);
-            await makeBarChartPdf(req, res, "Learning Style", 35);
-            await makeBarChartPdf(req, res, "Leadership Style", 38);
-            await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 42);
-            await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 26);
-            await makeBarChartPdf(req, res, "Professional Suitability Assessment", 32);
-            await makeBarChartPdf(req, res, "Emotional Styles", 28);
-            await makeBarChartPdf(req, res, "Entrepreneurship Suitability Assessment", 35);
-            await makeBarChartPdf(req, res, "Work Life Balance", 38);
-            await makeBarChartPdf(req, res, "Parenting Style", 42);
-            await makeRadarChartPdf(req, res, "Wheel of Life", 26);
+            await makeBarChartPdf(req, res, "Multiple Intelligence", 5);
+            await makeBarChartPdf(req, res, "Professional Suitability Assessment", 15);
+            await makeBarChartPdf(req, res, "Emotional Styles", 19);
+            await makeBarChartPdf(req, res, "Entrepreneurship Suitability Assessment", 23);
+            await makeBarChartPdf(req, res, "Work Life Balance", 27);
+            await makeBarChartPdf(req, res, "Left-Right Brain Dominance", 31);
+            await makeBarChartPdf(req, res, "Personality", 33);
+            await makeBarChartPdf(req, res, "Emotional Intelligence", 37);
+            await makeBarChartPdf(req, res, "Learning Style", 40);
+            await makeBarChartPdf(req, res, "Leadership Style", 43);
+            await makeBarChartPdf(req, res, "Parenting Style", 46);
+            await makeRadarChartPdf(req, res, "Wheel of Life", 49);
+            await makeBarChartPdf(req, res, "Competitive State Anxiety Inventory", 52);
         }
     } catch (error) {
         console.log(error);
@@ -1700,104 +1700,104 @@ export async function sendScores(req: Request, res: Response, studentType: strin
             await makeScorePercentPdf(req, res, "Professional Skills Set Assessment", "Professional Skills Set Assessment", 44, 13, 100, 375);
         } else if (studentType === "Professional") {
             //Multilple Intelligence
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 632);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 625);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 100, 640);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Interpersonal", 14, 13, 100, 635);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 100, 640);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 100, 650);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 100, 640);
-            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 100, 640);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Linguistic", 6, 13, 80, 632);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Logical", 7, 13, 80, 625);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Spatial", 8, 13, 100, 640);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Interpersonal", 9, 13, 100, 635);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Musical", 10, 13, 100, 640);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Naturalistic", 11, 13, 100, 650);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Kinesthetic", 12, 13, 100, 640);
+            await makeScorePercentPdf(req, res, "Multiple Intelligence", "Intrapersonal", 13, 13, 100, 640);
 
             //left-right brain
-            await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 27, 13, 80, 652);
-            await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain", 27, 13, 80, 362);
+            await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Left Brain", 32, 13, 80, 652);
+            await makeScorePercentPdf(req, res, "Left-Right Brain Dominance", "Right Brain", 32, 13, 80, 362);
 
             //Personality
-            await makeScorePercentPdf(req, res, "Personality", "Extroversion", 29, 13, 70, 664);
-            await makeScorePercentPdf(req, res, "Personality", "Agreeableness", 29, 13, 70, 367);
-            await makeScorePercentPdf(req, res, "Personality", "Conscientiousness", 30, 13, 70, 662);
-            await makeScorePercentPdf(req, res, "Personality", "Neuroticism", 30, 13, 70, 350);
-            await makeScorePercentPdf(req, res, "Personality", "Openness", 31, 13, 70, 634);
+            await makeScorePercentPdf(req, res, "Personality", "Extroversion", 34, 13, 70, 664);
+            await makeScorePercentPdf(req, res, "Personality", "Agreeableness", 34, 13, 70, 367);
+            await makeScorePercentPdf(req, res, "Personality", "Conscientiousness", 35, 13, 70, 662);
+            await makeScorePercentPdf(req, res, "Personality", "Neuroticism", 35, 13, 70, 350);
+            await makeScorePercentPdf(req, res, "Personality", "Openness", 36, 13, 70, 634);
 
             //emotional intelligence
-            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 70, 663);
-            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Managing Emotions", 33, 13, 70, 437);
-            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Motivating Oneself", 33, 13, 70, 218);
-            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Empathy", 34, 13, 70, 663);
-            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Social Skill", 34, 13, 70, 402);
+            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Self-Awareness", 38, 13, 70, 663);
+            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Managing Emotions", 38, 13, 70, 437);
+            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Motivating Oneself", 38, 13, 70, 218);
+            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Empathy", 39, 13, 70, 663);
+            await makeScorePercentPdf(req, res, "Emotional Intelligence", "Social Skill", 39, 13, 70, 402);
 
             //Learning Style
-            await makeScorePercentPdf(req, res, "Learning Style", "Visual", 36, 13, 70, 663);
-            await makeScorePercentPdf(req, res, "Learning Style", "Auditory", 36, 13, 70, 498);
-            await makeScorePercentPdf(req, res, "Learning Style", "Kinesthetic", 36, 13, 70, 283);
+            await makeScorePercentPdf(req, res, "Learning Style", "Visual", 41, 13, 70, 663);
+            await makeScorePercentPdf(req, res, "Learning Style", "Auditory", 41, 13, 70, 498);
+            await makeScorePercentPdf(req, res, "Learning Style", "Kinesthetic", 41, 13, 70, 283);
 
             //Leadership Skills
-            await makeScorePercentPdf(req, res, "Leadership skills", "Leadership", 37, 13, 80, 387);
+            await makeScorePercentPdf(req, res, "Leadership skills", "Leadership", 42, 13, 80, 387);
 
             //Leadership Style
-            await makeScorePercentPdf(req, res, "Leadership Style", "Authoritative", 39, 13, 100, 662);
-            await makeScorePercentPdf(req, res, "Leadership Style", "Democratic", 39, 13, 80, 310);
-            await makeScorePercentPdf(req, res, "Leadership Style", "Facilitative", 40, 13, 70, 632);
-            await makeScorePercentPdf(req, res, "Leadership Style", "Situational", 40, 13, 70, 322);
+            await makeScorePercentPdf(req, res, "Leadership Style", "Authoritative", 44, 13, 100, 662);
+            await makeScorePercentPdf(req, res, "Leadership Style", "Democratic", 44, 13, 80, 310);
+            await makeScorePercentPdf(req, res, "Leadership Style", "Facilitative", 45, 13, 70, 632);
+            await makeScorePercentPdf(req, res, "Leadership Style", "Situational", 45, 13, 70, 322);
 
             //cyber dependency
-            await makeScorePercentPdf(req, res, "Cyber Dependency", "Cyber Dependency", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Cyber Dependency", "Cyber Dependency", 51, 13, 85, 375);
 
             //competitive state anxiety inventory
-            await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Cognitive Anxiety", 43, 13, 70, 662);
-            await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Somatic Anxiety", 43, 13, 70, 467);
-            await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Self-Confidence", 43, 13, 70, 235);
+            await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Cognitive Anxiety", 53, 13, 70, 662);
+            await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Somatic Anxiety", 53, 13, 70, 467);
+            await makeScorePercentPdf(req, res, "Competitive State Anxiety Inventory", "Self-Confidence", 53, 13, 70, 235);
 
             //integrity assessment
-            await makeScorePercentPdf(req, res, "Integrity Assessment", "Integrity Assessment", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Integrity Assessment", "Integrity Assessment", 18, 13, 85, 375);
 
             //emotional style
-            await makeScorePercentPdf(req, res, "Emotional Styles", "Resilience", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Emotional Styles", "Outlook", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Emotional Styles", "Social Intuition", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Emotional Styles", "Self-Awareness", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Emotional Styles", "Sensitivity to Context", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Emotional Styles", "Attention", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Emotional Styles", "Resilience", 20, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Emotional Styles", "Outlook", 20, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Emotional Styles", "Social Intuition", 21, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Emotional Styles", "Self-Awareness", 21, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Emotional Styles", "Sensitivity to Context", 22, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Emotional Styles", "Attention", 22, 13, 85, 375);
 
             //work life balance
-            await makeScorePercentPdf(req, res, "Work Life Balance", "Time Management", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Work Life Balance", "Boundaries and Communication", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Work Life Balance", "Well-being and Self-Care", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Work Life Balance", "Flexibility and Adaptability", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Work Life Balance", "Relationships and Fulfilment", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Work Life Balance", "Time Management", 28, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Work Life Balance", "Boundaries and Communication", 28, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Work Life Balance", "Well-being and Self-Care", 29, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Work Life Balance", "Flexibility and Adaptability", 29, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Work Life Balance", "Relationships and Fulfilment", 30, 13, 85, 375);
 
             //parenting style
-            await makeScorePercentPdf(req, res, "Parenting Style", "Authoritarian", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Parenting Style", "Authoritative", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Parenting Style", "Permissive", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Parenting Style", "Uninvolved", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Parenting Style", "Authoritarian", 47, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Parenting Style", "Authoritative", 47, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Parenting Style", "Permissive", 48, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Parenting Style", "Uninvolved", 48, 13, 85, 375);
 
             //wheel of life
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Money & Wealth", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Career & Work", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Health & Fitness", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Fun & Recreation", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Contribution", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Community", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Family", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Social & Friends", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Love & Romance", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Wheel of Life", "Growth and Learning", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Money & Wealth", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Career & Work", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Health & Fitness", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Fun & Recreation", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Contribution", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Community", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Family", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Social & Friends", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Love & Romance", 50, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Wheel of Life", "Growth and Learning", 50, 13, 85, 375);
 
             //Professional Suitability Assessment
-            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Skills and Qualifications", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Passion and Interest", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Work-Life Balance and Demands", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Long-Term Goals", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Market Demand and Trends", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Skills and Qualifications", 16, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Passion and Interest", 16, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Work-Life Balance and Demands", 16, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Long-Term Goals", 17, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Professional Suitability Assessment", "Market Demand and Trends", 17, 13, 85, 375);
 
             //Entrepreneurship Suitability Assessment
-            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Vision and Risk Assessment", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Passion and Commitment", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Decision-Making and Responsibility", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Innovation and Adaptability", 41, 13, 85, 375);
-            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Market Awareness", 41, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Vision and Risk Assessment", 24, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Passion and Commitment", 24, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Decision-Making and Responsibility", 25, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Innovation and Adaptability", 25, 13, 85, 375);
+            await makeScorePercentPdf(req, res, "Entrepreneurship Suitability Assessment", "Market Awareness", 26, 13, 85, 375);
         }
     } catch (error) {
         console.log(error);
