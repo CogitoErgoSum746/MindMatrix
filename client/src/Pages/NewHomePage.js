@@ -27,7 +27,7 @@ const NewHomePage = () => {
           <Navbar />
         <ScrollToTop />
         <FrontImage />
-        <div className="container mx-auto flex flex-col gap-16 px-2">
+        <div className={`container mx-auto flex flex-col gap-16 px-2 opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
           <TextSection1 />
           <TextSection2 />
           <Certification />
