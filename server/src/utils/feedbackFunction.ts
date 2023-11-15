@@ -134,7 +134,7 @@ export function getFeedback(testType: string, subCategory: string, score: number
             percentage = 'Needs Significant Improvement';
         } else if (score >=4 && score <=6) {
             scoreRange = '4-6';
-            percentage = 'Room for improvement';
+            percentage = 'Room for Improvement';
         } else if (score >= 7 && score <= 8) {
             scoreRange = '7-8';
             percentage = 'Average';
