@@ -18,22 +18,6 @@ const PORT = 8001;
 
 const app = express();
 
-app.use(helmet()); //helmet.js and cors modules for security purposes
-app.use(
-    cors({
-        origin: "*",
-    })
-);
-// app.use(
-//     cors({
-//         origin: 'https://successteps.in',
-//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//         allowedHeaders: ['Content-Type', 'Authorization'],
-//         credentials: true,
-//         optionsSuccessStatus: 204,
-//     })
-// );
-
 // Middleware to handle OPTIONS requests globally
 // const handleOptions = (req: Request, res: Response, next: NextFunction) => {
 //     if (req.method === 'OPTIONS') {
@@ -51,6 +35,22 @@ app.use(
 
 // Apply the handleOptions middleware globally for all routes
 // app.use(handleOptions);
+
+app.use(
+    helmet({
+        contentSecurityPolicy: false, // Disable Content-Security-Policy
+    })
+); //helmet.js and cors modules for security purposes
+
+app.use(
+    cors({
+        origin: ['https://www.successteps.in', 'https://successteps.in'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        // credentials: true,
+        optionsSuccessStatus: 204,
+    })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

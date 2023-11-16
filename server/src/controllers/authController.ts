@@ -99,7 +99,7 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
       res.status(201).json(authtoken);
 
       const subject = "Welcome to the Psychometric Test Journey";
-      const text = `Dear ${userCreated.username},\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nWarm regards,\n\nDr. Antony Augusthy`;
+      const text = `Dear ${userCreated.username},\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nClick on the link to proceed your psychometric test: https://www.successteps.in/login\n\nWarm regards,\n\nDr. Antony Augusthy`;
       const attachments = [{
         filename: 'Psychometric Test Instructions.pdf',
         path: `src/tp/Psychometric Test Instructions.pdf`,
