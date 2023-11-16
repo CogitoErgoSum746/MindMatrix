@@ -50,7 +50,7 @@ app.use(
 // );
 app.use(
     cors({
-        origin: 'https://successteps.in',
+        origin: ['https://www.successteps.in', 'https://successteps.in'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true,
