@@ -377,7 +377,6 @@ export async function sendCodetoEmail(req: Request, res: Response): Promise<void
     await sendEmail(email, subject, text, attachments);
 
     res.status(200).json({ success: true });
-    res.status(200).json({ success: true });
 
   } catch (error) {
     errorLogger.error(`Error sending org_code email to organiztion:`, error instanceof Error ? error.message : error);

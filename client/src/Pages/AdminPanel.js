@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import OrganizationCard from "../components/OrganizationCard";
 import { API_BASE_URL } from "../config";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminPanel() {
   const [organizations, setOrganizations] = useState([]);
@@ -14,6 +14,8 @@ function AdminPanel() {
   const [orgi_studentType, setType] = useState("");
   const [username, setUsername] = useState("");
   const [email, setUserEmail] = useState("");
+  const [searchQuery, setSearchQuery] = useState({ name: "", email: "", code: "" });
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,16 +27,15 @@ function AdminPanel() {
         });
 
         // Clear the success message from local storage
-        localStorage.removeItem('toastMessage');
+        localStorage.removeItem("toastMessage");
       }
       getAllOrganization();
-    }else {
+    } else {
       // Clear the success message from local storage
-      localStorage.removeItem('toastMessage');
+      localStorage.removeItem("toastMessage");
       navigate("/login");
     }
   }, [authtoken]);
-  
 
   const Logout = () => {
     localStorage.clear();
@@ -42,10 +43,11 @@ function AdminPanel() {
     // window.location.reload();
   };
 
-  // Function to send an email with the organization details
-
-  const handleSendCodeToEmail = async (org_name, org_email,org_studentType) => {
-   
+  const handleSendCodeToEmail = async (
+    org_name,
+    org_email,
+    org_studentType
+  ) => {
     try {
       const authtoken = localStorage.getItem("authtoken");
       const response = await fetch(`${API_BASE_URL}/admin/sendcodetoemail`, {
@@ -54,10 +56,10 @@ function AdminPanel() {
           "Content-Type": "application/json",
           authtoken: `${authtoken}`,
         },
-        body: JSON.stringify({ org_name, org_email,org_studentType }),
+        body: JSON.stringify({ org_name, org_email, org_studentType }),
         // Make sure org_email is the recipient's email address
       });
-      console.log(org_studentType)
+      console.log(org_studentType);
       if (response.ok) {
         console.log("Email sent successfully");
       } else {
@@ -83,6 +85,7 @@ function AdminPanel() {
         const data = await response.json();
         console.log(data);
         console.log("Successfully Created");
+        alert("Organization created successfully");
         navigate("/admin");
       } else {
         console.error("Registration failed:", response.statusText);
@@ -92,7 +95,12 @@ function AdminPanel() {
     }
   };
 
-  const handleDeleteOrganization = async (org_name, org_email,  org_studentType,org_code,) => {
+  const handleDeleteOrganization = async (
+    org_name,
+    org_email,
+    org_studentType,
+    org_code
+  ) => {
     const confirmDelete = window.confirm(
       `Are you sure you want to delete the organization "${org_name}"? This will delete all associated users.`
     );
@@ -106,7 +114,12 @@ function AdminPanel() {
             "Content-Type": "application/json",
             authtoken: `${authtoken}`,
           },
-          body: JSON.stringify({ org_name, org_email, org_code,org_studentType}),
+          body: JSON.stringify({
+            org_name,
+            org_email,
+            org_code,
+            org_studentType,
+          }),
         })
           .then((response) => {
             if (response.ok) {
@@ -153,117 +166,124 @@ function AdminPanel() {
     }
   };
 
-  const downloadPdf = async () => {
-    // Check if the username and email exist in the database
-    await fetch(`${API_BASE_URL}/admin/downloadpdf`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authtoken: authtoken,
-      },
-      body: JSON.stringify({ username, email }),
-    })
-      .then(async (response) => {
-        if (response.ok) {
-          // Start the download process
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'feedback.pdf';
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-          alert('Downloaded Successfully');
-        } else {
-          alert('User is not valid.');
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        alert('An error occurred while downloading the file.');
-      });
+  const handleSearchInputChange = (event, field) => {
+    setSearchQuery((prevSearch) => ({ ...prevSearch, [field]: event.target.value }));
   };
 
+  const toggleSearch = () => {
+    setIsSearchExpanded((prev) => !prev);
+  };
+
+  const filteredOrganizations = organizations.filter((org) =>
+    org.org_name.toLowerCase().startsWith(searchQuery.name.toLowerCase()) &&
+    org.org_email.toLowerCase().startsWith(searchQuery.email.toLowerCase()) &&
+    org.org_code.toString().startsWith(searchQuery.code)
+  );
 
   return (
     <div className="bg-gray-100 min-h-screen p-4">
-      <h1 className="text-2xl mb-4">Admin Panel</h1>
-      <div className="mb-4">
-        <h2 className="text-xl">Register Organization</h2>
-        <div className="flex">
-          <input
-            type="text"
-            placeholder="username"
-            value={orgi_name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-1/3 p-2 border rounded mr-2"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={orgi_email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-1/3 p-2 border rounded mr-2"
-          />
-          <select
-            value={orgi_studentType}
-            onChange={(e) => setType(e.target.value)}
-            className="w-1/3 p-2 border rounded mr-2"
-          >
-            <option value="">Select a student type</option>
-            <option value="High school">High school</option>
-            <option value="College">College</option>
-            <option value="Professional">Professional</option>
-          </select>
-          {/* <input
-            type="text"
-            placeholder="Code"
-            value={orgi_code}
-            onChange={(e) => setCode(e.target.value)}
-            className="w-1/3 p-2 border rounded mr-2"
-          /> */}
-          <button
-            onClick={handleRegister}
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-          >
-            Register
-          </button>
-          {/* <div>
-            <input
-              type="text"
-              placeholder="Enter Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-1/3 p-2 border rounded mr-2"
-            />
-            <input
-              type="email"
-              placeholder="Enter User Email"
-              value={email}
-              onChange={(e) => setUserEmail(e.target.value)}
-              className="w-1/3 p-2 border rounded mr-2"
-            />
-
-            <button
-              onClick={downloadPdf}
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
-              Download Pdf
-            </button>
-          </div> */}
-        </div>
-      </div>
-      <div>
-        <h2 className="text-xl">Registered Organizations</h2>
-        <button
-          onClick={getAllOrganization}
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-        >
-          Get All Organization
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-blue-500">Admin Panel</h1>
+        <button onClick={Logout} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          Logout
         </button>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-gray-700">Register Organization</h2>
+        <div className="flex flex-col md:flex-row items-center gap-4">
+  <input
+    type="text"
+    placeholder="Username"
+    value={orgi_name}
+    onChange={(e) => setName(e.target.value)}
+    className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <input
+    type="email"
+    placeholder="Email"
+    value={orgi_email}
+    onChange={(e) => setEmail(e.target.value)}
+    className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <select
+    value={orgi_studentType}
+    onChange={(e) => setType(e.target.value)}
+    className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <option value="">Select a student type</option>
+    <option value="High school">High school</option>
+    <option value="College">College</option>
+    <option value="Professional">Professional</option>
+  </select>
+  <button
+    onClick={handleRegister}
+    className="w-full md:w-auto bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+  >
+    Register
+  </button>
+</div>
+
+      </div>
+
+      <div>
+      <h2 className="text-2xl font-bold mb-4 text-gray-700">Registered Organizations</h2>
+  <div className="flex items-center gap-4">
+    <button
+      onClick={getAllOrganization}
+      className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+    >
+      Get All Organization
+    </button>
+    <div className="relative flex flex-col items-center ml-4">
+  {isSearchExpanded && (
+    <>
+      <input
+        type="text"
+        placeholder="Search by name"
+        value={searchQuery.name}
+        onChange={(e) => handleSearchInputChange(e, "name")}
+        className="p-3 mb-2 md:mb-0 md:mr-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="text"
+        placeholder="Search by email"
+        value={searchQuery.email}
+        onChange={(e) => handleSearchInputChange(e, "email")}
+        className="p-3 mb-2 md:mb-0 md:mr-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="text"
+        placeholder="Search by code"
+        value={searchQuery.code}
+        onChange={(e) => handleSearchInputChange(e, "code")}
+        className="p-3 mb-2 md:mb-0 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </>
+  )}
+  <div className={`cursor-pointer ml-${isSearchExpanded ? "2" : "1"}`} onClick={toggleSearch}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="w-6 h-6 text-gray-500"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+      />
+    </svg>
+  </div>
+</div>
+
+
+  </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {organizations.map((org, index) => (
+          {filteredOrganizations.map((org, index) => (
             <OrganizationCard
               key={index}
               org={org}
@@ -273,16 +293,10 @@ function AdminPanel() {
           ))}
         </div>
       </div>
-      <div className="mt-4">
-        <Link to="/login" className="text-blue-500">
-          <button onClick={Logout} className="py-1 px-2 bg-blue-400 text-white">
-            Logout
-          </button>
-        </Link>
-      </div>
+
       <ToastContainer autoClose={3000} />
     </div>
-    
+
   );
 }
 
