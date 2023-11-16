@@ -27,7 +27,7 @@ function About() {
     <>
       <Navbar />
       <ScrollToTop />
-      <div className={`container mx-auto px-2 md:px-10 opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
+      <div className={`container mx-auto px-2 md:px-10 user-select-none opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
 
         <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10">
           About Us

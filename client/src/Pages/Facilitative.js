@@ -49,8 +49,8 @@ const Facilitative = () => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-4 justify-between mt-10">
-          <div className="md:w-1/2">
+        <div className="flex flex-col md:flex-row-reverse gap-4 justify-between mt-10">
+          <div className="md:w-2/3 md:order-2">
             <p className="text-xl md:text-2xl lg:text-3xl font-semibold font-inter mb-5">
               Certifications:
             </p> 
@@ -108,13 +108,11 @@ const Facilitative = () => {
             </ul>
           </div>
 
-          <div className="md:w-1/3 mt-10 md:mt-0">
-          <div className="md:flex md:flex-col gap-6">
-              <img src={pic3} alt="Image 1" className="w-40 h-40 max-w-xs" />
-              <img src={pic4} alt="Image 2" className="w-40 h-40 max-w-xs" />
-              <img src={pic5} alt="Image 3" className="w-40 h-40 max-w-xs" />
-              <img src={pic6} alt="Image 4" className="w-40 h-40 max-w-xs" />
-            </div>
+          <div className="md:w-1/3 mt-10 md:mt-0 md:flex md:flex-col gap-6 md:order-1">
+              <img src={pic3} alt="Image 1" className="h-40 w-40 max-w-xs mx-auto md:mx-0" />
+              <img src={pic4} alt="Image 2" className="h-40 w-40 max-w-xs mx-auto md:mx-0" />
+              <img src={pic5} alt="Image 3" className="h-40 w-40 max-w-xs mx-auto md:mx-0" />
+              <img src={pic6} alt="Image 4" className="h-40 w-40 max-w-xs mx-auto md:mx-0" />
           </div>
         </div>
 

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // import TestList from './Pages/TestList';
 import Login from "./Pages/Login";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Register from "./Pages/Register";
 import AdminPanel from "./Pages/AdminPanel";
 import Home1 from "./Pages/Home1";
@@ -36,10 +36,22 @@ import PageNotFound from "./Pages/PageNotFound";
 function AllRoutes() {
   const authtoken = localStorage.getItem("authtoken");
 
+  const location = useLocation();
+
+  const excludedRoutes = [
+    '/admin',
+    '/test/:id/:subtestId',
+    '/test/:id',
+    '/test/2/careeropt',
+    '/test',
+    '/admin/getusers/:org_name/:org_studentType/:org_code'
+  ];
+
+  const shouldShowFloatingIcon = !excludedRoutes.some(route => location.pathname.startsWith(route));
 
   return (
     <div>
-      <FloatingIcon />
+      {shouldShowFloatingIcon && <FloatingIcon />}
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}
         <Route path="/register" element={<Register />} />

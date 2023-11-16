@@ -17,7 +17,7 @@ const FrontImage = () => {
                   <h1 className="text-xl md:text-5xl lg:text-7xl font-bold">
                       UNLOCK YOUR LIMITLESS POTENTIAL
                   </h1>
-                  <h4 className="text-[8px] md:text-sm lg:text-2xl font-bold mt-0 md:mt-2 lg:mt-4">
+                  <h4 className="text-[10px] md:text-sm lg:text-2xl font-bold mt-0 md:mt-2 lg:mt-4">
                       Personal Resourcefulness and Professional Excellence!
                   </h4>
               </div>
