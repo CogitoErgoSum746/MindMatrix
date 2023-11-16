@@ -68,12 +68,12 @@ const TextSection2 = () => {
             <p>
               Unleash Your Potential & Build A Stronger Team!
             </p>
-            <p>
+            {/* <p>
               Do More Than Train.
-            </p>
+            </p> */}
           </div>
           <div className=" text-black text-xl md:text-2xl font-bold lg:text-3xl font-['Inter']">
-            Engage, Inspire And Motivate.
+            Engage | Inspire | Motivate.
           </div>
           <Link to="/training">
           <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 rounded-md shadow-lg transition-transform transform hover:translate-x-2">

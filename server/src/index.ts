@@ -44,7 +44,7 @@ app.use(
 
 app.use(
     cors({
-        origin: ['https://www.successteps.in', 'https://successteps.in'],
+        origin: ['https://www.successteps.in', 'https://successteps.in', 'http://localhost:3000'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         // credentials: true,
         optionsSuccessStatus: 204,

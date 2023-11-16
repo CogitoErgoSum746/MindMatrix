@@ -30,7 +30,7 @@ const TextSection1 = () => {
               Counselling Therapy
             </div>
             <div className="text-black text-xl mt-4 font-semibold font-['Inter'] ">
-              Talk Resolve Heal
+              Talk | Resolve | Heal
             </div>
             <div className=" text-neutral-700 font-['Source Sans Pro']">
               100% Safe and Secure Platform
@@ -90,8 +90,8 @@ const TextSection1 = () => {
               Neuro-cognitive-emotional Intelligence Behaviour Competency Mapping
             </p>
             <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter'] mt-2">
-              Find Your Stream of Learning- Career Pathway by the most scientific
-              way!
+              Find Your Stream of Learning- Career Pathway by the Most Scientific
+              Way!
             </p>
             <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter'] mt-6">
               Your Dynamic Path to Total Success
