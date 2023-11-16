@@ -622,11 +622,11 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
 
     await sendCharts(req, res, studentType as string);
 
-    // await sendScores(req, res, studentType as string);
+    await sendScores(req, res, studentType as string);
 
-    // await sendFeedback(req, res, studentType as string);
+    await sendFeedback(req, res, studentType as string);
 
-    // await sendPdfToEmail(req, res);
+    await sendPdfToEmail(req, res);
 
     res.status(200).json({ success: true });
   } catch (error) {
