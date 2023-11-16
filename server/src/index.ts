@@ -18,7 +18,30 @@ const PORT = 8001;
 
 const app = express();
 
-app.use(helmet()); //helmet.js and cors modules for security purposes
+// Middleware to handle OPTIONS requests globally
+const handleOptions = (req: Request, res: Response, next: NextFunction) => {
+    if (req.method === 'OPTIONS') {
+        // Respond to the preflight request
+        res.header('Access-Control-Allow-Origin', 'https://successteps.in');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.header('Access-Control-Allow-Credentials', 'true');
+        res.sendStatus(204); // No content for successful OPTIONS request
+    } else {
+        // Continue to the next middleware for non-OPTIONS requests
+        next();
+    }
+};
+
+// Apply the handleOptions middleware globally for all routes
+app.use(handleOptions);
+
+app.use(
+    helmet({
+        contentSecurityPolicy: false, // Disable Content-Security-Policy
+    })
+); //helmet.js and cors modules for security purposes
+
 // app.use(
 //     cors({
 //         origin: 'https://successteps.in',
@@ -28,30 +51,13 @@ app.use(helmet()); //helmet.js and cors modules for security purposes
 app.use(
     cors({
         origin: 'https://successteps.in',
-        // methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        // allowedHeaders: ['Content-Type', 'Authorization'],
-        // credentials: true,
-        // optionsSuccessStatus: 204,
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true,
+        optionsSuccessStatus: 204,
     })
 );
 
-// Middleware to handle OPTIONS requests globally
-// const handleOptions = (req: Request, res: Response, next: NextFunction) => {
-//     if (req.method === 'OPTIONS') {
-//         // Respond to the preflight request
-//         res.header('Access-Control-Allow-Origin', 'https://successteps.in');
-//         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-//         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//         res.header('Access-Control-Allow-Credentials', 'true');
-//         res.sendStatus(204); // No content for successful OPTIONS request
-//     } else {
-//         // Continue to the next middleware for non-OPTIONS requests
-//         next();
-//     }
-// };
-
-// Apply the handleOptions middleware globally for all routes
-// app.use(handleOptions);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
