@@ -689,7 +689,7 @@ export const feedbackData: FeedbackData = {
             "7-8": "Your love and romance situation is above average. You're demonstrating a strong commitment and effort in maintaining a healthy romantic relationship.",
             "9-10": "Your love and romance aspect is outstanding. Your relationship is characterized by exceptional communication, affection, and mutual respect. Your dedication to nurturing love and romance is commendable."
         },
-        "Growth and Learning": {
+        "Growth & Learning": {
             "1-3": "Your commitment to personal growth and learning requires significant improvement. It's important to invest time and effort in expanding your knowledge and skills to reach your full potential.",
             "4-6": "There's room for improvement in your pursuit of growth and learning. Consider setting clear goals for self-improvement and seeking opportunities to enhance your expertise.",
             "7-8": "Your dedication to growth and learning is above average. You actively seek ways to expand your horizons, but there's still potential for further development.",
