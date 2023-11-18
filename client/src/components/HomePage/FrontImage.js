@@ -15,7 +15,7 @@ const FrontImage = () => {
               <img src={homebg} className="w-full" alt="Responsive Image" />
               <div className="absolute top-10 md:top-24 lg:top-36 transform -translate-y-1/2 text-white text-center w-full">
                   <h1 className="text-xl md:text-5xl lg:text-7xl font-bold">
-                      UNLOCK YOUR LIMITLESS POTENTIAL
+                  Success Steps NLP Academy
                   </h1>
                   <h4 className="text-[10px] md:text-sm lg:text-2xl font-bold mt-0 md:mt-2 lg:mt-4">
                       Personal Resourcefulness and Professional Excellence!
