@@ -1,4 +1,3 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Sitemap: https://successteps.in/sitemap.xml
-Sitemap: https://www.successteps.in/sitemap.xml
