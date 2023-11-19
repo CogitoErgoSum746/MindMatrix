@@ -1,3 +1,10 @@
 # https://www.robotstxt.org/robotstxt.html
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: Bingbot
+Disallow: /nogooglebot/
+
 User-agent: *
+Disallow: /
 Sitemap: https://successteps.in/sitemap.xml
