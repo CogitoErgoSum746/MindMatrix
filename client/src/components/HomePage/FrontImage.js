@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import homebg from '../../../src/images/newbg(lesser).webp';
 
 const FrontImage = () => {
@@ -7,10 +8,23 @@ const FrontImage = () => {
   useEffect(() => {
       // Trigger the fade-in animation when the component mounts
       setFadeIn(true);
+
+      // Function to preload the image
+    const preloadImage = (src) => {
+        const img = new Image();
+        img.src = src;
+      };
+  
+      // Call the function to preload the image
+      preloadImage(homebg);
   }, []);
 
   return (
       <div>
+        {/* Update the head dynamically with Helmet */}
+      <Helmet>
+        <link rel="preload" as="image" href={`${process.env.PUBLIC_URL}/images/landingPage/newbg(lesser).webp`} />
+      </Helmet>
           <div className={`relative text-center opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
               <img src={homebg} className="w-full" alt="Responsive Image" />
               <div className="absolute top-10 md:top-24 lg:top-36 transform -translate-y-1/2 text-white text-center w-full">

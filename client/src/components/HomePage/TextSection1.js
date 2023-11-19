@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import img3 from "../../../src/images/landingPage/image-3.webp";
 import img4 from "../../../src/images/landingPage/image-4.webp";
 import img5 from "../../../src/images/landingPage/image-5.webp";
@@ -11,16 +12,29 @@ const TextSection1 = () => {
   useEffect(() => {
     // Trigger the fade-in animation when the component mounts
     setFadeIn(true);
+
+    // Function to preload the image
+    const preloadImage = (src) => {
+      const img = new Image();
+      img.src = src;
+    };
+
+    // Call the function to preload the image
+    preloadImage(img4);
   }, []);
 
   return (
     <div className={`opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
+      {/* Update the head dynamically with Helmet */}
+      <Helmet>
+        <link rel="preload" as="image" href={`${process.env.PUBLIC_URL}/images/landingPage/image4.webp`} />
+      </Helmet>
       <div className="flex flex-col py-3 gap-9">
 
         <div className="flex flex-col md:flex-row gap-6 justify-between">
           <div className="self-center">
-            <img src={img4} className="md:hidden"></img>
-            <img src={img4} className="hidden md:block"></img>
+            <img src={img4} className="md:hidden" alt="Hidden on medium screens" />
+            <img src={img4} className="hidden md:block" alt="Hidden on small screens"/>
           </div>
           <div className="self-center">
             <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">
