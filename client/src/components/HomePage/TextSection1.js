@@ -27,14 +27,14 @@ const TextSection1 = () => {
     <div className={`opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
       {/* Update the head dynamically with Helmet */}
       <Helmet>
-        <link rel="preload" as="image" href={`${process.env.PUBLIC_URL}/images/landingPage/image4.webp`} />
+        <link rel="preload" as="image" href={img4} />
       </Helmet>
       <div className="flex flex-col py-3 gap-9">
 
         <div className="flex flex-col md:flex-row gap-6 justify-between">
           <div className="self-center">
             <img src={img4} className="md:hidden" alt="Hidden on medium screens" />
-            <img src={img4} className="hidden md:block" alt="Hidden on small screens"/>
+            <img src={img4} className="hidden md:block" alt="Hidden on small screens" />
           </div>
           <div className="self-center">
             <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">
