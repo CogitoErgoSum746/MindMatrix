@@ -47,7 +47,7 @@ const responsive = {
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 460, min: 0 },
       items: 1,
     },
   };
@@ -73,6 +73,7 @@ const ImageGalary = () => {
                 src={image}
                 alt={`Image${index + 1}`}
                 style={{ width: "500px", height: "400px" }}
+                loading="lazy"
               />
             </div>
           ))}
