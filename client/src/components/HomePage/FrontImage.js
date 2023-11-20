@@ -23,7 +23,7 @@ const FrontImage = () => {
       <div>
         {/* Update the head dynamically with Helmet */}
       <Helmet>
-        <link rel="preload" as="image" href={`${process.env.PUBLIC_URL}/images/landingPage/newbg(lesser).webp`} />
+        <link rel="preload" as="image" href={homebg} />
       </Helmet>
           <div className={`relative text-center opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
               <img src={homebg} className="w-full" alt="Responsive Image" />
