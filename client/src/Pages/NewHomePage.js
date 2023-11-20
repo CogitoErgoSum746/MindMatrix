@@ -26,9 +26,11 @@ const NewHomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Home</title>
-
-        <meta name="description" content="" />
+        <title>UNLOCK YOUR LIMITLESS POTENTIAL</title>
+        <meta name="description"
+          content="We help you to discover the key to unleash your brain's super power 
+          to achieve desired outcomes with our innovative approach to cognitive 
+          excellence and emotional well-being." />
 
         <meta property="og:title" content="" />
         <meta property="og:description" content="" />
