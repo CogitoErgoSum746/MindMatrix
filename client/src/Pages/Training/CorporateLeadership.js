@@ -14,10 +14,25 @@ import pic10 from "../../images/corporateLeadership/pic10.png";
 import pic11 from "../../images/corporateLeadership/pic11.png";
 import pic12 from "../../images/corporateLeadership/pic12.png";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from "react-helmet";
 
 const CorporateLeadership = () => {
   return (
     <>
+    <Helmet>
+        <title>Corporate Leadership</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
 <ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">

@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import registerImg from "../images/register.webp";
 import Navbar from "../components/Navbar";
 import { API_BASE_URL } from "../config";
+import { Helmet } from "react-helmet";
+
 
 
 const Register = () => {
@@ -130,11 +132,26 @@ const Register = () => {
       }
     } catch (error) {
       console.error("Error during registration:", error);
+      // errorLogger.error(`Error in registerUser: ${error.message}`);
     }
   };
 
   return (
     <>
+     <Helmet>
+        <title>Register</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
       <Navbar />
       <div className={`flex flex-row opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
         <div className="hidden md:block md:flex-1 mt-20">
@@ -267,7 +284,7 @@ const Register = () => {
             <div className="mb-4">
               <label
                 htmlFor="terms"
-                className="flex items-start text-gray-700 font-semibold mb-1"
+                className="flex items-center text-gray-700 font-semibold mb-1"
               >
                 <input
                   type="checkbox"

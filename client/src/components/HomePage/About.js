@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import abtimg1 from "../../images/about/abtimg1.png";
 import abtimg2 from "../../images/about/abtimg2.png";
@@ -14,37 +14,52 @@ import abtimg11 from "../../images/about/abtimg11.png";
 import abtimg12 from "../../images/about/abtimg3.png";
 import Contact from "./Contact";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet";
 
 function About() {
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
-      // Trigger the fade-in animation when the component mounts
-      setFadeIn(true);
+    // Trigger the fade-in animation when the component mounts
+    setFadeIn(true);
   }, []);
 
   return (
     <>
+      <Helmet>
+        <title>About Us</title>
+
+        <meta name="description" content="Learn more about our company and what we do." />
+
+        <meta property="og:title" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
+
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
+      </Helmet>
       <Navbar />
       <ScrollToTop />
       <div className={`container mx-auto px-2 md:px-10 user-select-none opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
 
-        <h1 className="text-center text-black  text-2xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10">
+        <h1 className="text-center text-black  text-3xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10">
           About Us
         </h1>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="border p-4 md:w-1/3">
-            <h2 className="text-3xl font-semibold font-inter mb-2">Vision</h2>
+            <h2 className="text-2xl font-semibold font-inter mb-2">Vision</h2>
             <p className="text-base font-inter leading-relaxed">
               Our vision is a relentless dedication to offering accessible, high-quality counseling, therapies, coaching, and training services. We aspire to uncover, nurture, and magnify human potential, igniting inspiration. Our mission is to empower individuals by fostering connections and collaboration through therapeutic coaching and training services.    </p>
           </div>
           <div className="border p-4 md:w-1/3">
-            <h2 className="text-3xl font-semibold font-inter mb-2">Mission</h2>
+            <h2 className="text-2xl font-semibold font-inter mb-2">Mission</h2>
             <p className="text-base font-inter leading-relaxed">
               Our mission centers on being a catalyst for societal change and a facilitator of personal success. With therapeutic coaching and training services, we empower individuals to strengthen connections and foster collaborative environments. Our goal is to uplift individuals and communities, fostering a positive and transformative impact.    </p>
           </div>
           <div className="border p-4 md:w-1/3">
-            <h2 className="text-3xl font-semibold font-inter mb-2">Values</h2>
+            <h2 className="text-2xl font-semibold font-inter mb-2">Values</h2>
             <p className="text-base font-inter leading-relaxed">
               Our values encompass unwavering honesty, integrity, and authenticity. We prioritize transparency, maintain the highest ethical standards, and build genuine connections with our clients. Driven by a commitment to excellence, we constantly strive to exceed expectations and provide top-quality experiences.    </p>
           </div>
@@ -56,7 +71,7 @@ function About() {
 
           {/* 1st */}
           <div className="flex flex-col md:flex-row gap-6 justify-between">
-          <img src={abtimg1} className="md:hidden"></img>
+            <img src={abtimg1} className="md:hidden"></img>
             <div className="self-center text-left text-base md:text-lg">
               Here at Success Steps, we invite you to join us on an
               extraordinary journey towards realizing your fullest potential and
@@ -70,9 +85,9 @@ function About() {
               consciousness, and the ultimate state of insight. These elements
               together pave the way for enduring success and limitless joy.
             </div>
-            <img src={abtimg1} className="hidden md:block"></img> 
+            <img src={abtimg1} className="hidden md:block"></img>
           </div>
-                  
+
           {/* 2nd */}
           <div className="flex flex-col md:flex-row gap-6 justify-between ">
             <img src={abtimg2} className="hidden md:block"></img>
@@ -111,9 +126,9 @@ function About() {
               Unleash Your Boundless Potential
             </h1>
             <div className="flex flex-col md:flex-row gap-6 justify-between">
-            <img src={abtimg4} className="md:hidden"></img>
+              <img src={abtimg4} className="md:hidden"></img>
               <div className="self-center text-left text-base md:text-lg">
-              Get on board a transformative voyage with Success Steps as your steadfast companions. Our mission is to guide you toward unearthing your untapped potential across personal and professional domains. Engage in an extraordinary journey fuelled by our innovative Neuro Cognitive Emotional Behaviour (NCEB) approach, seamlessly integrating NLP, neuroscience, emotional intelligence, cognitive psychology, and meta-cognition. This journey promises an unmatched expedition into mastering your mind and igniting your limitless capabilities. 
+                Get on board a transformative voyage with Success Steps as your steadfast companions. Our mission is to guide you toward unearthing your untapped potential across personal and professional domains. Engage in an extraordinary journey fuelled by our innovative Neuro Cognitive Emotional Behaviour (NCEB) approach, seamlessly integrating NLP, neuroscience, emotional intelligence, cognitive psychology, and meta-cognition. This journey promises an unmatched expedition into mastering your mind and igniting your limitless capabilities.
               </div>
               <img src={abtimg4} className="hidden md:block"></img>
             </div>
@@ -129,7 +144,7 @@ function About() {
               <img src={abtimg5} className="md:hidden"></img>
               <img src={abtimg5} className="hidden md:block"></img>
               <div className="self-center text-left text-base md:text-lg">
-              Embark on a transformative journey towards enhanced wellbeing with our Talk! Resolve! Heal! Online and offline counselling therapy. Designed for your convenience, it's accessible anytime, anywhere, on any device. Our platform offers you a 100% private and secure haven for your healing voyage. 
+                Embark on a transformative journey towards enhanced wellbeing with our Talk! Resolve! Heal! Online and offline counselling therapy. Designed for your convenience, it's accessible anytime, anywhere, on any device. Our platform offers you a 100% private and secure haven for your healing voyage.
               </div>
             </div>
           </div>
@@ -239,7 +254,7 @@ function About() {
 
           <Link to="/termsandconditions" className="text-blue-500 cursor-pointer text-lg lg:text-2xl">
             Terms and Conditions
-            </Link>
+          </Link>
 
         </div>
       </div>

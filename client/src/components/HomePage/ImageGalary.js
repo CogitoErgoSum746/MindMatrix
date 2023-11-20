@@ -55,24 +55,27 @@ const responsive = {
 const ImageGalary = () => {
   return (
     <div>
-      <p className="text-black text-xl md:text-3xl lg:text-5xl font-semibold font-['Inter']">
+      <p className="text-black text-xl md:text-3xl lg:text-5xl font-semibold font-['Inter'] py-10">
         Image Gallery
       </p>
       <div>
-        <Carousel
-          responsive={responsive}
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={3000}
-          className="skill-slider mt-10"
-          stopOnHover={true}
+          <Carousel
+        responsive={responsive}
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+        className="w-full"
+        containerClass="carousel-container"
+        itemClass="carousel-item"
+        stopOnHover={true}
         >
           {images.map((image, index) => (
-            <div key={index} className="item">
+            <div key={index} className="flex justify-center items-center transition-transform transform hover:scale-105">
               <img
                 src={image}
                 alt={`Image${index + 1}`}
                 style={{ width: "500px", height: "400px" }}
+                // className="w-full h-auto rounded-lg shadow-lg"
                 loading="lazy"
               />
             </div>

@@ -9,10 +9,25 @@ import pic5 from "../../images/Parents/pic5.jpg";
 import pic6 from "../../images/Parents/pic6.jpg";
 import pic7 from "../../images/Parents/pic7.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from "react-helmet";
 
 const Parent = () => {
   return (
     <>
+    <Helmet>
+        <title>Parents</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
 <ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">

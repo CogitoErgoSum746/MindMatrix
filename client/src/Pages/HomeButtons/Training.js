@@ -8,6 +8,7 @@ import img3 from "../../images/students/pic1.jpg";
 import img4 from "../../images/Teachers/pic1.jpg";
 import img5 from "../../images/Parents/pic1.jpg";
 import ScrollToTop from "../../components/ScrollToTop";
+import {Helmet} from "react-helmet";
 
 const testimonials = [
     {
@@ -45,6 +46,21 @@ const testimonials = [
 
 const Training = () => {
   return (
+    <>
+    <Helmet>
+        <title>Training</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
     <div className='flex flex-col h-screen justify-between'>
       <ScrollToTop />
         <Navbar />
@@ -57,6 +73,7 @@ const Training = () => {
         </div>
         <Contact />
     </div>
+    </>
   )
 }
 
