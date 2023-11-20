@@ -6,9 +6,24 @@ import pic2 from "../../images/Certificate/Emotional/pic2.jpg";
 import pic3 from "../../images/Certificate/Emotional/pic3.jpg";
 import pic4 from "../../images/Certificate/Emotional/pic4.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from "react-helmet";
 function Emotional() {
   return (
     <>
+    <Helmet>
+        <title>Emotional Intelligence Coach Practitioner</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
 <ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">

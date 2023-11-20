@@ -9,17 +9,32 @@ import mindimg6 from "../../images/Mindwellness/image 6.png";
 import mindimg7 from "../../images/Mindwellness/image 7.png";
 import Contact from "./Contact";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet";
 
 function MindW() {
     const [fadeIn, setFadeIn] = useState(false);
 
-  useEffect(() => {
-      // Trigger the fade-in animation when the component mounts
-      setFadeIn(true);
-  }, []);
+    useEffect(() => {
+        // Trigger the fade-in animation when the component mounts
+        setFadeIn(true);
+    }, []);
 
     return (
         <>
+            <Helmet>
+                <title>Mind Wellness</title>
+
+                <meta name="description" content="" />
+
+                <meta property="og:title" content="" />
+                <meta property="og:description" content="" />
+                <meta property="og:image" content="" />
+
+                <meta name="twitter:card" content="" />
+                <meta name="twitter:title" content="" />
+                <meta name="twitter:description" content="" />
+                <meta name="twitter:image" content="" />
+            </Helmet>
             <Navbar />
             <ScrollToTop />
             <div className={`container mx-auto px-2 opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>

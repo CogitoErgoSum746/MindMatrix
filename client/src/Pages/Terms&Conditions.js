@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Contact from "../components/HomePage/Contact";
 import ScrollToTop from "../components/ScrollToTop";
+import { Helmet } from "react-helmet";
 
 const Termsconds = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -13,6 +14,20 @@ const Termsconds = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Terms & Conditions</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
       <Navbar />
       <ScrollToTop />
       <h1 className="text-5xl font-bold mb-2">Terms and Conditions</h1>

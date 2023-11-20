@@ -4,10 +4,25 @@ import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Certificate/Cognitive/pic1.jpg";
 import pic2 from "../../images/Certificate/Cognitive/pic2.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from "react-helmet";
 
 function Cognitive() {
   return (
     <>
+    <Helmet>
+        <title>Cognitive Behavioural Therapy </title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
       <ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">

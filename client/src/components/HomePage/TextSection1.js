@@ -86,14 +86,14 @@ const TextSection1 = () => {
                 <li>ADHD & Teenage Issues</li>
               </div>
             </ul>
-            {/* <Link to="/mindwellness">
+            <Link to="/mindwellness">
               <button className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
                 Know More
               </button>
-            </Link> */}
-            <a href="/mindwellness" className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
+            </Link>
+            {/* <a href="/mindwellness" className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
               Know More
-            </a>
+            </a> */}
 
           </div>
         </div>

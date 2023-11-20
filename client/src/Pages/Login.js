@@ -6,7 +6,8 @@ import { useAuth } from '../AuthContext';
 import { API_BASE_URL } from '../config';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Helmet } from 'react-helmet';
+// import { Logger } from 'react-console-logger';
 function Login() {
   const [fadeIn, setFadeIn] = useState(false);
 
@@ -50,8 +51,8 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        console.log("successful login");
+        // console.log(data);
+        // console.log("successful login");
 
         const toastMessage = `Welcome back ${data.username}, glad to see you again`;
 
@@ -81,11 +82,26 @@ function Login() {
       }
     } catch (error) {
       console.error('Error during login:', error);
+      // Logger.error('Error during login:', error);
     }
   };
 
   return (
     <>
+     <Helmet>
+        <title>Login</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
       <Navbar />
       <div className={`flex flex-row opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
         <div className='hidden md:block md:flex-1 mt-20'>

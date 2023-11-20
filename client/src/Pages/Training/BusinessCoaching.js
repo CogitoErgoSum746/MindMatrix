@@ -7,10 +7,25 @@ import pic3 from "../../images/businesscoaching/pic3.png";
 import pic4 from "../../images/businesscoaching/pic4.png";
 import pic5 from "../../images/businesscoaching/pic5.png";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from 'react-helmet';
 
 const BusinessCoaching = () => {
   return (
     <>
+    <Helmet>
+        <title>Buisness Coaching</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
 <ScrollToTop />
     <Navbar />
     <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">

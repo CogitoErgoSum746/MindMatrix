@@ -1372,20 +1372,11 @@ function TestQuestionsPattern12() {
     }
   };
 
-  // const totalScore = subtest.questions.reduce((acc, question, index) => {
-  //   const isCorrect =
-  //     selectedOption ===
-  //     question.options.findIndex((option) => option.isCorrect);
-  //   return isCorrect ? acc + 1 : acc;
-  // }, 0);
-
   let totalScore = 0;
 
   for (let i = 0; i < scoresArray.length; i++) {
     totalScore += scoresArray[i];
   }
-
-  console.log(totalScore)
 
 
   const subCategory = tests[subtestId] ? tests[subtestId].title : "Unknown";
@@ -1396,7 +1387,6 @@ function TestQuestionsPattern12() {
     const fetchTestScores = async () => {
       try {
         const authtoken = localStorage.getItem("authtoken");
-        console.log(authtoken);
         const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
           method: "POST",
           headers: {
@@ -1408,13 +1398,9 @@ function TestQuestionsPattern12() {
             subCategory,
           }),
         });
-        console.log(response);
         if (response.ok) {
-          console.log(response);
           const score = await response.json();
 
-          // setScores(score);
-          console.log(score);
           setShowScore(score);
 
           if (score) {

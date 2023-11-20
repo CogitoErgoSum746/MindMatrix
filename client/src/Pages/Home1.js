@@ -8,6 +8,7 @@ import prof from "../images/Home1/professional.png";
 import ScrollToTop from "../components/ScrollToTop";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet";
 
 function Home1() {
   const navigate = useNavigate();
@@ -59,6 +60,20 @@ function Home1() {
 
   return (
     <>
+    <Helmet>
+        <title>Psychometric Tests</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
       <ScrollToTop />
       <Navbar />
       <div className="bg-white min-h-screen py-10">

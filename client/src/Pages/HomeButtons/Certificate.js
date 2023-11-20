@@ -12,6 +12,7 @@ import img2 from "../../images/Certificate/NlpMaster/pic1.jpg";
 import img7 from "../../images/Certificate/REBT/pic1.jpg";
 import img8 from "../../images/Certificate/Transactional/pic1.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from 'react-helmet';
 
 const testimonials = [
   {
@@ -75,6 +76,21 @@ const testimonials = [
 
 const Certificate = () => {
   return (
+    <>
+    <Helmet>
+        <title>Certificate</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
     <div className='flex flex-col h-screen justify-between'>
       <Navbar />
       <ScrollToTop />
@@ -87,6 +103,7 @@ const Certificate = () => {
       </div>
       <Contact />
     </div>
+    </>
   )
 }
 

@@ -9,9 +9,24 @@ import pic5 from "../../images/students/pic5.jpg";
 import pic6 from "../../images/students/pic6.jpg";
 import pic7 from "../../images/students/pic7.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
+import { Helmet } from "react-helmet";
 const Student = () => {
   return (
     <>
+    <Helmet>
+        <title>Students</title>
+
+        <meta name="description" content=""/>
+
+        <meta property="og:title" content=""/>
+        <meta property="og:description" content=""/>
+        <meta property="og:image" content=""/>
+
+        <meta name="twitter:card" content=""/>
+        <meta name="twitter:title" content=""/>
+        <meta name="twitter:description" content=""/>
+        <meta name="twitter:image" content=""/>
+      </Helmet>
 <ScrollToTop />
       <Navbar />
       <div className="container p-2 md:px-0 md:py-5 mx-auto flex flex-col gap-3">
