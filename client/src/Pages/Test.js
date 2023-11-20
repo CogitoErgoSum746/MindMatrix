@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import mainpurple from "../images/mainpurple.png";
 import { API_BASE_URL } from "../config";
 import logout from "../images/logout.png"
@@ -56,7 +56,7 @@ function Test() {
   const [studentType, setStudentType] = useState("");
 
   const authtoken = localStorage.getItem("authtoken");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchTotalTests() {
@@ -151,8 +151,8 @@ function Test() {
   const handleGeneratePDF = async () => {
     setLoading(true);
 
-     // Show toast during report generation
-     toast.info('The final report based on all the scores of your tests is being generated. Note that you can send this report again if you did not receive it. The optimized generation might take a minute, please wait...', { autoClose: false });
+    // Show toast during report generation
+    toast.info('The final report based on all the scores of your tests is being generated. Note that you can send this report again if you did not receive it. The optimized generation might take a minute, please wait...', { autoClose: false });
 
     try {
       const authtoken = localStorage.getItem("authtoken");
@@ -182,7 +182,7 @@ function Test() {
 
 
 
-  function handleLogout(){
+  function handleLogout() {
     localStorage.clear();
     navigate('/');
 
@@ -210,104 +210,109 @@ function Test() {
   );
 
   return (
-    <div className="">
-      <div className="bg-white min-h-screen">
-        <div className="relative">
-          <img
-            src={mainpurple}
-            alt="bbbnn"
-            className="md:min-w-full md:w-full lg:h-80 md:h-30 sm:h-30"
-          />
+    <div className="min-h-screen bg-white">
+      <div className="relative overflow-hidden">
+        <img
+          src={mainpurple}
+          alt="Background Image"
+          className="object-cover w-full h-60 md:h-80 lg:h-96"
+        />
 
-          <button
-            onClick={handleLogout} // Add your logout function here
-            className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointe flex flex-row items-center mr-1"
-          ><img src={logout} alt="logout" className="w-5 h-5"></img>
-            Logout </button>
+        <button
+          onClick={handleLogout}
+          className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointer flex flex-row items-center mr-1"
+        >
+          <img src={logout} alt="Logout" className="w-5 h-5" />
+          Logout
+        </button>
 
-          <div className="flex justify-center">
-            <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-white absolute top-1/3 lg:left-1/3 text-left md:text-justify font-['Inter'] uppercase">
-              GET ALL YOUR <br />
-              <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black space-y-2 font-['Inter'] uppercase leading-10">
-                PSYCHOMETRIC
-              </span>{" "}
-              TESTS
-              <br />
-              HERE
-            </h1>
-          </div>
-        </div>
-
-        <div className="flex flex-col bg-white mt-10 p-10">
-          <div className="flex justify-start ml-5 mb-10">
-            <Link to="/">
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover-bg-yellow-500 text-left font-semibold font-['Inter'] uppercase">
-                {"<"}Go Back
-              </button>
-            </Link>
-          </div>
-
-          {filteredTests.map((test) => (
-            <div className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex justify-between items-center">
-              <h1 className="text-lg font-semibold font-['Inter']">
-                {test.name}
-              </h1>
-              {remainingTests && remainingTests[test.name] > 0 ? (
-                <div className="flex items-center">
-                  <div className="p-2 bg-blue-100 rounded-lg ml-3">
-                    {remainingTests[test.name]} remaining
-                  </div>
-                  <Link to={`/test/${test.id}`}>
-                    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black font-['Inter']">
-                      Start Test
-                    </button>
-                  </Link>
-                </div>
-              ) : (
-                <div>
-                  {test.id === 2 ? (
-                    careerOptions ? (
-                      <button className="bg-green-500 px-4 py-2 rounded-full text-black font-['Inter']">
-                        Completed
-                      </button>
-                    ) : (
-                      <Link to={`/test/${test.id}`}>
-                        <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black font-['Inter']">
-                          Start Test
-                        </button>
-                      </Link>
-                    )
-                  ) : (
-                    <button className="bg-green-500 px-4 py-2 rounded-full text-black font-['Inter']">
-                      Completed
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-
-          <div className="flex justify-center items-center">
-            <button
-              onClick={handleGeneratePDF}
-              className={`px-4 py-2 rounded-full text-black font-['Inter'] ${
-                areTestsRemaining
-                  ? "bg-gradient-to-r from-orange-500 to-yellow-500"
-                  : "bg-gray-300"
-              }`}
-              disabled={!areTestsRemaining}
-              style={{ width: "250px" }}
-            >
-              {loading
-                ? "Generating..."
-                : pdfSent
-                ? "Report Sent to Mail"
-                : "Send Final Report to Mail"}
-            </button>
-          </div>
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center text-white">
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4">
+            GET ALL YOUR <br />
+            <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black font-bold">
+              PSYCHOMETRIC
+            </span>{" "}
+            TESTS
+            <br />
+            HERE
+          </h1>
         </div>
       </div>
+
+      <div className="container mx-auto mt-10 p-6 md:p-10">
+        <div className="flex justify-start mb-6">
+          <Link to="/getstarted">
+            <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
+              {"<"} Go Back
+            </button>
+          </Link>
+        </div>
+
+        {filteredTests.map((test) => (
+          <div
+            key={test.id}
+            className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center"
+          >
+            <h1 className="text-lg md:text-xl lg:text-xl font-bold mb-2 md:mb-0 md:mr-4">
+              {test.name}
+            </h1>
+
+            {remainingTests && remainingTests[test.name] > 0 ? (
+              <div className="flex items-center md:ml-auto">
+                <div className="p-2 bg-blue-100 rounded-lg md:mr-3 text-center md:text-left">
+                  {remainingTests[test.name]} remaining
+                </div>
+                <Link to={`/test/${test.id}`}>
+                  <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black">
+                    Start Test
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="text-center md:text-left">
+                {test.id === 2 ? (
+                  careerOptions ? (
+                    <button className="bg-green-500 px-4 py-2 rounded-full text-black">
+                      Completed
+                    </button>
+                  ) : (
+                    <Link to={`/test/${test.id}`}>
+                      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black">
+                        Start<br />Test
+                      </button>
+                    </Link>
+                  )
+                ) : (
+                  <button className="bg-green-500 px-4 py-2 rounded-full text-black">
+                    Completed
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+
+        <div className="flex justify-center items-center">
+          <button
+            onClick={handleGeneratePDF}
+            className={`px-4 py-2 rounded-full text-black ${areTestsRemaining
+                ? "bg-gradient-to-r from-orange-500 to-yellow-500"
+                : "bg-gray-300"
+              }`}
+            disabled={!areTestsRemaining}
+            style={{ width: "250px" }}
+          >
+            {loading
+              ? "Generating..."
+              : pdfSent
+                ? "Report Sent to Mail"
+                : "Send Final Report to Mail"}
+          </button>
+        </div>
+      </div>
+
       <Contact />
+
       <ToastContainer autoClose={3000} />
     </div>
   );
