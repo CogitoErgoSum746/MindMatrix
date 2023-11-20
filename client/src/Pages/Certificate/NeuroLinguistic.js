@@ -7,11 +7,11 @@ import pic3 from "../../images/Certificate/NeuroLinguistic/pic3.jpg";
 import pic4 from "../../images/Certificate/NeuroLinguistic/pic4.jpg";
 import pic5 from "../../images/Certificate/NeuroLinguistic/pic5.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 function NeuroLinguistic() {
   return (
     <>
-    <Helmet>
+    {/* <Helmet>
         <title>Nlp Practitioner</title>
 
         <meta name="description" content=""/>
@@ -24,7 +24,7 @@ function NeuroLinguistic() {
         <meta name="twitter:title" content=""/>
         <meta name="twitter:description" content=""/>
         <meta name="twitter:image" content=""/>
-      </Helmet>
+      </Helmet> */}
 <ScrollToTop />
       <Navbar />
       <div className="container p-2 px-4 lg:px-8 md:py-5 mx-auto flex flex-col gap-3">

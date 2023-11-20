@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logoImage from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import { Helmet } from 'react-helmet';
 
 function Navbar() {
   const authtoken = localStorage.getItem("authtoken");
@@ -13,6 +14,13 @@ function Navbar() {
   const navigate = useNavigate(); // Access the history object for navigation
 
   useEffect(() => {
+    // Function to preload the image
+    const preloadImage = (src) => {
+      const img = new Image();
+      img.src = src;
+    };
+    preloadImage(logoImage);
+
     if (authtoken) {
       setIsLoggedin(true);
     }
@@ -73,6 +81,9 @@ function Navbar() {
 
   return (
     <nav className={`bg-white p-2 top-0 left-0 right-0 z-50 sticky`}>
+      <Helmet>
+        <link rel="preload" as="image" href={logoImage} />
+      </Helmet>
       <div className="container mx-auto flex justify-between items-center">
         <div className="md:hidden mx-3">
           <button className="text-2xl items-end" onClick={toggleMobileMenu}>
