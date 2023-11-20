@@ -11,6 +11,7 @@ import ScrollToTop from "../../components/ScrollToTop.js";
 function NeuroLinguistic() {
   return (
     <>
+    <Navbar />
     {/* <Helmet>
         <title>Nlp Practitioner</title>
 
@@ -26,7 +27,7 @@ function NeuroLinguistic() {
         <meta name="twitter:image" content=""/>
       </Helmet> */}
 <ScrollToTop />
-      <Navbar />
+      
       <div className="container p-2 px-4 lg:px-8 md:py-5 mx-auto flex flex-col gap-3">
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">
           NEURO LINGUISTIC PROGRAMMING
