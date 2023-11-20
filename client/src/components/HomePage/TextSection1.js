@@ -51,15 +51,15 @@ const TextSection1 = () => {
             </div>
             <div className="flex justify-around my-4 font-bold text-base lg:text-xl">
               <div className='flex gap-1 lg:gap-2'>
-                <img src={oct}></img>
+                <img src={oct} alt="Pointers"></img>
                 <p>Remedial</p>
               </div>
               <div className='flex gap-1 lg:gap-2'>
-                <img src={oct}></img>
+                <img src={oct} alt="Pointers"></img>
                 <p>Promotional</p>
               </div>
               <div className='flex gap-1 lg:gap-2'>
-                <img src={oct}></img>
+                <img src={oct} alt="Pointers"></img>
                 <p>Preventive</p>
               </div>
             </div>
@@ -100,7 +100,7 @@ const TextSection1 = () => {
 
         <div className="flex flex-col md:flex-row gap-6 justify-between " id="services">
           <div className="self-center">
-            <img src={img5} className="md:hidden"></img>
+            <img src={img5} className="md:hidden" alt="psychometric test component"></img>
             <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] py-10">
               PSYCHOMETRIC TESTS & CAREER GUIDANCE
             </div>
@@ -128,7 +128,7 @@ const TextSection1 = () => {
             </div>
           </div>
           <div className="self-center">
-            <img src={img5} className="hidden md:block"></img>
+            <img src={img5} className="hidden md:block" alt="psychometric test component"></img>
           </div>
         </div>
       </div>
