@@ -31,6 +31,8 @@ import FloatingIcon from "./components/FloatingIcon";
 import ContactUs from "./Pages/Contactus";
 import Termsconds from "./Pages/Terms&Conditions";
 import PageNotFound from "./Pages/PageNotFound";
+import Checkin from "./Pages/checkin";
+import Testin from "./Pages/Testin";
 
 
 function AllRoutes() {
@@ -57,6 +59,8 @@ function AllRoutes() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<NewHomePage />} />
+        <Route path="/checkin" element={<Checkin />} />
+        <Route path="/checkin/testin" element={<Testin />} />
         <Route path="/training" element={<Training />} />
         <Route
           path="/training/corporateleadership"
