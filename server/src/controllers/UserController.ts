@@ -526,11 +526,11 @@ export async function checkScore(req: Request, res: Response): Promise<void> {
           res.status(200).json({ score });
           return;
         } else {
-          res.status(404).json({ message: 'Subcategory not found' });
+          res.status(404).json({ message: 'Subcategory not found in database' });
           return;
         }
       } else {
-        res.status(404).json({ message: 'TestType not found' });
+        res.status(404).json({ message: 'TestType not found in database' });
         return;
       }
     } else {
@@ -803,6 +803,8 @@ export async function doneSubTests(req: Request, res: Response): Promise<void> {
             finalArray.push(0);
           }
         });
+        res.status(200).json({ success: true, finalArray: finalArray });
+        return;
       } else if (theList) {
         theList.forEach(sub => {
           finalArray.push(0);
@@ -817,8 +819,6 @@ export async function doneSubTests(req: Request, res: Response): Promise<void> {
       res.status(404).json({ message: 'User not found' });
       return;
     }
-
-    res.status(200).json({ success: true, finalArray: finalArray });
   } catch (error) {
     console.error('Error updating document:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
