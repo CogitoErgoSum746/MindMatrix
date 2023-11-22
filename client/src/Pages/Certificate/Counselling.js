@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Contact from "../../components/HomePage/Contact";
-import pic1 from "../../images/Certificate/Counselling/pic1.jpg";
-import pic2 from "../../images/Certificate/Counselling/pic2.jpg";
-import pic3 from "../../images/Certificate/Counselling/pic3.jpg";
-import pic4 from "../../images/Certificate/Counselling/pic4.jpg";
+import coun1 from "../../images/Certificate/Counselling/pic1.jpg";
+import coun2 from "../../images/Certificate/Counselling/pic2.jpg";
+import coun3 from "../../images/Certificate/Counselling/pic3.jpg";
+import coun4 from "../../images/Certificate/Counselling/pic4.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
@@ -34,7 +34,7 @@ function Counselling() {
         <p className="text-xl md:text-2xl lg:text-4xl font-semibold">
           Certification Program
         </p>
-        <img src={pic1} className="max-h-96 self-center"></img>
+        <img src={coun1} className="max-h-96 self-center"></img>
         <p className="text-left text-base lg:text-xl">
           The counselling and therapies certification program is a crucial
           educational pathway for aspiring mental health professionals. This
@@ -49,7 +49,7 @@ function Counselling() {
           role in advocating for better mental health awareness and promoting
           mindful living.
         </p>
-        <img src={pic2} className="max-h-96 self-center"></img>
+        <img src={coun2} className="max-h-96 self-center"></img>
         <p className="text-xl md:text-2xl lg:text-4xl font-bold">
           What do you Learn?
         </p>
@@ -86,7 +86,7 @@ function Counselling() {
               <li>Micro Skills.</li>
             </ul>
           </div>
-          <img src={pic3} className="max-h-96 self-center"></img>
+          <img src={coun3} className="max-h-96 self-center"></img>
 
           <div className="">
             <h2 className="font-bold text-lg">Counselling:</h2>
@@ -106,7 +106,7 @@ function Counselling() {
               <li>Micro Skills.</li>
             </ul>
           </div>
-          <img src={pic4} className="max-h-96 self-center"></img>
+          <img src={coun4} className="max-h-96 self-center"></img>
           <div className="">
             <h2 className="font-bold text-lg">
               Structuring Of Counselling Session{" "}

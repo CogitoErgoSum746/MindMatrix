@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Contact from "../../components/HomePage/Contact";
-import pic1 from "../../images/Certificate/Cognitive/pic1.jpg";
-import pic2 from "../../images/Certificate/Cognitive/pic2.jpg";
+import cog1 from "../../images/Certificate/Cognitive/pic1.jpg";
+import cog2 from "../../images/Certificate/Cognitive/pic2.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
@@ -32,7 +32,7 @@ function Cognitive() {
         <p className="text-xl md:text-2xl lg:text-4xl font-semibold">
           Certification
         </p>
-        <img src={pic1} className="max-h-96 self-center"></img>
+        <img src={cog1} className="max-h-96 self-center"></img>
         <p className="text-left text-base lg:text-xl">
           A Cognitive Behavioural Therapy (CBT) certification program is a vital
           educational endeavour that equips individuals with the specialized
@@ -47,7 +47,7 @@ function Cognitive() {
           outcomes and improved mental well-being. It's a crucial step toward
           becoming a skilled and ethical CBT therapist.
         </p>
-        <img src={pic2} className="max-h-96 self-center"></img>
+        <img src={cog2} className="max-h-96 self-center"></img>
         <p className="text-xl md:text-2xl lg:text-4xl font-semibold">
           What do you Learn?
         </p>
