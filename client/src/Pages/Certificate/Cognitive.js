@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Contact from "../../components/HomePage/Contact";
-import cog1 from "../../images/Certificate/Cognitive/pic1.jpg";
-import cog2 from "../../images/Certificate/Cognitive/pic2.jpg";
+import cog1 from "../../images/Certificate/Cognitive/pic1.webp";
+import cog2 from "../../images/Certificate/Cognitive/pic2.webp";
 import ScrollToTop from "../../components/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
