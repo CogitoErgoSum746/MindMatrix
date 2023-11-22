@@ -1,9 +1,15 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: Googlebot
-Disallow: /nogooglebot/
+Disallow: /test/
 
 User-agent: Bingbot
-Disallow: /nogooglebot/
+Disallow: /test/
+
+User-agent: DuckDuckBot
+Disallow: /test/
+
+User-agent: archive.org_bot
+Disallow: /test/
 
 User-agent: *
 Disallow: /

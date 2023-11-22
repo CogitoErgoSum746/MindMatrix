@@ -6,109 +6,157 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://successteps.in/</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://successteps.in/register</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://successteps.in/login</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://successteps.in/training</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://successteps.in/training/corporateleadership</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/training/businesscoaching</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/training/students</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/training/teachers</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/training/parents</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/mindwellness</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/facilitative</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://successteps.in/termsandconditions</loc>
-    <lastmod>2023-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://successteps.in/upcoming</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://successteps.in/certificate</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://successteps.in/certificate/:id</loc>
-    <lastmod>2023-11-17</lastmod>
+    <loc>https://successteps.in/certificate/NeuroLinguistic</loc>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/NlpMaster</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Emotional</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Counselling</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Gestalt</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Cognitive</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Rebt</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Transactional</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/certificate/Developmental</loc>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://successteps.in/about</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://successteps.in/ContactUs</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://successteps.in/psychometrictest</loc>
-    <lastmod>2023-11-17</lastmod>
+    <lastmod>2023-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://successteps.in/getstarted</loc>
+    <lastmod>2023-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

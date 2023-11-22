@@ -16,15 +16,15 @@ function CertificateContent() {
 
 
   const certificateComponents = {
-    '1': NeuroLinguistic,
-    '2': NlpMaster,
-    '3': Emotional,
-    '4': Counselling,
-    '5': Gestalt,
-    '6': Cognitive,
-    '7': Rebt,
-    '8': Transactional,
-    '9': Developmental
+    'NeuroLinguistic': NeuroLinguistic,
+    'NlpMaster': NlpMaster,
+    'Emotional': Emotional,
+    'Counselling': Counselling,
+    'Gestalt': Gestalt,
+    'Cognitive': Cognitive,
+    'Rebt': Rebt,
+    'Transactional': Transactional,
+    'Developmental': Developmental
   };
 
   const SelectedComponent = certificateComponents[id.toString()] ;
