@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import mainpurple from "../images/mainpurple.png";
-import { API_BASE_URL } from "../config";
-import logout from "../images/logout.png"
-import Contact from "../components/HomePage/Contact";
+import mainpurple from "../../images/mainpurple.png";
+import { API_BASE_URL } from "../../config";
+import logout from "../../images/logout.png"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -310,8 +309,6 @@ function Test() {
           </button>
         </div>
       </div>
-
-      <Contact />
 
       <ToastContainer autoClose={3000} />
     </div>

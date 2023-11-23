@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Certificate/NlpMaster/pic1.jpg";
 import pic2 from "../../images/Certificate/NlpMaster/pic2.jpg";
 import pic3 from "../../images/Certificate/NlpMaster/pic3.jpg";
@@ -176,7 +175,6 @@ function NlpMaster() {
         The NLP Master Practitioner Certification course is a transformative journey that offers a wide array of benefits. It provides advanced mastery in Neuro-Linguistic Programming, allowing participants to wield powerful techniques for personal growth and professional development. Through this course, individuals enhance their communication skills, gain proficiency in coaching and leadership, and receive a recognized certification from esteemed organizations like the American Board of NLP. Moreover, graduates of this program can facilitate profound and lasting changes in individuals and groups, inspiring peak performance and innovation. It's a path to continuous learning, personal empowerment, and the ability to positively influence and transform lives across various domains, making it an invaluable investment in personal and professional excellence.
         </p>
       </div>
-      <Contact />
     </>
   );
 }

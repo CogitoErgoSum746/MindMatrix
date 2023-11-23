@@ -8,7 +8,7 @@ import ImageGalary from "../components/HomePage/ImageGalary";
 import TextSection2 from "../components/HomePage/TextSection2";
 import SatisfiedClients from "../components/HomePage/SatisfiedClients";
 import Certification from "../components/HomePage/Certification";
-import Contact from "../components/HomePage/Contact";
+import Footer from "../components/HomePage/Footer";
 import GetInTouch from "../components/HomePage/GetInTouch";
 import FloatingIcon from "../components/FloatingIcon";
 import ScrollToTop from "../components/ScrollToTop";
@@ -56,7 +56,6 @@ const NewHomePage = () => {
           <GetInTouch />
         </div>
         <FloatingIcon />
-        <Contact />
       </div>
     </>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Certificate/Transactional/pic1.jpg";
 import pic2 from "../../images/Certificate/Transactional/pic2.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
@@ -61,7 +60,6 @@ function Transactional() {
           <li>Life Positions</li>
         </ul>
       </div>
-      <Contact />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import Contact from "../components/HomePage/Contact";
 import ScrollToTop from "../components/ScrollToTop";
 import pic1 from "../images/Facilitator/pic1.png";
 import pic3 from "../images/Facilitator/pic3.png";
@@ -161,8 +160,6 @@ const Facilitative = () => {
           to continuous learning and professional development.
         </p>
       </div>
-
-      <Contact />
     </>
   );
 };

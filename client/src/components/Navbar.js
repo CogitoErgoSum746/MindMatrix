@@ -69,10 +69,10 @@ function Navbar() {
         navigate("/certificate");
         break;
       case "Psychometric Test":
-        navigate("/getstarted");
+        navigate("/psychometrictest/getstarted");
         break;
       case "Facilitator Profile":
-        navigate("/facilitative");
+        navigate("/facilitator");
         break;
       default:
 
@@ -100,13 +100,13 @@ function Navbar() {
           <Link to="/about" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             About Us
           </Link>
-          <div className="relative group">
+          <div className="flex justify-center items-center">
             <select
               value={selectedService}
               onChange={handleServiceChange}
               className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
             >
-              <option className="py-6" value="">
+              <option value="" disabled hidden>
                 NLP Services Offered
               </option>
               <option className="py-6" value="Mind Wellness">
@@ -124,7 +124,7 @@ function Navbar() {
             </select>
           </div>
 
-          <Link to="/facilitative" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
+          <Link to="/facilitator" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             Facilitator Profile
           </Link>
           {/* <ScrollLink to="getintouch" smooth={true} duration={500} className="nav-link block px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
@@ -162,56 +162,57 @@ function Navbar() {
         </div>
       </div>
       {isMobileMenuOpen && (
-  <div className="fixed inset-0 z-50 overflow-hidden bg-gray-200 bg-opacity-75 transition-opacity duration-300">
-    <div className="fixed inset-y-0 left-0 w-64 bg-black bg-opacity-75 p-4 overflow-y-auto transform translate-x-0 md:translate-x-0 transition-transform duration-300">
-      <div className="flex justify-end mb-2">
-        <button className="text-2xl text-white" onClick={toggleMobileMenu}>
-          ✕
-        </button>
-      </div>
-      <Link to="/" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 text-white">
-        Home
-      </Link>
+        <div className="fixed inset-0 z-50 overflow-hidden bg-gray-200 bg-opacity-75 transition-opacity duration-300">
+          <div className="fixed inset-y-0 left-0 w-64 bg-black bg-opacity-75 p-4 overflow-y-auto transform translate-x-0 md:translate-x-0 transition-transform duration-300">
+            <div className="flex justify-end mb-2">
+              <button className="text-2xl text-white" onClick={toggleMobileMenu}>
+                ✕
+              </button>
+            </div>
+            <Link to="/" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 text-white">
+              Home
+            </Link>
 
-      <Link to="/about" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 mb-2 text-white">
-        About Us
-      </Link>
+            <Link to="/about" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 mb-2 text-white">
+              About Us
+            </Link>
 
-      <div className="flex justify-center items-center">
-        <select
-          value={selectedService}
-          onChange={handleServiceChange}
-          className="nav-link block bg-black bg-opacity-75 px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer mb-2 text-white"
-        >
-          <option value="">NLP Services Offered</option>
-          <option value="Mind Wellness">Mind Wellness</option>
-          <option value="Training Program">Training Program</option>
-          <option value="Certificate Program">Certificate program</option>
-          <option value="Psychometric Test">Psychometric Test</option>
-        </select>
-      </div>
+            <div className="flex justify-center items-center">
+              <select
+                value={selectedService}
+                onChange={handleServiceChange}
+                className="nav-link block bg-black bg-opacity-75 px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer mb-2 text-white"
+              >
+                <option value="" disabled hidden>
+                  NLP Services Offered
+                </option>
+                <option value="Mind Wellness">Mind Wellness</option>
+                <option value="Training Program">Training Program</option>
+                <option value="Certificate Program">Certificate program</option>
+                <option value="Psychometric Test">Psychometric Test</option>
+              </select>
+            </div>
 
-      <Link to="/facilitative" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:text-black hover:bg-gray-300 py-1 mb-2 text-white">
-        Facilitator Profile
-      </Link>
+            <Link to="/facilitator" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:text-black hover:bg-gray-300 py-1 mb-2 text-white">
+              Facilitator Profile
+            </Link>
 
-      <a href="/ContactUs" className="nav-link block px-2 hover:text-black hover:bg-gray-300 transition duration-300 py-1 mb-2 text-white">
-        Contact Us
-      </a>
+            <a href="/ContactUs" className="nav-link block px-2 hover:text-black hover:bg-gray-300 transition duration-300 py-1 mb-2 text-white">
+              Contact Us
+            </a>
 
-      {!isLoggedin && (
-        <a
-          href="/register"
-          onClick={scrollToTop}
-          className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2 hover:text-black hover:bg-gray-300 mb-2"
-        >
-          Sign up
-        </a>
+            {!isLoggedin && (
+              <a
+                href="/register"
+                onClick={scrollToTop}
+                className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2 hover:text-black hover:bg-gray-300 mb-2"
+              >
+                Sign up
+              </a>
+            )}
+          </div>
+        </div>
       )}
-    </div>
-  </div>
-)}
-
 
 
     </nav>

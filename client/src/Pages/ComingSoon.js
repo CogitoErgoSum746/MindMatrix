@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Contact from "../components/HomePage/Contact";
 import underConstruction from "../images/underConstruction.png";
 
 function ComingSoon() {
@@ -14,7 +13,6 @@ function ComingSoon() {
                 <div className="flex-1 flex items-center justify-center">
                     <img src={underConstruction} alt="Under Construction" />
                 </div>
-                <Contact />
             </div>
 
         </>

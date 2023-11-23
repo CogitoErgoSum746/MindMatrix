@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Teachers/pic1.jpg";
 import pic2 from "../../images/Teachers/pic2.jpg";
 import pic3 from "../../images/Teachers/pic3.jpg";
@@ -174,7 +173,6 @@ const Teacher = () => {
         </ul>
         <img src={pic8} className="max-h-96 self-center"></img>
       </div>
-      <Contact />
     </>
   );
 };

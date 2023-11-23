@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/corporateLeadership/pic1.png";
 import pic2 from "../../images/corporateLeadership/pic2.png";
 import pic3 from "../../images/corporateLeadership/pic3.png";
@@ -265,7 +264,6 @@ const CorporateLeadership = () => {
         </ul>
 
       </div>
-      <Contact />
     </>
   );
 };

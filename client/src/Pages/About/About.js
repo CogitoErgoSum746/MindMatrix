@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../Navbar";
+import Navbar from "../../components/Navbar";
 import abtimg1 from "../../images/about/abtimg1.png";
 import abtimg2 from "../../images/about/abtimg2.png";
 import abtimg4 from "../../images/about/abtimg4.png";
@@ -12,8 +12,7 @@ import abtimg9 from "../../images/about/abtimg9.png";
 import abtimg10 from "../../images/about/abtimg10.png";
 import abtimg11 from "../../images/about/abtimg11.png";
 import abtimg12 from "../../images/about/abtimg3.png";
-import Contact from "./Contact";
-import ScrollToTop from "../ScrollToTop";
+import ScrollToTop from "../../components/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 function About() {
@@ -252,13 +251,12 @@ function About() {
             </div>
           </div>
 
-          <Link to="/termsandconditions" className="text-blue-500 cursor-pointer text-lg lg:text-2xl">
+          <Link to="/about/termsandconditions" className="text-blue-500 cursor-pointer text-lg lg:text-2xl">
             Terms and Conditions
           </Link>
 
         </div>
       </div>
-      <Contact />
     </>
   );
 }

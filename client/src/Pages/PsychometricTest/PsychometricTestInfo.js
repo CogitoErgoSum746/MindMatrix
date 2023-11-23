@@ -1,10 +1,9 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Contact from "../components/HomePage/Contact";
-import pic1 from "../images/Psychomteric/pic1.jpg";
-import pic2 from "../images/Psychomteric/pic2.jpg";
-import pic3 from "../images/Psychomteric/pic3.jpg";
-import ScrollToTop from "../components/ScrollToTop";
+import Navbar from "../../components/Navbar";
+import pic1 from "../../images/Psychomteric/pic1.jpg";
+import pic2 from "../../images/Psychomteric/pic2.jpg";
+import pic3 from "../../images/Psychomteric/pic3.jpg";
+import ScrollToTop from "../../components/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 const PsychometricTestInfo = () => {
@@ -188,7 +187,6 @@ const PsychometricTestInfo = () => {
         These milestones represent some key developments in the field of psychometrics, but it's important to note that research and advancements in this area continue to evolve, enhancing the quality and utility of psychometric tests for various purposes.
         </p>
       </div>
-      <Contact />
     </>
   );
 };

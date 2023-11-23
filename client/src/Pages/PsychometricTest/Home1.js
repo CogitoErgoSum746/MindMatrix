@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import { API_BASE_URL } from "../config";
-import clg from "../images/Home1/clgstudent.png";
-import school from "../images/Home1/Highschool.png";
-import prof from "../images/Home1/professional.png";
-import ScrollToTop from "../components/ScrollToTop";
+import Navbar from "../../components/Navbar";
+import { API_BASE_URL } from "../../config";
+import clg from "../../images/Home1/clgstudent.png";
+import school from "../../images/Home1/Highschool.png";
+import prof from "../../images/Home1/professional.png";
+import ScrollToTop from "../../components/ScrollToTop";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Contact from "../components/HomePage/Contact";
-import ScrollToTop from "../components/ScrollToTop";
+import Navbar from "../../components/Navbar";
+import ScrollToTop from "../../components/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 const Termsconds = () => {
@@ -94,7 +93,6 @@ const Termsconds = () => {
         </h3>
       </div>
 
-      <Contact />
     </>
   );
 };

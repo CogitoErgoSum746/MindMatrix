@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Navbar";
-import mindimg1 from "../../images/Mindwellness/image 1.png";
-import mindimg2 from "../../images/Mindwellness/image 2.png";
-import mindimg3 from "../../images/Mindwellness/image 3.png";
-import mindimg4 from "../../images/Mindwellness/image 4.png";
-import mindimg5 from "../../images/Mindwellness/image 5.png";
-import mindimg6 from "../../images/Mindwellness/image 6.png";
-import mindimg7 from "../../images/Mindwellness/image 7.png";
-import Contact from "./Contact";
-import ScrollToTop from "../ScrollToTop";
+import Navbar from "../components/Navbar";
+import mindimg1 from "../images/Mindwellness/image 1.png";
+import mindimg2 from "../images/Mindwellness/image 2.png";
+import mindimg3 from "../images/Mindwellness/image 3.png";
+import mindimg4 from "../images/Mindwellness/image 4.png";
+import mindimg5 from "../images/Mindwellness/image 5.png";
+import mindimg6 from "../images/Mindwellness/image 6.png";
+import mindimg7 from "../images/Mindwellness/image 7.png";
+import ScrollToTop from "../components/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 function MindW() {
@@ -154,7 +153,6 @@ function MindW() {
 
                 </div>
             </div>
-            <Contact />
         </>
     );
 }

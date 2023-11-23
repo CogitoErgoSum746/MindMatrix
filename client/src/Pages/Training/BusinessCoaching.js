@@ -1,6 +1,5 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import Contact from '../../components/HomePage/Contact'
+import Navbar from '../../components/Navbar';
 import pic1 from "../../images/businesscoaching/pic1.png";
 import pic2 from "../../images/businesscoaching/pic2.png";
 import pic3 from "../../images/businesscoaching/pic3.png";
@@ -119,7 +118,6 @@ const BusinessCoaching = () => {
       </div>
     </div>
       </div>
-    <Contact />
     </>
   )
 }

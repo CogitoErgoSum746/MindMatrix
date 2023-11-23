@@ -1,6 +1,5 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import Contact from '../../components/HomePage/Contact'
+import Navbar from '../../components/Navbar';
 import Card from '../../components/Card';
 import img1 from "../../images/corporateLeadership/pic1.png";
 import img2 from "../../images/businesscoaching/pic1.png";
@@ -71,7 +70,6 @@ const Training = () => {
                 </div>
             ))}
         </div>
-        <Contact />
     </div>
     </>
   )
