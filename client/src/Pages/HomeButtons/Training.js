@@ -60,7 +60,7 @@ const Training = () => {
         <meta name="twitter:description" content=""/>
         <meta name="twitter:image" content=""/>
       </Helmet>
-    <div className='flex flex-col h-screen justify-between'>
+    <div className='flex flex-col min-h-screen justify-between'>
       <ScrollToTop />
         <Navbar />
         <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
@@ -75,4 +75,4 @@ const Training = () => {
   )
 }
 
-export default Training
+export default Training;
