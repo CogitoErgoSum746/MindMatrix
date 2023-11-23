@@ -235,7 +235,7 @@ export async function deleteCareerList(req: Request, res: Response): Promise<voi
     const existingUser = await User.findOne(filter);
 
     if (existingUser) {
-      await User.findOneAndUpdate({ carreerOptions: [] });
+      await existingUser.updateOne({ carreerOptions: [] });
       res.status(200).json({ success: true });
     } else {
       // If the user document doesn't exist, handle accordingly
