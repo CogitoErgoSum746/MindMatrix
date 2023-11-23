@@ -49,6 +49,7 @@ function AllRoutes() {
   ];
 
   const shouldShowFloatingIcon = !excludedRoutes.some(route => location.pathname.startsWith(route));
+  const shouldShowFooter = !excludedRoutes.some(route => location.pathname.startsWith(route));
 
   return (
     <div>
@@ -105,7 +106,7 @@ function AllRoutes() {
         <Route path="/reset-password/:token" element={<ResetPass />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+      {shouldShowFooter && <Footer />}
     </div>
   );
 }
