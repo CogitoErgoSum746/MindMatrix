@@ -296,7 +296,7 @@ const Register = () => {
                 />
                 I accept the{' '}
                 <a
-                  href="/termsandconditions"
+                  href="/about/termsandconditions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 cursor-pointer"
