@@ -11,7 +11,7 @@ import Transactional from '../Certificate/Transactional';
 import Developmental from '../Certificate/Developmental';
 
 function CertificateContent() {
-  const { id } = useParams();
+  const { name } = useParams();
 
 
 
@@ -27,7 +27,7 @@ function CertificateContent() {
     'Developmental': Developmental
   };
 
-  const SelectedComponent = certificateComponents[id.toString()] ;
+  const SelectedComponent = certificateComponents[name.toString()] ;
 
 
   return <SelectedComponent />;

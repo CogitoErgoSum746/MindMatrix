@@ -61,7 +61,7 @@ function Login() {
           localStorage.setItem('authtoken', authtoken);
           localStorage.setItem('toastMessage', toastMessage);
           login();
-          window.location.href = '/getstarted';
+          window.location.href = '/psychometrictest/getstarted';
         }
         if (data.userType === "admin") {
           const authtoken = data.authtoken;

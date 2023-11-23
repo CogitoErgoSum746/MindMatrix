@@ -80,7 +80,10 @@ function Navbar() {
   };
 
   return (
-    <nav className={`bg-white p-2 top-0 left-0 right-0 z-50 sticky`}>
+    <nav className={`bg-white p-2 top-0 left-0 right-0 z-50 sticky`} 
+    style={{ background: 'linear-gradient(to right, #e6e0d4, #d8cbb3)',
+             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+             }}    >
       <Helmet>
         <link rel="preload" as="image" href={logoImage} />
       </Helmet>
@@ -144,7 +147,7 @@ function Navbar() {
           {!isLoggedin && (
             <a
               href="/register"
-              className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-1"
+              className="font-bold bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full py-1 px-2"
             >
               Sign up
             </a>

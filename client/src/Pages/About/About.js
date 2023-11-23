@@ -43,7 +43,7 @@ function About() {
       <ScrollToTop />
       <div className={`container mx-auto px-2 md:px-10 user-select-none opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
 
-        <h1 className="text-center text-black  text-3xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10">
+        <h1 className="text-center text-black  text-3xl md:text-3xl lg:text-5xl font-bold font-['Inter'] mb-10 py-5">
           About Us
         </h1>
         <div className="flex flex-col md:flex-row gap-8">

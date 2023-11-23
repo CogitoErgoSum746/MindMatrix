@@ -84,7 +84,7 @@ function AllRoutes() {
         <Route path="/facilitator" element={<Facilitative />} />
         <Route path="/upcoming" element={<ComingSoon />} />
         <Route path="/certificate" element={<Certificate />} />
-        <Route path="/certificate/:id" element={<CertificateContent />} />
+        <Route path="/certificate/:name" element={<CertificateContent />} />
         <Route path="/about" element={<About />} />
         <Route path="/about/termsandconditions" element={<Termsconds />} />
         <Route path="/ContactUs" element={<ContactUs />} />
