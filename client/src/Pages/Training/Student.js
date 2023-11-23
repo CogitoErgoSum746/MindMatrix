@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/students/pic1.jpg";
 import pic2 from "../../images/students/pic2.png";
 import pic3 from "../../images/students/pic3.jpg";
@@ -307,7 +306,6 @@ const Student = () => {
 
 
       </div>
-      <Contact />
     </>
   );
 };

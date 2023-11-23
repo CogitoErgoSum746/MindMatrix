@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Certificate/Emotional/pic1.jpg";
 import pic2 from "../../images/Certificate/Emotional/pic2.jpg";
 import pic3 from "../../images/Certificate/Emotional/pic3.jpg";
@@ -140,7 +139,6 @@ function Emotional() {
           <li>Conducting Emotional Style Competency Assessment</li>
         </ul>
       </div>
-      <Contact />
     </>
   );
 }

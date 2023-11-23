@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Certificate/Gestalt/pic1.jpg";
 import pic2 from "../../images/Certificate/Gestalt/pic2.jpg";
 import ScrollToTop from "../../components/ScrollToTop.js";
@@ -120,7 +119,6 @@ function Gestalt() {
           </div>
         </div>
       </div>
-      <Contact />
     </>
   );
 }

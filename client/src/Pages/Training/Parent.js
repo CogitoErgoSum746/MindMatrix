@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import pic1 from "../../images/Parents/pic1.jpg";
 import pic2 from "../../images/Parents/pic2.jpg";
 import pic3 from "../../images/Parents/pic3.jpg";
@@ -186,7 +185,6 @@ const Parent = () => {
           </li>
         </ul>
       </div>
-      <Contact />
     </>
   );
 };

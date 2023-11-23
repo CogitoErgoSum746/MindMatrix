@@ -3,7 +3,7 @@ import logoImage from "../../../src/images/logo.png";
 
 const Contact = () => {
   return (
-    <div className="bg-neutral-300 py-8 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center">
+    <div className="bg-neutral-300 py-8 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center w-full">
       <a href="/" className="self-center">
         <img src={logoImage} alt="Logo" width="150px" height="40px" />
       </a>

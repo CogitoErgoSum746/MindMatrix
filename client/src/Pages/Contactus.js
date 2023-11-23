@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Contact from "../components/HomePage/Contact";
 import ScrollToTop from "../components/ScrollToTop";
 import GetInTouch from "../components/HomePage/GetInTouch";
 
@@ -10,7 +9,6 @@ const Facilitative = () => {
       <Navbar />
       <ScrollToTop />
       <GetInTouch />
-      <Contact />
     </>
   );
 };

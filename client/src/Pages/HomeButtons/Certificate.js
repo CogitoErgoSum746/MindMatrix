@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
-import Contact from '../../components/HomePage/Contact';
 import Card from '../../components/Card';
 import img6 from "../../images/Certificate/Cognitive/pic1.jpg";
 import img4 from "../../images/Certificate/Counselling/pic1.jpg";
@@ -77,32 +76,31 @@ const testimonials = [
 const Certificate = () => {
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Certificate</title>
 
-        <meta name="description" content=""/>
+        <meta name="description" content="" />
 
-        <meta property="og:title" content=""/>
-        <meta property="og:description" content=""/>
-        <meta property="og:image" content=""/>
+        <meta property="og:title" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
 
-        <meta name="twitter:card" content=""/>
-        <meta name="twitter:title" content=""/>
-        <meta name="twitter:description" content=""/>
-        <meta name="twitter:image" content=""/>
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
       </Helmet>
-    <div className='flex flex-col h-screen justify-between'>
-      <Navbar />
-      <ScrollToTop />
-      <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
-        {testimonials.map((testimonial, index) => (
-          <div key={index} className='mb-2'>
-            <Card imageUrl={testimonial.imageUrl} description={testimonial.description} title={testimonial.title} url={testimonial.url} />
-          </div>
-        ))}
+      <div className='flex flex-col h-screen justify-between'>
+        <Navbar />
+        <ScrollToTop />
+        <div className='container mx-auto px-2 flex flex-wrap justify-center md:justify-around gap-6 py-3 md:py-6'>
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className='mb-2'>
+              <Card imageUrl={testimonial.imageUrl} description={testimonial.description} title={testimonial.title} url={testimonial.url} />
+            </div>
+          ))}
+        </div>
       </div>
-      <Contact />
-    </div>
     </>
   )
 }

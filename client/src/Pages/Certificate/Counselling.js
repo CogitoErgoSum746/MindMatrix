@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import Contact from "../../components/HomePage/Contact";
 import coun1 from "../../images/Certificate/Counselling/pic1.jpg";
 import coun2 from "../../images/Certificate/Counselling/pic2.jpg";
 import coun3 from "../../images/Certificate/Counselling/pic3.jpg";
@@ -120,7 +119,6 @@ function Counselling() {
           </div>
         </div>
       </div>
-      <Contact />
     </>
   );
 }
