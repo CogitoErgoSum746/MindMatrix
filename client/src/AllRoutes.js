@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import AdminPanel from "./Pages/AdminPanel";
 import Home1 from "./Pages/PsychometricTest/Home1";
 import Test from "./Pages/PsychometricTest/Test";
+import Profile from "./Pages/PsychometricTest/Profile";
 import TestPageSelector from "./TestPageSelector";
 import TestQuestions from "./TestQuestions";
 import Getusers from "./Pages/Getusers";
@@ -98,6 +99,7 @@ function AllRoutes() {
         />
 
         <Route path="/test" element={authtoken ? <Test /> : <Navigate to='/login' />} />
+        <Route path="/test/userprofile" element={authtoken ? <Profile /> : <Navigate to='/login' />} />
         <Route path="/test/:id" element={authtoken ? <TestPageSelector /> : <Navigate to='/login' />} />
         <Route path="/test/:id/:subtestId" element={authtoken ? <TestQuestions /> : <Navigate to='/login' />} />
         <Route path="/test/2/careeropt" element={authtoken ? <Careeropt /> : <Navigate to='/login' />} />

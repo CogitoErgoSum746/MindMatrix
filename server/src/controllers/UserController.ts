@@ -54,7 +54,7 @@ export async function getUser(req: Request, res: Response): Promise<void> {
     const user = await User.findOne({
       username: req.user.username,
       email: req.user.email,
-    }).select('-password');
+    }).select('-_id -password');
 
     if (!user) {
       res.status(400).json({ error: 'No user found with request object' });
