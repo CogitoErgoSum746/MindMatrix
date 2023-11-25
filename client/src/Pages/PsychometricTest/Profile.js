@@ -5,15 +5,15 @@ import { API_BASE_URL } from "../../config";
 import Footer from "../../components/HomePage/Footer";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from "framer-motion";
 
 function Test() {
     const [userData, setUserData] = useState("");
     const [profileForm, setProfileForm] = useState({
         gender: "",
         address: "",
-        contactNumber: "",
+        contactNumber: null,
     });
-    const [formSubmitted, setFormSubmitted] = useState(false);
 
     const authtoken = localStorage.getItem("authtoken");
     const navigate = useNavigate();
@@ -51,6 +51,16 @@ function Test() {
         }
     };
 
+    const ProfileDetail = ({ label, value }) => (
+        <motion.div
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+            className="mb-4 cursor-hover"
+        >
+            <p className="text-lg font-semibold text-gray-600">{label.toUpperCase()}</p>
+            <p className="text-gray-800 text-md font-light">{value || "N/A"}</p>
+        </motion.div>
+    );
+
     const handleLogout = () => {
         localStorage.clear();
         navigate('/psychometrictest/getstarted');
@@ -65,25 +75,55 @@ function Test() {
 
     const handleProfileFormSubmit = async (e) => {
         e.preventDefault();
-        // Add logic to submit the form data
-        console.log("Form submitted:", profileForm);
 
-        // Simulating a successful form submission
-        // Replace the following with actual API call
-        setTimeout(() => {
-            setFormSubmitted(true);
-        }, 2000);
+        // Basic validation
+        if (profileForm.address.trim().length < 5) {
+            toast.error("Please enter a valid address.", { position: toast.POSITION.TOP_CENTER });
+            return;
+        }
+
+        if (!/^\d{10}$/.test(profileForm.contactNumber)) {
+            toast.error("Please enter a valid 10-digit contact number.", { position: toast.POSITION.TOP_CENTER });
+            return;
+        }
+
+        fetch(`${API_BASE_URL}/user/userprofile`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                authtoken: authtoken,
+            },
+
+            body: JSON.stringify({
+                gender: profileForm.gender,
+                address: profileForm.address,
+                contact: profileForm.contactNumber,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert("You have successfully completed your profile.");
+                    window.location.reload();
+                } else {
+                    alert("Failure in completing your profile");
+                    window.location.reload();
+                }
+            })
+            .catch((error) => {
+                console.error("Error completing the profile:", error);
+            });
     };
 
     return (
         <div className="min-h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-            <div className="relative bg-gray-400 p-4 flex justify-between items-center">
+            <div className="relative bg-black-200 p-4 flex justify-between items-center">
                 <Link to="/test">
                     <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
                         {"<"} Go Back
                     </button>
                 </Link>
-                <h1 className="text-4xl font-bold">User Profile</h1>
+                <h1 className="text-4xl font-bold text-indigo-800">User Profile</h1>
                 <button
                     onClick={handleLogout}
                     className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase flex flex-row items-center mr-1"
@@ -95,67 +135,69 @@ function Test() {
 
             <div className="container mx-auto mt-10 p-6 md:p-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
-                            <h2 className="text-3xl font-bold mb-4">Profile Details</h2>
-                            <div>
-                                <p><strong>Name:</strong> {userData.username}</p>
-                                <p><strong>Email:</strong> {userData.email}</p>
-                                <p><strong>Age:</strong> {userData.age}</p>
-                                <p><strong>Student Type:</strong> {userData.studentType}</p>
-                            </div>
+                    <div className="bg-gray-200 p-8 rounded-lg shadow-lg mb-6">
+                        <h2 className="text-3xl font-bold mb-4 text-gray-700">Profile Details</h2>
+                        <div className="border-t border-blue-500 border-b-2 my-4"></div>
+                        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                            <ProfileDetail label="Name" value={userData.username} />
+                            <ProfileDetail label="Email" value={userData.email} />
+                            <ProfileDetail label="Age" value={userData.age} />
+                            <ProfileDetail label="Student Type" value={userData.studentType} />
+                            <ProfileDetail label="Gender" value={userData.gender} />
+                            <ProfileDetail label="Address" value={userData.address} />
+                            <ProfileDetail label="Contact Number" value={userData.contact} />
                         </div>
-
-                        {/* Add more profile details as needed */}
                     </div>
 
-                    {!formSubmitted && (
+
+                    {!userData.gender && (
                         <div>
                             <div className="bg-white p-8 rounded-lg shadow-lg">
                                 <h2 className="text-3xl font-bold mb-4">Complete Your Profile</h2>
                                 <form onSubmit={handleProfileFormSubmit}>
-                                <div className="mb-4">
-                                    <label htmlFor="gender" className="block text-sm font-semibold text-gray-600">Gender</label>
-                                    <select
-                                        id="gender"
-                                        name="gender"
-                                        className="w-full p-2 border border-gray-300 rounded-md"
-                                        value={profileForm.gender}
-                                        onChange={handleProfileFormChange}
-                                    >
-                                        <option value="">Select gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="gender" className="block text-sm font-semibold text-gray-600">Gender</label>
+                                        <select
+                                            id="gender"
+                                            name="gender"
+                                            className="w-full p-2 border border-gray-300 rounded-md"
+                                            value={profileForm.gender}
+                                            onChange={handleProfileFormChange}
+                                        >
+                                            <option value="">Select gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
 
-                                <div className="mb-4">
-                                    <label htmlFor="address" className="block text-sm font-semibold text-gray-600">Address</label>
-                                    <input
-                                        type="text"
-                                        id="address"
-                                        name="address"
-                                        className="w-full p-2 border border-gray-300 rounded-md"
-                                        value={profileForm.address}
-                                        onChange={handleProfileFormChange}
-                                    />
-                                </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="address" className="block text-sm font-semibold text-gray-600">Address</label>
+                                        <input
+                                            type="text"
+                                            id="address"
+                                            name="address"
+                                            className="w-full p-2 border border-gray-300 rounded-md"
+                                            value={profileForm.address}
+                                            onChange={handleProfileFormChange}
+                                        />
+                                    </div>
 
-                                <div className="mb-4">
-                                    <label htmlFor="contactNumber" className="block text-sm font-semibold text-gray-600">Contact Number</label>
-                                    <input
-                                        type="tel"
-                                        id="contactNumber"
-                                        name="contactNumber"
-                                        className="w-full p-2 border border-gray-300 rounded-md"
-                                        value={profileForm.contactNumber}
-                                        onChange={handleProfileFormChange}
-                                    />
-                                </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="contactNumber" className="block text-sm font-semibold text-gray-600">Contact Number</label>
+                                        <input
+                                            type="number"
+                                            id="contactNumber"
+                                            name="contactNumber"
+                                            className="w-full p-2 border border-gray-300 rounded-md"
+                                            value={profileForm.contactNumber || ""}
+                                            onChange={handleProfileFormChange}
+                                        />
+                                    </div>
+
                                     <button
                                         type="submit"
-                                        className="bg-gradient-to-r from-orange-500 to-yellow-500 text-gray-600 p-2 rounded-md"
+                                        className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-2 rounded-md"
                                     >
                                         Save Profile
                                     </button>

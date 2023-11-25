@@ -5,6 +5,7 @@ import { API_BASE_URL } from "../../config";
 import logout from "../../images/logout.png"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from "../../components/ScrollToTop";
 
 function Test() {
   const [tests] = useState([
@@ -210,6 +211,7 @@ function Test() {
 
   return (
     <div className="min-h-screen bg-white">
+      <ScrollToTop />
       <div className="relative overflow-hidden">
         <img
           src={mainpurple}
@@ -296,7 +298,19 @@ function Test() {
           </div>
         ))}
 
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
+          {!areTestsRemaining &&
+            <div className="flex items-center ml-10">
+              <p className="">To enable the report generation: </p>
+              <p className="text-lg font-bold ml-2">COMPLETE ALL TESTS AND PROFILE</p>
+            </div>}
+          {areTestsRemaining &&
+            <div className="flex items-center ml-10">
+              <p className="text-lg font-bold ml-2">Congrats on successfully completing your tests, you may now generate your FINAL REPORT</p>
+            </div>
+          }
+
+          <div className="border-t border-blue-500 border-b-2 w-full my-4"></div>
           <button
             onClick={handleGeneratePDF}
             className={`px-4 py-2 rounded-full text-black ${areTestsRemaining
@@ -313,6 +327,7 @@ function Test() {
                 : "Send Final Report to Mail"}
           </button>
         </div>
+
       </div>
 
       <ToastContainer autoClose={3000} />
