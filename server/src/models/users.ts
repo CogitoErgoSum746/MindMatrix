@@ -30,6 +30,15 @@ const UserSchema = new Schema({
         type: Number,
         required: true,
     },
+    address: {
+        type: String,
+    },
+    gender: {
+        type: String,
+    },
+    contact: {
+        type: Number,
+    },
     password: {
         type: String,
         required: true,

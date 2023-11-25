@@ -160,15 +160,25 @@ export async function makeBarChartPdf(req: Request, res: Response, testType: str
     await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
-export async function userInfoPdf1(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
+export async function userInfoPdf(req: Request, res: Response, pageNumber: number, Fontsize: number): Promise<void> {
     //get name from user
     const user = await User.findOne({
         username: req.user.username,
         email: req.user.email
     }).select('-_id -password');
 
-    let linesInfo = [];
     const name = user?.username;
+    const age = user?.age.toString();
+    const gender = user?.gender || "Profile not completed";
+    const address = user?.address || "Profile not completed";
+    const contact = user?.contact?.toString() || "Profile not completed";
+    const email = user?.email;
+
+    const org = await OrganizationModel.findOne({
+        org_code: req.user.org_code
+    })
+
+    const org_name = org?.org_name;
 
     const filePath: string = await customFolderName(req, res);
     const pdfBuffer = await fs.promises.readFile(filePath);
@@ -186,13 +196,61 @@ export async function userInfoPdf1(req: Request, res: Response, pageNumber: numb
     page.setFont(TimesRomanFont);
     page.setFontColor(rgb(0, 0, 0));
 
-    let xd = Xd;
-    let yd = Yd;
+    const x1 = 225;
+    const y1 = 600;
+
+    const x2 = 225;
+    const y2 = 545;
+
+    const x3 = 225;
+    const y3 = 490;
+
+    const x4 = 225;
+    const y4 = 435;
+
+    const x5 = 225;
+    const y5 = 380;
+
+    const x6 = 225;
+    const y6 = 340;
+
+    const x7 = 225;
+    const y7 = 290;
 
     page.drawText(name as string,
         {
-            x: xd,
-            y: yd,
+            x: x1,
+            y: y1,
+        },)
+    page.drawText(age as string,
+        {
+            x: x2,
+            y: y2,
+        },)
+    page.drawText(gender as string,
+        {
+            x: x3,
+            y: y3,
+        },)
+    page.drawText(address as string,
+        {
+            x: x4,
+            y: y4,
+        },)
+    page.drawText(contact as string,
+        {
+            x: x5,
+            y: y5,
+        },)
+    page.drawText(email as string,
+        {
+            x: x6,
+            y: y6,
+        },)
+    page.drawText(org_name as string,
+        {
+            x: x7,
+            y: y7,
         },)
 
     // Save to yay.pdf again
@@ -200,7 +258,7 @@ export async function userInfoPdf1(req: Request, res: Response, pageNumber: numb
     await fs.promises.writeFile(filePath, modifiedPdfBytes);
 }
 
-export async function userInfoPdf5(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
+export async function userInfoPdfDate(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
 
     // Get the current date and format it as needed
     const currentDate = new Date();
@@ -226,124 +284,6 @@ export async function userInfoPdf5(req: Request, res: Response, pageNumber: numb
     let yd = Yd;
 
     page.drawText(formattedDate,
-        {
-            x: xd,
-            y: yd,
-        },)
-
-    // Save to yay.pdf again
-    const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile(filePath, modifiedPdfBytes);
-}
-
-export async function userInfoPdf2(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
-    //get score from user
-    const user = await User.findOne({
-        username: req.user.username,
-        email: req.user.email
-    }).select('-_id -password');
-
-    let linesInfo = [];
-    const email = user?.email;
-
-    const filePath: string = await customFolderName(req, res);
-    const pdfBuffer = await fs.promises.readFile(filePath);
-    const pdfDoc = await PDFDocument.load(pdfBuffer);
-
-    // Get a specific page (e.g., page 1)
-    const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
-
-    // Set the fonts and drawing the text to page
-    const fontSize = Fontsize;
-    const TimesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
-
-    // Set the font, font size, and color for the TextDraw object
-    page.setFontSize(fontSize);
-    page.setFont(TimesRomanFont);
-    page.setFontColor(rgb(0, 0, 0));
-
-    let xd = Xd;
-    let yd = Yd;
-
-    page.drawText(email as string,
-        {
-            x: xd,
-            y: yd,
-        },)
-
-    // Save to yay.pdf again
-    const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile(filePath, modifiedPdfBytes);
-}
-
-export async function userInfoPdf3(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
-    //get score from user
-    const user = await User.findOne({
-        username: req.user.username,
-        email: req.user.email
-    }).select('-_id -password');
-
-    let linesInfo = [];
-    const age = user?.age.toString();
-
-    const filePath: string = await customFolderName(req, res);
-    const pdfBuffer = await fs.promises.readFile(filePath);
-    const pdfDoc = await PDFDocument.load(pdfBuffer);
-
-    // Get a specific page (e.g., page 1)
-    const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
-
-    // Set the fonts and drawing the text to page
-    const fontSize = Fontsize;
-    const TimesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
-
-    // Set the font, font size, and color for the TextDraw object
-    page.setFontSize(fontSize);
-    page.setFont(TimesRomanFont);
-    page.setFontColor(rgb(0, 0, 0));
-
-    let xd = Xd;
-    let yd = Yd;
-
-    page.drawText(age as string,
-        {
-            x: xd,
-            y: yd,
-        },)
-
-    // Save to yay.pdf again
-    const modifiedPdfBytes = await pdfDoc.save();
-    await fs.promises.writeFile(filePath, modifiedPdfBytes);
-}
-
-export async function userInfoPdf4(req: Request, res: Response, pageNumber: number, Fontsize: number, Xd: number, Yd: number): Promise<void> {
-
-    const org = await OrganizationModel.findOne({
-        org_code: req.user.org_code
-    })
-
-    const org_name = org?.org_name;
-
-    const filePath: string = await customFolderName(req, res);
-    const pdfBuffer = await fs.promises.readFile(filePath);
-    const pdfDoc = await PDFDocument.load(pdfBuffer);
-
-    // Get a specific page (e.g., page 1)
-    const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
-
-    // Set the fonts and drawing the text to page
-    const fontSize = Fontsize;
-    const TimesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
-
-    // Set the font, font size, and color for the TextDraw object
-    page.setFontSize(fontSize);
-    page.setFont(TimesRomanFont);
-    page.setFontColor(rgb(0, 0, 0));
-
-    let xd = Xd;
-    let yd = Yd;
-
-    page.drawText(org_name as string,
         {
             x: xd,
             y: yd,
@@ -1488,11 +1428,8 @@ export async function sendFeedback(req: Request, res: Response, studentType: str
 export async function sendUserInfo(req: Request, res: Response, studentType: string): Promise<void> {
     try {
         //user info
-        await userInfoPdf1(req, res, 2, 18, 225, 600); //Name
-        await userInfoPdf3(req, res, 2, 18, 225, 545); //Age
-        await userInfoPdf2(req, res, 2, 18, 225, 340); //Email
-        await userInfoPdf4(req, res, 2, 18, 225, 290); //Organization
-        await userInfoPdf5(req, res, 2, 18, 225, 130); //Date   
+        await userInfoPdf(req, res, 2, 18); //user info
+        await userInfoPdfDate(req, res, 2, 18, 225, 130); //Date   
 
         if (studentType === "High school") {
         } else if (studentType === "College") {

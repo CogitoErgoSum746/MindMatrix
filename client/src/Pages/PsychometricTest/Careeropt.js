@@ -833,14 +833,30 @@ function CareerOptions() {
 
   const handleOptionChange = () => {
     if (selectedCategory && selectedOption) {
-      const existingOption = selectedPriorities.find((item) => item.option === selectedOption);
-
-      if (existingOption) {
-        // Career option already exists, update the priority
-        const updatedPriorities = selectedPriorities.map((item) =>
-          item.option === selectedOption ? { ...item, priority: parseInt(selectedPriority, 10) } : item
-        );
-        setSelectedPriorities(updatedPriorities);
+      const existingOptionIndex = selectedPriorities.findIndex(
+        (item) => item.option === selectedOption
+      );
+  
+      if (existingOptionIndex !== -1) {
+        const oldPriority = selectedPriorities[existingOptionIndex].priority;
+        const updatedAvailablePriorities = [
+          ...availablePriorities,
+          oldPriority,
+        ].sort((a, b) => a - b);
+  
+        // Update the priority for the existing option
+        const updatedPriorities = selectedPriorities
+          .filter((_, index) => index !== existingOptionIndex) // Remove the old priority
+          .map((item) => ({ ...item }));
+  
+        // Add the new priority
+        updatedPriorities.push({
+          option: selectedOption,
+          priority: parseInt(selectedPriority, 10),
+        });
+  
+        setSelectedPriorities([...updatedPriorities]);
+        setAvailablePriorities(updatedAvailablePriorities.filter((value) => value !== parseInt(selectedPriority, 10)));
       } else {
         if (selectedPriorities.length < 10) {
           const priorityValue = parseInt(selectedPriority, 10);
@@ -848,9 +864,9 @@ function CareerOptions() {
             ...selectedPriorities,
             { option: selectedOption, priority: priorityValue },
           ];
-          setSelectedPriorities(updatedPriorities);
-
-          // Remove the selected priority from available priorities
+  
+          setSelectedPriorities([...updatedPriorities]); // Create a new array
+  
           const updatedAvailablePriorities = availablePriorities.filter(
             (value) => value !== priorityValue
           );
@@ -859,60 +875,11 @@ function CareerOptions() {
           alert('You can only select 10 career options.');
         }
       }
-
+  
       setSelectedOption('');
       setSelectedPriority(''); // Reset the selected priority
     }
   };
-
-  // const handleIncreasePriority = (index) => {
-  //   const updatedPriorities = [...selectedPriorities];
-  //   if (updatedPriorities[index].priority < 10) {
-  //     // Remove the current priority from available priorities
-  //     const updatedAvailablePriorities = availablePriorities.filter(
-  //       (value) => value !== updatedPriorities[index].priority
-  //     );
-
-  //     updatedPriorities[index].priority += 1;
-  //     setSelectedPriorities(updatedPriorities);
-
-  //     // Update available priorities
-  //     const newPriority = updatedPriorities[index].priority;
-  //     const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
-  //     setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
-  //   }
-  // };
-
-  // const handleDecreasePriority = (index) => {
-  //   const updatedPriorities = [...selectedPriorities];
-  //   if (updatedPriorities[index].priority > 1) {
-  //     // Remove the current priority from available priorities
-  //     const updatedAvailablePriorities = availablePriorities.filter(
-  //       (value) => value !== updatedPriorities[index].priority
-  //     );
-
-  //     updatedPriorities[index].priority -= 1;
-  //     setSelectedPriorities(updatedPriorities);
-
-  //     // Update available priorities
-  //     const newPriority = updatedPriorities[index].priority;
-  //     const updatedAvailablePrioritiesWithNew = [...updatedAvailablePriorities, newPriority];
-  //     setAvailablePriorities(updatedAvailablePrioritiesWithNew.sort((a, b) => a - b));
-  //   }
-  // };
-
-  // const handleDeleteOption = (index) => {
-  //   const deletedOption = selectedPriorities[index];
-
-  //   // Update available priorities by adding back the deleted priority
-  //   const updatedAvailablePriorities = [...availablePriorities, deletedOption.priority];
-  //   setAvailablePriorities(updatedAvailablePriorities.sort((a, b) => a - b));
-
-  //   // Remove the selected option from selectedPriorities
-  //   const updatedPriorities = [...selectedPriorities];
-  //   updatedPriorities.splice(index, 1);
-  //   setSelectedPriorities(updatedPriorities);
-  // };
 
 
   const handleRemoveOption = (index) => {

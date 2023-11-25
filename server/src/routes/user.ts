@@ -1,11 +1,12 @@
 import express, { Router, Request, Response } from 'express';
-import { body, check } from 'express-validator';
-import { getUser, userDashboard, getTestResults, tektest, makeFinalPdf, checkScore, carreerOptions, checkSubscores, multipleIRank, deleteTestResult, schoolTotalTests, collegeTotalTests, professionalTotalTests, doneCarreerList, deleteCareerList, doneSubTests, getAllTestResults } from '../controllers/UserController';
+import { getUser, userDashboard, tektest, checkScore, checkSubscores, multipleIRank, schoolTotalTests, collegeTotalTests, professionalTotalTests, doneCarreerList, doneSubTests } from '../controllers/Users/DBoutput';
+import { completeProfile, getTestResults, makeFinalPdf, carreerOptions, deleteTestResult, deleteCareerList, getAllTestResults } from '../controllers/Users/DBinput';
 import fetchUser from '../middlewares/fetchUser';
 
-const router: Router = express.Router(); 
+const router: Router = express.Router();
 
 router.get('/getuser', fetchUser, getUser);
+router.post('/userprofile', fetchUser, completeProfile);
 
 router.post('/checkscore', fetchUser, checkScore);
 
