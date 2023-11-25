@@ -117,21 +117,34 @@ function Test() {
 
     return (
         <div className="min-h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-            <div className="relative bg-black-200 p-4 flex justify-between items-center">
-                <Link to="/test">
-                    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
-                        {"<"} Go Back
-                    </button>
-                </Link>
-                <h1 className="text-4xl font-bold text-indigo-800">User Profile</h1>
-                <button
-                    onClick={handleLogout}
-                    className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase flex flex-row items-center mr-1"
-                >
-                    <img src={logout} alt="Logout" className="w-5 h-5 mr-2" />
-                    Logout
-                </button>
-            </div>
+            <div className="relative bg-gray-200 p-4 flex flex-col items-center md:flex-row md:justify-between">
+  <h1 className="text-2xl md:text-4xl font-bold text-indigo-800 mb-2 md:mb-0">
+    User Profile
+  </h1>
+  <div className="mb-2 md:mb-0 self-start">
+    <Link to="/test">
+      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
+        {"<"} Go Back
+      </button>
+    </Link>
+  </div>
+</div>
+
+
+
+
+            {/* <div>
+    <button
+      onClick={handleLogout}
+      className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase flex flex-row items-center"
+    >
+      <img src={logout} alt="Logout" className="w-5 h-5 mr-2" />
+      Logout
+    </button>
+  </div> */}
+
+
+
 
             <div className="container mx-auto mt-10 p-6 md:p-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

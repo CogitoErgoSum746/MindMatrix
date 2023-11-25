@@ -213,37 +213,39 @@ function Test() {
     <div className="min-h-screen bg-white">
       <ScrollToTop />
       <div className="relative overflow-hidden">
-        <img
-          src={mainpurple}
-          alt="Background Image"
-          className="object-cover w-full h-60 md:h-80 lg:h-96"
-        />
+  <img
+    src={mainpurple}
+    alt="Background Image"
+    className="object-cover w-full h-60 md:h-80 lg:h-96"
+  />
 
-        <button
-          onClick={handleLogout}
-          className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointer flex flex-row items-center mr-1"
-        >
-          <img src={logout} alt="Logout" className="w-5 h-5" />
-          Logout
-        </button>
-        <Link to="/test/userprofile">
-          <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-4 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
-            Profile
-          </button>
-        </Link>
+  <button
+    onClick={handleLogout}
+    className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointer flex flex-row items-center mr-1"
+  >
+    <img src={logout} alt="Logout" className="w-5 h-5" />
+    Logout
+  </button>
+  
+  <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center text-white">
+    <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4">
+      GET ALL YOUR <br />
+      <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black font-bold">
+        PSYCHOMETRIC
+      </span>{" "}
+      TESTS
+      <br />
+      HERE
+    </h1>
+  </div>
 
-        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center text-white">
-          <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4">
-            GET ALL YOUR <br />
-            <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black font-bold">
-              PSYCHOMETRIC
-            </span>{" "}
-            TESTS
-            <br />
-            HERE
-          </h1>
-        </div>
-      </div>
+  <Link to="/test/userprofile" className="top-80 left-1/2 transform -translate-x-1/2">
+    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-4 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase mt-4">
+      Profile
+    </button>
+  </Link>
+</div>
+
 
       <div className="container mx-auto mt-10 p-6 md:p-10">
         <div className="flex justify-start mb-6">
