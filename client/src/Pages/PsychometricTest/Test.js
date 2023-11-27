@@ -189,7 +189,7 @@ function Test() {
 
   }
 
-  const areTestsRemaining = Object.values(remainingTests || {}).every(
+  const areTestsDone= Object.values(remainingTests || {}).every(
     (count) => count === 0
   );
 
@@ -213,39 +213,37 @@ function Test() {
     <div className="min-h-screen bg-white">
       <ScrollToTop />
       <div className="relative overflow-hidden">
-  <img
-    src={mainpurple}
-    alt="Background Image"
-    className="object-cover w-full h-60 md:h-80 lg:h-96"
-  />
+        <img
+          src={mainpurple}
+          alt="Background Image"
+          className="object-cover w-full h-60 md:h-80 lg:h-96"
+        />
 
-  <button
-    onClick={handleLogout}
-    className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointer flex flex-row items-center mr-1"
-  >
-    <img src={logout} alt="Logout" className="w-5 h-5" />
-    Logout
-  </button>
-  
-  <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center text-white">
-    <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4">
-      GET ALL YOUR <br />
-      <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black font-bold">
-        PSYCHOMETRIC
-      </span>{" "}
-      TESTS
-      <br />
-      HERE
-    </h1>
-  </div>
+        <button
+          onClick={handleLogout}
+          className="absolute top-5 right-5 p-2 bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold rounded-full cursor-pointer flex flex-row items-center mr-1"
+        >
+          <img src={logout} alt="Logout" className="w-5 h-5" />
+          Logout
+        </button>
+        <Link to="/test/userprofile">
+          <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:scale-105 font-semibold uppercase mt-8">
+            Profile
+          </button>
+        </Link>
 
-  <Link to="/test/userprofile" className="top-80 left-1/2 transform -translate-x-1/2">
-    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-4 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase mt-4">
-      Profile
-    </button>
-  </Link>
-</div>
-
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 text-center text-white">
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4">
+            GET ALL YOUR <br />
+            <span className="bg-gradient-to-r from-orange-500 to-yellow-500 text-clip text text-black font-bold">
+              PSYCHOMETRIC
+            </span>{" "}
+            TESTS
+            <br />
+            HERE
+          </h1>
+        </div>
+      </div>
 
       <div className="container mx-auto mt-10 p-6 md:p-10">
         <div className="flex justify-start mb-6">
@@ -259,7 +257,7 @@ function Test() {
         {filteredTests.map((test) => (
           <div
             key={test.id}
-            className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center"
+            className="w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center transition-transform duration-200 transform hover:scale-105"
           >
             <h1 className="text-lg md:text-xl lg:text-xl font-bold mb-2 md:mb-0 md:mr-4">
               {test.name}
@@ -301,25 +299,25 @@ function Test() {
         ))}
 
         <div className="flex flex-col justify-center items-center">
-          {!areTestsRemaining &&
+          {!areTestsDone &&
             <div className="flex items-center ml-10">
               <p className="">To enable the report generation: </p>
               <p className="text-lg font-bold ml-2">COMPLETE ALL TESTS AND PROFILE</p>
             </div>}
-          {areTestsRemaining &&
+          {areTestsDone && careerOptions &&(
             <div className="flex items-center ml-10">
               <p className="text-lg font-bold ml-2">Congrats on successfully completing your tests, you may now generate your FINAL REPORT</p>
             </div>
-          }
+          )}
 
           <div className="border-t border-blue-500 border-b-2 w-full my-4"></div>
           <button
             onClick={handleGeneratePDF}
-            className={`px-4 py-2 rounded-full text-black ${areTestsRemaining
+            className={`px-4 py-2 rounded-full text-black ${areTestsDone && careerOptions
               ? "bg-gradient-to-r from-orange-500 to-yellow-500"
               : "bg-gray-300"
               }`}
-            disabled={!areTestsRemaining}
+            disabled={!areTestsDone}
             style={{ width: "250px" }}
           >
             {loading

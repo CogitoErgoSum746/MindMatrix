@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ imageUrl, title, description ,url}) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img src={imageUrl} alt="Card Image" className="w-full" />
+    <div className="flex items-center justify-center">
+    <div className="max-w-sm mx-2 rounded overflow-hidden shadow-lg">
+      <img src={imageUrl} alt="Card Image" className="w-full h-40 object-cover object-scale-down" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-base">{description}</p>
@@ -16,6 +17,7 @@ const Card = ({ imageUrl, title, description ,url}) => {
             </button>
         </Link>
       </div>
+    </div>
     </div>
   );
 };

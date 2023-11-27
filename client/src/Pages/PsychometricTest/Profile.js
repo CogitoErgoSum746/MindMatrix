@@ -56,15 +56,17 @@ function Test() {
             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             className="mb-4 cursor-hover"
         >
-            <p className="text-lg font-semibold text-gray-600">{label.toUpperCase()}</p>
-            <p className="text-gray-800 text-md font-light">{value || "N/A"}</p>
+            <div className="flex flex-row gap-3">
+            <p className="text-lg font-semibold text-gray-600">{label.toUpperCase()} :</p>
+            <p className="text-black text-md font-light">{value || "N/A"}</p>
+            </div>
         </motion.div>
     );
 
-    const handleLogout = () => {
-        localStorage.clear();
-        navigate('/psychometrictest/getstarted');
-    };
+    // const handleLogout = () => {
+    //     localStorage.clear();
+    //     navigate('/psychometrictest/getstarted');
+    // };
 
     const handleProfileFormChange = (e) => {
         setProfileForm({
@@ -116,35 +118,10 @@ function Test() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-            <div className="relative bg-gray-200 p-4 flex flex-col items-center md:flex-row md:justify-between">
-  <h1 className="text-2xl md:text-4xl font-bold text-indigo-800 mb-2 md:mb-0">
-    User Profile
-  </h1>
-  <div className="mb-2 md:mb-0 self-start">
-    <Link to="/test">
-      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
-        {"<"} Go Back
-      </button>
-    </Link>
-  </div>
-</div>
-
-
-
-
-            {/* <div>
-    <button
-      onClick={handleLogout}
-      className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase flex flex-row items-center"
-    >
-      <img src={logout} alt="Logout" className="w-5 h-5 mr-2" />
-      Logout
-    </button>
-  </div> */}
-
-
-
+        <div className="min-h-screen bg-[#f3e8dd]">
+            <div className="p-4 flex justify-center items-center">
+                <h1 className="text-4xl font-bold text-gray-700">User Profile</h1>
+            </div>
 
             <div className="container mx-auto mt-10 p-6 md:p-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -169,7 +146,7 @@ function Test() {
                                 <h2 className="text-3xl font-bold mb-4">Complete Your Profile</h2>
                                 <form onSubmit={handleProfileFormSubmit}>
                                     <div className="mb-4">
-                                        <label htmlFor="gender" className="block text-sm font-semibold text-gray-600">Gender</label>
+                                        <label htmlFor="gender" className="block text-md font-semibold text-gray-600 text-left mb-1">Gender</label>
                                         <select
                                             id="gender"
                                             name="gender"
@@ -178,14 +155,14 @@ function Test() {
                                             onChange={handleProfileFormChange}
                                         >
                                             <option value="">Select gender</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </div>
 
                                     <div className="mb-4">
-                                        <label htmlFor="address" className="block text-sm font-semibold text-gray-600">Address</label>
+                                        <label htmlFor="address" className="block text-md font-semibold text-gray-600 text-left mb-1">Address</label>
                                         <input
                                             type="text"
                                             id="address"
@@ -197,7 +174,7 @@ function Test() {
                                     </div>
 
                                     <div className="mb-4">
-                                        <label htmlFor="contactNumber" className="block text-sm font-semibold text-gray-600">Contact Number</label>
+                                        <label htmlFor="contactNumber" className="block text-md font-semibold text-gray-600 text-left mb-1">Contact Number</label>
                                         <input
                                             type="number"
                                             id="contactNumber"
@@ -210,7 +187,7 @@ function Test() {
 
                                     <button
                                         type="submit"
-                                        className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white p-2 rounded-md"
+                                        className="bg-gradient-to-r from-orange-500 to-yellow-500 font-semibold p-2 rounded-full"
                                     >
                                         Save Profile
                                     </button>
@@ -219,7 +196,15 @@ function Test() {
                         </div>
                     )}
                 </div>
+                <div className="text-left mt-5">
+                <Link to="/test">
+                    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full hover:bg-yellow-500 text-left font-semibold uppercase">
+                        {"<"} Go Back
+                    </button>
+                </Link>
+                </div>
             </div>
+           
             <Footer />
             <ToastContainer autoClose={3000} />
         </div>

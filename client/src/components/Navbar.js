@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logoImage from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import { Helmet } from 'react-helmet';
 
@@ -12,6 +13,7 @@ function Navbar() {
   const [selectedService, setSelectedService] = useState(""); // Track the selected service
 
   const navigate = useNavigate(); // Access the history object for navigation
+  const location = useLocation();
 
   useEffect(() => {
     // Function to preload the image
@@ -79,6 +81,27 @@ function Navbar() {
     }
   };
 
+  useEffect(() => {
+    // Set the selected service based on the current page
+    const currentPath = location.pathname;
+    switch (currentPath) {
+      case "/mindwellness":
+        setSelectedService("Mind Wellness");
+        break;
+      case "/training":
+        setSelectedService("Training Program");
+        break;
+      case "/certificate":
+        setSelectedService("Certificate Program");
+        break;
+      case "/psychometrictest/getstarted":
+        setSelectedService("Psychometric Test");
+        break;
+      default:
+        setSelectedService("NLP Services");
+    }
+  }, [location.pathname]);
+
   return (
     <nav className={`bg-white p-2 top-0 left-0 right-0 z-50 sticky`} 
     style={{ background: 'linear-gradient(to right, #e6e0d4, #d8cbb3)',
@@ -103,29 +126,32 @@ function Navbar() {
           <Link to="/about" className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             About Us
           </Link>
-          <div className="flex justify-center items-center">
-            <select
-              value={selectedService}
-              onChange={handleServiceChange}
-              className="nav-link block px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer"
-            >
-              <option value="" disabled hidden>
-                NLP Services Offered
-              </option>
-              <option className="py-6" value="Mind Wellness">
-                Mind Wellness
-              </option>
-              <option className="py-6" value="Training Program">
-                Training Programs
-              </option>
-              <option className="py-6" value="Certificate Program">
-                Certificate Programs
-              </option>
-              <option className="py-6" value="Psychometric Test">
-                Psychometric Tests
-              </option>
-            </select>
-          </div>
+            <div className="relative"> 
+              <select
+                value={selectedService}
+                onChange={handleServiceChange}
+                className="nav-link appearance-none block bg-transparent border border-gray-300 text-black py-1 px-6 rounded leading-tight focus:outline-none focus:border-gray-500 transition-all duration-300"
+              >
+                <option value="">
+                    NLP Services Offered
+                  </option>
+                <option className="py-6" value="Mind Wellness">
+                  Mind Wellness
+                </option>
+                <option className="py-6" value="Training Program">
+                  Training Programs
+                </option>
+                <option className="py-6" value="Certificate Program">
+                  Certificate Programs
+                </option>
+                <option className="py-6" value="Psychometric Test">
+                  Psychometric Tests
+                </option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg className="fill-current h-3 w-3 mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12.79l-6-6-1.41 1.41L10 15.01l7.41-7.41-1.41-1.41z"/></svg>
+                </div>
+            </div>
 
           <Link to="/facilitator" smooth={true} duration={500} className="nav-link px-2 hover:bg-gradient-to-r from-orange-500 to-yellow-500 hover:text-white transition duration-300 py-1">
             Facilitator Profile
@@ -184,9 +210,9 @@ function Navbar() {
               <select
                 value={selectedService}
                 onChange={handleServiceChange}
-                className="nav-link block bg-black bg-opacity-75 px-2 py-1 hover:bg-gradient-to-r from-orange-500 to-yellow-500 cursor-pointer mb-2 text-white"
+                className="nav-link appearance-none block text-center bg-black bg-opacity-75 px-2 py-1 cursor-pointer mb-2 text-white rounded leading-tight focus:outline-none focus:border-gray-500"
               >
-                <option value="" disabled hidden>
+                <option value="">
                   NLP Services Offered
                 </option>
                 <option value="Mind Wellness">Mind Wellness</option>
@@ -194,6 +220,9 @@ function Navbar() {
                 <option value="Certificate Program">Certificate program</option>
                 <option value="Psychometric Test">Psychometric Test</option>
               </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 12.79l-6-6-1.41 1.41L10 15.01l7.41-7.41-1.41-1.41z"/></svg>
+    </div>
             </div>
 
             <Link to="/facilitator" smooth={true} duration={500} onClick={scrollToTop} className="nav-link block px-2 hover:text-black hover:bg-gray-300 py-1 mb-2 text-white">
