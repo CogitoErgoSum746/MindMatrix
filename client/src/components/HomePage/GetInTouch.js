@@ -1,5 +1,6 @@
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
+import { FaClock } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 
 const GetInTouch = () => {
@@ -73,100 +74,110 @@ const GetInTouch = () => {
 
   return (
     <div id="getintouch" className="bg-stone-50 w-full py-12">
-  <div className="max-w-screen-lg mx-auto px-4 border-2 border-gray-400 rounded-lg shadow-lg p-4">
-    <div className="text-center">
-      <h3 className="text-black text-4xl font-semibold font-inter leading-10">
-        Get In Touch
-      </h3>
-      <p className="text-zinc-500 text-base font-normal font-sans-pro leading-relaxed my-5">
-        We’re here to help. Chat with us 24/7 and get set up and ready to go in just a quick.
-      </p>
+      <div className="max-w-screen-lg mx-auto flex flex-wrap items-center justify-between px-4">
+        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+          <div className="text-center">
+            <h3 className="text-black text-4xl font-semibold font-inter leading-10">
+              Get In Touch
+            </h3>
+            <p className="text-zinc-500 text-base font-normal font-sans-pro leading-relaxed my-5">
+              We’re here to help. Chat with us 24/7 and get set up and ready to go in just a quick.
+            </p>
+          </div>
+          <form className="mt-6 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="mb-4">
+                <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  placeholder="Your Name"
+                  name="Name"
+                  type="text"
+                  className="border-b border-gray-500 focus:border-b pl-4 focus:outline-none w-full h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+                  id="nameInput"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                  Email Address
+                </label>
+                <input
+                  placeholder="Your Email"
+                  name="Email"
+                  type="text"
+                  id="emailInput"
+                  className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+                />
+              </div>
+            </div>
+            <div className="mb-4">
+              <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="contact">
+                Contact No.
+              </label>
+              <input
+                placeholder="Enter Contact no."
+                name="Contact"
+                type="number"
+                id="contactInput"
+                className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="optionSelect">
+                Select from the topics below
+              </label>
+              <select
+                name="Option"
+                className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+                id="optionSelect"
+              >
+                <option value="">Select your topic</option>
+                <option value="Counselling and Therapies">Counselling and Therapies</option>
+                <option value="Life Coaching Session">Life Coaching Session</option>
+                <option value="Corporate Training">Corporate Training</option>
+                <option value="Business Coaching">Business Coaching</option>
+                <option value="Leadership Training">Leadership Training</option>
+                <option value="Psychometric Test">Psychometric Test</option>
+                <option value="Career Counselling">Career Counselling</option>
+                <option value="Students Training">Students Training</option>
+                <option value="Teachers Training">Teachers Training</option>
+                <option value="Parenting Session">Parenting Session</option>
+                <option value="Certification Program">Certification Program</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+                Message
+              </label>
+              <textarea
+                name="Message"
+                placeholder="Your Message"
+                id="messageInput"
+                className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full h-24 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              onClick={(e) => Submit(e)}
+              className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-500 hover:to-orange-500 focus:outline-none w-64"
+            >
+              Submit
+            </button>
+          </form>
+          <ToastContainer position="top-right" autoClose={2000} />
+        </div>
+        <div className="w-full md:w-1/2 mt-6 md:mt-0">
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h4 className="text-lg font-semibold mt-4 mb-2">Work Time <FaClock className="inline-block ml-2" />:</h4>
+            <p className="text-gray-700">Mon-Fri: 9:00 AM - 6:00 PM</p>
+            <p className="text-gray-700 mt-2">
+              Connect with us and expect immediate personalized responses during our work hours.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <form className="mt-6 space-y-6">
-      <div className="flex flex-col items-center mb-4">
-        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-          Name
-        </label>
-        <input
-          placeholder="  Your Name"
-          name="Name"
-          type="text"
-          className="border-b border-gray-500 focus:border-b pl-4 focus:outline-none w-full w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
-          id="nameInput"
-        />
-      </div>
-      <div className="flex flex-col items-center mb-4">
-        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-          Email Address
-        </label>
-        <input
-          placeholder="  Your Email"
-          name="Email"
-          type="text"
-          id="emailInput"
-          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
-        />
-      </div>
-      <div className="flex flex-col items-center mb-4">
-        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="contact">
-          Contact No.
-        </label>
-        <input
-          placeholder="  Enter Contact no."
-          name="Contact"
-          type="number"
-          id="contactInput"
-          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
-        />
-      </div>
-      <div className="flex flex-col items-center mb-4">
-        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="optionSelect">
-          Select from the topics below
-        </label>
-        <select
-          name="Option"
-          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full w-96 h-12 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
-          id="optionSelect"
-        >
-          <option value="">Select your topic</option>
-          <option value="Counselling and Therapies">Counselling and Therapies</option>
-          <option value="Life Coaching Session">Life Coaching Session</option>
-          <option value="Corporate Training">Corporate Training</option>
-          <option value="Business Coaching">Business Coaching</option>
-          <option value="Leadership Training">Leadership Training</option>
-          <option value="Psychometric Test">Psychometric Test</option>
-          <option value="Career Counselling">Career Counselling</option>
-          <option value="Students Training">Students Training</option>
-          <option value="Teachers Training">Teachers Training</option>
-          <option value="Parenting Session">Parenting Session</option>
-          <option value="Certification Program">Certification Program</option>
-        </select>
-      </div>
-      <div className="flex flex-col items-center mb-4">
-        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-          Message
-        </label>
-        <textarea
-          name="Message"
-          placeholder="  Your Message"
-          id="messageInput"
-          className="border-b border-gray-500 focus-border-b pl-4 focus:outline-none w-full w-96 h-24 transition-all duration-300 hover:bg-gray-100 focus:bg-light-blue-100 rounded-lg shadow-md"
-        ></textarea>
-      </div>
-      <button
-        type="button"
-        onClick={(e) => Submit(e)}
-        className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-500 hover:to-orange-500 focus:outline-none w-64"
-      >
-        Submit
-      </button>
-    </form>
-    <ToastContainer position="top-right" autoClose={2000} />
-  </div>
-</div>
-
-
-
   );
 };
 

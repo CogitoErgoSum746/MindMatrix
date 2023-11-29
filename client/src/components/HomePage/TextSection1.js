@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
-import img3 from "../../../src/images/landingPage/image-3.webp";
 import img4 from "../../../src/images/landingPage/image-4.webp";
 import img5 from "../../../src/images/landingPage/image-5.webp";
 import oct from "../../../src/images/Octahedron.png";
@@ -33,20 +32,20 @@ const TextSection1 = () => {
 
         <div className="flex flex-col md:flex-row gap-6 justify-between">
           <div className="self-center">
-            <img src={img4} className="md:hidden" alt="Hidden on medium screens" />
-            <img src={img4} className="hidden md:block" alt="Hidden on small screens" />
+            <img src={img4} className="md:hidden" alt="Hidden on medium screens" width="350" height="250" />
+            <img src={img4} className="hidden sm:block" alt="Hidden on small screens" width="100%" height="auto" />
           </div>
           <div className="self-center">
-            <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter']">
+            <div className="text-black text-xl md:text-3xl lg:text-4xl font-bold font-inter">
               MIND WELLNESS
             </div>
-            <div className=" text-black text-xl md:text-2xl font-semibold lg:text-3xl font-['Inter']">
+            <div className="text-black text-xl md:text-2xl lg:text-3xl font-semibold font-inter">
               Counselling Therapy
             </div>
-            <div className="text-black text-xl mt-4 font-semibold font-['Inter'] ">
+            <div className="text-black text-xl mt-4 font-semibold font-inter">
               Talk | Resolve | Heal
             </div>
-            <div className=" text-neutral-700 font-['Source Sans Pro']">
+            <div className="text-neutral-700 font-source-sans-pro">
               100% Safe and Secure Platform
             </div>
             <div className="flex justify-around my-4 font-bold text-base lg:text-xl">
@@ -63,11 +62,11 @@ const TextSection1 = () => {
                 <p>Preventive</p>
               </div>
             </div>
-            <div className=" text-black text-lg md:text-xl font-semibold  lg:text-2xl font-['Inter'] mb-2">
+            <div className="text-black text-lg md:text-xl lg:text-2xl font-semibold font-inter mb-2">
               Get Rid of
             </div>
-            <ul class="list-disc text-left">
-              <div class="grid grid-cols-2 lg:grid-cols-4">
+            <ul className="list-disc text-left ml-5">
+              <div className="grid grid-cols-2 lg:grid-cols-4">
                 <li>Stress</li>
                 <li>Anxiety</li>
                 <li>Panic Attacks</li>
@@ -91,27 +90,23 @@ const TextSection1 = () => {
                 Know More
               </button>
             </Link>
-            {/* <a href="/mindwellness" className="px-4 py-2 mt-4 ml-8 font-semibold text-black bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 rounded-md shadow-lg transition-transform transform hover:translate-x-2">
-              Know More
-            </a> */}
-
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 justify-between " id="services">
+        <div className="flex flex-col md:flex-row gap-6 justify-between" id="services">
           <div className="self-center">
-            <img src={img5} className="md:hidden" alt="psychometric test component"></img>
-            <div className=" text-black text-xl md:text-3xl font-bold lg:text-4xl font-['Inter'] py-10">
+            <img src={img5} className="md:hidden" alt="psychometric test component" width="400" height="300" />
+            <div className="text-black text-xl md:text-3xl lg:text-4xl font-bold font-inter py-10">
               PSYCHOMETRIC TESTS & CAREER GUIDANCE
             </div>
-            <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter']">
+            <p className="text-black text-base md:text-xl lg:text-2xl font-inter">
               Neuro-cognitive-emotional Intelligence Behaviour Competency Mapping
             </p>
-            <p className=" text-black text-base md:text-xl lg:text-2xl font-['Inter'] mt-2">
+            <p className="text-black text-base md:text-xl lg:text-2xl font-inter mt-2">
               Find Your Stream of Learning- Career Pathway by the Most Scientific
               Way!
             </p>
-            <div className=" text-black text-xl md:text-3xl font-semibold lg:text-4xl font-['Inter'] mt-6">
+            <div className="text-black text-xl md:text-3xl font-semibold lg:text-4xl font-inter mt-6">
               Your Dynamic Path to Total Success
             </div>
             <div className="mt-4">
@@ -128,7 +123,7 @@ const TextSection1 = () => {
             </div>
           </div>
           <div className="self-center">
-            <img src={img5} className="hidden md:block" alt="psychometric test component"></img>
+            <img src={img5} className="hidden md:block" alt="psychometric test component" width="100%" height="auto" />
           </div>
         </div>
       </div>
