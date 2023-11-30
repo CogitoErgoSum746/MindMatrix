@@ -10,9 +10,9 @@ const FloatingIcon = () => {
       href={whatsappURL}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-4 right-4 z-50" // hover:animate-ping
+      className="fixed bottom-8 right-4 md:bottom-20 md:right-8 z-50 transform hover:scale-110 transition-transform duration-300"
     >
-      <img src={wpicon} alt="Whatsapp icon" className="w-14 h-14" />
+      <img src={wpicon} alt="Whatsapp icon" className="w-11 h-11 md:w-14 md:h-14" />
     </a>
   );
 };
