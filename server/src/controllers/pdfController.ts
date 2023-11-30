@@ -206,16 +206,16 @@ export async function userInfoPdf(req: Request, res: Response, pageNumber: numbe
     const y3 = 490;
 
     const x4 = 225;
-    const y4 = 435;
+    const y4 = 438;
 
     const x5 = 225;
-    const y5 = 380;
+    const y5 = 388;
 
     const x6 = 225;
-    const y6 = 340;
+    const y6 = 335;
 
     const x7 = 225;
-    const y7 = 290;
+    const y7 = 285;
 
     page.drawText(name as string,
         {
