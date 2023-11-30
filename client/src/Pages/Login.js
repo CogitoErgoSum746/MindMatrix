@@ -88,33 +88,35 @@ function Login() {
 
   return (
     <>
-     <Helmet>
+      <Helmet>
         <title>Login</title>
 
-        <meta name="description" content=""/>
+        <meta name="description" content="" />
 
-        <meta property="og:title" content=""/>
-        <meta property="og:description" content=""/>
-        <meta property="og:image" content=""/>
+        <meta property="og:title" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
 
-        <meta name="twitter:card" content=""/>
-        <meta name="twitter:title" content=""/>
-        <meta name="twitter:description" content=""/>
-        <meta name="twitter:image" content=""/>
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
       </Helmet>
       <Navbar />
-      <div className={`flex flex-row opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
-        <div className='hidden md:block md:flex-1 mt-20'>
-          <img src={registerImg} alt="register" className="w-full h-auto"></img>
-        </div>
-        <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-10">Welcome back</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label
-                className="flex items-start text-gray-700 text-sm font-bold mb-2"
-                htmlFor="username"
-              >
+      
+      <div className={`opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
+  {/* <div className="md:hidden">
+    <img src={registerImg} alt="register" className="w-full h-auto" />
+  </div> */}
+  <div className={`flex flex-row`}>
+    <div className='hidden md:block md:flex-1 mt-8'> {/* Adjusted margin here */}
+      <img src={registerImg} alt="register" className="w-full h-auto" />
+    </div>
+    <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
+      <h2 className="text-3xl font-bold text-gray-800 mb-10">Welcome back</h2>
+      <form onSubmit={handleSubmit} className="w-full max-w-md">
+            <div className="mb-6">
+              <label htmlFor="username" className="block text-gray-700 font-semibold mb-2 text-left">
                 Username
               </label>
               <input
@@ -123,15 +125,12 @@ function Login() {
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
                 required
               />
             </div>
-            <div className="mb-4">
-              <label
-                className="flex items-start text-gray-700 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
+            <div className="mb-6">
+              <label htmlFor="password" className="block text-gray-700 font-semibold mb-2 text-left">
                 Password
               </label>
               <input
@@ -140,26 +139,30 @@ function Login() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
                 required
               />
               <Link to='/sendmail'>
-                <p className='text-blue-400 text-right'>Forgot Password ?</p>
+                <p className='text-blue-400 text-right'>Forgot Password?</p>
               </Link>
             </div>
             <div className="text-center">
               <button
                 type="submit"
-                className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
+                className="w-full p-3 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-600 hover:to-orange-600 focus:outline-none transition duration-300"
               >
                 Log In
               </button>
-              <Link to='/register' className='text-md text-gray-600'>New member? Register</Link>
+              <Link to='/register' className='text-md text-gray-600 block mt-3 text-center'>
+                New member? Register
+              </Link>
             </div>
           </form>
         </div>
       </div>
+        </div>
       <ToastContainer autoClose={3000} />
+
     </>
   );
 }

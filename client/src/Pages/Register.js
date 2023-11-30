@@ -138,33 +138,30 @@ const Register = () => {
 
   return (
     <>
-     <Helmet>
+      <Helmet>
         <title>Register</title>
 
-        <meta name="description" content=""/>
+        <meta name="description" content="" />
 
-        <meta property="og:title" content=""/>
-        <meta property="og:description" content=""/>
-        <meta property="og:image" content=""/>
+        <meta property="og:title" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
 
-        <meta name="twitter:card" content=""/>
-        <meta name="twitter:title" content=""/>
-        <meta name="twitter:description" content=""/>
-        <meta name="twitter:image" content=""/>
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
       </Helmet>
       <Navbar />
-      <div className={`flex flex-row opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
+      <div className={`flex flex-col-reverse md:flex-row opacity-0 ${fadeIn ? 'opacity-100 transition-opacity duration-1000' : ''} ${fadeIn ? 'transform translate-y-0' : 'transform translate-y-[-50px] transition-transform duration-1000'}`}>
         <div className="hidden md:block md:flex-1 mt-20">
           <img src={registerImg} alt="register" className="w-full h-auto" />
         </div>
         <div className="flex-1 w-full p-6 bg-white min-h-screen flex flex-col items-center justify-center">
-          <h2 className="text-3xl font-bold mb-10">Welcome</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label
-                htmlFor="username"
-                className="flex items-start text-gray-700 font-semibold mb-1"
-              >
+          <h2 className="text-3xl font-bold mb-6">Welcome</h2>
+          <form onSubmit={handleSubmit} className="w-full max-w-md">
+            <div className="mb-6">
+              <label htmlFor="username" className="block text-gray-700 font-semibold mb-1 text-left">
                 Name *
               </label>
               <input
@@ -174,15 +171,12 @@ const Register = () => {
                 value={formData.username}
                 onChange={handleChange}
                 required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
               />
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="flex items-start text-gray-700 font-semibold mb-1"
-              >
+            <div className="mb-6">
+              <label htmlFor="email" className="block text-gray-700 font-semibold mb-1 text-left">
                 Email *
               </label>
               <input
@@ -192,15 +186,12 @@ const Register = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
               />
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="studentType"
-                className="flex items-start text-gray-700 font-semibold mb-1"
-              >
+            <div className="mb-6">
+              <label htmlFor="studentType" className="block text-gray-700 font-semibold mb-1 text-left">
                 Type *
               </label>
               <select
@@ -209,20 +200,17 @@ const Register = () => {
                 value={formData.studentType}
                 onChange={handleChange}
                 required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
               >
-                <option value="">Select your type</option>
+                <option value="">Select your test type</option>
                 <option value="High school">High school</option>
                 <option value="College">College</option>
                 <option value="Professional">Professional</option>
               </select>
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="age"
-                className="flex items-start text-gray-700 font-semibold mb-1"
-              >
+            <div className="mb-6">
+              <label htmlFor="age" className="block text-gray-700 font-semibold mb-1 text-left">
                 Age *
               </label>
               <input
@@ -232,43 +220,36 @@ const Register = () => {
                 value={formData.age}
                 onChange={handleChange}
                 required
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
               />
             </div>
 
-            <div className="mb-4 relative">
-        <label
-          htmlFor="password"
-          className="flex items-start text-gray-700 font-semibold mb-1"
-        >
-          Password *
-        </label>
-        <div className="relative">
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            className="w-full px-14 py-2 border rounded-md pr-12 focus:outline-none focus:ring focus:ring-orange-200"
-          />
-          <button
-            type="button"
-            onClick={handleTogglePassword}
-            className="absolute top-2 right-2 -mr-10 h-8 w-8 flex items-center justify-center text-gray-600"
-          >
-            {showPassword ? <EyeOff /> : <Eye />}
-          </button>
-        </div>
-      </div>
+            <div className="mb-6 relative">
+              <label htmlFor="password" className="block text-gray-700 font-semibold mb-1 text-left">
+                Password *
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-md shadow-sm pr-10 focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
+                />
+                <button
+                  type="button"
+                  onClick={handleTogglePassword}
+                  className="absolute top-2 right-2 h-8 w-8 flex items-center justify-center text-gray-600"
+                >
+                  {showPassword ? <EyeOff /> : <Eye />}
+                </button>
+              </div>
+            </div>
 
-
-            <div className="mb-4">
-              <label
-                htmlFor="organization_code"
-                className="flex items-start text-gray-700 font-semibold mb-1"
-              >
+            <div className="mb-6">
+              <label htmlFor="organization_code" className="block text-gray-700 font-semibold mb-1 text-left">
                 Organization Code *
               </label>
               <input
@@ -277,15 +258,12 @@ const Register = () => {
                 name="organization_code"
                 value={formData.organization_code}
                 onChange={handleChange}
-                className="w-full px-14 py-2 border rounded-md focus:outline-none focus:ring focus:ring-orange-200"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-orange-200 transition duration-300"
               />
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="terms"
-                className="flex items-center text-gray-700 font-semibold mb-1"
-              >
+            <div className="mb-6">
+              <label htmlFor="terms" className="flex items-center text-gray-700 font-semibold mb-1 text-left">
                 <input
                   type="checkbox"
                   id="terms"
@@ -309,18 +287,19 @@ const Register = () => {
               )}
             </div>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <button
                 type="submit"
-                className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500"
+                className="w-full p-3 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-600 hover:to-orange-600 focus:outline-none transition duration-300"
               >
                 Register
               </button>
-              <Link to="/login" className="text-md text-gray-600">
+              <Link to="/login" className="text-md text-gray-600 block mt-3 text-center">
                 Already a member? Login
               </Link>
             </div>
           </form>
+
         </div>
       </div>
       <ToastContainer autoClose={3000} />

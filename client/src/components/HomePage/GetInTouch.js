@@ -73,18 +73,30 @@ const GetInTouch = () => {
   }
 
   return (
-    <div id="getintouch" className="bg-stone-50 w-full py-12">
-      <div className="max-w-screen-lg mx-auto flex flex-wrap items-center justify-between px-4">
-        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+    <div id="getintouch" className="bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100 w-full py-12">
+      <div className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-center px-4">
+        <div className="md:w-1/2 md:pr-8 mb-8">
+          <div className="bg-white p-4 rounded-lg shadow-md hover:bg-blue-50 transition duration-300">
+            <h4 className="text-2xl font-semibold mb-2 text-gray-700">
+            <FaClock className="inline-block ml-2 mr-2" /> Work Time
+            </h4>
+            <p className="text-lg text-gray-600">Mon-Fri: 9:00 AM - 6:00 PM</p>
+            <p className="mt-2 text-gray-500">
+              Connect with us and expect immediate personalized responses during our work hours.
+            </p>
+          </div>
+        </div>
+
+        <div className="md:w-1/2">
           <div className="text-center">
-            <h3 className="text-black text-4xl font-semibold font-inter leading-10">
+            <h3 className="text-gray-700 text-4xl font-semibold font-inter leading-10 mb-4">
               Get In Touch
             </h3>
-            <p className="text-zinc-500 text-base font-normal font-sans-pro leading-relaxed my-5">
+            <p className="text-blue-500 text-base font-normal font-sans-pro leading-relaxed mb-6">
               We’re here to help. Chat with us 24/7 and get set up and ready to go in just a quick.
             </p>
           </div>
-          <form className="mt-6 space-y-6">
+          <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
                 <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -160,21 +172,12 @@ const GetInTouch = () => {
             <button
               type="button"
               onClick={(e) => Submit(e)}
-              className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-500 hover:to-orange-500 focus:outline-none w-64"
+              className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white hover:from-yellow-600 hover:to-orange-600 focus:outline-none w-full md:w-64 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Submit
             </button>
           </form>
           <ToastContainer position="top-right" autoClose={2000} />
-        </div>
-        <div className="w-full md:w-1/2 mt-6 md:mt-0">
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h4 className="text-lg font-semibold mt-4 mb-2">Work Time <FaClock className="inline-block ml-2" />:</h4>
-            <p className="text-gray-700">Mon-Fri: 9:00 AM - 6:00 PM</p>
-            <p className="text-gray-700 mt-2">
-              Connect with us and expect immediate personalized responses during our work hours.
-            </p>
-          </div>
         </div>
       </div>
     </div>
