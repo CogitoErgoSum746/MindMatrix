@@ -132,10 +132,10 @@ function Test() {
                             <ProfileDetail label="Name" value={userData.username} />
                             <ProfileDetail label="Email" value={userData.email} />
                             <ProfileDetail label="Age" value={userData.age} />
-                            <ProfileDetail label="Student Type" value={userData.studentType} />
+                            <ProfileDetail label="Test Type" value={userData.studentType} />
                             <ProfileDetail label="Gender" value={userData.gender} />
                             <ProfileDetail label="Address" value={userData.address} />
-                            <ProfileDetail label="Contact Number" value={userData.contact} />
+                            <ProfileDetail label="Contact No." value={userData.contact} />
                         </div>
                     </div>
 

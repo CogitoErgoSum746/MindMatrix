@@ -278,7 +278,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     const studentType = existinguser?.studentType;
 
     // Copy the PDF file to the custom folder
-    const sourceFolderPath = path.join(__dirname, '..', 'tp'); // Go up one level to access 'tp'
+    const sourceFolderPath = path.join(__dirname, '..', '..', 'tp'); // Go up one level to access 'tp'
 
     let sourcePdfPath = "";
     if (studentType === "High school") {
@@ -294,7 +294,7 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
     const emailFirst5 = email.slice(0, 5);
 
     // Create the custom folder inside the "runningPdfs" folder
-    const customFolderPath = path.join(__dirname, '..', 'runningPdfs', `${usernameFirst5}${emailFirst5}`);
+    const customFolderPath = path.join(__dirname, '..', '..', 'runningPdfs', `${usernameFirst5}${emailFirst5}`);
     if (!fs.existsSync(customFolderPath)) {
       await fs.promises.mkdir(customFolderPath, { recursive: true });
     }
@@ -307,8 +307,8 @@ export async function makeFinalPdf(req: Request, res: Response): Promise<void> {
       res.status(200).json({ success: true });
       return;
     }
-
-    await fs.promises.copyFile(sourcePdfPath, destiPdfPath);
+    fs.copyFileSync(sourcePdfPath, destiPdfPath);
+    // await fs.promises.copyFile(sourcePdfPath, destiPdfPath);
 
     await sendUserInfo(req, res, studentType as string);
 
