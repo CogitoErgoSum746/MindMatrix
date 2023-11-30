@@ -12,7 +12,7 @@ const FloatingIcon = () => {
       rel="noopener noreferrer"
       className="fixed bottom-8 right-4 md:bottom-20 md:right-8 z-50 transform hover:scale-110 transition-transform duration-300"
     >
-      <img src={wpicon} alt="Whatsapp icon" className="w-11 h-11 md:w-14 md:h-14" />
+      <img src={wpicon} alt="Whatsapp icon" className="w-12 h-12 md:w-14 md:h-14" />
     </a>
   );
 };
