@@ -53,8 +53,6 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        // console.log(data);
-        // console.log("successful login");
 
         const toastMessage = `Welcome back ${data.username}, glad to see you again`;
 

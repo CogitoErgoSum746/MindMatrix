@@ -6,7 +6,6 @@ import { API_BASE_URL } from '../config';
 function ResetPass() {
   const navigate = useNavigate();
   const { token } = useParams();
-  console.log(token)
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState(null);
 

@@ -59,7 +59,6 @@ function AdminPanel() {
         body: JSON.stringify({ org_name, org_email, org_studentType }),
         // Make sure org_email is the recipient's email address
       });
-      console.log(org_studentType);
       if (response.ok) {
         console.log("Email sent successfully");
       } else {
@@ -83,7 +82,6 @@ function AdminPanel() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         console.log("Successfully Created");
         alert("Organization created successfully");
         navigate("/admin");
@@ -156,7 +154,6 @@ function AdminPanel() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setOrganizations(data.orgs);
       } else {
         console.error("Fetching organizations failed:", response.statusText);
