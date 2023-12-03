@@ -127,6 +127,7 @@ export async function login(req: Request, res: Response): Promise<any> {
   }
   try {
     const { username, password } = req.body;
+    console.log(username);
 
     const AdminEmail = process.env.ADMIN_EMAIL;
 
