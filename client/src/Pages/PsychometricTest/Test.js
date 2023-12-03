@@ -260,7 +260,7 @@ function Test() {
         {filteredTests.map((test) => (
           <div
             key={test.id}
-            className={`w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center ${
+            className={`w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center transition-transform duration-200 transform hover:scale-105 ${
               test.id === 14 && !showOptionalTest ? "hidden" : ""
             }`}
           >
