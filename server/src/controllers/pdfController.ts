@@ -2,6 +2,9 @@ import { Request, Response } from 'express';
 import User from '../models/users'; // Assuming you have a User model
 import { UpdateWriteOpResult } from 'mongoose';
 import { Chart, registerables } from 'chart.js';
+// import { Bar, BarDatum } from '@nivo/bar';
+// import SVGtoPDF from 'svg-to-pdfkit';
+import { Readable, Writable } from 'stream';
 import { createCanvas } from 'canvas';
 import { PDFDocument, PDFImage, rgb, StandardFonts } from 'pdf-lib';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -28,6 +31,72 @@ async function customFolderName(req: Request, res: Response): Promise<string> {
 
     return filePath;
 }
+
+// export async function makeBarChartPdf2(req: Request, res: Response, testType: string, pageNumber: number): Promise<void> {
+
+//     const filePath: string = await customFolderName(req, res);
+//     const pdfBuffer = await fs.promises.readFile(filePath);
+//     const pdfDoc = await PDFDocument.load(pdfBuffer);
+
+//     // Get a specific page (e.g., page 1)
+//     const page = pdfDoc.getPages()[pageNumber - 1]; // Page numbering is 0-based
+
+//     const user = await User.findOne({
+//         username: req.user.username,
+//         email: req.user.email
+//     }).select('testResults');
+
+//     let userTestResults = user?.testResults;
+
+//     const Test = userTestResults?.find(result => result.testType === testType);
+//     const testSubcategories = Test?.subcategories;
+
+//     const names = testSubcategories?.map(result => result.name);
+
+//     const scores = testSubcategories?.map(result => result.score);
+
+//     let data: { [key: string]: number } = {};
+
+//     if (names && scores && names.length === scores.length) {
+//         data = names.reduce((acc, name, index) => {
+//             if (name !== undefined && scores[index] !== undefined) {
+//                 acc[name] = scores[index]!;
+//             }
+//             return acc;
+//         }, {} as { [key: string]: number });
+
+//         console.log(data);
+//     }
+
+//     // Convert data to BarDatum array
+//     const dataArray: BarDatum[] = Object.entries(data).map(([label, score]) => ({
+//         label,
+//         score,
+//     }));
+
+//     // Use the Bar component
+//     const chartComponent = Bar({
+//         width: 800, // Set the width as needed
+//         height: 400, // Set the height as needed
+//         data: dataArray,
+//         keys: ['score'],
+//         indexBy: 'label',
+//         // other Bar component props...
+//     });
+
+//     const pdfImage = await pdfDoc.embedPng(Buffer.from(base64WithoutMimeType, 'base64'));
+
+//     page.drawImage(pdfImage, {
+//         x: 50,
+//         y: 105,
+//         width: 440,
+//         height: 313,
+//     });
+
+//     // // Save the modified PDF to a new file
+//     const modifiedPdfBytes = await pdfDoc.save();
+//     await fs.promises.writeFile(filePath, modifiedPdfBytes);
+// }
 
 export async function makeBarChartPdf(req: Request, res: Response, testType: string, pageNumber: number): Promise<void> {
 
