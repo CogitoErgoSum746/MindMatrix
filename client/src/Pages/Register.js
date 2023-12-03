@@ -44,17 +44,21 @@ const Register = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const trimmedValue = value.trim();
+    
+    // Special handling for the 'username' field to trim only during form submission
+    const trimmedValue = name === "username" ? value : value.trim();
+  
     setFormData({
       ...formData,
       [name]: trimmedValue,
     });
-
+  
     setValidationErrors({
       ...validationErrors,
       [name]: "",
     });
   };
+  
 
   const showRegistrationError = (error) => {
     toast.error(error, { position: toast.POSITION.TOP_CENTER });
@@ -62,6 +66,15 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Trim leading and trailing spaces from the 'name' field
+    const trimmedName = formData.username.trim();
+
+    // Update the form data with the trimmed name
+    setFormData({
+      ...formData,
+      username: trimmedName,
+    });
 
     if (!termsChecked) {
       setCheckboxError("Please accept the Terms and Conditions.");
