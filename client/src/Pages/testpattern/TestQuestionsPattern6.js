@@ -248,7 +248,7 @@ function TestQuestionsPattern6() {
     const fetchTestScores = async () => {
       try {
         const authtoken = localStorage.getItem("authtoken");
-        console.log(authtoken);
+        ;
         const response = await fetch(`${API_BASE_URL}/user/checkscore`, {
           method: "POST",
           headers: {

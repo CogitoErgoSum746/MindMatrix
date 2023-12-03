@@ -137,7 +137,6 @@ function Test() {
         if (data.status === "success" && data.results === 1) {
           const userData = data.data.user;
           setStudentType(userData.studentType);
-          console.log(userData.studentType);
         } else {
           console.error("Error: User data retrieval failed.", data);
         }
@@ -199,9 +198,7 @@ function Test() {
   const additionalTests = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   if (studentType === "High school") {
-    // console.log(studentType)
     additionalTests.push(1, 11, 12);
-    // console.log(additionalTests)
   } else if (studentType === "College") {
     additionalTests.push(1, 11, 12, 13);
   } else if (studentType === "Professional") {
