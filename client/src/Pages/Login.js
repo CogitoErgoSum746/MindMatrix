@@ -24,8 +24,10 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Trim extra spaces from the beginning and end of the value
-    const trimmedValue = value.trim();
+    
+    // Special handling for the 'username' field to trim only during form submission
+    const trimmedValue = name === "username" ? value : value.trim();
+    
     setFormData({
       ...formData,
       [name]: trimmedValue,
