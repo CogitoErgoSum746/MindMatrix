@@ -35,6 +35,7 @@ import SinglePost from "./Pages/Blog/SinglePost";
 import AllPosts from "./Pages/Blog/AllPosts";
 import Footer from "./components/HomePage/Footer";
 import PageNotFound from "./Pages/PageNotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function AllRoutes() {
@@ -56,7 +57,7 @@ function AllRoutes() {
 
   return (
     <div>
-      {shouldShowFloatingIcon && <FloatingIcon />}
+      {shouldShowFloatingIcon && <FloatingIcon /> && <ScrollToTop />}
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}
         <Route path="/register" element={<Register />} />
