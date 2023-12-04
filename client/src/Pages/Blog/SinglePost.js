@@ -1,80 +1,78 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { sanityClient } from "../../client";
-// import BlockContent from "@sanity/block-content-to-react";
-// import imageUrlBuilder from "@sanity/image-url";
+import { format } from "date-fns";
+import { PortableText } from "@portabletext/react";
+// import Profile from "../components/Profile";
 
-// const builder = imageUrlBuilder(sanityClient);
-// function urlFor(source) {
-//   return builder.image(source);
-// }
-
-export default function SinglePost() {
-  const [postData, setPostData] = useState(null);
+export default function Blogpost() {
+  const [blogpost, setBlogpost] = useState([]);
   const { slug } = useParams();
 
   useEffect(() => {
     sanityClient
       .fetch(
-        `*[slug.current == "${slug}"]{
-            title,
-            slug,
-            mainImage{
-              asset->{
-                _id,
-                url
-              }
-            },
-            body,
-            "name": author->name,
-            "authorImage": author->image
-          }`
+        `*[slug.current == "${slug}"] {
+        title,
+        slug,
+        body,
+        publishedAt,
+        mainImage {
+          asset -> {
+            _id,
+            url
+          },
+          alt,
+        },
+        "name": author -> name,
+      }`
       )
-      .then((data) => setPostData(data[0]))
+      .then((data) => {
+        setBlogpost(data[0]);
+      })
       .catch(console.error);
   }, [slug]);
 
-  console.log(postData);
-
-  if (!postData) return <div>Loading...</div>;
+  useEffect(() => {
+    document.title = `Reading | ${blogpost.title}`;
+  }, [blogpost.title]);
 
   return (
-    <div className="bg-gray-200 min-h-screen p-12">
-      <div className="container shadow-lg mx-auto bg-green-100 rounded-lg">
-        <div className="relative">
-          <div className="absolute h-full w-full flex items-center justify-center p-8">
-            {/* Title Section */}
-            <div className="bg-white bg-opacity-75 rounded p-12">
-              <h2 className="cursive text-3xl lg:text-6xl mb-4">
-                {postData.title}
-              </h2>
-              <div className="flex justify-center text-gray-800">
-                {/* <img
-                  src={urlFor(postData.authorImage).url()}
-                  className="w-10 h-10 rounded-full"
-                  alt="Author is Kap"
-                /> */}
-                <h4 className="cursive flex items-center pl-2 text-2xl">
-                  {postData.name}
-                </h4>
-              </div>
-            </div>
+    <>
+      {blogpost && (
+        <section className="py-20 px-5 max-w-3xl mx-auto">
+          {blogpost.mainImage && (
+            <img
+              src={blogpost.mainImage.asset.url}
+              alt={blogpost.mainImage.alt}
+              className="h-2/3 w-full object-cover rounded-2xl shadow"
+            />
+          )}
+          <h1 className="text-4xl my-8 xl:text-6xl">{blogpost.title}</h1>
+          <p className="font-bold text-sm mb-8">
+            By {blogpost.name}{" "}
+            {blogpost.publishedAt && (
+              <>
+                &middot;{" "}
+                {format(new Date(blogpost.publishedAt), "dd MMMM yyyy")}
+              </>
+            )}
+          </p>
+
+          <PortableText value={blogpost.body} />
+
+          <div className="max-w-7xl mx-auto px-5 mb-20 mt-10 flex items-end justify-end">
+            <Link
+              to="/successteps-blog"
+              className="bg-white dark:bg-slate-800 dark:hover:bg-slate-700 py-2 px-8 rounded shadow text-slate-800 dark:text-slate-400 tracking-wide hover:opacity-75 transition-all duration-200"
+            >
+              Read More Blog posts
+            </Link>
           </div>
-          {/* <img
-            className="w-full object-cover rounded-t"
-            src={urlFor(postData.mainImage).url()}
-            alt=""
-            style={{ height: "400px" }}
-          /> */}
-        </div>
-        <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
-          {/* <BlockContent
-            blocks={postData.body}
-            projectId={sanityClient.clientConfig.projectId || "ydie9qvv"} 
-            dataset={sanityClient.clientConfig.dataset || "production"}
-          /> */}
-        </div>
-      </div>
-    </div>
+
+          {/* <Profile /> */}
+        </section>
+      )}
+    </>
   );
 }
