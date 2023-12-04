@@ -204,7 +204,9 @@ function Navbar() {
             <Link to="/" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 text-white">
               Home
             </Link>
-
+            <Link to="/successteps-blog" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 text-white">
+              Home
+            </Link>
             <Link to="/about" onClick={scrollToTop} className="nav-link block py-2 hover:text-black hover:bg-gray-300 mb-2 text-white">
               About Us
             </Link>
