@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client';
 
-export const client = createClient({
+export const sanityClient = createClient({
     projectId: 'ydie9qvv',
     dataset: 'production',
     useCdn: true, // set to `false` to bypass the edge cache

@@ -31,8 +31,8 @@ import PsychometricTestInfo from "./Pages/PsychometricTest/PsychometricTestInfo"
 import FloatingIcon from "./components/FloatingIcon";
 import ContactUs from "./Pages/Contactus";
 import Termsconds from "./Pages/About/Terms&Conditions";
-import allPosts from "./Pages/Blog/allPosts";
 import SinglePost from "./Pages/Blog/SinglePost";
+import AllPosts from "./Pages/Blog/AllPosts";
 import Footer from "./components/HomePage/Footer";
 import PageNotFound from "./Pages/PageNotFound";
 
@@ -94,8 +94,8 @@ function AllRoutes() {
         <Route path="/psychometrictest" element={<PsychometricTestInfo />} />
         <Route path="/psychometrictest/getstarted" element={<Home1 />} />
 
-        <Route path="/successteps-blog" element={<allPosts />} />
         <Route path="/successteps-blog/:slug" element={<SinglePost />} />
+        <Route path="/successteps-blog" element={<AllPosts />} />
 
         <Route path="/admin" element={authtoken ? <AdminPanel /> : <Navigate to='/login' />} />
         <Route
