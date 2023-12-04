@@ -1,14 +1,3 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
-.cursive {
-    font-family: "Amatic SC", cursive;
-    font-weight: 700;
-  }
-  
-  .prose img {
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-  }
