@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { PortableText } from "@portabletext/react";
 // import Profile from "../components/Profile";
 
-export default function Blogpost() {
+export default function SinglePost() {
   const [blogpost, setBlogpost] = useState([]);
   const { slug } = useParams();
 
