@@ -14,9 +14,19 @@ import imggall12 from "../../../src/images/imagegallery/imggall12.webp";
 import imggall13 from "../../../src/images/imagegallery/imggall13.webp";
 import imggall14 from "../../../src/images/imagegallery/imggall14.webp";
 import imggall15 from "../../../src/images/imagegallery/imggall15.webp";
+import new1 from "../../../src/images/imagegallery/new1.webp";
+import new2 from "../../../src/images/imagegallery/new2.webp";
+import new3 from "../../../src/images/imagegallery/new3.webp";
+import new4 from "../../../src/images/imagegallery/new4.webp";
+import new5 from "../../../src/images/imagegallery/new5.webp";
 import Carousel from "react-multi-carousel";
 
 const images = [
+  new1,
+  new2,
+  new3,
+  new4,
+  new5,
   imggall1,
   imggall2,
   imggall3,
