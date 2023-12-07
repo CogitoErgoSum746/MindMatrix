@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar.js";
 import cog1 from "../../images/Certificate/Cognitive/pic1.webp";
 import cog2 from "../../images/Certificate/Cognitive/pic2.webp";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
 function Cognitive() {

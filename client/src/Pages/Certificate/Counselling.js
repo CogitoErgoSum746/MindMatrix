@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar.js";
 import coun1 from "../../images/Certificate/Counselling/pic1.jpg";
 import coun2 from "../../images/Certificate/Counselling/pic2.jpg";
 import coun3 from "../../images/Certificate/Counselling/pic3.jpg";
 import coun4 from "../../images/Certificate/Counselling/pic4.jpg";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
 function Counselling() {

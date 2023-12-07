@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../../components/Navbar';
-import Card from '../../components/Card';
+import Navbar from '../../components/common/Navbar';
+import Card from '../../components/Cards/ProgramCard';
 import img1 from "../../images/corporateLeadership/pic1.png";
 import img2 from "../../images/businesscoaching/pic1.png";
 import img3 from "../../images/students/pic1.jpg";
 import img4 from "../../images/Teachers/pic1.jpg";
 import img5 from "../../images/Parents/pic1.jpg";
-import ScrollToTop from "../../components/ScrollToTop";
+import ScrollToTop from "../../components/common/ScrollToTop";
 import {Helmet} from "react-helmet";
 
 const testimonials = [

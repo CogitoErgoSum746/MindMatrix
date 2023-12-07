@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logout from "../../images/logout.png";
 import { API_BASE_URL } from "../../config";
-import Footer from "../../components/HomePage/Footer";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from "framer-motion";
@@ -204,8 +203,7 @@ function Test() {
                 </Link>
                 </div>
             </div>
-           
-            <Footer />
+
             <ToastContainer autoClose={3000} />
         </div>
     );

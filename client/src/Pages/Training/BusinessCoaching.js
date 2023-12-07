@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/common/Navbar.js';
 import pic1 from "../../images/businesscoaching/pic1.png";
 import pic2 from "../../images/businesscoaching/pic2.png";
 import pic3 from "../../images/businesscoaching/pic3.png";
 import pic4 from "../../images/businesscoaching/pic4.png";
 import pic5 from "../../images/businesscoaching/pic5.png";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from 'react-helmet';
 
 const BusinessCoaching = () => {

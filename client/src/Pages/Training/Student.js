@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar.js";
 import pic1 from "../../images/students/pic1.jpg";
 import pic2 from "../../images/students/pic2.png";
 import pic3 from "../../images/students/pic3.jpg";
@@ -7,7 +7,7 @@ import pic4 from "../../images/students/pic4.jpg";
 import pic5 from "../../images/students/pic5.jpg";
 import pic6 from "../../images/students/pic6.jpg";
 import pic7 from "../../images/students/pic7.jpg";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 const Student = () => {
   return (
