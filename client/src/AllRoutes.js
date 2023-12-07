@@ -1,41 +1,42 @@
 import React from "react";
 
 // import TestList from './Pages/TestList';
-import Login from "./Pages/Login";
+import Login from "./Pages/Authentication/Login";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import Register from "./Pages/Register";
-import AdminPanel from "./Pages/AdminPanel";
+import Register from "./Pages/Authentication/Register";
+import AdminPanel from "./Pages/Admin/AdminPanel";
 import Home1 from "./Pages/PsychometricTest/Home1";
-import Test from "./Pages/PsychometricTest/Test";
+import GetAllTestsHere from "./components/Test/GetAllTestsHere";
+import Test from "./Pages/PsychometricTest/TestDashboard";
 import Profile from "./Pages/PsychometricTest/Profile";
-import TestPageSelector from "./TestPageSelector";
-import TestQuestions from "./TestQuestions";
-import Getusers from "./Pages/Getusers";
+import TestPageSelector from "./Pages/PsychometricTest/utils/TestPageSelector";
+import TestQuestions from "./Pages/PsychometricTest/utils/TestQuestions";
+import Getusers from "./Pages/Admin/Getusers";
 import Careeropt from "./Pages/PsychometricTest/Careeropt";
 import Sendmail from "./components/Sendmail";
 import ResetPass from "./components/ResetPass";
 import About from "./Pages/About/About";
-import MindWellness from "./Pages/Mindwellness";
-import NewHomePage from "./Pages/NewHomePage";
+import MindWellness from "./Pages/Mindwellness/Mindwellness";
+import LandingPage from "./Pages/HomePage/LandingPage";
 import CorporateLeadership from "./Pages/Training/CorporateLeadership";
 import BusinessCoaching from "./Pages/Training/BusinessCoaching";
-import ComingSoon from "./Pages/ComingSoon";
+import ComingSoon from "./Pages/extra/ComingSoon";
 import Training from "./Pages/HomeButtons/Training";
 import Student from "./Pages/Training/Student";
 import Teacher from "./Pages/Training/Teacher";
 import Parent from "./Pages/Training/Parent";
 import Certificate from "./Pages/HomeButtons/Certificate";
 import CertificateContent from "./Pages/HomeButtons/CertificateContent";
-import Facilitative from "./Pages/Facilitative";
+import Facilitator from "./Pages/FacilitatorProfile/Facilitator";
 import PsychometricTestInfo from "./Pages/PsychometricTest/PsychometricTestInfo";
-import FloatingIcon from "./components/FloatingIcon";
-import ContactUs from "./Pages/Contactus";
+import FloatingIcon from "./components/common/FloatingIcon";
+import ContactUs from "./components/common/Contactus";
 import Termsconds from "./Pages/About/Terms&Conditions";
 import SinglePost from "./Pages/Blog/SinglePost";
 import AllPosts from "./Pages/Blog/AllPosts";
-import Footer from "./components/HomePage/Footer";
-import PageNotFound from "./Pages/PageNotFound";
-import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/common/Footer";
+import PageNotFound from "./Pages/extra/PageNotFound";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 
 function AllRoutes() {
@@ -43,26 +44,37 @@ function AllRoutes() {
 
   const location = useLocation();
 
-  const excludedRoutes = [
+  const notForFloat = [
     '/admin',
-    '/test/:id/:subtestId',
-    '/test/:id',
-    '/test/2/careeropt',
     '/test',
     '/admin/getusers/:org_name/:org_studentType/:org_code'
   ];
 
-  const shouldShowFloatingIcon = !excludedRoutes.some(route => location.pathname.startsWith(route));
-  const shouldShowFooter = !excludedRoutes.some(route => location.pathname.startsWith(route));
+  const forPurpleback = [
+    '/test'
+  ]
+
+  const notForPurpleback = [
+    '/test/userprofile'
+  ]
+
+  const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
+
+  const PurpleBack = forPurpleback.some(route => location.pathname.startsWith(route));
+
+  const notPurpleBack = !notForPurpleback.some(route => location.pathname.startsWith(route));
 
   return (
     <div>
-      {shouldShowFloatingIcon && <FloatingIcon /> && <ScrollToTop />}
+      <ScrollToTop />
+      {PurpleBack && notPurpleBack && <GetAllTestsHere />}
+      {shouldShowFloatingIcon && <FloatingIcon />}
+      
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<NewHomePage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/training" element={<Training />} />
         <Route
           path="/training/corporateleadership"
@@ -85,7 +97,7 @@ function AllRoutes() {
           element={<Parent />}
         />
         <Route path="/mindwellness" element={<MindWellness />} />
-        <Route path="/facilitator" element={<Facilitative />} />
+        <Route path="/facilitator" element={<Facilitator />} />
         <Route path="/upcoming" element={<ComingSoon />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/certificate/:name" element={<CertificateContent />} />
@@ -114,7 +126,7 @@ function AllRoutes() {
         <Route path="/reset-password/:token" element={<ResetPass />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {shouldShowFooter && <Footer />}
+      <Footer />
     </div>
   );
 }

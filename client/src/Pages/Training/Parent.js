@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar.js";
 import pic1 from "../../images/Parents/pic1.jpg";
 import pic2 from "../../images/Parents/pic2.jpg";
 import pic3 from "../../images/Parents/pic3.jpg";
@@ -7,7 +7,7 @@ import pic4 from "../../images/Parents/pic4.jpg";
 import pic5 from "../../images/Parents/pic5.jpg";
 import pic6 from "../../images/Parents/pic6.jpg";
 import pic7 from "../../images/Parents/pic7.jpg";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
 const Parent = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
-import ScrollToTop from "../../components/ScrollToTop";
+import Navbar from "../../components/common/Navbar";
+import ScrollToTop from "../../components/common/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 const Termsconds = () => {
