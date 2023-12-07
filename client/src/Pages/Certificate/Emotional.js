@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar.js";
 import pic1 from "../../images/Certificate/Emotional/pic1.jpg";
 import pic2 from "../../images/Certificate/Emotional/pic2.jpg";
 import pic3 from "../../images/Certificate/Emotional/pic3.jpg";
 import pic4 from "../../images/Certificate/Emotional/pic4.jpg";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 function Emotional() {
   return (

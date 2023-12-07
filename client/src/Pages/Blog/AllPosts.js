@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { sanityClient } from "../../client";
 import { Link } from "react-router-dom";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar";
 import BlogList from "../../components/BlogList";
 
 export default function AllPosts() {

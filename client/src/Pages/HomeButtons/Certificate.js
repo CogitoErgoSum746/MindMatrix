@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../../components/Navbar';
-import Card from '../../components/Card';
+import Navbar from '../../components/common/Navbar.js';
+import Card from '../../components/Cards/ProgramCard.js';
 import img6 from "../../images/Certificate/Cognitive/pic1.jpg";
 import img4 from "../../images/Certificate/Counselling/pic1.jpg";
 import img9 from "../../images/Certificate/Developmental/pic1.jpg";
@@ -10,7 +10,7 @@ import img1 from "../../images/Certificate/NeuroLinguistic/pic4.jpg";
 import img2 from "../../images/Certificate/NlpMaster/pic1.jpg";
 import img7 from "../../images/Certificate/REBT/pic1.jpg";
 import img8 from "../../images/Certificate/Transactional/pic1.jpg";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from 'react-helmet';
 
 const testimonials = [

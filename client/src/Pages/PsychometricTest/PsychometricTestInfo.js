@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar";
 import pic1 from "../../images/Psychomteric/pic1.jpg";
 import pic2 from "../../images/Psychomteric/pic2.jpg";
 import pic3 from "../../images/Psychomteric/pic3.jpg";
-import ScrollToTop from "../../components/ScrollToTop";
+import ScrollToTop from "../../components/common/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 const PsychometricTestInfo = () => {

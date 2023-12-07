@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/common/Navbar.js";
 import pic1 from "../../images/corporateLeadership/pic1.png";
 import pic2 from "../../images/corporateLeadership/pic2.png";
 import pic3 from "../../images/corporateLeadership/pic3.png";
@@ -12,7 +12,7 @@ import pic9 from "../../images/corporateLeadership/pic9.png";
 import pic10 from "../../images/corporateLeadership/pic10.png";
 import pic11 from "../../images/corporateLeadership/pic11.png";
 import pic12 from "../../images/corporateLeadership/pic12.png";
-import ScrollToTop from "../../components/ScrollToTop.js";
+import ScrollToTop from "../../components/common/ScrollToTop.js";
 import { Helmet } from "react-helmet";
 
 const CorporateLeadership = () => {
