@@ -58,11 +58,17 @@ function AllRoutes() {
     '/test/userprofile'
   ]
 
+  const noFooter = [
+    '/admin'
+  ]
+
   const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
 
   const PurpleBack = forPurpleback.some(route => location.pathname.startsWith(route));
 
   const notPurpleBack = !notForPurpleback.some(route => location.pathname.startsWith(route));
+
+  const dontshowfooter = !noFooter.some(route => location.pathname.startsWith(route));
 
   return (
     <div>
@@ -126,7 +132,8 @@ function AllRoutes() {
         <Route path="/reset-password/:token" element={<ResetPass />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer />
+      {dontshowfooter && <Footer />}
+      
     </div>
   );
 }
