@@ -816,10 +816,10 @@ function TestQuestionsPattern12() {
           questionText:
             "10. In the given figure, if the centres of all the circles are joined by horizontal and vertical lines, then find the number of squares that can be formed.",
           options: [
-            { text: "A", isCorrect: false },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: true },
-            { text: "D", isCorrect: false },
+            { text: "6", isCorrect: false },
+            { text: "7", isCorrect: false },
+            { text: "8", isCorrect: true },
+            { text: "9", isCorrect: false },
           ],
           imageUrl: abst10,
         },
@@ -859,10 +859,10 @@ function TestQuestionsPattern12() {
           questionText:
             "14. Identify the number of squares in the figure given.",
           options: [
-            { text: "A", isCorrect: false },
-            { text: "B", isCorrect: true },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
+            { text: "36", isCorrect: false },
+            { text: "40", isCorrect: true },
+            { text: "44", isCorrect: false },
+            { text: "48", isCorrect: false },
           ],
           imageUrl: abst14,
         },
@@ -870,20 +870,20 @@ function TestQuestionsPattern12() {
           questionText:
             "15. Identify the number of triangles in the figure given.",
           options: [
-            { text: "A", isCorrect: false },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: true },
+            { text: "22", isCorrect: false },
+            { text: "24", isCorrect: false },
+            { text: "26", isCorrect: false },
+            { text: "28", isCorrect: true },
           ],
           imageUrl: abst15,
         },
         {
           questionText: "16. Count the number of cubes in the figure given.",
           options: [
-            { text: "A", isCorrect: true },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
+            { text: "15", isCorrect: true },
+            { text: "18", isCorrect: false },
+            { text: "19", isCorrect: false },
+            { text: "16", isCorrect: false },
           ],
           imageUrl: abst16,
         },
@@ -891,10 +891,10 @@ function TestQuestionsPattern12() {
           questionText:
             "17. Find the number of rectangles in the given figure.",
           options: [
-            { text: "A", isCorrect: true },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
+            { text: "20", isCorrect: true },
+            { text: "18", isCorrect: false },
+            { text: "16", isCorrect: false },
+            { text: "15", isCorrect: false },
           ],
           imageUrl: abst17,
         },
@@ -902,10 +902,10 @@ function TestQuestionsPattern12() {
           questionText:
             "18. Find the number of parallelograms contained in the following figure",
           options: [
-            { text: "A", isCorrect: false },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: true },
-            { text: "D", isCorrect: false },
+            { text: "34", isCorrect: false },
+            { text: "45", isCorrect: false },
+            { text: "42", isCorrect: true },
+            { text: "47", isCorrect: false },
           ],
           imageUrl: abst18,
         },
@@ -913,10 +913,10 @@ function TestQuestionsPattern12() {
           questionText:
             "19. What is the minimum number of different colours required to paint the figure given above such that no two adjacent regions have the same colour?",
           options: [
-            { text: "A", isCorrect: true },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
+            { text: "3", isCorrect: true },
+            { text: "4", isCorrect: false },
+            { text: "5", isCorrect: false },
+            { text: "6", isCorrect: false },
           ],
           imageUrl: abst19,
         },
@@ -924,10 +924,10 @@ function TestQuestionsPattern12() {
           questionText:
             "20. Find the minimum number of straight lines required to make the given figures.",
           options: [
-            { text: "A", isCorrect: true },
-            { text: "B", isCorrect: false },
-            { text: "C", isCorrect: false },
-            { text: "D", isCorrect: false },
+            { text: "13", isCorrect: true },
+            { text: "15", isCorrect: false },
+            { text: "17", isCorrect: false },
+            { text: "19", isCorrect: false },
           ],
           imageUrl: abst20,
         },
@@ -1513,6 +1513,8 @@ function TestQuestionsPattern12() {
                     <img
                       src={subtest.questions[questionIndex].imageUrl}
                       alt="Question Image"
+                      width="500"
+                      height="500"
                     />
                   )}
                 </div>
