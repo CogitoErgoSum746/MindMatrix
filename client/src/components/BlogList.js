@@ -27,7 +27,7 @@ export default function Homepage() {
       } | order(publishedAt desc)`
             )
             .then((data) => {
-                setStories(data.slice(0, 3));
+                setStories(data);
             })
             .catch(console.error);
     }, []);
