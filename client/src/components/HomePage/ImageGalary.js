@@ -19,9 +19,15 @@ import new2 from "../../../src/images/imagegallery/new2.webp";
 import new3 from "../../../src/images/imagegallery/new3.webp";
 import new4 from "../../../src/images/imagegallery/new4.webp";
 import new5 from "../../../src/images/imagegallery/new5.webp";
+import new6 from "../../../src/images/imagegallery/new6.webp";
+import new7 from "../../../src/images/imagegallery/new7.webp";
+import new8 from "../../../src/images/imagegallery/new8.webp";
 import Carousel from "react-multi-carousel";
 
 const images = [
+  new6,
+  new7,
+  new8,
   new1,
   new2,
   new3,
