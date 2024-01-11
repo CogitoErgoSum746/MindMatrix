@@ -37,7 +37,7 @@ import AllPosts from "./Pages/Blog/AllPosts";
 import Footer from "./components/common/Footer";
 import PageNotFound from "./Pages/extra/PageNotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
-import Carsopt from "./Pages/PsychometricTest/CareerList/main";
+// import Carsopt from "./Pages/PsychometricTest/CareerList/main";
 
 
 function AllRoutes() {
@@ -119,7 +119,7 @@ function AllRoutes() {
         <Route path="/successteps-blog/:slug" element={<SinglePost />} />
         <Route path="/successteps-blog" element={<AllPosts />} />
 
-        <Route path="/carsopt" element={<Carsopt />} />
+        {/* <Route path="/carsopt" element={<Carsopt />} /> */}
 
         <Route path="/admin" element={authtoken ? <AdminPanel /> : <Navigate to='/login' />} />
         <Route
