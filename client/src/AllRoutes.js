@@ -56,11 +56,13 @@ function AllRoutes() {
   ]
 
   const notForPurpleback = [
-    '/test/userprofile'
+    '/test/userprofile',
+    '/test/2/careeropt'
   ]
 
   const noFooter = [
-    '/admin'
+    '/admin',
+    '/test/2/careeropt'
   ]
 
   const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
