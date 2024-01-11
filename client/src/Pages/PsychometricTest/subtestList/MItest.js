@@ -68,9 +68,9 @@ function Mltest({ id }) {
         if (response.status === 200) {
           const data = await response.json();
           setTestStatus(data);
-          console.log(data)
+          // console.log(data)
           setLoading(false);
-          console.log("finalArray:", testStatus.finalArray);
+          // console.log("finalArray:", testStatus.finalArray);
           
           
         } else {
