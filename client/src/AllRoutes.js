@@ -37,6 +37,7 @@ import AllPosts from "./Pages/Blog/AllPosts";
 import Footer from "./components/common/Footer";
 import PageNotFound from "./Pages/extra/PageNotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
+// import Carsopt from "./Pages/PsychometricTest/CareerList/main";
 
 
 function AllRoutes() {
@@ -55,11 +56,13 @@ function AllRoutes() {
   ]
 
   const notForPurpleback = [
-    '/test/userprofile'
+    '/test/userprofile',
+    '/test/2/careeropt'
   ]
 
   const noFooter = [
-    '/admin'
+    '/admin',
+    '/test/2/careeropt'
   ]
 
   const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
@@ -115,6 +118,8 @@ function AllRoutes() {
 
         <Route path="/successteps-blog/:slug" element={<SinglePost />} />
         <Route path="/successteps-blog" element={<AllPosts />} />
+
+        {/* <Route path="/carsopt" element={<Carsopt />} /> */}
 
         <Route path="/admin" element={authtoken ? <AdminPanel /> : <Navigate to='/login' />} />
         <Route
