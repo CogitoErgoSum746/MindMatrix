@@ -336,11 +336,11 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
     };
 
     const paths = req.body.careerOptions;
+    const otherOptions = req.body.others;
 
-    const result = await User.findOneAndUpdate(filter, { carreerOptions: paths }, { new: true });
+    const result = await User.findOneAndUpdate(filter, { carreerOptions: paths, otherOptions: otherOptions }, { new: true });
 
     if (result) {
-      // The update happened and a document was modified.
       res.status(200).json({ success: true });
       return;
     } else {
@@ -349,7 +349,6 @@ export async function carreerOptions(req: Request, res: Response): Promise<void>
     }
 
   } catch (error) {
-    // Handle any other errors that might occur during the try block
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }

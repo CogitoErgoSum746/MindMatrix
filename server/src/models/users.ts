@@ -50,6 +50,9 @@ const UserSchema = new Schema({
     carreerOptions: {
         type: Array,
     },
+    otherOptions: {
+        type: String,
+    },
     testResults: [testResultSchema], //array of test results
     resetToken: {
         type: String,
