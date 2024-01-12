@@ -246,8 +246,8 @@ function CareerOptions() {
 
   return (
     <>
-  <div className="flex h-screen relative bg-gray-100">
-    <div className="p-8 border-r-4 border-blue-500 pr-8 bg-white">
+  <div className="flex flex-col lg:flex-row h-screen relative bg-gray-100">
+    <div className="lg:w-1/4 p-8 border-r-4 border-blue-500 pr-8 bg-white">
       <h2 className="text-2xl font-bold mb-4">Selected Values:</h2>
       {selectedValues.length > 0 && (
         <div className="space-y-4">
@@ -269,7 +269,7 @@ function CareerOptions() {
         </div>
       )}
     </div>
-    <div className="flex-1 flex flex-col p-8 overflow-auto bg-gray-200">
+    <div className="lg:flex-1 p-8 overflow-auto bg-gray-200">
       {sortedLists.map((list, listIndex) => (
         <div key={listIndex} className="mb-4 text-left bg-white p-4 rounded shadow-md">
           <h3 className="text-lg font-bold mb-2">{list.listName}</h3>

@@ -37,6 +37,8 @@ import AllPosts from "./Pages/Blog/AllPosts";
 import Footer from "./components/common/Footer";
 import PageNotFound from "./Pages/extra/PageNotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
+import PrivacyPolicy from "./Pages/CompanyPolicies/privacypolicy";
+import TermsNconds from "./Pages/CompanyPolicies/termsNconditions";
 // import Carsopt from "./Pages/PsychometricTest/CareerList/main";
 
 
@@ -112,6 +114,8 @@ function AllRoutes() {
         <Route path="/certificate/:name" element={<CertificateContent />} />
         <Route path="/about" element={<About />} />
         <Route path="/about/termsandconditions" element={<Termsconds />} />
+        <Route path="/TermsandConditions" element={<TermsNconds />} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/psychometrictest" element={<PsychometricTestInfo />} />
         <Route path="/psychometrictest/getstarted" element={<Home1 />} />
