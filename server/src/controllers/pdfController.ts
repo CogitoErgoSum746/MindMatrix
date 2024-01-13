@@ -751,6 +751,7 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
     const existingUser = await User.findOne(filter);
 
     const carreerOptions = existingUser?.carreerOptions;
+    const otherOptions = existingUser?.otherOptions;
 
     // const customSort = (arr: any) => {
     //     return arr.reduce((sorted: any, item: any) => {
@@ -796,6 +797,15 @@ export async function carreerOptionsPdf(req: Request, res: Response, pageNumber:
         yd -= fontSize * 2;
     }
 
+
+    if(otherOptions?.trim() !== ''){
+        page.drawText('Other: ' + otherOptions as string, {
+            x: xd - 28,
+            y: yd,
+        });
+    }
+    
+    
     // Save to yay.pdf again
     const modifiedPdfBytes = await pdfDoc.save();
     await fs.promises.writeFile(filePath, modifiedPdfBytes);
