@@ -1157,13 +1157,13 @@ export async function sendFeedback(req: Request, res: Response, studentType: str
 
             // Multiple Intelligence-carreer suggestions
             await carreerSugPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 50, 370);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 80, 50, 385);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 50, 375);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 80, 50, 395);
             await carreerSugPdf(req, res, "Multiple Intelligence", "Interpersonal", 14, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 80, 50, 395);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 80, 50, 395);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 390);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 390);
 
             //Emotional Intelligence
             await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 80, 40, 620);
@@ -1282,13 +1282,13 @@ export async function sendFeedback(req: Request, res: Response, studentType: str
 
             // Multiple Intelligence-carreer suggestions
             await carreerSugPdf(req, res, "Multiple Intelligence", "Linguistic", 11, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 50, 370);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 80, 50, 385);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 12, 13, 80, 50, 375);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 13, 13, 80, 50, 395);
             await carreerSugPdf(req, res, "Multiple Intelligence", "Interpersonal", 14, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 15, 13, 80, 50, 395);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 16, 13, 80, 50, 395);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 17, 13, 80, 50, 390);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 18, 13, 80, 50, 390);
 
             //Emotional Intelligence
             await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 33, 13, 80, 40, 620);
@@ -1372,13 +1372,13 @@ export async function sendFeedback(req: Request, res: Response, studentType: str
 
             // Multiple Intelligence-carreer suggestions
             await carreerSugPdf(req, res, "Multiple Intelligence", "Linguistic", 6, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 7, 13, 80, 50, 370);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 8, 13, 80, 50, 385);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Logical", 7, 13, 80, 50, 375);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Spatial", 8, 13, 80, 50, 395);
             await carreerSugPdf(req, res, "Multiple Intelligence", "Interpersonal", 9, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 10, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 11, 13, 80, 50, 385);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 12, 13, 80, 50, 380);
-            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 13, 13, 80, 50, 380);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Musical", 10, 13, 80, 50, 395);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Naturalistic", 11, 13, 80, 50, 395);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Kinesthetic", 12, 13, 80, 50, 390);
+            await carreerSugPdf(req, res, "Multiple Intelligence", "Intrapersonal", 13, 13, 80, 50, 390);
 
             //Emotional Intelligence
             await makeFeedbackPdf(req, res, "Emotional Intelligence", "Self-Awareness", 38, 13, 80, 40, 620);
