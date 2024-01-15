@@ -1839,3 +1839,4 @@ export async function sendScores(req: Request, res: Response, studentType: strin
         res.status(500);
     }
 }
+
