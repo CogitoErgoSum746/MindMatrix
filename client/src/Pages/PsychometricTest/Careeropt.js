@@ -154,7 +154,7 @@ function CareerOptions() {
       "Yoga/ Fitness/Physical Education Instructor",
     ],
   };
-  
+
   // Convert the dictionary into an array of objects for easier mapping
   let lists = Object.entries(dictionary).map(([listName, values]) => ({ listName, values }));
 
@@ -246,97 +246,99 @@ function CareerOptions() {
 
   return (
     <>
-  <div className="flex flex-col lg:flex-row h-screen relative bg-gray-100">
-    <div className="lg:w-1/4 p-8 border-r-4 border-blue-500 pr-8 bg-white">
-      <h2 className="text-2xl font-bold mb-4">Selected Values:</h2>
-      {selectedValues.length > 0 && (
-        <div className="space-y-4">
-          {selectedValues.map(({ listName, listValue }, index) => (
-            <div key={index} className="flex items-center space-x-2">
-              <button
-                className="bg-red-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105"
-              >
-                {listValue}
-              </button>
-              <span
-                className="text-red-500 cursor-pointer text-3xl"
-                onClick={() => handleButtonClick(listValue, listName, true)}
-              >
-                ×
-              </span>
+      <div className="flex flex-col lg:flex-row h-screen relative bg-gray-100">
+        <div className="lg:w-1/4 p-8 border-r-4 border-blue-500 pr-8 bg-white">
+          <h2 className="text-2xl font-bold mb-4">Selected Values:</h2>
+          {selectedValues.length > 0 && (
+            <div className="space-y-4">
+              {selectedValues.map(({ listName, listValue }, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <button
+                    className="bg-red-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105"
+                  >
+                    {listValue}
+                  </button>
+                  <span
+                    className="text-red-500 cursor-pointer text-3xl"
+                    onClick={() => handleButtonClick(listValue, listName, true)}
+                  >
+                    ×
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="lg:flex-1 p-8 overflow-auto bg-gray-200">
+          {sortedLists.map((list, listIndex) => (
+            <div key={listIndex} className="mb-4 text-left bg-white p-4 rounded shadow-md">
+              <h3 className="text-lg font-bold mb-2">{list.listName}</h3>
+              <div className="max-h-48 overflow-y-auto">
+                {list.values
+                  .filter((value) => !selectedValues.find((item) => item.listName === list.listName && item.listValue === value))
+                  .map((value, index) => (
+                    <button
+                      key={index}
+                      className={`bg-blue-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mb-2 px-4 ml-2 ${selectedValues.length >= 10 ? 'opacity-50 pointer-events-none' : ''}`}
+                      onClick={() => handleButtonClick(value, list.listName, false)}
+                      disabled={selectedValues.length >= 10}
+                    >
+                      {value}
+                    </button>
+                  ))}
+              </div>
             </div>
           ))}
         </div>
-      )}
-    </div>
-    <div className="lg:flex-1 p-8 overflow-auto bg-gray-200">
-      {sortedLists.map((list, listIndex) => (
-        <div key={listIndex} className="mb-4 text-left bg-white p-4 rounded shadow-md">
-          <h3 className="text-lg font-bold mb-2">{list.listName}</h3>
-          <div className="max-h-48 overflow-y-auto">
-            {list.values
-              .filter((value) => !selectedValues.find((item) => item.listName === list.listName && item.listValue === value))
-              .map((value, index) => (
-                <button
-                  key={index}
-                  className={`bg-blue-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mb-2 px-4 ml-2 ${selectedValues.length >= 10 ? 'opacity-50 pointer-events-none' : ''}`}
-                  onClick={() => handleButtonClick(value, list.listName, false)}
-                  disabled={selectedValues.length >= 10}
-                >
-                  {value}
-                </button>
-              ))}
+        <div className="p-8 bg-gray-100 w-[400px]">
+
+          <div className="mt-4">
+            <button
+              onClick={handleToggleOtherInput}
+              className="bg-red-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mt-4"
+            >
+              {showOtherInput ? "X" : "Any other profession"}
+            </button>
           </div>
+
+          {showOtherInput && (
+            <div className="mt-4">
+              <label className="block text-left text-lg font-bold mb-2">Other (Optional):</label>
+              <input
+                type="text"
+                value={otherValue}
+                onChange={handleOtherInputChange}
+                className="border border-gray-400 p-2 rounded w-full"
+              />
+            </div>
+          )}
+          
+            <button
+              onClick={sendCareerOptionsToBackend}
+              className="bg-green-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mt-4"
+              disabled={selectedValues.length !== 10}
+            >
+              Submit
+            </button>
+
+          <div className="mt-4 bg-gray-200 p-4 rounded">
+            <h3 className="text-2xl font-bold mb-5">Instructions:</h3>
+            <p className="text-md text-gray-600 mb-2">• Your various intelligences are listed from the highest to the lowest dominance.</p>
+            <p className="text-md text-gray-600 mb-2">• Pick your top 10 favorite jobs from the list below.</p>
+            <p className="text-md text-gray-600">• If your preferred profession is not on the list, add it to the "Other (Optional)" box on the right side and hit “submit”.</p>
+          </div>
+
+          {selectedValues.length === 10 &&
+            <div className={`mt-4 bg-green-200 p-4 rounded border-2 border-green-500 transition-transform transform hover:scale-105`}>
+              <p className="text-md text-green-600 mt-2">Congrats on selecting your most preferred jobs from our comprehensive lists</p>
+              <p className="text-xl text-green-800 mt-2">You may now submit!!</p>
+            </div>
+          }
         </div>
-      ))}
-    </div>
-    <div className="p-8 bg-gray-100 w-[400px]">
-      <div className="mt-4">
-        <button
-          onClick={handleToggleOtherInput}
-          className="bg-red-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mt-4"
-        >
-          {showOtherInput ? "X" : "Any other profession"}
-        </button>
       </div>
 
-      {showOtherInput && (
-        <div className="mt-4">
-          <label className="block text-left text-lg font-bold mb-2">Other (Optional):</label>
-          <input
-            type="text"
-            value={otherValue}
-            onChange={handleOtherInputChange}
-            className="border border-gray-400 p-2 rounded w-full"
-          />
-        </div>
-      )}
-
-      <button
-        onClick={sendCareerOptionsToBackend}
-        className="bg-green-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mt-4"
-      >
-        Submit
-      </button>
-
-      <div className="mt-4 bg-gray-200 p-4 rounded">
-        <h3 className="text-2xl font-bold mb-5">Instructions:</h3>
-        <p className="text-md text-gray-600 mb-2">• Your various intelligences are listed from the highest to the lowest dominance.</p>
-        <p className="text-md text-gray-600 mb-2">• Pick your top 10 favorite jobs from the list below.</p>
-        <p className="text-md text-gray-600">• If your preferred profession is not on the list, add it to the "Other (Optional)" box on the right side and hit “submit”.</p>
-      </div>
-
-      {selectedValues.length === 10 &&
-        <div className={`mt-4 bg-green-200 p-4 rounded border-2 border-green-500 transition-transform transform hover:scale-105`}>
-          <p className="text-md text-green-600 mt-2">Congrats on selecting your most preferred jobs from our comprehensive lists</p>
-          <p className="text-xl text-green-800 mt-2">You may now submit!!</p>
-        </div>
-      }
-    </div>
-  </div>
-
-  <ToastContainer position="top-center" autoClose={3000} />
-</>
+      <ToastContainer position="top-center" autoClose={3000} />
+    </>
 
   );
 }
