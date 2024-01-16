@@ -56,6 +56,8 @@ function Test() {
   const [careerOptions, setCareerOptions] = useState(null);
   const [studentType, setStudentType] = useState("");
   const [showOptionalTest, setShowOptionalTest] = useState(false);
+  const [parentingStyleValue, setparentingStyleValue] = useState(1);
+  const [dlist, setdlist] = useState(null);
 
   const authtoken = localStorage.getItem("authtoken");
   const navigate = useNavigate();
@@ -85,7 +87,11 @@ function Test() {
           }
           const data = await response.json();
           if (data.success) {
-            setRemainingTests(data.differenceList);
+            const updatedDlist = { ...data.differenceList };
+            setdlist(updatedDlist);
+            setparentingStyleValue(updatedDlist["Parenting Style"]);
+            delete updatedDlist["Parenting Style"];
+            setRemainingTests(updatedDlist);
           }
         }
       } catch (error) {
@@ -203,7 +209,7 @@ function Test() {
   } else if (studentType === "College") {
     additionalTests.push(1, 11, 12, 13);
   } else if (studentType === "Professional") {
-    additionalTests.push(14, 15, 16, 17, 18, 19, 20);
+    additionalTests.push(15, 16, 17, 18, 19, 20);
   }
 
   const filteredTests = tests.filter((test) =>
@@ -240,9 +246,7 @@ function Test() {
         {filteredTests.map((test) => (
           <div
             key={test.id}
-            className={`w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center transition-transform duration-200 transform hover:scale-105 ${
-              test.id === 14 && !showOptionalTest ? "hidden" : ""
-            }`}
+            className={`w-full p-4 mb-4 rounded-lg border border-gray-300 shadow-lg flex flex-col md:flex-row justify-between items-center transition-transform duration-200 transform hover:scale-105 `}
           >
             <h1 className="text-lg md:text-xl lg:text-xl font-bold mb-2 md:mb-0 md:mr-4">
               {test.name}
@@ -305,13 +309,13 @@ function Test() {
 
           {studentType === "Professional" && (
             <div>
-            <div className="border-t border-blue-500 border-b-2 w-full my-4"></div>
-            <button
-              onClick={() => setShowOptionalTest(!showOptionalTest)}
-              className="px-4 py-2 rounded-full text-black bg-gradient-to-r from-orange-500 to-yellow-500 mb-4"
-            >
-              {showOptionalTest ? "Hide Optional Test" : "Show Optional Test"}
-            </button>
+              <div className="border-t border-blue-500 border-b-2 w-full my-4"></div>
+              <button
+                onClick={() => setShowOptionalTest(!showOptionalTest)}
+                className="px-4 py-2 rounded-full text-black bg-gradient-to-r from-orange-500 to-yellow-500 mb-4"
+              >
+                {showOptionalTest ? "Hide Optional Test" : "Show Optional Test"}
+              </button>
             </div>
           )}
 
@@ -322,42 +326,41 @@ function Test() {
                 Parenting Style
               </h1>
               <div className="flex items-center md:ml-auto">
-              <div className="p-2 bg-blue-100 rounded-lg md:mr-3 text-center md:text-left">
-                  {remainingTests["Parenting Style"]} remaining
+                <div className="p-2 bg-blue-100 rounded-lg md:mr-3 text-center md:text-left">
+                  {parentingStyleValue} remaining
                 </div>
-              <div className="text-center md:text-left">
-                {remainingTests && remainingTests["Parenting Style"] > 0 ? (
-                  <Link to={`/test/14`}>
-                    <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black">
-                      Start Test
+                <div className="text-center md:text-left">
+                  {parentingStyleValue > 0 ? (
+                    <Link to={`/test/14`}>
+                      <button className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded-full text-black">
+                        Start Test
+                      </button>
+                    </Link>
+                  ) : (
+                    <button className="bg-green-500 px-4 py-2 rounded-full text-black">
+                      Completed
                     </button>
-                  </Link>
-                ) : (
-                  <button className="bg-green-500 px-4 py-2 rounded-full text-black">
-                    Completed
-                  </button>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
             </div>
           )}
 
           <div className="border-t border-blue-500 border-b-2 w-full my-4"></div>
           <button
             onClick={handleGeneratePDF}
-            className={`px-4 py-2 rounded-full text-black ${
-              areTestsDone && careerOptions
+            className={`px-4 py-2 rounded-full text-black ${areTestsDone && careerOptions
                 ? "bg-gradient-to-r from-orange-500 to-yellow-500"
                 : "bg-gray-300"
-            }`}
+              }`}
             disabled={!areTestsDone}
             style={{ width: "250px" }}
           >
             {loading
               ? "Generating..."
               : pdfSent
-              ? "Report Sent to Mail"
-              : "Send Final Report to Mail"}
+                ? "Report Sent to Mail"
+                : "Send Final Report to Mail"}
           </button>
         </div>
       </div>
