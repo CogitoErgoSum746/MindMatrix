@@ -540,7 +540,7 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
     page.setFontColor(rgb(0, 0, 0));
 
     if (testType === 'Students Wheel of Life') {
-        let line = score + '/10';
+        let line = (score ?? 0) + '/10';
 
         let xd = Xd;
         let yd = Yd;
@@ -551,7 +551,7 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
                 y: yd,
             },)
     } else if (testType === 'Wheel of Life') {
-        let line = score + '/10'
+        let line = (score ?? 0) + '/10'
         let Category = `(${tact.percentage})`;
 
         let xd = Xd;
@@ -570,7 +570,7 @@ export async function makeScorePercentPdf(req: Request, res: Response, testType:
                 y: yd,
             },)
     } else {
-        let line = score + ' ( Category: ' + tact.percentage + ' )';
+        let line = (score ?? 0) + ' ( Category: ' + tact.percentage + ' )';
 
         let xd = Xd;
         let yd = Yd;

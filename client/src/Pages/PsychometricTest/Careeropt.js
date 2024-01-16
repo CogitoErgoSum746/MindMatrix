@@ -313,13 +313,15 @@ function CareerOptions() {
             </div>
           )}
           
-            <button
-              onClick={sendCareerOptionsToBackend}
-              className="bg-green-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mt-4"
-              disabled={selectedValues.length !== 10}
-            >
-              Submit
-            </button>
+          {selectedValues.length == 10 && 
+          <button
+          onClick={sendCareerOptionsToBackend}
+          className="bg-green-500 text-white p-2 rounded-full cursor-pointer transition-transform transform hover:scale-105 mt-4"
+          disabled={selectedValues.length !== 10}
+        >
+          Submit
+        </button>}
+            
 
           <div className="mt-4 bg-gray-200 p-4 rounded">
             <h3 className="text-2xl font-bold mb-5">Instructions:</h3>
