@@ -274,6 +274,29 @@ export async function deleteUser(req: Request, res: Response): Promise<any> {
   }
 }
 
+export async function deleteUserCarList(req: Request, res: Response): Promise<any> {
+  try {
+    const { username, email } = req.body;
+
+    const existingUser = await User.findOne({
+      username: username,
+      email: email
+    })
+
+    if (existingUser) {
+      await existingUser.updateOne({ carreerOptions: [], otherOptions : '' });
+      res.status(200).json({ success: true });
+    } else {
+      // If the user document doesn't exist, handle accordingly
+      console.log("User not found");
+      res.status(404).json({ success: false, error: "User not found" });
+    }
+  } catch (error) {
+    errorLogger.error(`Error deleting carlist:`, error instanceof Error ? error.message : error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 export async function displayPdf(req: Request, res: Response): Promise<any> {
   try {
     const { username, email} = req.body;
