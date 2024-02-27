@@ -11,6 +11,7 @@ import helmet from 'helmet';
 import adminRoute from "./routes/admin";
 import authRoute from "./routes/auth";
 import userRoute from "./routes/user";
+import razorpay from "./routes/payment";
 import { verifyAdmin, verifyUser } from "./middlewares/verifyLogin";
 import { handle404, handle500 } from './controllers/errorController';
 
@@ -55,6 +56,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/auth", authRoute);
+app.use("/api/payment", razorpay);
 app.use("/api/admin", verifyAdmin, adminRoute);
 app.use("/api/user", verifyUser, userRoute);
 
