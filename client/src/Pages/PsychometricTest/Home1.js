@@ -157,7 +157,7 @@ function Home1() {
 
         const rzp1 = new window.Razorpay(options);
         rzp1.on('payment.failed', function (response) {
-          console.error(error);
+          console.log(response);
           alert("Payment Failed");
         });
         rzp1.open();
