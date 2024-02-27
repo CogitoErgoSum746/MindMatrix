@@ -82,11 +82,7 @@ function Home1() {
       });
 
       const checkUserResponse = await checkUser.json();
-      if (checkUserResponse.success == false) {
-        toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
-          autoClose: 5000,
-        });
-      } else {
+      if (checkUserResponse.success) {
         const response = await fetch(`${API_BASE_URL}/payment/checkout`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -161,6 +157,10 @@ function Home1() {
           alert("Payment Failed");
         });
         rzp1.open();
+      } else {
+        toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
+          autoClose: 5000,
+        });
       }
     } catch (error) {
       console.error(error);
