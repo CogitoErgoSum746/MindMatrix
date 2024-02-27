@@ -83,7 +83,7 @@ function Home1() {
 
       const checkUserResponse = await checkUser.json();
       if (checkUserResponse.success) {
-        toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
+        toast.alert("You have already done the payment as per our records, check your email for further instructions!!", {
           autoClose: 5000,
         });
       } else {
@@ -157,7 +157,6 @@ function Home1() {
 
         const rzp1 = new window.Razorpay(options);
         rzp1.on('payment.failed', function (response) {
-          console.error(error);
           alert("Payment Failed");
         });
         rzp1.open();
