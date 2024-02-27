@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/common/Navbar";
 import { API_BASE_URL } from "../../config";
+import logo from "../../images/logo.png";
 import clg from "../../images/Home1/clgstudent.png";
 import school from "../../images/Home1/Highschool.png";
 import prof from "../../images/Home1/professional.png";
@@ -15,6 +16,15 @@ function Home1() {
   const authtoken = localStorage.getItem("authtoken");
   const [studentType, setStudentType] = useState("");
   const [isLoggedin, setIsLoggedin] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+  const [age, setAge] = useState('');
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
     if (authtoken) {
@@ -58,21 +68,119 @@ function Home1() {
     }
   };
 
+  const initiatePayment = async () => {
+    try {
+      const checkUser = await fetch(`${API_BASE_URL}/payment/checkUser`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          name,
+          contact,
+          age
+        }),
+      });
+
+      const checkUserResponse = await checkUser.json();
+      if (checkUserResponse.success) {
+        toast.alert("You have already done the payment as per our records, check your email for further instructions!!", {
+          autoClose: 5000,
+        });
+      } else {
+        const response = await fetch(`${API_BASE_URL}/payment/checkout`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: 1, // Fixed amount
+          }),
+        });
+
+        const data1 = await response.json();
+
+        if (data1.error) {
+          console.error('Error creating order:', data1.error);
+          return;
+        }
+
+        const options = {
+          key: data1.api_key, // API key received from server
+          amount: data1.order.amount,
+          currency: "INR",
+          name: "Successteps",
+          description: "Payment for your purchase",
+          image: logo, // Replace with your logo URL
+          order_id: data1.order.id,
+          callback_url: `${API_BASE_URL}/payment/paymentverification`,
+          prefill: {
+            name: name,
+            email: email,
+            contact: contact,
+          },
+          notes: {
+            "address": "Razorpay Corporate Office"
+          },
+          "handler": async (response) => {
+            const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
+
+            // Send payment confirmation and user data to your server
+            const serverResponse = await fetch(`${API_BASE_URL}/payment/paymentverification`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_payment_id,
+                razorpay_order_id,
+                razorpay_signature,
+                email,
+                name,
+                contact,
+                age
+              }),
+            });
+
+            const data2 = await serverResponse.json();
+            console.log(data2);
+
+            if (data2.success) {
+              console.log('Payment successful!');
+              window.location.href = '/login';
+              // Handle successful payment (e.g., display confirmation message, update UI)
+            } else {
+              console.error('Payment failed:', data2.error);
+              window.location.href = '/';
+              // Handle payment failure (e.g., display error message)
+            }
+          },
+          theme: {
+            "color": "#121212"
+          }
+        };
+
+        const rzp1 = new window.Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+          alert("Payment Failed");
+        });
+        rzp1.open();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Psychometric Tests</title>
 
-        <meta name="description" content=""/>
+        <meta name="description" content="" />
 
-        <meta property="og:title" content=""/>
-        <meta property="og:description" content=""/>
-        <meta property="og:image" content=""/>
+        <meta property="og:title" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
 
-        <meta name="twitter:card" content=""/>
-        <meta name="twitter:title" content=""/>
-        <meta name="twitter:description" content=""/>
-        <meta name="twitter:image" content=""/>
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
       </Helmet>
       <ScrollToTop />
       <Navbar />
@@ -117,11 +225,56 @@ function Home1() {
                   </button>
                 </Link>
               ) : (
-                <Link to="/login">
-                  <p className="w-full p-2 rounded-md bg-gray-400">
-                    Please log in to get started.
-                  </p>
-                </Link>
+                <div className="mt-10">
+                  <button onClick={handleOpen} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Buy Now
+                  </button>
+                  {isOpen && (
+                    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-10">
+                      <div className="bg-white p-8">
+                        <label htmlFor="email" className="block mb-2">Email:</label>
+                        <input
+                          type="email"
+                          id="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                        />
+                        <label htmlFor="name" className="block mb-2">Name:</label>
+                        <input
+                          type="text"
+                          id="name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                        />
+                        <label htmlFor="contact" className="block mb-2">Contact:</label>
+                        <input
+                          type="tel"
+                          id="contact"
+                          value={contact}
+                          onChange={(e) => setContact(e.target.value)}
+                          required
+                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                        />
+                        <label htmlFor="age" className="block mb-2">Age:</label>
+                        <input
+                          type="number"
+                          id="age"
+                          value={age}
+                          onChange={(e) => setAge(e.target.value)}
+                          required
+                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+                        />
+                        <button id="rzp-button1" onClick={initiatePayment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                          Next
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
 
@@ -155,7 +308,7 @@ function Home1() {
               ) : (
                 <Link to="/login">
                   <p className="w-full p-2 rounded-md bg-gray-400">
-                    Please log in to get started.
+                    Buy now
                   </p>
                 </Link>
               )}
@@ -190,7 +343,7 @@ function Home1() {
               ) : (
                 <Link to="/login">
                   <p className="w-full p-2 rounded-md bg-gray-400">
-                    Please log in to get started.
+                    Buy now
                   </p>
                 </Link>
               )}
