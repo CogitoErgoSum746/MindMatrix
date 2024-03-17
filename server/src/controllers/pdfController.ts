@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import User from '../models/users'; // Assuming you have a User model
+import User from '../models/orgUsers'; // Assuming you have a User model
 import { UpdateWriteOpResult } from 'mongoose';
 import { Chart, registerables } from 'chart.js';
 // import { Bar, BarDatum } from '@nivo/bar';

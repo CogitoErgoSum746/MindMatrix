@@ -7,6 +7,7 @@ import clg from "../../images/Home1/clgstudent.png";
 import school from "../../images/Home1/Highschool.png";
 import prof from "../../images/Home1/professional.png";
 import ScrollToTop from "../../components/common/ScrollToTop";
+import PaymentForm from "../../components/Cards/PaymentForm";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
@@ -68,7 +69,21 @@ function Home1() {
     }
   };
 
-  const initiatePayment = async () => {
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "email") setEmail(value);
+    else if (id === "name") setName(value);
+    else if (id === "contact") setContact(value);
+    else if (id === "age") setAge(value);
+  };
+
+  const handleNextButtonClick = (amount) => {
+    if (email && name && contact && age) {
+      initiatePayment(amount);
+    }
+  };
+
+  const initiatePayment = async (amount) => {
     try {
       const checkUser = await fetch(`${API_BASE_URL}/payment/checkUser`, {
         method: 'POST',
@@ -87,7 +102,7 @@ function Home1() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            amount: 1, // Fixed amount
+            amount: amount,
           }),
         });
 
@@ -96,6 +111,16 @@ function Home1() {
         if (data1.error) {
           console.error('Error creating order:', data1.error);
           return;
+        }
+
+        let studentType = '';
+
+        if (amount === 1) {
+          studentType = 'HighSchool';
+        } else if (amount === 2) {
+          studentType = 'College';
+        } else if (amount === 3) {
+          studentType = 'Professional';
         }
 
         const options = {
@@ -129,7 +154,8 @@ function Home1() {
                 email,
                 name,
                 contact,
-                age
+                age,
+                studentType,
               }),
             });
 
@@ -227,54 +253,20 @@ function Home1() {
                 </Link>
               ) : (
                 <div className="mt-10">
-                  <button onClick={handleOpen} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <button onClick={handleOpen} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
-                  {isOpen && (
-                    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-10">
-                      <div className="bg-white p-8">
-                        <label htmlFor="email" className="block mb-2">Email:</label>
-                        <input
-                          type="email"
-                          id="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                        />
-                        <label htmlFor="name" className="block mb-2">Name:</label>
-                        <input
-                          type="text"
-                          id="name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          required
-                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                        />
-                        <label htmlFor="contact" className="block mb-2">Contact:</label>
-                        <input
-                          type="tel"
-                          id="contact"
-                          value={contact}
-                          onChange={(e) => setContact(e.target.value)}
-                          required
-                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                        />
-                        <label htmlFor="age" className="block mb-2">Age:</label>
-                        <input
-                          type="number"
-                          id="age"
-                          value={age}
-                          onChange={(e) => setAge(e.target.value)}
-                          required
-                          className="block w-full mb-4 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-                        />
-                        <button id="rzp-button1" onClick={initiatePayment} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                          Next
-                        </button>
-                      </div>
-                    </div>
-                  )}
+                  <PaymentForm
+                    isOpen={isOpen}
+                    handleClose={handleClose}
+                    email={email}
+                    name={name}
+                    contact={contact}
+                    age={age}
+                    handleInputChange={handleInputChange}
+                    handleNextButtonClick={handleNextButtonClick}
+                    amount={1} // Change the amount as per your requirement
+                  />
                 </div>
               )}
             </div>
@@ -307,11 +299,22 @@ function Home1() {
                   </button>
                 </Link>
               ) : (
-                <Link to="/login">
-                  <p className="w-full p-2 rounded-md bg-gray-400">
-                    Buy now
-                  </p>
-                </Link>
+                <div className="mt-10">
+                  <button onClick={handleOpen} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                    Buy Now
+                  </button>
+                  <PaymentForm
+                    isOpen={isOpen}
+                    handleClose={handleClose}
+                    email={email}
+                    name={name}
+                    contact={contact}
+                    age={age}
+                    handleInputChange={handleInputChange}
+                    handleNextButtonClick={handleNextButtonClick}
+                    amount={2} // Change the amount as per your requirement
+                  />
+                </div>
               )}
             </div>
 
@@ -342,11 +345,22 @@ function Home1() {
                   </button>
                 </Link>
               ) : (
-                <Link to="/login">
-                  <p className="w-full p-2 rounded-md bg-gray-400">
-                    Buy now
-                  </p>
-                </Link>
+                <div className="mt-10">
+                  <button onClick={handleOpen} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                    Buy Now
+                  </button>
+                  <PaymentForm
+                    isOpen={isOpen}
+                    handleClose={handleClose}
+                    email={email}
+                    name={name}
+                    contact={contact}
+                    age={age}
+                    handleInputChange={handleInputChange}
+                    handleNextButtonClick={handleNextButtonClick}
+                    amount={3} // Change the amount as per your requirement
+                  />
+                </div>
               )}
             </div>
           </div>

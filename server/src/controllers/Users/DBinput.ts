@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
-import User from '../../models/users'; // Assuming you have a User model
+import User from '../../models/orgUsers'; // Assuming you have a User model
 // import { UpdateWriteOpResult } from 'mongoose';
 import fs from 'fs';
 import path from 'path';

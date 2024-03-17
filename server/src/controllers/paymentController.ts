@@ -1,10 +1,46 @@
+import { config } from "dotenv";
+config();
+
 import { Request, Response } from 'express';
 import { instance } from '../utils/razorpayInstance';
 import crypto from 'crypto';
 import { validationResult } from 'express-validator';
-import { PaymentUsers } from '../models/paymentUsers';
+import PaymentUsers from '../models/paymentUsers';
+import nodemailer from 'nodemailer';
 
 
+async function sendEmail(
+  to: string,
+  subject?: string,
+  text?: string,
+  attachments?: { filename: string; path: string }[]
+): Promise<void> {
+  // Create a transporter
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: process.env.ADMIN_GMAIL,
+      pass: process.env.ADMIN_GMAIL_PASSWORD,
+    },
+  });
+
+  // Define email data
+  const mailOptions: nodemailer.SendMailOptions = {
+    from: process.env.ADMIN_GMAIL,
+    to,
+    subject: subject || 'Default Subject',
+    text: text || 'Default Email Text',
+    attachments: attachments || [],
+  };
+
+  // Send the email
+  try {
+    await transporter.sendMail(mailOptions);
+    // console.log('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
+}
 
 interface PaymentVerificationRequest extends Request {
   body: {
@@ -15,6 +51,7 @@ interface PaymentVerificationRequest extends Request {
     email: string;
     age: number;
     contact: string;
+    studentType: string;
   };
 }
 
@@ -74,7 +111,7 @@ export const paymentVerification = async (
   }
 
   try {
-    const { name, email, age, contact, razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+    const { name, email, age, contact, studentType, razorpay_order_id, razorpay_payment_id, razorpay_signature } =
       req.body;
 
     const body = razorpay_order_id + '|' + razorpay_payment_id;
@@ -93,6 +130,7 @@ export const paymentVerification = async (
         email: email,
         age: age,
         contact: contact,
+        studentType: studentType,
         razorpay_payment_id: razorpay_payment_id,
         razorpay_order_id: razorpay_order_id,
         razorpay_signature: razorpay_signature
@@ -101,6 +139,11 @@ export const paymentVerification = async (
       if (userCreated) {
         res.status(200).json({ success: true });
       }
+
+      const subject = "Welcome to the Psychometric Test Journey";
+      const text = `Dear ${userCreated.username},\n\nWe're happy to welcome you on board our psychometric test program.\n\nClick on the link to proceed your registration: https://successteps.in/register/${userCreated.razorpay_order_id}/?studentType=${userCreated.studentType}\n\nWarm regards,\n\nDr. Antony Augusthy`;
+
+      sendEmail(userCreated.email, subject, text);
 
     } else {
       res.status(400).json({

@@ -2,8 +2,9 @@ import { config } from "dotenv";
 config();
 
 import { Request, Response } from 'express';
-import User from '../models/users'; // Assuming you have a User model
+import User from '../models/orgUsers'; // Assuming you have a User model
 import OrganizationModel from "../models/organizations";
+import PaymentUsers from "../models/paymentUsers";
 import * as bcrypt from 'bcryptjs';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
@@ -115,6 +116,129 @@ export const createUser = async (req: Request, res: Response): Promise<any> => {
   }
 };
 
+export const checkRandomNumber = async (req: Request, res: Response): Promise<any> => {
+
+  let success = false;
+
+  // If there are validation errors return bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success, errors: errors.array() });
+  }
+
+  try {
+    const { randomNumber } = req.body;
+
+    const pu = await PaymentUsers.findOne({ razorpay_order_id: randomNumber });
+    if (!pu) {
+      return res.status(404).json({ success, error: "randomNumber does not exist" });
+    } else {
+      res.status(200).json({ success: true });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal server error");
+  }
+};
+
+export const createDirectUser = async (req: Request, res: Response): Promise<any> => {
+
+  let success = false;
+
+  // If there are validation errors return bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success, errors: errors.array() });
+  }
+  
+  try {
+    const { username, email, studentType, age, password } = req.body;
+    //check whether org_code exists
+    let organization_code = ''
+
+    if (studentType === 'HighSchool') {
+      organization_code = process.env.HIGH_SCHOOL_CODE as string;
+    } else if (studentType === 'College') {
+      organization_code = process.env.COLLEGE_CODE as string;
+    } else if (studentType === 'Professional') {
+      organization_code = process.env.PROFESSIONAL_CODE as string;
+    }
+
+    // check whether the user with this email exists already
+    const user = await User.findOne({ email: email, org_code: organization_code });
+    if (user) {
+      return res.status(400).json({ success, error: "Email already exists" });
+    }
+
+    // Salting password
+    const salt = await bcrypt.genSalt(saltRounds);
+    const secPass = await bcrypt.hash(password, salt);
+
+    // Creating a new user
+    const userCreated = await User.create({
+      username: username,
+      email: email,
+      studentType: studentType,
+      age: age,
+      password: secPass,
+      org_code: organization_code,
+    });
+
+    if (userCreated) {
+      // Token authentication using JWT
+      const authtoken = signToken(userCreated.username, userCreated.email, userCreated.org_code);
+
+      res.status(201).json(authtoken);
+
+      const subject = "Welcome to the Psychometric Test Journey";
+      const text = `Dear ${userCreated.username},\n\nWe're happy to welcome you on board as a registered member of our psychometric test program. Our psychometric test is designed to help you unlock your full potential, understand your strengths, and identify areas for development.\n\nPlease take a moment to explore the attached document and familiarize yourself with the test instructions.\n\nIf you have any questions or need assistance, please don't hesitate to reach out to us.\n\nThank you for choosing us as your partner in self-discovery.\n\nClick on the link to proceed your psychometric test: https://successteps.in/login\n\nWarm regards,\n\nDr. Antony Augusthy`;
+      const attachments = [{
+        filename: 'Psychometric Test Instructions.pdf',
+        path: `src/tp/Psychometric Test Instructions.pdf`,
+      }];
+
+      appLogger.info(`User registered: ${userCreated.username}`);
+
+      sendEmail(userCreated.email, subject, text, attachments);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal server error");
+  }
+};
+
+export async function logintest (req: Request, res: Response): Promise<any> {
+
+  let success = false;
+
+  // If there are validation errors, return bad request and the errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(400).json({ success, errors: errors.array() });
+    return;
+  }
+  try {
+    const { username, password, inorganization } = req.body;
+
+    const AdminEmail = process.env.ADMIN_EMAIL;
+
+    if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
+      const authtoken = signToken(username, AdminEmail as string, '6969');
+
+      appLogger.info(`Admin logged in: ${username}`);
+
+      res.status(200).json({ success: true, username: username, userType: 'admin', authtoken });
+      return;
+    }
+
+    return;
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+    return;
+  }
+};
+
 export async function login(req: Request, res: Response): Promise<any> {
 
   let success = false;
@@ -125,7 +249,7 @@ export async function login(req: Request, res: Response): Promise<any> {
     return;
   }
   try {
-    const { username, password } = req.body;
+    const { username, password, inOrganization } = req.body;
 
     const AdminEmail = process.env.ADMIN_EMAIL;
 
@@ -139,9 +263,20 @@ export async function login(req: Request, res: Response): Promise<any> {
     }
 
     // Finding if user exists
-    const user = await User.findOne({
-      username: username,
-    });
+    let user = null;
+    const includedCodes = [process.env.HIGH_SCHOOL_CODE as string, process.env.COLLEGE_CODE as string, process.env.PROFESSIONAL_CODE as string];
+
+    if (inOrganization) {
+      user = await User.findOne({
+        username: username,
+      });
+    } else if (!inOrganization) {
+      user = await User.findOne({
+        username: username,
+        org_code: { $in: includedCodes }
+      });
+    }
+
     if (!user) {
 
       appLogger.info(`Login failed due to wrong username for: ${username}`);

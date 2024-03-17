@@ -4,6 +4,7 @@ import React from "react";
 import Login from "./Pages/Authentication/Login";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Register from "./Pages/Authentication/Register";
+import RegisterDU from "./Pages/Authentication/RegisterDirectUsers";
 import AdminPanel from "./Pages/Admin/AdminPanel";
 import Home1 from "./Pages/PsychometricTest/Home1";
 import GetAllTestsHere from "./components/Test/GetAllTestsHere";
@@ -84,6 +85,7 @@ function AllRoutes() {
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}
         <Route path="/register" element={<Register />} />
+        <Route path="/register/:randomNumber" element={<RegisterDU />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/training" element={<Training />} />
