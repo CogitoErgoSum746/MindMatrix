@@ -1,6 +1,6 @@
 import express, { Router, Request, Response, NextFunction } from 'express';
-import { body, validationResult } from 'express-validator';
-import { login, createUser, forgotPassword, resetPassword } from '../controllers/authController';
+import { body, check, validationResult } from 'express-validator';
+import { login, createUser, forgotPassword, resetPassword, createDirectUser, checkRandomNumber } from '../controllers/authController';
 
 const router: Router = express.Router();
 
@@ -31,11 +31,23 @@ router.post('/createuser', [
   body('organization_code').isLength({ min: 4, max: 4 }).withMessage('Code should be 4 characters long'),
 ], validate, createUser);
 
+router.post('/createdirectuser', [
+  body('username', 'Username should contain at least 5 characters').isLength({ min: 5 }),
+  body('email', 'Enter a valid email').isEmail(),
+  body('password', 'Password should contain at least 5 characters').isLength({ min: 5 }),
+  body('age', 'Age should be a number').isInt(),
+], validate, createDirectUser);
+
 router.post('/login', [
     // body('email', "Enter a valid email").isEmail(),
     body('username', "Username cannot be blank").exists(),
     body('password', "Password cannot be blank").exists(),
+    body('inorganization', "Organization status cannot be blank").exists(),
 ], validate, login);
+
+router.post('/checkRandomNumber', [
+  body('randomNumber', "Not a valid randomNumber").exists(),
+], validate, checkRandomNumber);
 
 router.post('/forgotpassword', [
   body('email', "Enter a valid email").isEmail(),

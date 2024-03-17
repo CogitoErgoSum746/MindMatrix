@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Organization from '../models/organizations';
 import nodemailer from 'nodemailer';
-import User from '../models/users';
+import User from '../models/orgUsers';
 import { signToken } from '../utils/token';
 import { validationResult } from 'express-validator';
 import fs from 'fs';
@@ -111,8 +111,10 @@ export async function getAllOrg(req: Request, res: Response): Promise<any> {
   let success = false;
   try {
     // Create and save a new user document
-    const orgs = await Organization.find(); // Fetch all documents from the 'users' collection
+    const excludedCodes = [process.env.HIGH_SCHOOL_CODE as string, process.env.COLLEGE_CODE as string, process.env.PROFESSIONAL_CODE as string];
+    const orgs = await Organization.find({ org_code: { $nin: excludedCodes } });
 
+    if(orgs)
     // Response
     success = true;
     res.status(201).json({ success, orgs });

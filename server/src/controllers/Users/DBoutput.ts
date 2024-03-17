@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import User from '../../models/users';
+import User from '../../models/orgUsers';
 import fs from 'fs';
 import path from 'path';
 import { errorLogger, appLogger } from '../../logger';

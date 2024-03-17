@@ -3,7 +3,7 @@ config();
 
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import User from '../models/users';
+import User from '../models/orgUsers';
 
 
 // const JWT_SECRET: string | undefined = process.env.JWT_SECRET;

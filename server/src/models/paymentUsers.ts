@@ -17,6 +17,10 @@ const paymentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  studentType: {
+    type: String,
+    required: true,
+  },
   razorpay_order_id: {
     type: String,
     required: true,
@@ -31,4 +35,6 @@ const paymentSchema = new mongoose.Schema({
   },
 });
 
-export const PaymentUsers = mongoose.model("PaymentUsers", paymentSchema);
+const PaymentUsersModel = mongoose.model("PaymentUsers", paymentSchema);
+
+export default PaymentUsersModel;
