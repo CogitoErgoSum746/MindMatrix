@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 // import { Logger } from 'react-console-logger';
 function Login() {
   const [fadeIn, setFadeIn] = useState(false);
+  const [inorganization, setinorganization] = useState(false);
 
   useEffect(() => {
     // Trigger the fade-in animation when the component mounts
@@ -20,7 +21,6 @@ function Login() {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    inorganization: false,
   });
 
   const handleChange = (e) => {
@@ -35,13 +35,18 @@ function Login() {
     });
   };
 
+  const handleTermsChange = () => {
+    setinorganization(!inorganization); // Toggle the value of inorganization
+  };
+  
+
   const showValidationError = (message) => {
     toast.error(message, { position: toast.POSITION.TOP_CENTER });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, password, inorganization } = formData;
+    const { username, password } = formData;
 
     try {
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
@@ -49,7 +54,7 @@ function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, inorganization }),
+        body: JSON.stringify({ username, password, inOrganization: inorganization }),
       });
 
       if (response.ok) {
@@ -137,12 +142,13 @@ function Login() {
           <div className="mb-6 flex items-center"> 
             <input
               type="checkbox"
-              id="organization"
-              name="organization"
-              value={formData.inorganization}
+              id="inorganization"
+              name="inorganization"
+              checked={inorganization}
+              onChange={handleTermsChange}
               className="mr-2"
             />
-            <label htmlFor="organization" className="flex items-center text-gray-700 font-semibold mb-1 text-left">Do you belong to an organization?</label>
+            <label htmlFor="inorganization" className="flex items-center text-gray-700 font-semibold mb-1 text-left">Do you belong to an organization?</label>
           </div>
           <div className="text-center">
             <button

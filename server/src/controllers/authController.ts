@@ -266,11 +266,12 @@ export async function login(req: Request, res: Response): Promise<any> {
     let user = null;
     const includedCodes = [process.env.HIGH_SCHOOL_CODE as string, process.env.COLLEGE_CODE as string, process.env.PROFESSIONAL_CODE as string];
 
-    if (inOrganization) {
+    if (inOrganization === true) {
       user = await User.findOne({
         username: username,
+        org_code: { $nin: includedCodes }
       });
-    } else if (!inOrganization) {
+    } else if (inOrganization === false){
       user = await User.findOne({
         username: username,
         org_code: { $in: includedCodes }
