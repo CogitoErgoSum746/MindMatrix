@@ -42,7 +42,7 @@ router.post('/login', [
     // body('email', "Enter a valid email").isEmail(),
     body('username', "Username cannot be blank").exists(),
     body('password', "Password cannot be blank").exists(),
-    body('inorganization', "Organization status cannot be blank").exists(),
+    body('inOrganization'),
 ], validate, login);
 
 router.post('/checkRandomNumber', [
