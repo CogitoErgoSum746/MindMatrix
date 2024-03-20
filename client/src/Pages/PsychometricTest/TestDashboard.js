@@ -53,6 +53,7 @@ function Test() {
   const [remainingTests, setRemainingTests] = useState(null);
   const [loading, setLoading] = useState(false);
   const [pdfSent, setPdfSent] = useState(false);
+  const [pdfDeleted, setPdfDeleted] = useState(false);
   const [careerOptions, setCareerOptions] = useState(null);
   const [studentType, setStudentType] = useState("");
   const [showOptionalTest, setShowOptionalTest] = useState(false);
@@ -190,6 +191,26 @@ function Test() {
           autoClose: 6000,
         }
       );
+    }
+  };
+
+  const deletePdf = async () => {
+    try {
+      const authtoken = localStorage.getItem("authtoken");
+      const response = await fetch(`${API_BASE_URL}/user/deletepdf`, {
+        method: "GET",
+        headers: {
+          authtoken: authtoken,
+        },
+      });
+
+      if (response.ok) {
+        console.log("PDF deleted");
+      } else {
+        console.error("Error generating PDF");
+      }
+    } catch (error) {
+      console.error("Error generating PDF:", error);
     }
   };
 
@@ -365,13 +386,15 @@ function Test() {
               </button>
 
               <button
-                onClick={handleGeneratePDF}
+                onClick={deletePdf}
                 className={`px-4 py-2 rounded-full text-black
             bg-red-400
           `}
                 // disabled={!areTestsDone && !careerOptions}
                 style={{ width: "250px" }}
-              >Delete report</button>
+              >
+              Delete Report
+              </button>
             </div>
           }
 

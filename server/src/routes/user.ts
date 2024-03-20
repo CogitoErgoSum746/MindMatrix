@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import { getUser, userDashboard, tektest, checkScore, checkSubscores, multipleIRank, schoolTotalTests, collegeTotalTests, professionalTotalTests, doneCarreerList, doneSubTests } from '../controllers/Users/DBoutput';
-import { completeProfile, getTestResults, makeFinalPdf, carreerOptions, deleteTestResult, deleteCareerList, getAllTestResults } from '../controllers/Users/DBinput';
+import { completeProfile, getTestResults, makeFinalPdf, carreerOptions, deleteTestResult, deleteCareerList, getAllTestResults, deletepdf } from '../controllers/Users/DBinput';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -32,6 +32,7 @@ router.post('/testResultToAPI', fetchUser, getTestResults); // One single route 
 // } for req.body
 
 router.get('/makepdf', fetchUser, makeFinalPdf);
+router.get('/deletepdf', fetchUser, deletepdf); //deletepdf
 
 
 //Debugging routes:
