@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import OrganizationCard from "../../components/Cards/OrganizationCard";
+import AdminSidebar from "../../components/Cards/Admin/AdminSidebar";
 import { API_BASE_URL } from "../../config";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -186,98 +187,99 @@ function AdminPanel() {
         </button>
       </div>
 
+      {/* <AdminSidebar /> */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4 text-gray-700">Register Organization</h2>
         <div className="flex flex-col md:flex-row items-center gap-4">
-  <input
-    type="text"
-    placeholder="Username"
-    value={orgi_name}
-    onChange={(e) => setName(e.target.value)}
-    className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <input
-    type="email"
-    placeholder="Email"
-    value={orgi_email}
-    onChange={(e) => setEmail(e.target.value)}
-    className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <select
-    value={orgi_studentType}
-    onChange={(e) => setType(e.target.value)}
-    className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-  >
-    <option value="">Select a student type</option>
-    <option value="High school">High school</option>
-    <option value="College">College</option>
-    <option value="Professional">Professional</option>
-  </select>
-  <button
-    onClick={handleRegister}
-    className="w-full md:w-auto bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-  >
-    Register
-  </button>
-</div>
+          <input
+            type="text"
+            placeholder="Username"
+            value={orgi_name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={orgi_email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <select
+            value={orgi_studentType}
+            onChange={(e) => setType(e.target.value)}
+            className="w-full md:w-1/4 p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select a student type</option>
+            <option value="High school">High school</option>
+            <option value="College">College</option>
+            <option value="Professional">Professional</option>
+          </select>
+          <button
+            onClick={handleRegister}
+            className="w-full md:w-auto bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Register
+          </button>
+        </div>
 
       </div>
 
       <div>
-      <h2 className="text-2xl font-bold mb-4 text-gray-700">Registered Organizations</h2>
-  <div className="flex items-center gap-4">
-    <button
-      onClick={getAllOrganization}
-      className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-    >
-      Get All Organization
-    </button>
-    <div className="relative flex flex-col items-center ml-4">
-  {isSearchExpanded && (
-    <>
-      <input
-        type="text"
-        placeholder="Search by name"
-        value={searchQuery.name}
-        onChange={(e) => handleSearchInputChange(e, "name")}
-        className="p-3 mb-2 md:mb-0 md:mr-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <input
-        type="text"
-        placeholder="Search by email"
-        value={searchQuery.email}
-        onChange={(e) => handleSearchInputChange(e, "email")}
-        className="p-3 mb-2 md:mb-0 md:mr-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      <input
-        type="text"
-        placeholder="Search by code"
-        value={searchQuery.code}
-        onChange={(e) => handleSearchInputChange(e, "code")}
-        className="p-3 mb-2 md:mb-0 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </>
-  )}
-  <div className={`cursor-pointer ml-${isSearchExpanded ? "2" : "1"}`} onClick={toggleSearch}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className="w-6 h-6 text-gray-500"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-      />
-    </svg>
-  </div>
-</div>
+        <h2 className="text-2xl font-bold mb-4 text-gray-700">Registered Organizations</h2>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={getAllOrganization}
+            className="bg-blue-500 text-white py-3 px-6 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Get All Organization
+          </button>
+          <div className="relative flex flex-col items-center ml-4">
+            {isSearchExpanded && (
+              <>
+                <input
+                  type="text"
+                  placeholder="Search by name"
+                  value={searchQuery.name}
+                  onChange={(e) => handleSearchInputChange(e, "name")}
+                  className="p-3 mb-2 md:mb-0 md:mr-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  placeholder="Search by email"
+                  value={searchQuery.email}
+                  onChange={(e) => handleSearchInputChange(e, "email")}
+                  className="p-3 mb-2 md:mb-0 md:mr-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  placeholder="Search by code"
+                  value={searchQuery.code}
+                  onChange={(e) => handleSearchInputChange(e, "code")}
+                  className="p-3 mb-2 md:mb-0 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </>
+            )}
+            <div className={`cursor-pointer ml-${isSearchExpanded ? "2" : "1"}`} onClick={toggleSearch}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6 text-gray-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+            </div>
+          </div>
 
 
-  </div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredOrganizations.map((org, index) => (

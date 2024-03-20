@@ -347,21 +347,34 @@ function Test() {
           )}
 
           <div className="border-t border-blue-500 border-b-2 w-full my-4"></div>
-          <button
-            onClick={handleGeneratePDF}
-            className={`px-4 py-2 rounded-full text-black ${areTestsDone && careerOptions
-                ? "bg-gradient-to-r from-orange-500 to-yellow-500"
-                : "bg-gray-300"
-              }`}
-            disabled={!areTestsDone}
-            style={{ width: "250px" }}
-          >
-            {loading
-              ? "Generating..."
-              : pdfSent
-                ? "Report Sent to Mail"
-                : "Send Final Report to Mail"}
-          </button>
+          {areTestsDone && careerOptions &&
+            <div>
+              <button
+                onClick={handleGeneratePDF}
+                className={`px-4 py-2 rounded-full text-black
+              bg-gradient-to-r from-orange-500 to-yellow-500
+            `}
+                // disabled={!areTestsDone && !careerOptions}
+                style={{ width: "250px" }}
+              >
+                {loading
+                  ? "Generating..."
+                  : pdfSent
+                    ? "Report Sent to Mail"
+                    : "Send Final Report to Mail"}
+              </button>
+
+              <button
+                onClick={handleGeneratePDF}
+                className={`px-4 py-2 rounded-full text-black
+            bg-red-400
+          `}
+                // disabled={!areTestsDone && !careerOptions}
+                style={{ width: "250px" }}
+              >Delete report</button>
+            </div>
+          }
+
         </div>
       </div>
 
