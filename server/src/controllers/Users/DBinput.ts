@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import User from '../../models/orgUsers'; // Assuming you have a User model
 // import { UpdateWriteOpResult } from 'mongoose';
 import fs from 'fs';
+import fsextra from 'fs-extra';
 import path from 'path';
 import { sendFeedback, sendUserInfo, sendCharts, sendScores } from '../pdfController';
 import { errorLogger, appLogger } from '../../logger';
@@ -208,6 +209,43 @@ export async function deleteTestResult(req: Request, res: Response): Promise<voi
     }
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+export async function deletepdf(req: Request, res: Response): Promise<any> {
+  try {
+    const username = req.user.username
+    const email = req.user.email
+
+    const existinguser = await User.findOne({
+      username: username,
+      email: email
+    })
+
+    if (existinguser) {
+      // Extract the first 5 letters from 'username' and 'email'
+      const usernameFirst5 = username.slice(0, 5);
+      const emailFirst5 = email.slice(0, 5);
+
+      // Combine the first 5 letters of 'username' and 'email' to create a custom folder name
+      const customFolderName = `${usernameFirst5}${emailFirst5}`;
+      const folderPath = `src/runningPdfs/${customFolderName}`;
+
+      if (fs.existsSync(folderPath)) {
+        fsextra.remove(folderPath, (err) => {
+          if (err) {
+            console.error('Error deleting the folder:', err);
+          }
+        });
+      }
+
+      res.status(200).json({ success: true });
+    } else {
+      res.status(404).json({ success: false, message: 'User not found' });
+    }
+  } catch (error) {
+    errorLogger.error(`Error deleting a user:`, error instanceof Error ? error.message : error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 }
 

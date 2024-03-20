@@ -193,6 +193,26 @@ function Test() {
     }
   };
 
+  const deletePdf = async () => {
+    try {
+      const authtoken = localStorage.getItem("authtoken");
+      const response = await fetch(`${API_BASE_URL}/user/deletepdf`, {
+        method: "GET",
+        headers: {
+          authtoken: authtoken,
+        },
+      });
+
+      if (response.ok) {
+        console.log("PDF deleted");
+      } else {
+        console.error("Error generating PDF");
+      }
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+
   function handleLogout() {
     localStorage.clear();
     navigate("/psychometrictest/getstarted");
@@ -365,13 +385,15 @@ function Test() {
               </button>
 
               <button
-                onClick={handleGeneratePDF}
+                onClick={deletePdf}
                 className={`px-4 py-2 rounded-full text-black
             bg-red-400
           `}
                 // disabled={!areTestsDone && !careerOptions}
                 style={{ width: "250px" }}
-              >Delete report</button>
+              >
+              Delete Report
+              </button>
             </div>
           }
 
