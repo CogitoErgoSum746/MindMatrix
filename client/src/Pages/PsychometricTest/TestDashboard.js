@@ -53,7 +53,6 @@ function Test() {
   const [remainingTests, setRemainingTests] = useState(null);
   const [loading, setLoading] = useState(false);
   const [pdfSent, setPdfSent] = useState(false);
-  const [pdfDeleted, setPdfDeleted] = useState(false);
   const [careerOptions, setCareerOptions] = useState(null);
   const [studentType, setStudentType] = useState("");
   const [showOptionalTest, setShowOptionalTest] = useState(false);
