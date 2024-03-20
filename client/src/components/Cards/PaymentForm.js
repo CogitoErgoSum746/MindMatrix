@@ -49,7 +49,7 @@ function PaymentForm({ isOpen, handleClose, email, name, contact, age, handleInp
             />
             { name && email && contact && age && 
             <button
-            onClick={handleNextButtonClick(amount)}
+            onClick={handleNextButtonClick}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Next
