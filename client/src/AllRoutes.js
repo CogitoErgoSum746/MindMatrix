@@ -5,8 +5,14 @@ import Login from "./Pages/Authentication/Login";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Register from "./Pages/Authentication/Register";
 import RegisterDU from "./Pages/Authentication/RegisterDirectUsers";
+import AdminSidebar from "./components/Cards/Admin/AdminSidebar";
 import AdminPanel from "./Pages/Admin/AdminPanel";
+import AdminOrganizations from "./Pages/Admin/Organizations";
+import AdminDirectUsers from "./Pages/Admin/DirectUsers";
 import Home1 from "./Pages/PsychometricTest/Home1";
+import HighSchool from "./Pages/PsychometricTest/Courses/HighSchool";
+import College from "./Pages/PsychometricTest/Courses/College";
+import Professional from "./Pages/PsychometricTest/Courses/College";
 import GetAllTestsHere from "./components/Test/GetAllTestsHere";
 import Test from "./Pages/PsychometricTest/TestDashboard";
 import Profile from "./Pages/PsychometricTest/Profile";
@@ -48,6 +54,13 @@ function AllRoutes() {
 
   const location = useLocation();
 
+  const adminSidebar = [
+    '/admin',
+    '/admin/organizations',
+    '/admin/directusers',
+    '/admin/getusers/:org_name/:org_studentType/:org_code'
+  ];
+
   const notForFloat = [
     '/admin',
     '/test',
@@ -68,6 +81,8 @@ function AllRoutes() {
     '/test/2/careeropt'
   ]
 
+  const shouldShowAdminSidebar = adminSidebar.some(route => location.pathname.startsWith(route));
+
   const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
 
   const PurpleBack = forPurpleback.some(route => location.pathname.startsWith(route));
@@ -81,6 +96,7 @@ function AllRoutes() {
       <ScrollToTop />
       {PurpleBack && notPurpleBack && <GetAllTestsHere />}
       {shouldShowFloatingIcon && <FloatingIcon />}
+      {shouldShowAdminSidebar && <AdminSidebar />}
       
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}
@@ -121,6 +137,9 @@ function AllRoutes() {
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/psychometrictest" element={<PsychometricTestInfo />} />
         <Route path="/psychometrictest/getstarted" element={<Home1 />} />
+        <Route path="/psychometrictest/getstarted/highschool" element={<HighSchool />} />
+        <Route path="/psychometrictest/getstarted/college" element={<College />} />
+        <Route path="/psychometrictest/getstarted/professional" element={<Professional />} />
 
         <Route path="/successteps-blog/:slug" element={<SinglePost />} />
         <Route path="/successteps-blog" element={<AllPosts />} />
@@ -128,6 +147,8 @@ function AllRoutes() {
         {/* <Route path="/carsopt" element={<Carsopt />} /> */}
 
         <Route path="/admin" element={authtoken ? <AdminPanel /> : <Navigate to='/login' />} />
+        <Route path="/admin/organizations" element={authtoken ? <AdminOrganizations /> : <Navigate to='/login' />} />
+        <Route path="/admin/directusers" element={authtoken ? <AdminDirectUsers /> : <Navigate to='/login' />} />
         <Route
           path="/admin/getusers/:org_name/:org_studentType/:org_code"
           element={authtoken ? <Getusers /> : <Navigate to='/login' />}

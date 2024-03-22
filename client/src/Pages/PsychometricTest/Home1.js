@@ -7,8 +7,6 @@ import clg from "../../images/Home1/clgstudent.png";
 import school from "../../images/Home1/Highschool.png";
 import prof from "../../images/Home1/professional.png";
 import ScrollToTop from "../../components/common/ScrollToTop";
-import CollapsibleComponent from "../../components/Cards/Collapsible";
-import PaymentForm from "../../components/Cards/PaymentForm";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
@@ -68,23 +66,6 @@ function Home1() {
     } catch (error) {
       console.error("Network error", error);
     }
-  };
-
-  const handleButtonClick = (buttonName) => { // Pass button name as argument
-    setShowDialog(true);
-    setButtonClicked(buttonName); // Set the button clicked
-  };
-
-  const handleCloseDialog = () => {
-    setShowDialog(false);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value
-    });
   };
 
   const handleNext = async () => {
@@ -201,229 +182,7 @@ function Home1() {
           console.error(error);
         }
         break;
-      case 'Button 2':
-        try {
-          const { name, email, contact, age} = formValues
-    
-          const checkUser = await fetch(`${API_BASE_URL}/payment/checkUser`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              email,
-              name,
-              contact,
-              age
-            }),
-          });
-    
-          const checkUserResponse = await checkUser.json();
-          if (checkUserResponse.success) {
-            const response = await fetch(`${API_BASE_URL}/payment/checkout`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                amount: 2,
-              }),
-            });
-    
-            const data1 = await response.json();
-    
-            if (data1.error) {
-              console.error('Error creating order:', data1.error);
-              return;
-            }
-    
-            let studentType = 'College';
-    
-            // if (amount === 1) {
-            //   studentType = 'HighSchool';
-            // } else if (amount === 2) {
-            //   studentType = 'College';
-            // } else if (amount === 3) {
-            //   studentType = 'Professional';
-            // }
-    
-            const options = {
-              key: data1.api_key, // API key received from server
-              amount: data1.order.amount,
-              currency: "INR",
-              name: "Successteps",
-              description: "Payment for your purchase",
-              image: logo, // Replace with your logo URL
-              order_id: data1.order.id,
-              callback_url: `${API_BASE_URL}/payment/paymentverification`,
-              prefill: {
-                name: name,
-                email: email,
-                contact: contact,
-              },
-              notes: {
-                "address": "Razorpay Corporate Office"
-              },
-              "handler": async (response) => {
-                const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
-    
-                // Send payment confirmation and user data to your server
-                const serverResponse = await fetch(`${API_BASE_URL}/payment/paymentverification`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    razorpay_payment_id,
-                    razorpay_order_id,
-                    razorpay_signature,
-                    email,
-                    name,
-                    contact,
-                    age,
-                    studentType,
-                  }),
-                });
-    
-                const data2 = await serverResponse.json();
-                console.log(data2);
-    
-                if (data2.success) {
-                  console.log('Payment successful!');
-                  window.location.href = '/login';
-                  // Handle successful payment (e.g., display confirmation message, update UI)
-                } else {
-                  console.error('Payment failed:', data2.error);
-                  window.location.href = '/';
-                  // Handle payment failure (e.g., display error message)
-                }
-              },
-              theme: {
-                "color": "#121212"
-              }
-            };
-    
-            const rzp1 = new window.Razorpay(options);
-            rzp1.on('payment.failed', function (response) {
-              console.log(response);
-              alert("Payment Failed");
-            });
-            rzp1.open();
-          } else {
-            toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
-              autoClose: 5000,
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-      case 'Button 3':
-        try {
-          const { name, email, contact, age} = formValues
-    
-          const checkUser = await fetch(`${API_BASE_URL}/payment/checkUser`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              email,
-              name,
-              contact,
-              age
-            }),
-          });
-    
-          const checkUserResponse = await checkUser.json();
-          if (checkUserResponse.success) {
-            const response = await fetch(`${API_BASE_URL}/payment/checkout`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                amount: 3,
-              }),
-            });
-    
-            const data1 = await response.json();
-    
-            if (data1.error) {
-              console.error('Error creating order:', data1.error);
-              return;
-            }
-    
-            let studentType = 'Professional';
-    
-            // if (amount === 1) {
-            //   studentType = 'HighSchool';
-            // } else if (amount === 2) {
-            //   studentType = 'College';
-            // } else if (amount === 3) {
-            //   studentType = 'Professional';
-            // }
-    
-            const options = {
-              key: data1.api_key, // API key received from server
-              amount: data1.order.amount,
-              currency: "INR",
-              name: "Successteps",
-              description: "Payment for your purchase",
-              image: logo, // Replace with your logo URL
-              order_id: data1.order.id,
-              callback_url: `${API_BASE_URL}/payment/paymentverification`,
-              prefill: {
-                name: name,
-                email: email,
-                contact: contact,
-              },
-              notes: {
-                "address": "Razorpay Corporate Office"
-              },
-              "handler": async (response) => {
-                const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
-    
-                // Send payment confirmation and user data to your server
-                const serverResponse = await fetch(`${API_BASE_URL}/payment/paymentverification`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    razorpay_payment_id,
-                    razorpay_order_id,
-                    razorpay_signature,
-                    email,
-                    name,
-                    contact,
-                    age,
-                    studentType,
-                  }),
-                });
-    
-                const data2 = await serverResponse.json();
-                console.log(data2);
-    
-                if (data2.success) {
-                  console.log('Payment successful!');
-                  window.location.href = '/login';
-                  // Handle successful payment (e.g., display confirmation message, update UI)
-                } else {
-                  console.error('Payment failed:', data2.error);
-                  window.location.href = '/';
-                  // Handle payment failure (e.g., display error message)
-                }
-              },
-              theme: {
-                "color": "#121212"
-              }
-            };
-    
-            const rzp1 = new window.Razorpay(options);
-            rzp1.on('payment.failed', function (response) {
-              console.log(response);
-              alert("Payment Failed");
-            });
-            rzp1.open();
-          } else {
-            toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
-              autoClose: 5000,
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-      default:
+      
         break;
     }
     // Reset the form values
@@ -437,9 +196,6 @@ function Home1() {
     setShowDialog(false);
   };
 
-  // const initiatePayment1 = async () => {
-
-  // };
 
 
   return (
@@ -483,7 +239,7 @@ function Home1() {
               <h1 className="text-center text-lg font-bold font-['Inter']">
                 Unlock Your Potential
               </h1>
-              <p className="text-lg text-gray-800 mb-10 text-justify">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                 Welcome to our psychometric test’s platform tailored for high
                 school students. We understand that this is a crucial time in
                 your life, where you're making important decisions about your
@@ -494,10 +250,6 @@ function Home1() {
                 yourself, our tests are your trusted companions. Start exploring
                 and pave the way to a successful future.
               </p>
-              {/* <CollapsibleComponent
-            image={school}
-            buttonText="Total Cost Rs.5,500/- Only"
-          /> */}
               {isLoggedin && studentType === "High school" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
@@ -506,39 +258,16 @@ function Home1() {
                 </Link>
               ) : (
                 <div className="mt-10">
-                  <button onClick={() => handleButtonClick('Button 1')} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                  <Link to={`/psychometrictest/getstarted/highschool`}>
+                  <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
+                  </Link>
                 </div>
               )}
             </div>
 
-            {showDialog && (
-              <div className="dialog">
-                <div className="dialog-content">
-                  <span className="close" onClick={handleCloseDialog}>&times;</span>
-                  <form onSubmit={handleNext}>
-                    <label>
-                      Name:
-                      <input type="text" name="name" value={formValues.name} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                      Email:
-                      <input type="email" name="email" value={formValues.email} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                      Contact:
-                      <input type="tel" name="contact" value={formValues.contact} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                      Age:
-                      <input type="number" name="age" value={formValues.age} onChange={handleInputChange} />
-                    </label>
-                    <button type="submit">Next</button>
-                  </form>
-                </div>
-              </div>
-            )}
+
             <div className="p-4 bg-white rounded shadow-md">
               <div className="mb-12 flex justify-center">
                 <img src={clg}></img>
@@ -549,7 +278,7 @@ function Home1() {
               <h1 className="text-center text-lg font-bold font-['Inter']">
                 Empower Your Choice
               </h1>
-              <p className="text-lg text-gray-800 mb-4 text-justify md:text-md">
+              <p className="text-lg text-gray-800 mb-6 text-justify md:text-md">
                 As a college student, you're at the crossroads of academic and
                 career decisions. Our psychometric tests are designed to empower
                 you on this exciting journey. Discover your unique abilities,
@@ -568,9 +297,11 @@ function Home1() {
                 </Link>
               ) : (
                 <div className="mt-10">
-                  <button onClick={() => handleButtonClick('Button 2')} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                  <Link to={`/psychometrictest/getstarted/college`}>
+                  <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -585,7 +316,7 @@ function Home1() {
               <h1 className="text-center text-lg font-bold font-['Inter']">
                 Optimise Your Career
               </h1>
-              <p className="text-lg text-gray-800 mb-10 text-justify  md:text-md ">
+              <p className="text-lg text-gray-800 mb-12 text-justify  md:text-md ">
                 In the professional world, continuous growth and advancement are
                 key. Our psychometric tests offer experienced professionals the
                 tools to enhance their careers. Identify your leadership
@@ -602,10 +333,12 @@ function Home1() {
                   </button>
                 </Link>
               ) : (
-                <div className="mt-10">
-                  <button onClick={() => handleButtonClick('Button 3')} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                <div className="mt-16">
+                  <Link to={`/psychometrictest/getstarted/professional`}>
+                  <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
+                  </Link>
                 </div>
               )}
             </div>
