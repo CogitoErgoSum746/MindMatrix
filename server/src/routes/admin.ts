@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
-import { createOrganization, adminDashboard, deleteUserCarList, getAllOrg, getUserInfo, getUsersOrg, sendCodetoEmail, getTotalPdfs, deleteUser, deleteOrgAlongWithUsers, displayPdf} from '../controllers/adminController';
+import { createOrganization, adminDashboard, deleteUserCarList, getAllOrg, getUserInfo, getUsersOrg, getAllDirectUsers, sendCodetoEmail, getTotalPdfs, deleteUser, deleteOrgAlongWithUsers, displayPdf} from '../controllers/adminController';
 import fetchUser from '../middlewares/fetchUser';
 
 const router: Router = express.Router();
@@ -15,6 +15,8 @@ router.get('/getallorgs', getAllOrg);
 // router.post('/getorg', getOrganization);
 
 router.post('/getusersorg', getUsersOrg);
+
+router.get('/getalldirectusers', getAllDirectUsers);
 
 router.get('/getpdfs', getTotalPdfs);
 

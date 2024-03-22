@@ -110,7 +110,6 @@ export async function createOrganization(req: Request, res: Response): Promise<a
 export async function getAllOrg(req: Request, res: Response): Promise<any> {
   let success = false;
   try {
-    // Create and save a new user document
     const excludedCodes = [process.env.HIGH_SCHOOL_CODE as string, process.env.COLLEGE_CODE as string, process.env.PROFESSIONAL_CODE as string];
     const orgs = await Organization.find({ org_code: { $nin: excludedCodes } });
 
@@ -142,6 +141,27 @@ export async function getUsersOrg(req: Request, res: Response): Promise<any> {
     res.status(200).json({ Org, usersPerOrg, totalUsers });
   } catch (error) {
     errorLogger.error(`Error getting the orgUsers:`, error instanceof Error ? error.message : error);
+    console.error('Error finding users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+export async function getAllDirectUsers(req: Request, res: Response): Promise<any> {
+  try {
+    const includedCodes = [process.env.HIGH_SCHOOL_CODE as string, process.env.COLLEGE_CODE as string, process.env.PROFESSIONAL_CODE as string];
+
+    const alldirectusers = await User.find({ org_code: { $in: includedCodes }});
+
+    if (!alldirectusers) {
+      res.status(404).send('No users found');
+      return;
+    }
+
+    const totalUsers = alldirectusers.length;
+
+    res.status(200).json({ alldirectusers, totalUsers });
+  } catch (error) {
+    errorLogger.error(`Error getting the directUsers:`, error instanceof Error ? error.message : error);
     console.error('Error finding users:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -373,8 +393,33 @@ export async function getOrganization(req: Request, res: Response): Promise<any>
   }
 };
 
-export const adminDashboard = (req: Request, res: Response): void => {
-  res.status(200).json('Chillaxxx admin');
+export async function adminDashboard (req: Request, res: Response): Promise<any> {
+  let success = false;
+
+  try {
+    // Create and save a new user document
+    const Orgi = await Organization.find()
+
+    const includedCodes = [process.env.HIGH_SCHOOL_CODE as string, process.env.COLLEGE_CODE as string, process.env.PROFESSIONAL_CODE as string];
+
+    const orgusers = await User.find({ org_code: { $nin: includedCodes }});
+    const alldirectusers = await User.find({ org_code: { $in: includedCodes }});
+
+    const totalOrg = Orgi.length;
+    const totalOrgUsers = orgusers.length;
+    const totalDirectUsers = alldirectusers.length;
+
+    if (!Orgi && orgusers && alldirectusers) {
+      return res.status(400).json({ success, msg: 'No data' });
+    }
+
+    // Response
+    success = true;
+    res.status(201).json({ success, totalOrg, totalOrgUsers, totalDirectUsers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
 };
 
 export async function sendCodetoEmail(req: Request, res: Response): Promise<void> {

@@ -6,6 +6,9 @@ import logo from "../../images/logo.png";
 import clg from "../../images/Home1/clgstudent.png";
 import school from "../../images/Home1/Highschool.png";
 import prof from "../../images/Home1/professional.png";
+import highSchoolPay from "../../images/Home1/high_school_payment.png";
+import collegePay from "../../images/Home1/college_payment.png";
+import professionalPay from "../../images/Home1/professional_payment.png";
 import ScrollToTop from "../../components/common/ScrollToTop";
 import CollapsibleComponent from "../../components/Cards/Collapsible";
 import PaymentForm from "../../components/Cards/PaymentForm";
@@ -483,7 +486,7 @@ function Home1() {
               <h1 className="text-center text-lg font-bold font-['Inter']">
                 Unlock Your Potential
               </h1>
-              <p className="text-lg text-gray-800 mb-10 text-justify">
+              <p className="text-lg text-gray-800 mb-4 text-justify">
                 Welcome to our psychometric test’s platform tailored for high
                 school students. We understand that this is a crucial time in
                 your life, where you're making important decisions about your
@@ -494,10 +497,9 @@ function Home1() {
                 yourself, our tests are your trusted companions. Start exploring
                 and pave the way to a successful future.
               </p>
-              {/* <CollapsibleComponent
-            image={school}
-            buttonText="Total Cost Rs.5,500/- Only"
-          /> */}
+              <CollapsibleComponent
+            image={highSchoolPay}
+          />
               {isLoggedin && studentType === "High school" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
@@ -513,32 +515,7 @@ function Home1() {
               )}
             </div>
 
-            {showDialog && (
-              <div className="dialog">
-                <div className="dialog-content">
-                  <span className="close" onClick={handleCloseDialog}>&times;</span>
-                  <form onSubmit={handleNext}>
-                    <label>
-                      Name:
-                      <input type="text" name="name" value={formValues.name} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                      Email:
-                      <input type="email" name="email" value={formValues.email} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                      Contact:
-                      <input type="tel" name="contact" value={formValues.contact} onChange={handleInputChange} />
-                    </label>
-                    <label>
-                      Age:
-                      <input type="number" name="age" value={formValues.age} onChange={handleInputChange} />
-                    </label>
-                    <button type="submit">Next</button>
-                  </form>
-                </div>
-              </div>
-            )}
+
             <div className="p-4 bg-white rounded shadow-md">
               <div className="mb-12 flex justify-center">
                 <img src={clg}></img>
@@ -549,7 +526,7 @@ function Home1() {
               <h1 className="text-center text-lg font-bold font-['Inter']">
                 Empower Your Choice
               </h1>
-              <p className="text-lg text-gray-800 mb-4 text-justify md:text-md">
+              <p className="text-lg text-gray-800 mb-6 text-justify md:text-md">
                 As a college student, you're at the crossroads of academic and
                 career decisions. Our psychometric tests are designed to empower
                 you on this exciting journey. Discover your unique abilities,
@@ -560,6 +537,9 @@ function Home1() {
                 Beyond the academic decisions, our psychometric tests also help
                 you to take a right decision.
               </p>
+              <CollapsibleComponent
+            image={collegePay}
+          />
               {isLoggedin && studentType === "College" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
@@ -585,7 +565,7 @@ function Home1() {
               <h1 className="text-center text-lg font-bold font-['Inter']">
                 Optimise Your Career
               </h1>
-              <p className="text-lg text-gray-800 mb-10 text-justify  md:text-md ">
+              <p className="text-lg text-gray-800 mb-12 text-justify  md:text-md ">
                 In the professional world, continuous growth and advancement are
                 key. Our psychometric tests offer experienced professionals the
                 tools to enhance their careers. Identify your leadership
@@ -595,6 +575,9 @@ function Home1() {
                 job performance, our tests provide data-driven insights to help
                 you thrive in your chosen field. Elevate your career.
               </p>
+              <CollapsibleComponent
+            image={professionalPay}
+          />
               {isLoggedin && studentType === "Professional" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">

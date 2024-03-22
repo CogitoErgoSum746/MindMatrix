@@ -5,7 +5,10 @@ import Login from "./Pages/Authentication/Login";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Register from "./Pages/Authentication/Register";
 import RegisterDU from "./Pages/Authentication/RegisterDirectUsers";
+import AdminSidebar from "./components/Cards/Admin/AdminSidebar";
 import AdminPanel from "./Pages/Admin/AdminPanel";
+import AdminOrganizations from "./Pages/Admin/Organizations";
+import AdminDirectUsers from "./Pages/Admin/DirectUsers";
 import Home1 from "./Pages/PsychometricTest/Home1";
 import GetAllTestsHere from "./components/Test/GetAllTestsHere";
 import Test from "./Pages/PsychometricTest/TestDashboard";
@@ -48,6 +51,13 @@ function AllRoutes() {
 
   const location = useLocation();
 
+  const adminSidebar = [
+    '/admin',
+    '/admin/organizations',
+    '/admin/directusers',
+    '/admin/getusers/:org_name/:org_studentType/:org_code'
+  ];
+
   const notForFloat = [
     '/admin',
     '/test',
@@ -68,6 +78,8 @@ function AllRoutes() {
     '/test/2/careeropt'
   ]
 
+  const shouldShowAdminSidebar = adminSidebar.some(route => location.pathname.startsWith(route));
+
   const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
 
   const PurpleBack = forPurpleback.some(route => location.pathname.startsWith(route));
@@ -81,6 +93,7 @@ function AllRoutes() {
       <ScrollToTop />
       {PurpleBack && notPurpleBack && <GetAllTestsHere />}
       {shouldShowFloatingIcon && <FloatingIcon />}
+      {shouldShowAdminSidebar && <AdminSidebar />}
       
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}
@@ -128,6 +141,8 @@ function AllRoutes() {
         {/* <Route path="/carsopt" element={<Carsopt />} /> */}
 
         <Route path="/admin" element={authtoken ? <AdminPanel /> : <Navigate to='/login' />} />
+        <Route path="/admin/organizations" element={authtoken ? <AdminOrganizations /> : <Navigate to='/login' />} />
+        <Route path="/admin/directusers" element={authtoken ? <AdminDirectUsers /> : <Navigate to='/login' />} />
         <Route
           path="/admin/getusers/:org_name/:org_studentType/:org_code"
           element={authtoken ? <Getusers /> : <Navigate to='/login' />}
