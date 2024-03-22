@@ -6,12 +6,7 @@ import logo from "../../images/logo.png";
 import clg from "../../images/Home1/clgstudent.png";
 import school from "../../images/Home1/Highschool.png";
 import prof from "../../images/Home1/professional.png";
-import highSchoolPay from "../../images/Home1/high_school_payment.png";
-import collegePay from "../../images/Home1/college_payment.png";
-import professionalPay from "../../images/Home1/professional_payment.png";
 import ScrollToTop from "../../components/common/ScrollToTop";
-import CollapsibleComponent from "../../components/Cards/Collapsible";
-import PaymentForm from "../../components/Cards/PaymentForm";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet";
@@ -71,23 +66,6 @@ function Home1() {
     } catch (error) {
       console.error("Network error", error);
     }
-  };
-
-  const handleButtonClick = (buttonName) => { // Pass button name as argument
-    setShowDialog(true);
-    setButtonClicked(buttonName); // Set the button clicked
-  };
-
-  const handleCloseDialog = () => {
-    setShowDialog(false);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value
-    });
   };
 
   const handleNext = async () => {
@@ -204,229 +182,7 @@ function Home1() {
           console.error(error);
         }
         break;
-      case 'Button 2':
-        try {
-          const { name, email, contact, age} = formValues
-    
-          const checkUser = await fetch(`${API_BASE_URL}/payment/checkUser`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              email,
-              name,
-              contact,
-              age
-            }),
-          });
-    
-          const checkUserResponse = await checkUser.json();
-          if (checkUserResponse.success) {
-            const response = await fetch(`${API_BASE_URL}/payment/checkout`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                amount: 2,
-              }),
-            });
-    
-            const data1 = await response.json();
-    
-            if (data1.error) {
-              console.error('Error creating order:', data1.error);
-              return;
-            }
-    
-            let studentType = 'College';
-    
-            // if (amount === 1) {
-            //   studentType = 'HighSchool';
-            // } else if (amount === 2) {
-            //   studentType = 'College';
-            // } else if (amount === 3) {
-            //   studentType = 'Professional';
-            // }
-    
-            const options = {
-              key: data1.api_key, // API key received from server
-              amount: data1.order.amount,
-              currency: "INR",
-              name: "Successteps",
-              description: "Payment for your purchase",
-              image: logo, // Replace with your logo URL
-              order_id: data1.order.id,
-              callback_url: `${API_BASE_URL}/payment/paymentverification`,
-              prefill: {
-                name: name,
-                email: email,
-                contact: contact,
-              },
-              notes: {
-                "address": "Razorpay Corporate Office"
-              },
-              "handler": async (response) => {
-                const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
-    
-                // Send payment confirmation and user data to your server
-                const serverResponse = await fetch(`${API_BASE_URL}/payment/paymentverification`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    razorpay_payment_id,
-                    razorpay_order_id,
-                    razorpay_signature,
-                    email,
-                    name,
-                    contact,
-                    age,
-                    studentType,
-                  }),
-                });
-    
-                const data2 = await serverResponse.json();
-                console.log(data2);
-    
-                if (data2.success) {
-                  console.log('Payment successful!');
-                  window.location.href = '/login';
-                  // Handle successful payment (e.g., display confirmation message, update UI)
-                } else {
-                  console.error('Payment failed:', data2.error);
-                  window.location.href = '/';
-                  // Handle payment failure (e.g., display error message)
-                }
-              },
-              theme: {
-                "color": "#121212"
-              }
-            };
-    
-            const rzp1 = new window.Razorpay(options);
-            rzp1.on('payment.failed', function (response) {
-              console.log(response);
-              alert("Payment Failed");
-            });
-            rzp1.open();
-          } else {
-            toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
-              autoClose: 5000,
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-      case 'Button 3':
-        try {
-          const { name, email, contact, age} = formValues
-    
-          const checkUser = await fetch(`${API_BASE_URL}/payment/checkUser`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              email,
-              name,
-              contact,
-              age
-            }),
-          });
-    
-          const checkUserResponse = await checkUser.json();
-          if (checkUserResponse.success) {
-            const response = await fetch(`${API_BASE_URL}/payment/checkout`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                amount: 3,
-              }),
-            });
-    
-            const data1 = await response.json();
-    
-            if (data1.error) {
-              console.error('Error creating order:', data1.error);
-              return;
-            }
-    
-            let studentType = 'Professional';
-    
-            // if (amount === 1) {
-            //   studentType = 'HighSchool';
-            // } else if (amount === 2) {
-            //   studentType = 'College';
-            // } else if (amount === 3) {
-            //   studentType = 'Professional';
-            // }
-    
-            const options = {
-              key: data1.api_key, // API key received from server
-              amount: data1.order.amount,
-              currency: "INR",
-              name: "Successteps",
-              description: "Payment for your purchase",
-              image: logo, // Replace with your logo URL
-              order_id: data1.order.id,
-              callback_url: `${API_BASE_URL}/payment/paymentverification`,
-              prefill: {
-                name: name,
-                email: email,
-                contact: contact,
-              },
-              notes: {
-                "address": "Razorpay Corporate Office"
-              },
-              "handler": async (response) => {
-                const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
-    
-                // Send payment confirmation and user data to your server
-                const serverResponse = await fetch(`${API_BASE_URL}/payment/paymentverification`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    razorpay_payment_id,
-                    razorpay_order_id,
-                    razorpay_signature,
-                    email,
-                    name,
-                    contact,
-                    age,
-                    studentType,
-                  }),
-                });
-    
-                const data2 = await serverResponse.json();
-                console.log(data2);
-    
-                if (data2.success) {
-                  console.log('Payment successful!');
-                  window.location.href = '/login';
-                  // Handle successful payment (e.g., display confirmation message, update UI)
-                } else {
-                  console.error('Payment failed:', data2.error);
-                  window.location.href = '/';
-                  // Handle payment failure (e.g., display error message)
-                }
-              },
-              theme: {
-                "color": "#121212"
-              }
-            };
-    
-            const rzp1 = new window.Razorpay(options);
-            rzp1.on('payment.failed', function (response) {
-              console.log(response);
-              alert("Payment Failed");
-            });
-            rzp1.open();
-          } else {
-            toast.error("You have already done the payment as per our records, check your email for further instructions!!", {
-              autoClose: 5000,
-            });
-          }
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-      default:
+      
         break;
     }
     // Reset the form values
@@ -440,9 +196,6 @@ function Home1() {
     setShowDialog(false);
   };
 
-  // const initiatePayment1 = async () => {
-
-  // };
 
 
   return (
@@ -497,9 +250,6 @@ function Home1() {
                 yourself, our tests are your trusted companions. Start exploring
                 and pave the way to a successful future.
               </p>
-              <CollapsibleComponent
-            image={highSchoolPay}
-          />
               {isLoggedin && studentType === "High school" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
@@ -508,9 +258,11 @@ function Home1() {
                 </Link>
               ) : (
                 <div className="mt-10">
-                  <button onClick={() => handleButtonClick('Button 1')} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                  <Link to={`/psychometrictest/getstarted/highschool`}>
+                  <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -537,9 +289,6 @@ function Home1() {
                 Beyond the academic decisions, our psychometric tests also help
                 you to take a right decision.
               </p>
-              <CollapsibleComponent
-            image={collegePay}
-          />
               {isLoggedin && studentType === "College" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
@@ -548,9 +297,11 @@ function Home1() {
                 </Link>
               ) : (
                 <div className="mt-10">
-                  <button onClick={() => handleButtonClick('Button 2')} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                  <Link to={`/psychometrictest/getstarted/college`}>
+                  <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -575,9 +326,6 @@ function Home1() {
                 job performance, our tests provide data-driven insights to help
                 you thrive in your chosen field. Elevate your career.
               </p>
-              <CollapsibleComponent
-            image={professionalPay}
-          />
               {isLoggedin && studentType === "Professional" ? (
                 <Link to="/test">
                   <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
@@ -585,10 +333,12 @@ function Home1() {
                   </button>
                 </Link>
               ) : (
-                <div className="mt-10">
-                  <button onClick={() => handleButtonClick('Button 3')} className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
+                <div className="mt-16">
+                  <Link to={`/psychometrictest/getstarted/professional`}>
+                  <button className="w-full p-2 rounded-md bg-gradient-to-r from-orange-500 to-yellow-500">
                     Buy Now
                   </button>
+                  </Link>
                 </div>
               )}
             </div>

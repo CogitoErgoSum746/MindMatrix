@@ -10,6 +10,9 @@ import AdminPanel from "./Pages/Admin/AdminPanel";
 import AdminOrganizations from "./Pages/Admin/Organizations";
 import AdminDirectUsers from "./Pages/Admin/DirectUsers";
 import Home1 from "./Pages/PsychometricTest/Home1";
+import HighSchool from "./Pages/PsychometricTest/Courses/HighSchool";
+import College from "./Pages/PsychometricTest/Courses/College";
+import Professional from "./Pages/PsychometricTest/Courses/College";
 import GetAllTestsHere from "./components/Test/GetAllTestsHere";
 import Test from "./Pages/PsychometricTest/TestDashboard";
 import Profile from "./Pages/PsychometricTest/Profile";
@@ -134,6 +137,9 @@ function AllRoutes() {
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/psychometrictest" element={<PsychometricTestInfo />} />
         <Route path="/psychometrictest/getstarted" element={<Home1 />} />
+        <Route path="/psychometrictest/getstarted/highschool" element={<HighSchool />} />
+        <Route path="/psychometrictest/getstarted/college" element={<College />} />
+        <Route path="/psychometrictest/getstarted/professional" element={<Professional />} />
 
         <Route path="/successteps-blog/:slug" element={<SinglePost />} />
         <Route path="/successteps-blog" element={<AllPosts />} />
