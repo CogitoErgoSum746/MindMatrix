@@ -87,7 +87,7 @@ const HighSchool = () => {
           return;
         }
 
-        let studentType = 'HighSchool';
+        let studentType = 'Highschool';
 
         const options = {
           key: data1.api_key, // API key received from server

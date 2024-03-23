@@ -17,7 +17,6 @@ const Professional = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    studentType: "highschool",
     age: "",
     contact: "",
   });

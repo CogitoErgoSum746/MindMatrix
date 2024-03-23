@@ -152,12 +152,13 @@ export const createDirectUser = async (req: Request, res: Response): Promise<any
   }
   
   try {
-    const { username, email, studentType, age, password } = req.body;
+    let { username, email, studentType, age, password } = req.body;
     //check whether org_code exists
     let organization_code = ''
 
-    if (studentType === 'HighSchool') {
+    if (studentType === 'Highschool') {
       organization_code = process.env.HIGH_SCHOOL_CODE as string;
+      studentType = 'High school';
     } else if (studentType === 'College') {
       organization_code = process.env.COLLEGE_CODE as string;
     } else if (studentType === 'Professional') {
