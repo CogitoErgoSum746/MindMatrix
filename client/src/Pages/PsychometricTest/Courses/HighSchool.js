@@ -262,7 +262,7 @@ const HighSchool = () => {
             </div>
           </form>
 
-          <p className="text-3xl font-semibold mt-20">Total Cost Rs. 7,500/- only</p>
+          <p className="text-3xl font-semibold mt-2">Total Cost Rs. 7,500/- only</p>
 
         </div>
         <div className="md:hidden w-full mt-10">
