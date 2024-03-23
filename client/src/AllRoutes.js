@@ -37,6 +37,7 @@ import CertificateContent from "./Pages/HomeButtons/CertificateContent";
 import Facilitator from "./Pages/FacilitatorProfile/Facilitator";
 import PsychometricTestInfo from "./Pages/PsychometricTest/PsychometricTestInfo";
 import FloatingIcon from "./components/common/FloatingIcon";
+import FloatingDashboardButton from "./components/common/Dashboard";
 import ContactUs from "./components/common/Contactus";
 import Termsconds from "./Pages/About/Terms&Conditions";
 import SinglePost from "./Pages/Blog/SinglePost";
@@ -67,6 +68,11 @@ function AllRoutes() {
     '/admin/getusers/:org_name/:org_studentType/:org_code'
   ];
 
+  const notForDashboard = [
+    '/test',
+    '/admin'
+  ]
+
   const forPurpleback = [
     '/test'
   ]
@@ -84,6 +90,8 @@ function AllRoutes() {
   const shouldShowAdminSidebar = adminSidebar.some(route => location.pathname.startsWith(route));
 
   const shouldShowFloatingIcon = !notForFloat.some(route => location.pathname.startsWith(route));
+  
+  const shouldShowFloatingDashboard = !notForDashboard.some(route => location.pathname.startsWith(route));
 
   const PurpleBack = forPurpleback.some(route => location.pathname.startsWith(route));
 
@@ -97,6 +105,7 @@ function AllRoutes() {
       {PurpleBack && notPurpleBack && <GetAllTestsHere />}
       {shouldShowFloatingIcon && <FloatingIcon />}
       {shouldShowAdminSidebar && <AdminSidebar />}
+      {authtoken && shouldShowFloatingDashboard && <FloatingDashboardButton />}
       
       <Routes>
         {/* <Route path='/' element = {<TestList/>} /> */}

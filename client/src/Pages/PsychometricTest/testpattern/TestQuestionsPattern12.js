@@ -632,7 +632,7 @@ function TestQuestionsPattern12() {
             { text: "C. 6", isCorrect: false },
             { text: "D. 8", isCorrect: true },
           ],
-          imageUrl: mechimg3.png,
+          imageUrl: mechimg3,
         },
         {
           questionText: "14. What is the purpose of a flywheel in a machine?",

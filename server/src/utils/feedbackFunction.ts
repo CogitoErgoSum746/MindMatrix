@@ -137,10 +137,10 @@ export function getFeedback(testType: string, subCategory: string, score: number
             percentage = 'Room for Improvement';
         } else if (score >= 7 && score <= 8) {
             scoreRange = '7-8';
-            percentage = 'Average';
+            percentage = 'Above Average';
         } else if (score >= 9 && score <= 10) {
             scoreRange = '9-10';
-            percentage = 'Above Average';
+            percentage = 'Outstanding';
         } else {
             console.log('Invalid score');
         }
