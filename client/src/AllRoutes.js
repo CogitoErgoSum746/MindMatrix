@@ -12,7 +12,7 @@ import AdminDirectUsers from "./Pages/Admin/DirectUsers";
 import Home1 from "./Pages/PsychometricTest/Home1";
 import HighSchool from "./Pages/PsychometricTest/Courses/HighSchool";
 import College from "./Pages/PsychometricTest/Courses/College";
-import Professional from "./Pages/PsychometricTest/Courses/College";
+import Professional from "./Pages/PsychometricTest/Courses/Professional";
 import GetAllTestsHere from "./components/Test/GetAllTestsHere";
 import Test from "./Pages/PsychometricTest/TestDashboard";
 import Profile from "./Pages/PsychometricTest/Profile";

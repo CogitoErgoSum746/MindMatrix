@@ -129,13 +129,19 @@ const HighSchool = () => {
             console.log(data2);
 
             if (data2.success) {
+              toast.dismiss();
+
+              toast.success("Payment is successful. Check your mail for further instructions on completing the registration.", {
+                autoClose: 6000,
+              });
               console.log('Payment successful!');
-              window.location.href = '/login';
-              // Handle successful payment (e.g., display confirmation message, update UI)
             } else {
+              toast.dismiss();
+
+              toast.error("Sorry for the unsuccessful attempt. You may try again and contact the facilitator for additional doubts.", {
+                autoClose: 6000,
+              });
               console.error('Payment failed:', data2.error);
-              window.location.href = '/';
-              // Handle payment failure (e.g., display error message)
             }
           },
           theme: {
@@ -255,6 +261,8 @@ const HighSchool = () => {
               </button>
             </div>
           </form>
+
+          <p className="text-3xl font-semibold mt-20">Total Cost Rs. 7,500/- only</p>
 
         </div>
         <div className="md:hidden w-full mt-10">
