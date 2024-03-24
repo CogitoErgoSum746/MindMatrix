@@ -78,7 +78,7 @@ const Professional = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            amount: 2,
+            amount: 8500,
           }),
         });
 

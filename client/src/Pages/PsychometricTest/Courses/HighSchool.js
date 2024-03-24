@@ -76,7 +76,7 @@ const HighSchool = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            amount: 1,
+            amount: 7500,
           }),
         });
 
